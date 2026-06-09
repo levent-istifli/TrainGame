@@ -3,11 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://cxbllf1cgb4eo" path="res://scenes/dialoguetestscene/traininterior.png" id="1_aawce"]
 [ext_resource type="Script" uid="uid://blxu853na5h8j" path="res://scripts/DialogueBoxUI.cs" id="1_pmob3"]
 
-[node name="DialogueBox" type="Node2D" unique_id=1448317 node_paths=PackedStringArray("textBox", "charTimer")]
+[node name="DialogueBox" type="Node2D" unique_id=1448317 node_paths=PackedStringArray("textBox", "charTimer", "nextIndicator")]
 script = ExtResource("1_pmob3")
 charDuration = 0.04
 textBox = NodePath("DialogueBoxBackdrop/Text")
 charTimer = NodePath("CharTimer")
+nextIndicator = NodePath("DialogueBoxBackdrop/NextIndicator")
 
 [node name="TrainInterior" type="Sprite2D" parent="." unique_id=1440137525]
 position = Vector2(5, -49.99999)

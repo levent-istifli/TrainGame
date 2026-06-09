@@ -14,6 +14,8 @@ public partial class DialogueBoxUI : Node
 	[Export]
 	public Timer charTimer;
 
+	[Export]
+	public Control nextIndicator;
 
 	public string currString;
 	public string nextString;
@@ -44,25 +46,21 @@ public partial class DialogueBoxUI : Node
 
 
 	int dialogueLine = 0;
+	bool isTyping = false;
+
 	public void DisplayNext()
 	{
+		ClearBox();
 
-		if (dialogueLine == 0)
-		{
-			nextString = testDialogue[0];
-		}
-		currString = nextString;
+		currString = testDialogue[dialogueLine];
 
+		dialogueLine++;
 		if (dialogueLine >= testDialogue.Length)
-		{
 			dialogueLine = 0;
-		}
-		else
-		{
-			dialogueLine++;
-		}
 
-		nextString = testDialogue[dialogueLine];
+		textIterator = 0;
+		isTyping = true;
+		nextIndicator.Visible = false;
 		charTimer.Start();
 	}
 
@@ -73,30 +71,46 @@ public partial class DialogueBoxUI : Node
 		if (textIterator < currString.Length)
 		{
 			textBox.Text += currString[textIterator];
-			charTimer.Start();
 			textIterator++;
+			charTimer.Start();
 		}
-		else 
+		else
 		{
-			textIterator = 0;
+			isTyping = false;
+			nextIndicator.Visible = true;
 			charTimer.Stop();
 		}
 	}
+
 	public override void _Ready()
 	{
 		charTimer.WaitTime = charDuration;
 		ClearBox();
 		DisplayNext();
+		nextIndicator.Visible = false;
 	}
 
-
+	bool skipped = false;
     public override void _Input(InputEvent @event)
     {
+
         if (@event.IsActionPressed("dialogueNext"))
 		{
-			charTimer.Stop();
-			ClearBox();
-			DisplayNext();
+
+			if (skipped || !isTyping)
+			{
+				ClearBox();
+				DisplayNext();
+				skipped = false;
+			}
+			else
+			{
+				charTimer.Stop();
+				textBox.Text = currString;
+				skipped = true;
+				nextIndicator.Visible = true;
+			}
+
 		}
     }
 
