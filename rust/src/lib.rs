@@ -1,7 +1,5 @@
 use godot::prelude::*;
 
-mod main_scene;
-
 struct TrainGame;
 
 #[gdextension]
