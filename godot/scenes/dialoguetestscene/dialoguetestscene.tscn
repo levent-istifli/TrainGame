@@ -5,6 +5,7 @@
 
 [node name="DialogueBox" type="Node2D" unique_id=1448317 node_paths=PackedStringArray("textBox", "charTimer")]
 script = ExtResource("1_pmob3")
+charDuration = 0.04
 textBox = NodePath("DialogueBoxBackdrop/Text")
 charTimer = NodePath("CharTimer")
 
@@ -16,6 +17,30 @@ texture = ExtResource("1_aawce")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1952988782]
 
 [node name="CharTimer" type="Timer" parent="." unique_id=231543630]
+
+[node name="SpeakerNameBackdrop" type="ColorRect" parent="." unique_id=1515334712]
+offset_left = -400.0
+offset_top = 9.0
+offset_right = -200.0
+offset_bottom = 49.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="SpeakerNameBackdrop" unique_id=931490973]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -20.0
+offset_right = 88.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Speaker Name"
+horizontal_alignment = 1
 
 [node name="DialogueBoxBackdrop" type="ColorRect" parent="." unique_id=432719810]
 anchors_preset = 8
@@ -32,10 +57,26 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Text" type="Label" parent="DialogueBoxBackdrop" unique_id=1886710730]
-layout_mode = 0
-offset_right = 800.0
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -389.825
+offset_right = 389.825
+offset_bottom = 154.63
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 23
 text = "Sample Text"
+autowrap_mode = 3
+
+[node name="NextIndicator" type="Label" parent="DialogueBoxBackdrop" unique_id=1981404240]
+layout_mode = 0
+offset_left = 731.0
+offset_top = 163.0
+offset_right = 791.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(0.5890956, 0.5890956, 0.5890956, 1)
+theme_override_font_sizes/font_size = 21
+text = "Next.."
 
 [connection signal="timeout" from="CharTimer" to="." method="OnCharTimeout"]
