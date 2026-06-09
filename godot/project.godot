@@ -15,6 +15,10 @@ run/main_scene="uid://b8u6f3ehn1y80"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="TrainGame"
@@ -26,4 +30,3 @@ project/assembly_name="TrainGame"
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="mobile"

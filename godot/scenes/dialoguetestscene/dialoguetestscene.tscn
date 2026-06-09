@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cj7bj8kfqtoje"]
+
+[ext_resource type="Texture2D" uid="uid://cyucpvwupsme6" path="res://scenes/dialoguetestscene/traininterior.png" id="1_aawce"]
+
+[node name="DialogueTestScene" type="Node2D" unique_id=1448317]
+
+[node name="TrainInterior" type="Sprite2D" parent="." unique_id=1440137525]
+position = Vector2(5, -49.99999)
+scale = Vector2(0.9794598, 0.9794601)
+texture = ExtResource("1_aawce")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1952988782]
+
+[node name="DialogueBoxBackdrop" type="ColorRect" parent="." unique_id=432719810]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = 65.0
+offset_right = 400.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Text" type="Label" parent="DialogueBoxBackdrop" unique_id=1886710730]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 200.0
+text = "awihfoajiofhiopawjifhwioahfwa
+iwfooooooooooooooooooooooooooooo
+awihfiahfiowhioafhwioahfhwioahfwoahfwhafwa
+ifhwiahfiowhafowhaiofhwaofhwiaohfiowhaiohifhwa
+fwioahfwhaiofhwiahf"
