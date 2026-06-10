@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://wk0w86exj3d1"]
+
+[ext_resource type="Script" uid="uid://lej84h6tad5p" path="res://scripts/Player.cs" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://dlwd6d53xnfh2" path="res://icon.svg" id="2_qhqgy"]
+
+[node name="Player" type="Area2D" unique_id=1310728867 node_paths=PackedStringArray("sprite", "collisionShape")]
+position = Vector2(607, 590)
+script = ExtResource("1_g2els")
+sprite = NodePath("Sprite2D")
+collisionShape = NodePath("CollisionShape2D")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=407251906]
+scale = Vector2(1, 1.935)
+texture = ExtResource("2_qhqgy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=5293790]
