@@ -5,10 +5,10 @@ using System;
 public partial class PlayerNew : CharacterBody2D
 {
 
-	public override void _Ready()
-	{
-		this.Position = new Vector2(64, 64);
-	}
+	//public override void _Ready()
+	//{
+	//	this.Position = new Vector2(200, 200);
+	//}
 	
 	[Export]
 	public float speed = 50;

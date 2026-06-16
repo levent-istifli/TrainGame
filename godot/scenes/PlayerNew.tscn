@@ -9,6 +9,7 @@ size = Vector2(107, 240)
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1629053667]
 script = ExtResource("1_agiem")
 speed = 300.0
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=461469366]
 scale = Vector2(1, 1.935)
