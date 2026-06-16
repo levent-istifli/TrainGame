@@ -3,20 +3,61 @@ using System;
 
 public partial class PlayerNew : CharacterBody2D
 {
-	[Export]
-	public float Speed = 300.0f;
+
+	public override void _Ready()
+	{
+		this.Position = new Vector2(64, 64);
+	}
 
 	[Export]
-	public float Acceleration = 1500.0f;
+	public float maxVelocity = 256;
 
 	[Export]
-	public float Friction = 2000.0f;
-	//public const float JumpVelocity = -400.0f;
+	public float acceleration = 512;
+
+	[Export]
+	public float friction = 800;
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
+		Vector2 direction = new Vector2(0, 0);
+		Vector2 acceleration_vector = new Vector2(0, 0);
 
+		if (Input.IsActionPressed("ui_right")) 
+		{
+			direction.X += 1;
+		}
+		if (Input.IsActionPressed("ui_left"))
+		{
+			direction.X -= 1;
+		}
+		if (Input.IsActionPressed("ui_down"))
+		{
+			direction.Y += 1;
+		}
+		if (Input.IsActionPressed("ui_up"))
+		{
+			direction.Y -= 1;
+		}
+
+
+		if (direction != Vector2.Zero) 
+		{
+			direction = direction.Normalized(); 
+			acceleration_vector = direction * acceleration; 
+		}
+		else 
+		{
+			acceleration_vector = Vector2.Zero; 
+		}
+
+		Velocity += acceleration_vector * (float)delta;
+		if (Velocity.Length() > maxVelocity) 
+		{
+			Velocity = Velocity.Normalized() * maxVelocity; 
+		}
+
+		MoveAndSlide();
 		//// Add the gravity.
 		//if (!IsOnFloor())
 		//{
@@ -31,17 +72,16 @@ public partial class PlayerNew : CharacterBody2D
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left"s, "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
-		{
-			velocity.X = direction.X * Speed;
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-		}
+		//Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		//if (direction != Vector2.Zero)
+		//{
+		//	velocity.X = direction.X * Speed;
+		//}
+		//else
+		//{
+		//	velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+		//}
 
-		Velocity = velocity;
-		MoveAndSlide();
+		//Velocity = velocity;
 	}
 }
