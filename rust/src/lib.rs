@@ -1,5 +1,8 @@
 use godot::prelude::*;
 
+mod npc;
+mod npc_spawner;
+
 struct TrainGame;
 
 #[gdextension]
