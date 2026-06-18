@@ -18,7 +18,7 @@ pub struct NPC {
     sprite: OnEditor<Gd<Sprite2D>>,
     #[export]
     collision: OnEditor<Gd<CollisionShape2D>>,
-    current_state: State
+    pub current_state: State
 }
 
 #[godot_api]
@@ -31,5 +31,8 @@ use godot::classes::IStaticBody2D;
 
 #[godot_api]
 impl IStaticBody2D for NPC {
-
+    fn ready(&mut self) {
+        let as_gd = self.to_gd();
+        self.signals().went_inactive().emit(&(as_gd));
+    }
 }
