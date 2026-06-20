@@ -4,43 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://dulkofdokd4o1" path="res://scenes/Background.tscn" id="2_n77mx"]
 [ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="2_nb1wl"]
 
-[sub_resource type="CSharpScript" id="CSharpScript_n77mx"]
-script/source = "using Godot;
-using System;
-
-public partial class Level : Node2D
-{
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		if (NavigationManager.Instance.spawn_door_tag != null) {
-			onLevelSpawn(NavigationManager.Instance.spawn_door_tag);
-		}
-	}
-
-	public void onLevelSpawn(string destination_tag) {
-		string door_Path = \"Doors/Door_\" + destination_tag;
-		Door door = GetNode<Door>(door_Path);
-		NavigationManager.Instance.TriggerPlayerSpawn(door.spawn_point.GlobalPosition, door.spawn_direction);
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-}
-"
-
 [node name="TestScene" type="Node2D" unique_id=1808858924]
-script = SubResource("CSharpScript_n77mx")
 
 [node name="Background2" parent="." unique_id=307874472 instance=ExtResource("2_n77mx")]
 
 [node name="Doors" type="Node" parent="." unique_id=1787732893]
 
-[node name="Door_R" parent="Doors" unique_id=1938107216 instance=ExtResource("2_nb1wl")]
+[node name="Door_R" parent="Doors" unique_id=1938107216 node_paths=PackedStringArray("currentLevel") instance=ExtResource("2_nb1wl")]
 position = Vector2(1801, 776)
 destination_level_tag = "TestScene2"
+destination_door_tag = "L"
+currentLevel = NodePath("../..")
 
 [node name="Spawn" parent="Doors/Door_R" index="1" unique_id=21988130]
 position = Vector2(-94, 0)

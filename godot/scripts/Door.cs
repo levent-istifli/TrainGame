@@ -9,6 +9,7 @@ public partial class Door : Node2D
 	[Export] public string destination_level_tag;
 	[Export] public string destination_door_tag;
 	[Export] public string spawn_direction = "right";
+	[Export] public Node2D currentLevel;
 	public Marker2D spawn_point;
 
 	public override void _Ready()
@@ -16,11 +17,12 @@ public partial class Door : Node2D
 		spawn_point = GetNode<Marker2D>("Spawn");
 	}
 
-	private void OnBodyEntered(Node2D body)
+	private void _on_body_entered(Node2D body)
 	{
+		GD.Print("Door entered");
 		if (body is PlayerNew)
 		{
-			NavigationManager.Instance.goToLevel(destination_level_tag, destination_door_tag);
+			NavigationManager.Instance.goToLevel(destination_level_tag, destination_door_tag, currentLevel);
 		}
 	}
 }
