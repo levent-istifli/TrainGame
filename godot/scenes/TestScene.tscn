@@ -1,17 +1,24 @@
 [gd_scene format=3 uid="uid://n0t3dca75wli"]
 
 [ext_resource type="PackedScene" uid="uid://beh2de8br4uk7" path="res://scenes/PlayerNew.tscn" id="1_2gju5"]
-[ext_resource type="Texture2D" uid="uid://den7ufppxa8qb" path="res://Art/SubwayStartRD.png" id="1_rlkm5"]
+[ext_resource type="Script" uid="uid://dpxexr64dyaui" path="res://scenes/level.cs" id="1_nb1wl"]
 [ext_resource type="PackedScene" uid="uid://dulkofdokd4o1" path="res://scenes/Background.tscn" id="2_n77mx"]
+[ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="2_nb1wl"]
 
 [node name="TestScene" type="Node2D" unique_id=1808858924]
-
-[node name="Background" type="Sprite2D" parent="." unique_id=2115580198]
-visible = false
-position = Vector2(959, 537)
-texture = ExtResource("1_rlkm5")
+script = ExtResource("1_nb1wl")
 
 [node name="Background2" parent="." unique_id=307874472 instance=ExtResource("2_n77mx")]
+
+[node name="Doors" type="Node" parent="." unique_id=1787732893]
+
+[node name="Door_R" parent="Doors" unique_id=1938107216 instance=ExtResource("2_nb1wl")]
+position = Vector2(1801, 776)
+destination_level_tag = "TestScene2"
+
+[node name="Spawn" parent="Doors/Door_R" index="1" unique_id=21988130]
+position = Vector2(-94, 0)
+metadata/_edit_group_ = true
 
 [node name="CharacterBody2D2" parent="." unique_id=47917149 instance=ExtResource("1_2gju5")]
 position = Vector2(1004, 666)
@@ -25,8 +32,4 @@ theme_override_font_sizes/font_size = 83
 text = "Cart 1"
 horizontal_alignment = 1
 
-[node name="Collisions" type="StaticBody2D" parent="." unique_id=1656737165]
-visible = false
-
-[node name="BackgroundCollisions" type="CollisionPolygon2D" parent="Collisions" unique_id=476787858]
-polygon = PackedVector2Array(70, 609, 159, 610, 240, 609, 240, 641, 279, 685, 517, 722, 1088, 727, 1346, 705, 1396, 652, 1395, 625, 1534, 624, 1854, 627, 1903, 725, 1852, 634, 1856, 920, 66, 920, 64, 612, 26, 701, 36, 995, 671, 1026, 1565, 1018, 1948, 974, 1969, 540, 1909, 56, 690, 94, 32, 105, 31, 570)
+[editable path="Doors/Door_R"]
