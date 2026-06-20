@@ -5,11 +5,11 @@ using System;
 public partial class PlayerNew : CharacterBody2D
 {
 
-	//public override void _Ready()
-	//{
-	//	this.Position = new Vector2(200, 200);
-	//}
-	
+	public override void _Ready()
+	{
+		//NavigationManager.Instance.TriggerPlayerSpawn += OnTriggerPlayerSpawnSignal;
+	}
+
 	[Export]
 	public float speed = 50;
 	Vector2 direction = Vector2.Zero;

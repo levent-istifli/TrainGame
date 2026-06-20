@@ -7,9 +7,11 @@ public partial class NavigationManager : Node
 	public static NavigationManager Instance { get; private set; }
 	private readonly PackedScene scene_cart1 = GD.Load<PackedScene>("res://scenes/TestScene.tscn");
 	private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/TestScene2.tscn");
-	private string spawn_door_tag;
+	public string spawn_door_tag;
 
-	public void go_to_level(string level_tag, string destination_tag) {
+	[Signal] public delegate void TriggerPlayerSpawnEventHandler(Vector2 position, string direction);
+
+	public void goToLevel(string level_tag, string destination_tag) {
 		PackedScene scene_to_load;
 
 		scene_to_load = level_tag switch {
@@ -36,7 +38,7 @@ public partial class NavigationManager : Node
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	//public override void _Process(double delta)
-	//{
-	//}
+	public override void _Process(double delta)
+	{
+	}
 }
