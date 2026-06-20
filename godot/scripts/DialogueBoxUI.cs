@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 public partial class DialogueBoxUI : Node
 {
 
+	public static DialogueBoxUI Instance { get; private set; }
+
 	[Export]
 	public float charDuration = 0.1f;
 	
@@ -22,11 +24,29 @@ public partial class DialogueBoxUI : Node
 
 	private TaskCompletionSource<bool> waitNextLine;
 
+
+	public override void _EnterTree()
+	{
+		if (Instance != null && Instance != this)
+		{
+			GD.PushWarning("Multiple DialogueBoxUI instances found. Replacing singleton instance.");
+		}
+
+		Instance = this;
+	}
+
+	public override void _ExitTree()
+	{
+		if (Instance == this)
+		{
+			Instance = null;
+		}
+	}
+	
 	public void ClearBox()
 	{
 		textBox.Text = "";
 	}
-
 
 	int dialogueLine = 0;
 	bool isTyping = false;
@@ -63,6 +83,11 @@ public partial class DialogueBoxUI : Node
 			nextIndicator.Visible = true;
 			charTimer.Stop();
 		}
+	}
+
+	public void ChangeTextSpeed(float charsPerSecond)
+	{
+		charTimer.WaitTime = 1/charsPerSecond;
 	}
 
 	public override async void _Ready()
