@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using System.Security.Permissions;
+using System.Threading.Tasks;
 
 public partial class DialogueBoxUI : Node
 {
@@ -19,6 +19,8 @@ public partial class DialogueBoxUI : Node
 
 	public string currString;
 	public string nextString;
+
+	private TaskCompletionSource<bool> waitNextLine;
 
 	string[] testDialogue =
 	{
@@ -48,22 +50,22 @@ public partial class DialogueBoxUI : Node
 	int dialogueLine = 0;
 	bool isTyping = false;
 
-	public void DisplayNext()
+	public async Task DisplayText(string text)
 	{
 		ClearBox();
 
-		currString = testDialogue[dialogueLine];
-
-		dialogueLine++;
-		if (dialogueLine >= testDialogue.Length)
-			dialogueLine = 0;
-
+		currString = text;
 		textIterator = 0;
 		isTyping = true;
+		skipped = false;
 		nextIndicator.Visible = false;
-		charTimer.Start();
-	}
 
+		waitNextLine = new TaskCompletionSource<bool>();
+
+		charTimer.Start();
+
+		await waitNextLine.Task;
+	}
 
 	int textIterator = 0;
 	private void OnCharTimeout()
@@ -82,12 +84,10 @@ public partial class DialogueBoxUI : Node
 		}
 	}
 
-	public override void _Ready()
+	public override async void _Ready()
 	{
 		charTimer.WaitTime = charDuration;
 		ClearBox();
-		DisplayNext();
-		nextIndicator.Visible = false;
 	}
 
 	bool skipped = false;
@@ -96,21 +96,17 @@ public partial class DialogueBoxUI : Node
 
         if (@event.IsActionPressed("dialogueNext"))
 		{
-
-			if (skipped || !isTyping)
-			{
-				ClearBox();
-				DisplayNext();
-				skipped = false;
-			}
-			else
+			if (isTyping)
 			{
 				charTimer.Stop();
 				textBox.Text = currString;
-				skipped = true;
+				isTyping = false;
 				nextIndicator.Visible = true;
 			}
-
+			else
+			{
+				waitNextLine?.TrySetResult(true);
+			}
 		}
     }
 
