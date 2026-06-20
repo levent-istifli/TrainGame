@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 NavigationManager="*uid://ckwi838r8db7u"
+Camera2d="*uid://d3fof2parfxv4"
 
 [display]
 

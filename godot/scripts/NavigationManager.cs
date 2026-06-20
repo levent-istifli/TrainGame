@@ -5,9 +5,9 @@ using System.Net.Security;
 public partial class NavigationManager : Node
 {
 	public static NavigationManager Instance { get; private set; }
-	[Export] PackedScene scene_cart1;
-	[Export] PackedScene scene_cart2;
-	[Export] PackedScene scene_cart3;
+	private readonly PackedScene scene_cart1 = GD.Load<PackedScene>("res://scenes/TestScene.tscn");
+	private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/TestScene2.tscn");
+	private readonly PackedScene scene_cart3 = GD.Load<PackedScene>("res://scenes/TestScene3.tscn");
 	public string spawnDoorTag;
 
 	//[Signal] public delegate void TriggerPlayerSpawnEventHandler(Vector2 position, string direction);
@@ -32,17 +32,23 @@ public partial class NavigationManager : Node
 			//Cast to Node2D to get properties to move the scene
 			Node2D newScene2D = newScene as Node2D;
 			//If done properly, move the scene 1920 to the right/left (depends on doorTag) + add to scene
+			float finalCamPos = 0;
+			GD.Print("Camera Pos Before Move: ", Camera2d.Instance.Position);
 			if (newScene2D != null) {
 				//GD.Print("Inside newScene2D check");
 				if (doorTag == "L") {
 					Vector2 positionChange = new Vector2(1920, 0);
 					newScene2D.Position = currentLevel.Position + positionChange;
+					finalCamPos = (Camera2d.Instance.Position + positionChange).X;
 				} else if (doorTag == "R"){
 					Vector2 positionChange = new Vector2(-1920, 0);
 					newScene2D.Position = currentLevel.Position + positionChange;
+					finalCamPos = (Camera2d.Instance.Position + positionChange).X;
 				}
 
 				Callable.From(() => GetTree().Root.GetNode("MainTestScene").AddChild(newScene2D)).CallDeferred();
+				Callable.From(() => Camera2d.Instance.MoveCamera(finalCamPos)).CallDeferred();
+				GD.Print("Final Cam Pos: ", finalCamPos);
 			}
 
 			//Window root = GetTree().Root;

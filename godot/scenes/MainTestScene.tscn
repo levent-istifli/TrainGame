@@ -1,16 +1,6 @@
 [gd_scene format=3 uid="uid://dpno6apod05by"]
 
 [ext_resource type="Script" uid="uid://crnubnbq4hggb" path="res://scripts/MainTestScene.cs" id="1_5itpt"]
-[ext_resource type="PackedScene" uid="uid://d38hfldou5nio" path="res://scenes/TestScene2.tscn" id="3_5itpt"]
-[ext_resource type="PackedScene" uid="uid://n0t3dca75wli" path="res://scenes/TestScene.tscn" id="3_dfg6i"]
-[ext_resource type="Script" uid="uid://ckwi838r8db7u" path="res://scripts/NavigationManager.cs" id="3_lsx0u"]
-[ext_resource type="PackedScene" uid="uid://7ckj7a3snbyx" path="res://scenes/TestScene3.tscn" id="4_b6jhg"]
 
 [node name="MainTestScene" type="Node2D" unique_id=217909107]
 script = ExtResource("1_5itpt")
-
-[node name="NavigationManager" type="Node2D" parent="." unique_id=590820135]
-script = ExtResource("3_lsx0u")
-scene_cart1 = ExtResource("3_dfg6i")
-scene_cart2 = ExtResource("3_5itpt")
-scene_cart3 = ExtResource("4_b6jhg")
