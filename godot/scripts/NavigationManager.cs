@@ -25,7 +25,7 @@ public partial class NavigationManager : Node
 		};
 
 		if (sceneToLoad != null) {
-			GD.Print("Scene to load isn't null");
+			//GD.Print("Scene to load isn't null");
 			//Keep current scene as is and instantiate the new scene
 			spawnDoorTag = doorTag;
 			Node newScene = sceneToLoad.Instantiate();
@@ -33,7 +33,7 @@ public partial class NavigationManager : Node
 			Node2D newScene2D = newScene as Node2D;
 			//If done properly, move the scene 1920 to the right/left (depends on doorTag) + add to scene
 			if (newScene2D != null) {
-				GD.Print("Inside newScene2D check");
+				//GD.Print("Inside newScene2D check");
 				if (doorTag == "L") {
 					Vector2 positionChange = new Vector2(1920, 0);
 					newScene2D.Position = currentLevel.Position + positionChange;
@@ -42,7 +42,7 @@ public partial class NavigationManager : Node
 					newScene2D.Position = currentLevel.Position + positionChange;
 				}
 
-				GetTree().CurrentScene.AddChild(newScene2D);
+				Callable.From(() => GetTree().Root.GetNode("MainTestScene").AddChild(newScene2D)).CallDeferred();
 			}
 
 			//Window root = GetTree().Root;
