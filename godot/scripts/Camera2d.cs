@@ -18,6 +18,6 @@ public partial class Camera2d : Camera2D
 	}
 
 	public void MoveCamera(float finalX) { 
-		GetTree().CreateTween().TweenProperty(this, "position:x", finalX, 0.5);
+		GetTree().CreateTween().TweenProperty(this, "position:x", finalX, 1.5);
 	}
 }

@@ -49,14 +49,9 @@ public partial class NavigationManager : Node
 				Callable.From(() => GetTree().Root.GetNode("MainTestScene").AddChild(newScene2D)).CallDeferred();
 				Callable.From(() => Camera2d.Instance.MoveCamera(finalCamPos)).CallDeferred();
 				GD.Print("Final Cam Pos: ", finalCamPos);
+				//Callable.From(() => GetTree().Root.GetNode("MainTestScene").RemoveChild(currentLevel)).CallDeferred();
+				//currentLevel.QueueFree();
 			}
-
-			//Window root = GetTree().Root;
-			//Node current_scene = GetTree().CurrentScene;
-			//root.RemoveChild(current_scene);
-			//current_scene.QueueFree();
-			//root.AddChild(new_scene_instance);
-			//GetTree().CurrentScene = new_scene_instance;
 		}
 	}
 	// Called when the node enters the scene tree for the first time.
