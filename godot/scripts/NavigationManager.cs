@@ -39,12 +39,10 @@ public partial class NavigationManager : Node
 				//GD.Print("Inside newScene2D check");
 
 				//Check if left or right door to spawn room in correct position + adjust camera correctly
-				bool adding = false;
 				if (doorTag == "L") {
 					Vector2 positionChange = new Vector2(1920, 0);
 					newScene2D.Position = currentLevel.Position + positionChange;
 					finalCamPos = (Camera2d.Instance.Position + positionChange).X;
-					adding = true;
 				} else if (doorTag == "R"){
 					Vector2 positionChange = new Vector2(-1920, 0);
 					newScene2D.Position = currentLevel.Position + positionChange;
@@ -63,15 +61,10 @@ public partial class NavigationManager : Node
 				Marker2D newSpawn = FindSpawner(newScene2D);
 				if (newSpawn != null) {
 					//GD.Print("New spawn isn't null");
-					//GD.Print("New Spawn position: " + newSpawn.GlobalPosition);
-					//GD.Print("Current Player position" + player.GlobalPosition);
-					if (adding)
-					{
-						player.GlobalPosition = newSpawn.GlobalPosition;
-					}
-					else {
-						player.GlobalPosition = newSpawn.GlobalPosition;
-					}
+					GD.Print("New Spawn position: " + newSpawn.GlobalPosition);
+					GD.Print("Current Player position" + player.GlobalPosition);
+					player.GlobalPosition = newSpawn.GlobalPosition;
+				
 					player.Show();
 				}
 				
@@ -82,11 +75,11 @@ public partial class NavigationManager : Node
 
 	public Marker2D FindSpawner(Node2D sceneWithDoor) {
 		//Goes through the nodes in the spawn points group and picks the correct spawn point for the current scene
-		//TODO: MULTIPLE DOORS, 2 SPAWN POINTS
 		var spawns = GetTree().GetNodesInGroup("Spawn Points");
 		for (int i = 0; i < spawns.Count; i++) {
 			GD.Print("current spawn: " +  spawns[i].Name);
 			GD.Print("Node type: " + spawns[i].GetType());
+			GD.Print(spawns[i].GetParent());
 			Node2D current = spawns[i] as Node2D;
 			GD.Print(sceneWithDoor.IsAncestorOf(current));
 			if (current != null && sceneWithDoor.IsAncestorOf(current)) {

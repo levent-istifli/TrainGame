@@ -19,6 +19,16 @@ currentLevel = NodePath("../..")
 position = Vector2(-161, 0)
 metadata/_edit_group_ = true
 
+[node name="Door_L" parent="Doors" unique_id=293795578 node_paths=PackedStringArray("currentLevel") instance=ExtResource("2_nb1wl")]
+position = Vector2(117, 776)
+destination_level_tag = "TestScene3"
+destination_door_tag = "R"
+currentLevel = NodePath("../..")
+
+[node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130]
+position = Vector2(148, 0)
+metadata/_edit_group_ = true
+
 [node name="Label" type="Label" parent="." unique_id=2136907171]
 offset_top = 23.0
 offset_right = 1917.0
@@ -29,5 +39,7 @@ text = "Cart 1"
 horizontal_alignment = 1
 
 [connection signal="body_entered" from="Doors/Door_R" to="Doors/Door_R" method="OnBodyEntered"]
+[connection signal="body_entered" from="Doors/Door_L" to="Doors/Door_L" method="OnBodyEntered"]
 
 [editable path="Doors/Door_R"]
+[editable path="Doors/Door_L"]

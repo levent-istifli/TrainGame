@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://beh2de8br4uk7"]
 
 [ext_resource type="Script" uid="uid://c1nue1b8nio8p" path="res://scripts/PlayerNew.cs" id="1_agiem"]
-[ext_resource type="Texture2D" uid="uid://dlwd6d53xnfh2" path="res://icon.svg" id="1_krj2m"]
+[ext_resource type="Texture2D" uid="uid://bwvh2xpox812l" path="res://Art/ProtagonistWalk.png" id="2_agiem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krj2m"]
 size = Vector2(107, 48)
@@ -12,8 +12,7 @@ speed = 300.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=461469366]
-scale = Vector2(1, 1.935)
-texture = ExtResource("1_krj2m")
+texture = ExtResource("2_agiem")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=845235865]
 position = Vector2(-0.5, 96)

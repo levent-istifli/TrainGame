@@ -1,14 +1,23 @@
 [gd_scene format=3 uid="uid://7ckj7a3snbyx"]
 
 [ext_resource type="PackedScene" uid="uid://dulkofdokd4o1" path="res://scenes/Background.tscn" id="1_o0lye"]
-[ext_resource type="PackedScene" uid="uid://beh2de8br4uk7" path="res://scenes/PlayerNew.tscn" id="2_3ay65"]
+[ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="2_o0lye"]
 
 [node name="TestScene3" type="Node2D" unique_id=1903736709]
 
 [node name="Background" parent="." unique_id=307874472 instance=ExtResource("1_o0lye")]
 
-[node name="CharacterBody2D" parent="." unique_id=1629053667 instance=ExtResource("2_3ay65")]
-position = Vector2(871, 700)
+[node name="Doors" type="Node2D" parent="." unique_id=461621078]
+
+[node name="Door_R" parent="Doors" unique_id=1938107216 node_paths=PackedStringArray("currentLevel") instance=ExtResource("2_o0lye")]
+position = Vector2(1801, 776)
+destination_level_tag = "TestScene"
+destination_door_tag = "L"
+currentLevel = NodePath("../..")
+
+[node name="Spawn" parent="Doors/Door_R" index="1" unique_id=21988130 groups=["Spawn Points"]]
+position = Vector2(-161, 0)
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="." unique_id=370547235]
 offset_top = 23.0
@@ -18,3 +27,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 83
 text = "Cart 3"
 horizontal_alignment = 1
+
+[connection signal="body_entered" from="Doors/Door_R" to="Doors/Door_R" method="OnBodyEntered"]
+
+[editable path="Doors/Door_R"]
