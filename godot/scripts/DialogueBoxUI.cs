@@ -90,6 +90,8 @@ public partial class DialogueBoxUI : Node
 	{
 		ClearBox();
 
+		nextIndicator.Visible = false;
+
 		option1TextBox.Text = option1;
 		option2TextBox.Text = option2;
 
@@ -186,6 +188,7 @@ public partial class DialogueBoxUI : Node
 				if (selectedOption != -1)
 				{
 					ConfirmOption(selectedOption);
+					return;
 				}
 			}
 
