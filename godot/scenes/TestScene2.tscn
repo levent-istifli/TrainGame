@@ -7,6 +7,18 @@
 
 [node name="Background" parent="." unique_id=307874472 instance=ExtResource("1_lqg2c")]
 
+[node name="Doors" type="Node" parent="." unique_id=356075585]
+
+[node name="Door_L" parent="Doors" unique_id=1938107216 node_paths=PackedStringArray("currentLevel") instance=ExtResource("3_pibbx")]
+position = Vector2(111, 768)
+destination_level_tag = "TestScene"
+destination_door_tag = "R"
+currentLevel = NodePath("../..")
+metadata/_edit_group_ = true
+
+[node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130 groups=["Spawn Points"]]
+position = Vector2(152, 29)
+
 [node name="Label" type="Label" parent="." unique_id=1888726032]
 offset_top = 23.0
 offset_right = 1917.0
@@ -16,15 +28,6 @@ theme_override_font_sizes/font_size = 83
 text = "Cart 2"
 horizontal_alignment = 1
 
-[node name="Doors" type="Node" parent="." unique_id=356075585]
-
-[node name="Door_L" parent="Doors" unique_id=1938107216 instance=ExtResource("3_pibbx")]
-position = Vector2(126, 770)
-destination_level_tag = "TestScene"
-destination_door_tag = "R"
-door_tag = "L"
-
-[node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130 groups=["Spawn Points"]]
-position = Vector2(118, 0)
+[connection signal="body_entered" from="Doors/Door_L" to="Doors/Door_L" method="OnBodyEntered"]
 
 [editable path="Doors/Door_L"]

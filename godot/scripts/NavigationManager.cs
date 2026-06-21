@@ -14,7 +14,7 @@ public partial class NavigationManager : Node
 	//[Signal] public delegate void TriggerPlayerSpawnEventHandler(Vector2 position, string direction);
 
 	public async Task goToLevel(string levelTag, string doorTag, Node2D currentLevel, CharacterBody2D player) {
-		//GD.Print("In gotolevel");
+		GD.Print("In gotolevel");
 		PackedScene sceneToLoad;
 
 		//Match the level tag/name with the corresponding scenes, save it in sceneToLoad
