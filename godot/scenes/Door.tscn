@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dg15sbhnidsi0"]
 
 [ext_resource type="Script" uid="uid://dxnqk1v6opiws" path="res://scripts/Door.cs" id="1_yfgsh"]
+[ext_resource type="Script" uid="uid://bbwe75wyfcoff" path="res://scripts/Spawn.cs" id="2_eyv6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyv6f"]
 
@@ -12,5 +13,6 @@ scale = Vector2(5, 13)
 shape = SubResource("RectangleShape2D_eyv6f")
 
 [node name="Spawn" type="Marker2D" parent="." unique_id=21988130]
+script = ExtResource("2_eyv6f")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -17,6 +17,7 @@ currentLevel = NodePath("../..")
 
 [node name="Spawn" parent="Doors/Door_R" index="1" unique_id=21988130 groups=["Spawn Points"]]
 position = Vector2(-161, 0)
+doorTag = "R"
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="." unique_id=370547235]
