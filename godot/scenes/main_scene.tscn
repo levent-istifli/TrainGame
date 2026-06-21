@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://b8u6f3ehn1y80"]
 
 [ext_resource type="Script" uid="uid://beu7jj1qbip0b" path="res://scripts/MainScene.cs" id="1_w2twt"]
-[ext_resource type="Texture2D" uid="uid://vq1tavr8deuq" path="res://screen1.PNG" id="2_7ykc4"]
-[ext_resource type="Script" uid="uid://bu757dn7jfxeh" path="res://scripts/ArmRestArea1.cs" id="3_gubc5"]
-[ext_resource type="Script" uid="uid://ctdqwnoi04e8q" path="res://scripts/ArmRestArea2.cs" id="3_pu3yx"]
-[ext_resource type="Script" uid="uid://dvwtfqlp53aff" path="res://scripts/ArmRestArea3.cs" id="5_gubc5"]
-[ext_resource type="Script" uid="uid://cgkwb7cb2351k" path="res://scripts/ArmRestArea4.cs" id="6_rt2n2"]
+[ext_resource type="Texture2D" uid="uid://b4scgpcfrmd5x" path="res://images/dialogueScreenWithItems.png" id="2_rt2n2"]
+[ext_resource type="Script" uid="uid://q1sbhxwip8m7" path="res://scripts/Photos.cs" id="4_gubc5"]
+[ext_resource type="Script" uid="uid://d3rxfio2n6d7g" path="res://scripts/Envelope.cs" id="5_rt2n2"]
+[ext_resource type="Script" uid="uid://wrxe4fllncog" path="res://scripts/Earrings.cs" id="7_c16ls"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_c16ls"]
 script/source = "using Godot;
@@ -25,148 +24,6 @@ public partial class Dialogue : Sprite2D
 }
 "
 
-[sub_resource type="CSharpScript" id="CSharpScript_gubc5"]
-script/source = "using Godot;
-using System;
-
-public partial class Polygon2d : Polygon2D
-{
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		// prevent sprite from having polygon outline on initialization
-		Modulate = new Color(\"#0000\");
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-	
-	public void ChangeColor() {
-		Modulate = new Color(\"#00FF0030\");
-	}
-	
-	public void RevertColor() {
-		Modulate = new Color(\"#0000\");
-	}
-
-	
-}
-"
-
-[sub_resource type="CSharpScript" id="CSharpScript_7ykc4"]
-script/source = "using Godot;
-using System;
-
-public partial class CollisionPolygon2d : CollisionPolygon2D
-{
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		// prevent sprite from having polygon outline on initialization
-		Modulate = new Color(\"#0000\");
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-	
-	public void ChangeColor() {
-		Modulate = new Color(\"#00FF0030\");
-	}
-	
-	public void RevertColor() {
-		Modulate = new Color(\"#0000\");
-	}
-}
-"
-
-[sub_resource type="CSharpScript" id="CSharpScript_18nlu"]
-script/source = "using Godot;
-using System;
-
-public partial class ArmRest2Poly : Polygon2D
-{
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		// prevent sprite from having polygon outline on initialization
-		Modulate = new Color(\"#0000\");
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-	
-	public void ChangeColor() {
-		Modulate = new Color(\"#ff000030\");
-	}
-	
-	public void RevertColor() {
-		Modulate = new Color(\"#0000\");
-	}
-}
-"
-
-[sub_resource type="CSharpScript" id="CSharpScript_rt2n2"]
-script/source = "using Godot;
-using System;
-
-public partial class Polygon2d3 : Polygon2D
-{
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		// prevent sprite from having polygon outline on initialization
-		Modulate = new Color(\"#0000\");
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-	
-	public void ChangeColor() {
-		Modulate = new Color(\"#00FF0030\");
-	}
-	
-	public void RevertColor() {
-		Modulate = new Color(\"#0000\");
-	}
-}
-"
-
-[sub_resource type="CSharpScript" id="CSharpScript_c1pb6"]
-script/source = "using Godot;
-using System;
-
-public partial class Polygon2d4 : Polygon2D
-{
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		// prevent sprite from having polygon outline on initialization
-		Modulate = new Color(\"#0000\");
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-	
-	public void ChangeColor() {
-		Modulate = new Color(\"#00FF0030\");
-	}
-	
-	public void RevertColor() {
-		Modulate = new Color(\"#0000\");
-	}
-}
-"
-
 [node name="MainScene" type="Node" unique_id=1297421532]
 script = ExtResource("1_w2twt")
 
@@ -174,55 +31,73 @@ script = ExtResource("1_w2twt")
 position = Vector2(960, 540)
 
 [node name="dialogue" type="Sprite2D" parent="Node2D" unique_id=1671522508]
-texture = ExtResource("2_7ykc4")
+texture = ExtResource("2_rt2n2")
 script = SubResource("CSharpScript_c16ls")
 
-[node name="ArmRestArea1" type="Area2D" parent="Node2D/dialogue" unique_id=842269736 node_paths=PackedStringArray("ARPoly1")]
-script = ExtResource("3_gubc5")
-ARPoly1 = NodePath("Polygon2D")
+[node name="Earrings" type="Area2D" parent="Node2D/dialogue" unique_id=1111223515 node_paths=PackedStringArray("EarringPoly1", "EarringPoly2", "EarringLabel")]
+script = ExtResource("7_c16ls")
+EarringPoly1 = NodePath("EarringsPolygon2D")
+EarringPoly2 = NodePath("EarringsPolygon2D2")
+EarringLabel = NodePath("Label")
 
-[node name="Polygon2D" type="Polygon2D" parent="Node2D/dialogue/ArmRestArea1" unique_id=851786159]
-polygon = PackedVector2Array(-164, -213, -161, -203, -160, -194, -160, -187, -162, -182, -166, -164, -167, -155, -166, -149, -163, -137, -155, -131, -138, -132, -135, -138, -131, -151, -131, -163, -133, -172, -135, -178, -137, -183, -135, -188, -134, -194, -134, -204, -138, -213)
-script = SubResource("CSharpScript_gubc5")
+[node name="EarringsPolygon2D" type="Polygon2D" parent="Node2D/dialogue/Earrings" unique_id=1931651032]
+polygon = PackedVector2Array(509, -469, 503, -472, 495, -475, 491, -470, 492, -461, 491, -455, 485, -453, 485, -445, 486, -442, 480, -436, 480, -430, 486, -428, 493, -432, 496, -424, 499, -421, 498, -417, 499, -413, 481, -383, 483, -379, 490, -381, 493, -377, 498, -377, 502, -376, 506, -378, 509, -374, 510, -366, 508, -358, 508, -350, 507, -333, 503, -315, 504, -312, 511, -307, 525, -307, 527, -320, 526, -337, 520, -357, 518, -363, 517, -367, 516, -376, 516, -381, 519, -377, 524, -377, 525, -381, 531, -381, 531, -386, 535, -384, 537, -389, 506, -413, 506, -418, 503, -422, 504, -434, 512, -434, 512, -434, 514, -440, 511, -445, 507, -446, 507, -454, 504, -457, 499, -454, 497, -460, 496, -462, 495, -469, 496, -472, 501, -470, 507, -467)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/dialogue/ArmRestArea1" unique_id=1583123893]
+[node name="EarringsPolygon2D2" type="Polygon2D" parent="Node2D/dialogue/Earrings" unique_id=1782619854]
+position = Vector2(-54, -11)
+polygon = PackedVector2Array(509, -469, 503, -472, 495, -475, 491, -470, 492, -461, 491, -455, 485, -453, 485, -445, 486, -442, 480, -436, 480, -430, 486, -428, 493, -432, 496, -424, 499, -421, 498, -417, 499, -413, 481, -383, 483, -379, 490, -381, 493, -377, 498, -377, 502, -376, 506, -378, 509, -374, 510, -366, 508, -358, 508, -350, 507, -333, 503, -315, 504, -312, 511, -307, 525, -307, 527, -320, 526, -337, 520, -357, 518, -363, 517, -367, 516, -376, 516, -381, 519, -377, 524, -377, 525, -381, 531, -381, 531, -386, 535, -384, 537, -389, 506, -413, 506, -418, 503, -422, 504, -434, 512, -434, 512, -434, 514, -440, 511, -445, 507, -446, 507, -454, 504, -457, 499, -454, 497, -460, 496, -462, 495, -469, 496, -472, 501, -470, 507, -467)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/dialogue/Earrings" unique_id=1530543588]
 visible = false
-polygon = PackedVector2Array(-164, -211, -161, -204, -160, -198, -159, -191, -161, -184, -164, -171, -167, -155, -164, -137, -156, -132, -141, -131, -137, -133, -131, -149, -131, -160, -132, -169, -135, -177, -138, -183, -134, -190, -134, -204, -137, -214, -164, -214)
-script = SubResource("CSharpScript_7ykc4")
+polygon = PackedVector2Array(442, -492, 430, -485, 422, -448, 424, -383, 448, -315, 504, -303, 537, -303, 543, -390, 511, -474)
 
-[node name="ArmRestArea2" type="Area2D" parent="Node2D/dialogue" unique_id=200398957 node_paths=PackedStringArray("ARPoly2")]
-script = ExtResource("3_pu3yx")
-ARPoly2 = NodePath("Polygon2D")
+[node name="Label" type="Label" parent="Node2D/dialogue/Earrings" unique_id=2087463402]
+modulate = Color(0, 0, 0, 1)
+offset_left = 442.0
+offset_top = -314.0
+offset_right = 528.0
+offset_bottom = -291.0
+text = "Earrings"
+horizontal_alignment = 1
 
-[node name="Polygon2D" type="Polygon2D" parent="Node2D/dialogue/ArmRestArea2" unique_id=291969715]
-position = Vector2(-960, -540)
-polygon = PackedVector2Array(1027, 319, 1032, 335, 1032, 347, 1029, 354, 1024, 375, 1026, 397, 1034, 402, 1051, 404, 1058, 402, 1064, 388, 1064, 366, 1060, 352, 1063, 340, 1060, 325, 1058, 316)
-script = SubResource("CSharpScript_18nlu")
+[node name="Photos" type="Area2D" parent="Node2D/dialogue" unique_id=78136138 node_paths=PackedStringArray("Photo", "PhotoLabel")]
+script = ExtResource("4_gubc5")
+Photo = NodePath("PhotosPolygon2D")
+PhotoLabel = NodePath("Label")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/dialogue/ArmRestArea2" unique_id=1380855723]
+[node name="PhotosPolygon2D" type="Polygon2D" parent="Node2D/dialogue/Photos" unique_id=1804966884]
+polygon = PackedVector2Array(612, -354, 573, -333, 625, -255, 635, -262, 655, -261, 706, -255, 725, -355, 697, -360, 695, -372, 613, -366)
+
+[node name="PhotosCollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/dialogue/Photos" unique_id=841654246]
 visible = false
-polygon = PackedVector2Array(67, -221, 72, -206, 72, -191, 68, -184, 64, -163, 67, -142, 79, -136, 97, -137, 104, -151, 104, -174, 100, -189, 103, -199, 101, -218, 99, -223)
+polygon = PackedVector2Array(613, -379, 721, -376, 734, -342, 716, -250, 614, -247, 563, -334)
 
-[node name="ArmRestArea3" type="Area2D" parent="Node2D/dialogue" unique_id=1660718152 node_paths=PackedStringArray("ARPoly3")]
-script = ExtResource("5_gubc5")
-ARPoly3 = NodePath("Polygon2D")
+[node name="Label" type="Label" parent="Node2D/dialogue/Photos" unique_id=750261846]
+modulate = Color(0, 0, 0, 1)
+offset_left = 625.0
+offset_top = -254.0
+offset_right = 695.0
+offset_bottom = -231.0
+text = "Photos"
+horizontal_alignment = 1
 
-[node name="Polygon2D" type="Polygon2D" parent="Node2D/dialogue/ArmRestArea3" unique_id=2026947566]
-polygon = PackedVector2Array(388, -234, 391, -223, 392, -217, 392, -211, 390, -204, 388, -195, 387, -182, 387, -169, 390, -157, 400, -154, 412, -154, 426, -159, 431, -166, 431, -181, 430, -193, 426, -208, 432, -213, 434, -217, 434, -226, 432, -234, 431, -239)
-script = SubResource("CSharpScript_rt2n2")
+[node name="Envelope" type="Area2D" parent="Node2D/dialogue" unique_id=1803615633 node_paths=PackedStringArray("Letter", "LetterLabel")]
+script = ExtResource("5_rt2n2")
+Letter = NodePath("EnvelopePolygon2D")
+LetterLabel = NodePath("Label")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/dialogue/ArmRestArea3" unique_id=1927883480]
-polygon = PackedVector2Array(387, -232, 392, -218, 391, -206, 387, -191, 387, -174, 390, -156, 402, -154, 413, -154, 428, -159, 431, -166, 430, -187, 429, -199, 426, -208, 433, -214, 434, -219, 434, -229, 431, -239, 387, -234)
+[node name="EnvelopePolygon2D" type="Polygon2D" parent="Node2D/dialogue/Envelope" unique_id=119321923]
+polygon = PackedVector2Array(723, -470, 727, -403, 827, -406, 828, -473, 816, -476, 757, -476)
 
-[node name="ArmRestArea4" type="Area2D" parent="Node2D/dialogue" unique_id=2050513185 node_paths=PackedStringArray("ARPoly4")]
-script = ExtResource("6_rt2n2")
-ARPoly4 = NodePath("Polygon2D")
-
-[node name="Polygon2D" type="Polygon2D" parent="Node2D/dialogue/ArmRestArea4" unique_id=2112817539]
-position = Vector2(-960, -540)
-polygon = PackedVector2Array(1654, 283, 1658, 292, 1659, 300, 1658, 307, 1654, 314, 1651, 327, 1649, 339, 1648, 348, 1652, 359, 1657, 364, 1665, 366, 1672, 366, 1684, 364, 1688, 358, 1692, 345, 1692, 332, 1689, 316, 1688, 311, 1692, 304, 1693, 294, 1689, 283)
-script = SubResource("CSharpScript_c1pb6")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/dialogue/ArmRestArea4" unique_id=1585475754]
+[node name="EnvelopeCollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/dialogue/Envelope" unique_id=700436091]
 visible = false
-polygon = PackedVector2Array(694, -256, 698, -248, 699, -241, 698, -234, 694, -225, 691, -215, 690, -205, 688, -191, 692, -180, 697, -176, 706, -173, 724, -176, 729, -184, 732, -194, 732, -208, 729, -224, 728, -229, 732, -236, 733, -246, 730, -253, 729, -257, 694, -257)
+polygon = PackedVector2Array(718, -477, 719, -398, 833, -399, 836, -476, 829, -480)
+
+[node name="Label" type="Label" parent="Node2D/dialogue/Envelope" unique_id=1287098885]
+modulate = Color(0, 0, 0, 1)
+offset_left = 717.0
+offset_top = -400.0
+offset_right = 840.0
+offset_bottom = -377.0
+text = "Letter"
+horizontal_alignment = 1
