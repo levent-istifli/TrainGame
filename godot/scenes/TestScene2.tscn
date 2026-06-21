@@ -7,17 +7,16 @@
 
 [node name="Background" parent="." unique_id=307874472 instance=ExtResource("1_lqg2c")]
 
-[node name="Doors" type="Node" parent="." unique_id=356075585]
+[node name="Doors" type="Node2D" parent="." unique_id=561977694]
 
 [node name="Door_L" parent="Doors" unique_id=1938107216 node_paths=PackedStringArray("currentLevel") instance=ExtResource("3_pibbx")]
 position = Vector2(111, 768)
 destination_level_tag = "TestScene"
 destination_door_tag = "R"
 currentLevel = NodePath("../..")
-metadata/_edit_group_ = true
 
 [node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130 groups=["Spawn Points"]]
-position = Vector2(152, 29)
+position = Vector2(229, 29)
 
 [node name="Label" type="Label" parent="." unique_id=1888726032]
 offset_top = 23.0

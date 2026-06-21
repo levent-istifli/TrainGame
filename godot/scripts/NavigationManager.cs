@@ -67,10 +67,10 @@ public partial class NavigationManager : Node
 					//GD.Print("Current Player position" + player.GlobalPosition);
 					if (adding)
 					{
-						player.GlobalPosition = newSpawn.GlobalPosition + new Vector2(1920, 0);
+						player.GlobalPosition = newSpawn.GlobalPosition;
 					}
 					else {
-						player.GlobalPosition = newSpawn.GlobalPosition + new Vector2(-1920, 0);
+						player.GlobalPosition = newSpawn.GlobalPosition;
 					}
 					player.Show();
 				}

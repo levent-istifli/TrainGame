@@ -7,7 +7,7 @@
 
 [node name="Background2" parent="." unique_id=307874472 instance=ExtResource("2_n77mx")]
 
-[node name="Doors" type="Node" parent="." unique_id=1787732893]
+[node name="Doors" type="Node2D" parent="." unique_id=1961635004]
 
 [node name="Door_R" parent="Doors" unique_id=1938107216 node_paths=PackedStringArray("currentLevel") instance=ExtResource("2_nb1wl")]
 position = Vector2(1801, 776)
