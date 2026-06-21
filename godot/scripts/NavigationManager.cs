@@ -16,6 +16,8 @@ public partial class NavigationManager : Node
 
 
 	private readonly PackedScene scene_dialogue_collectables = GD.Load<PackedScene>("res://scenes/dialoguetestscene/MCDialogue.tscn");
+	private readonly PackedScene back_button = GD.Load<PackedScene>("res://scenes/dialoguetestscene/MCDialogue.tscn");
+
 
 	public void go_to_level(string level_tag, string destination_tag) {
 		PackedScene scene_to_load;
