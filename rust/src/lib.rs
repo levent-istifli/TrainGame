@@ -2,6 +2,7 @@ use godot::prelude::*;
 
 mod npc;
 mod npc_spawner;
+mod seat;
 
 struct TrainGame;
 

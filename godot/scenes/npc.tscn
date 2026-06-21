@@ -3,17 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://dlwd6d53xnfh2" path="res://icon.svg" id="1_nh2m4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nh2m4"]
-size = Vector2(128, 69)
+size = Vector2(90, 58)
 
 [node name="NPC" type="NPC" unique_id=1521190707 node_paths=PackedStringArray("sprite", "collision")]
 sprite = NodePath("Sprite2D")
 collision = NodePath("CollisionShape2D")
+collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=612190673]
-scale = Vector2(1, 2.21)
+scale = Vector2(0.703, 2.21)
 texture = ExtResource("1_nh2m4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=87402665]
-position = Vector2(0, 106.5)
+position = Vector2(0, 112)
 shape = SubResource("RectangleShape2D_nh2m4")
