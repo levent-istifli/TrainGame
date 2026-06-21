@@ -4,10 +4,18 @@ using System.Net.Security;
 
 public partial class NavigationManager : Node
 {
+	// singleton pattern - single instance of class that can be used in each of scenes to prevent restarting of items or counters
 	public static NavigationManager Instance { get; private set; }
-	private readonly PackedScene scene_cart1 = GD.Load<PackedScene>("res://scenes/TestScene.tscn");
-	private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/TestScene2.tscn");
+
+	// preload scenes
+	private readonly PackedScene scene_cart1 = GD.Load<PackedScene>("res://scenes/TestScenes/TestScene.tscn");
+	// private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/TestScenes/NpcInteraction.tscn");
+
+	private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/TestScenes/TestScene2.tscn");
 	private string spawn_door_tag;
+
+
+	private readonly PackedScene scene_dialogue_collectables = GD.Load<PackedScene>("res://scenes/dialoguetestscene/MCDialogue.tscn");
 
 	public void go_to_level(string level_tag, string destination_tag) {
 		PackedScene scene_to_load;
@@ -15,6 +23,7 @@ public partial class NavigationManager : Node
 		scene_to_load = level_tag switch {
 			"TestScene" => scene_cart1,
 			"TestScene2" => scene_cart2,
+			"MCDialogue" => scene_dialogue_collectables,
 			_ => null
 		};
 
@@ -30,6 +39,7 @@ public partial class NavigationManager : Node
 		}
 	}
 	// Called when the node enters the scene tree for the first time.
+	// To check if instance has been intitiated, if so return it
 	public override void _Ready()
 	{
 		Instance = this;

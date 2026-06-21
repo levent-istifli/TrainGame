@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://cfc4ao3hrehgs"]
+
+[ext_resource type="Texture2D" uid="uid://bcr8s1pcjwsh5" path="res://Art/dialogueScreenWithItems.png" id="1_m23k8"]
+[ext_resource type="Script" uid="uid://wrxe4fllncog" path="res://scripts/Earrings.cs" id="2_gf7ld"]
+[ext_resource type="Script" uid="uid://q1sbhxwip8m7" path="res://scripts/Photos.cs" id="3_jcxb1"]
+[ext_resource type="Script" uid="uid://d3rxfio2n6d7g" path="res://scripts/Envelope.cs" id="4_i74oc"]
+
+[node name="MCDialogue" type="Node2D" unique_id=1000165773]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2051797487]
+position = Vector2(960, 540)
+texture = ExtResource("1_m23k8")
+
+[node name="Earrings" type="Area2D" parent="Sprite2D" unique_id=2008250127 node_paths=PackedStringArray("EarringPoly1", "EarringPoly2", "EarringLabel")]
+script = ExtResource("2_gf7ld")
+EarringPoly1 = NodePath("Polygon2D")
+EarringPoly2 = NodePath("Polygon2D2")
+EarringLabel = NodePath("Label")
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite2D/Earrings" unique_id=909088637]
+polygon = PackedVector2Array(456, -479, 450, -482, 444, -486, 438, -483, 438, -472, 437, -466, 431, -463, 430, -455, 432, -452, 426, -446, 426, -439, 430, -437, 435, -438, 439, -442, 440, -435, 445, -431, 444, -425, 445, -421, 427, -394, 428, -389, 434, -389, 437, -386, 441, -386, 444, -388, 448, -385, 452, -387, 456, -385, 456, -375, 456, -375, 454, -371, 454, -365, 453, -341, 449, -324, 454, -318, 471, -317, 474, -329, 472, -350, 469, -364, 465, -369, 463, -373, 463, -379, 461, -386, 463, -389, 469, -387, 471, -390, 476, -391, 478, -395, 483, -397, 482, -403, 453, -423, 453, -429, 449, -432, 450, -437, 451, -442, 458, -443, 460, -449, 457, -455, 452, -456, 452, -465, 449, -466, 444, -464, 443, -468, 442, -472, 441, -480, 445, -481, 448, -478, 454, -476)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Sprite2D/Earrings" unique_id=1660161571]
+position = Vector2(53, 10)
+polygon = PackedVector2Array(456, -479, 450, -482, 444, -486, 438, -483, 438, -472, 437, -466, 431, -463, 430, -455, 432, -452, 426, -446, 426, -439, 430, -437, 435, -438, 439, -442, 440, -435, 445, -431, 444, -425, 445, -421, 427, -394, 428, -389, 434, -389, 437, -386, 441, -386, 444, -388, 448, -385, 452, -387, 456, -385, 456, -375, 456, -375, 454, -371, 454, -365, 453, -341, 449, -324, 454, -318, 471, -317, 474, -329, 472, -350, 469, -364, 465, -369, 463, -373, 463, -379, 461, -386, 463, -389, 469, -387, 471, -390, 476, -391, 478, -395, 483, -397, 482, -403, 453, -423, 453, -429, 449, -432, 450, -437, 451, -442, 458, -443, 460, -449, 457, -455, 452, -456, 452, -465, 449, -466, 444, -464, 443, -468, 442, -472, 441, -480, 445, -481, 448, -478, 454, -476)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Earrings" unique_id=1573724353]
+visible = false
+polygon = PackedVector2Array(435, -488, 421, -451, 428, -344, 447, -316, 513, -301, 539, -309, 543, -390, 502, -477)
+
+[node name="Label" type="Label" parent="Sprite2D/Earrings" unique_id=918462632]
+modulate = Color(0, 0, 0, 1)
+offset_left = 430.0
+offset_top = -306.0
+offset_right = 541.0
+offset_bottom = -278.0
+text = "Earrings"
+horizontal_alignment = 1
+
+[node name="Photos" type="Area2D" parent="Sprite2D" unique_id=1928121712 node_paths=PackedStringArray("Photo", "PhotoLabel")]
+position = Vector2(-960, -540)
+script = ExtResource("3_jcxb1")
+Photo = NodePath("Polygon2D")
+PhotoLabel = NodePath("Label")
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite2D/Photos" unique_id=231404910]
+polygon = PackedVector2Array(1534, 209, 1586, 286, 1597, 279, 1621, 279, 1667, 285, 1685, 185, 1658, 180, 1655, 168, 1571, 175, 1571, 186)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Photos" unique_id=269140522]
+visible = false
+polygon = PackedVector2Array(1567, 162, 1523, 196, 1567, 285, 1586, 289, 1675, 290, 1693, 170, 1655, 158)
+
+[node name="Label" type="Label" parent="Sprite2D/Photos" unique_id=407784820]
+modulate = Color(0, 0, 0, 1)
+offset_left = 1574.0
+offset_top = 290.0
+offset_right = 1658.0
+offset_bottom = 315.0
+text = "Photos"
+horizontal_alignment = 1
+
+[node name="Envelope" type="Area2D" parent="Sprite2D" unique_id=546881911 node_paths=PackedStringArray("Letter", "LetterLabel")]
+position = Vector2(-960, -540)
+script = ExtResource("4_i74oc")
+Letter = NodePath("Polygon2D")
+LetterLabel = NodePath("Label")
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite2D/Envelope" unique_id=240777238]
+position = Vector2(-0.00012207031, -5.7887344)
+scale = Vector2(1, 1.0422535)
+polygon = PackedVector2Array(1684, 70, 1686, 137, 1788, 135, 1788, 66)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Envelope" unique_id=382937807]
+visible = false
+polygon = PackedVector2Array(1676, 61, 1683, 142, 1795, 140, 1795, 56)
+
+[node name="Label" type="Label" parent="Sprite2D/Envelope" unique_id=1912751508]
+modulate = Color(0, 0, 0, 1)
+offset_left = 1680.0
+offset_top = 141.0
+offset_right = 1790.0
+offset_bottom = 164.0
+text = "Letter"
+horizontal_alignment = 1
