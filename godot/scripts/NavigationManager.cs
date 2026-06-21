@@ -27,7 +27,6 @@ public partial class NavigationManager : Node
 
 		if (sceneToLoad != null) {
 			//GD.Print("Scene to load isn't null");
-
 			//Keep current scene as is and instantiate the new scene
 			spawnDoorTag = doorTag;
 			Node newScene = sceneToLoad.Instantiate();
@@ -35,15 +34,17 @@ public partial class NavigationManager : Node
 			Node2D newScene2D = newScene as Node2D;
 			//If done properly, move the scene 1920 to the right/left (depends on doorTag) + add to scene
 			float finalCamPos = 0;
-			GD.Print("Camera Pos Before Move: ", Camera2d.Instance.Position);
+			//GD.Print("Camera Pos Before Move: ", Camera2d.Instance.Position);
 			if (newScene2D != null) {
 				//GD.Print("Inside newScene2D check");
 
 				//Check if left or right door to spawn room in correct position + adjust camera correctly
+				bool adding = false;
 				if (doorTag == "L") {
 					Vector2 positionChange = new Vector2(1920, 0);
 					newScene2D.Position = currentLevel.Position + positionChange;
 					finalCamPos = (Camera2d.Instance.Position + positionChange).X;
+					adding = true;
 				} else if (doorTag == "R"){
 					Vector2 positionChange = new Vector2(-1920, 0);
 					newScene2D.Position = currentLevel.Position + positionChange;
@@ -52,19 +53,25 @@ public partial class NavigationManager : Node
 
 				//Add new scene, hide player, tween camera, move player in new position next to door and unhide
 				Callable.From(() => GetTree().Root.GetNode("MainTestScene").AddChild(newScene2D)).CallDeferred();
-				//await ToSignal(GetTree(), "idle_frame");
+				await ToSignal(GetTree(), "process_frame");
 				player.Hide();
 				Tween tween = Camera2d.Instance.MoveCamera(finalCamPos);
-				//Callable.From(() => tween = Camera2d.Instance.MoveCamera(finalCamPos)).CallDeferred();
 				await ToSignal(tween, Tween.SignalName.Finished);
 				//Callable.From(() => GetTree().Root.GetNode("MainTestScene").RemoveChild(currentLevel)).CallDeferred();
-				Callable.From(() => currentLevel.QueueFree()).CallDeferred();
-				//currentLevel.QueueFree(); //compleltley deletes from memory, so you lose saved state
+				Callable.From(() => currentLevel.QueueFree()).CallDeferred();  //compleltley deletes from memory, so you lose saved state
 				GD.Print("Group size: ", GetTree().GetNodesInGroup("Spawn Points").Count);
 				Marker2D newSpawn = FindSpawner(newScene2D);
 				if (newSpawn != null) {
-					GD.Print("New spawn isn't null");
-					player.GlobalPosition = newSpawn.GlobalPosition;
+					//GD.Print("New spawn isn't null");
+					//GD.Print("New Spawn position: " + newSpawn.GlobalPosition);
+					//GD.Print("Current Player position" + player.GlobalPosition);
+					if (adding)
+					{
+						player.GlobalPosition = newSpawn.GlobalPosition + new Vector2(1920, 0);
+					}
+					else {
+						player.GlobalPosition = newSpawn.GlobalPosition + new Vector2(-1920, 0);
+					}
 					player.Show();
 				}
 				

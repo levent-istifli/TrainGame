@@ -21,9 +21,10 @@ horizontal_alignment = 1
 [node name="Door_L" parent="Doors" unique_id=1938107216 instance=ExtResource("3_pibbx")]
 position = Vector2(126, 770)
 destination_level_tag = "TestScene"
-spawn_direction = "left"
+destination_door_tag = "R"
+door_tag = "L"
 
-[node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130]
+[node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130 groups=["Spawn Points"]]
 position = Vector2(118, 0)
 
 [editable path="Doors/Door_L"]

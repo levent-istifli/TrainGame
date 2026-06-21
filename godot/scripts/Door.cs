@@ -8,7 +8,8 @@ public partial class Door : Node2D
 {
 	[Export] public string destination_level_tag;
 	[Export] public string destination_door_tag;
-	[Export] public string spawn_direction = "right";
+	[Export] public string door_tag;
+	//[Export] public string spawn_direction = "right";
 	[Export] public Node2D currentLevel;
 	public Marker2D spawn_point;
 
