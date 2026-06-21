@@ -12,7 +12,7 @@ public partial class NavigationManager : Node
 
 	//[Signal] public delegate void TriggerPlayerSpawnEventHandler(Vector2 position, string direction);
 
-	public void goToLevel(string levelTag, string doorTag, Node2D currentLevel) {
+	public void goToLevel(string levelTag, string doorTag, Node2D currentLevel, CharacterBody2D player) {
 		//GD.Print("In gotolevel");
 		PackedScene sceneToLoad;
 
@@ -36,6 +36,7 @@ public partial class NavigationManager : Node
 			GD.Print("Camera Pos Before Move: ", Camera2d.Instance.Position);
 			if (newScene2D != null) {
 				//GD.Print("Inside newScene2D check");
+				//Check if left or right door to spawn room in correct position + adjust camera correctly
 				if (doorTag == "L") {
 					Vector2 positionChange = new Vector2(1920, 0);
 					newScene2D.Position = currentLevel.Position + positionChange;
@@ -46,9 +47,11 @@ public partial class NavigationManager : Node
 					finalCamPos = (Camera2d.Instance.Position + positionChange).X;
 				}
 
+				//Add new scene, hide player, tween camera, move player in new position next to door and unhide
 				Callable.From(() => GetTree().Root.GetNode("MainTestScene").AddChild(newScene2D)).CallDeferred();
+				player.Hide();
 				Callable.From(() => Camera2d.Instance.MoveCamera(finalCamPos)).CallDeferred();
-				GD.Print("Final Cam Pos: ", finalCamPos);
+				//GD.Print("Final Cam Pos: ", finalCamPos);
 				//Callable.From(() => GetTree().Root.GetNode("MainTestScene").RemoveChild(currentLevel)).CallDeferred();
 				//currentLevel.QueueFree();
 			}
