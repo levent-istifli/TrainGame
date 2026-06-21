@@ -19,8 +19,9 @@ public partial class Door : Node2D
 
 	private void _on_body_entered(Node2D body)
 	{
-		GD.Print("Door entered");
-		GD.Print(body.Name);
+		//GD.Print("Door entered");
+		//GD.Print(body.Name);
+
 		if (body is PlayerNew player)
 		{
 			NavigationManager.Instance.goToLevel(destination_level_tag, destination_door_tag, currentLevel, player);

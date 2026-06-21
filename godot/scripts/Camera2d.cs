@@ -17,7 +17,10 @@ public partial class Camera2d : Camera2D
 	{
 	}
 
-	public void MoveCamera(float finalX) { 
-		GetTree().CreateTween().TweenProperty(this, "position:x", finalX, 1.5);
+	public Tween MoveCamera(float finalX) { 
+		//Make a tween in the current tree, tween the camera, then return the tween to use the signal later
+		Tween tween = GetTree().CreateTween();
+		tween.TweenProperty(this, "position:x", finalX, 1.5);
+		return tween;
 	}
 }

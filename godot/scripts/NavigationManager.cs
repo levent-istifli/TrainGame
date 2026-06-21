@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Net.Security;
+using System.Threading.Tasks;
 
 public partial class NavigationManager : Node
 {
@@ -12,7 +13,7 @@ public partial class NavigationManager : Node
 
 	//[Signal] public delegate void TriggerPlayerSpawnEventHandler(Vector2 position, string direction);
 
-	public void goToLevel(string levelTag, string doorTag, Node2D currentLevel, CharacterBody2D player) {
+	public async Task goToLevel(string levelTag, string doorTag, Node2D currentLevel, CharacterBody2D player) {
 		//GD.Print("In gotolevel");
 		PackedScene sceneToLoad;
 
@@ -26,6 +27,7 @@ public partial class NavigationManager : Node
 
 		if (sceneToLoad != null) {
 			//GD.Print("Scene to load isn't null");
+
 			//Keep current scene as is and instantiate the new scene
 			spawnDoorTag = doorTag;
 			Node newScene = sceneToLoad.Instantiate();
@@ -36,6 +38,7 @@ public partial class NavigationManager : Node
 			GD.Print("Camera Pos Before Move: ", Camera2d.Instance.Position);
 			if (newScene2D != null) {
 				//GD.Print("Inside newScene2D check");
+
 				//Check if left or right door to spawn room in correct position + adjust camera correctly
 				if (doorTag == "L") {
 					Vector2 positionChange = new Vector2(1920, 0);
@@ -49,14 +52,47 @@ public partial class NavigationManager : Node
 
 				//Add new scene, hide player, tween camera, move player in new position next to door and unhide
 				Callable.From(() => GetTree().Root.GetNode("MainTestScene").AddChild(newScene2D)).CallDeferred();
+				//await ToSignal(GetTree(), "idle_frame");
 				player.Hide();
-				Callable.From(() => Camera2d.Instance.MoveCamera(finalCamPos)).CallDeferred();
-				//GD.Print("Final Cam Pos: ", finalCamPos);
+				Tween tween = Camera2d.Instance.MoveCamera(finalCamPos);
+				//Callable.From(() => tween = Camera2d.Instance.MoveCamera(finalCamPos)).CallDeferred();
+				await ToSignal(tween, Tween.SignalName.Finished);
 				//Callable.From(() => GetTree().Root.GetNode("MainTestScene").RemoveChild(currentLevel)).CallDeferred();
-				//currentLevel.QueueFree();
+				Callable.From(() => currentLevel.QueueFree()).CallDeferred();
+				//currentLevel.QueueFree(); //compleltley deletes from memory, so you lose saved state
+				GD.Print("Group size: ", GetTree().GetNodesInGroup("Spawn Points").Count);
+				Marker2D newSpawn = FindSpawner(newScene2D);
+				if (newSpawn != null) {
+					GD.Print("New spawn isn't null");
+					player.GlobalPosition = newSpawn.GlobalPosition;
+					player.Show();
+				}
+				
+				//GD.Print("Final Cam Pos: ", finalCamPos);
 			}
 		}
 	}
+
+	public Marker2D FindSpawner(Node2D sceneWithDoor) {
+		//Goes through the nodes in the spawn points group and picks the correct spawn point for the current scene
+		//TODO: MULTIPLE DOORS, 2 SPAWN POINTS
+		var spawns = GetTree().GetNodesInGroup("Spawn Points");
+		for (int i = 0; i < spawns.Count; i++) {
+			GD.Print("current spawn: " +  spawns[i].Name);
+			GD.Print("Node type: " + spawns[i].GetType());
+			Node2D current = spawns[i] as Node2D;
+			GD.Print(sceneWithDoor.IsAncestorOf(current));
+			if (current != null && sceneWithDoor.IsAncestorOf(current)) {
+				Marker2D spawnPoint = spawns[i] as Marker2D;
+				if (spawnPoint != null) {
+					GD.Print("Non null spawn point is being returned");
+					return spawnPoint;
+				}
+			}
+		}
+		return null;
+	}
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

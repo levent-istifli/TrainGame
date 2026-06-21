@@ -31,6 +31,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="TrainGame"
 
+[global_group]
+
+"Spawn Points"="All spawn points from doors"
+
 [input]
 
 ui_left={

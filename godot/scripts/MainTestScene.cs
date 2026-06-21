@@ -17,5 +17,7 @@ public partial class MainTestScene : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		CharacterBody2D player = GetNode<CharacterBody2D>("Player");
+		this.MoveChild(player, 1);
 	}
 }
