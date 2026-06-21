@@ -13,16 +13,16 @@ public class DialogueLibrary
             DialogueBoxUI ui = DialogueBoxUI.Instance;
             await ui.DisplayText("Hello.");
 
-            ui.ChangeTextSpeed(7);
+            ui.ChangeTextSpeed(30);
 
             await ui.DisplayText("Here is a test question.");
 
-            /*int choice = await ui.DisplayChoice("Yes", "No");
+            int choice = await ui.DisplayChoice("Yes", "No");
 
             if (choice == 0)
-                await d.Display("You picked yes.");
+                await ui.DisplayText("You picked yes.");
             else
-                await d.Display("You picked no.");*/
+                await ui.DisplayText("You picked no.");
         });
     }
 
