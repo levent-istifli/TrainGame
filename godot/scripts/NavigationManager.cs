@@ -61,7 +61,7 @@ public partial class NavigationManager : Node
 				}
 
 				//Add new scene, hide player, tween camera, move player in new position next to door and unhide
-				Callable.From(() => GetTree().Root.GetNode("MainTestScene").AddChild(newScene2D)).CallDeferred();
+				Callable.From(() => GetTree().Root.GetNode("MainScene").AddChild(newScene2D)).CallDeferred();
 				await ToSignal(GetTree(), "process_frame");
 				player.Hide();
 				Tween tween = Camera2d.Instance.MoveCamera(finalCamPos);
