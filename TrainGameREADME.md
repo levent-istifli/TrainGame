@@ -40,8 +40,18 @@ https://github.com/levent-istifli/TrainGame
   * Going all the way to the right will take you to cart 2. If you wish to leave, go all the way to the left and it will take you to the middle cart (cart 1).
 * NPC walk into the carts. To activate them, press T while in a cart.
   * When activated, NPCs spawn in an move towards a seat.
+  * To activate the NPCs leaving, press Y.
+ 
+* Click on the NPC with the exclamation point on the chair to activate the dialogue scene
+  * Here, you click to go through the dialogue.
+  * You are also presented with a dialogue option.
+  * Click the back button to return to the previous screen.
  
 **Bugs:**
 * NPCs get deleted when moving across scenes
-* NPCs will bump into player if in the way/player runs into them
+* NPCs will bump into player if in the way/player runs into them (potentially can get locked into an area)
+
+
+
+Some people used Goose to help with learning about Godot and its syntax quicker. 
 
