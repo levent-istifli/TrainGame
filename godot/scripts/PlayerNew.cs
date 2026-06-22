@@ -4,10 +4,10 @@ using System;
 
 public partial class PlayerNew : CharacterBody2D
 {
-
+	Sprite2D sprite;
 	public override void _Ready()
 	{
-		//NavigationManager.Instance.TriggerPlayerSpawn += OnTriggerPlayerSpawnSignal;
+		sprite = GetNode<Sprite2D>("Sprite2D");
 	}
 
 	[Export]
@@ -16,7 +16,14 @@ public partial class PlayerNew : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		MoveAndSlide();
+		if (direction.X > 0)
+		{
+			sprite.FlipH = true;
+		}
+		else if (direction.X < 0) {
+			sprite.FlipH = false;
+		}
+			MoveAndSlide();
 		playerMovement();
 	}
 

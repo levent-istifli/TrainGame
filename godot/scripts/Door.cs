@@ -11,11 +11,11 @@ public partial class Door : Node2D
 	//[Export] public string door_tag;
 	//[Export] public string spawn_direction = "right";
 	[Export] public Node2D currentLevel;
-	public Marker2D spawn_point;
+	[Export] public Marker2D spawn_point;
 
 	public override void _Ready()
 	{
-		spawn_point = GetNode<Marker2D>("Spawn");
+		// spawn_point = GetNode<Marker2D>("Spawn");
 	}
 
 	private void OnBodyEntered(Node2D body)

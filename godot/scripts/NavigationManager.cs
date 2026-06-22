@@ -58,7 +58,7 @@ public partial class NavigationManager : Node
 				//Callable.From(() => GetTree().Root.GetNode("MainTestScene").RemoveChild(currentLevel)).CallDeferred();
 				Callable.From(() => currentLevel.QueueFree()).CallDeferred();  //compleltley deletes from memory, so you lose saved state
 				GD.Print("Group size: ", GetTree().GetNodesInGroup("Spawn Points").Count);
-				Marker2D newSpawn = FindSpawner(newScene2D);
+				Marker2D newSpawn = FindSpawner(newScene2D, doorTag);
 				if (newSpawn != null) {
 					//GD.Print("New spawn isn't null");
 					GD.Print("New Spawn position: " + newSpawn.GlobalPosition);
@@ -73,18 +73,19 @@ public partial class NavigationManager : Node
 		}
 	}
 
-	public Marker2D FindSpawner(Node2D sceneWithDoor) {
+	public Marker2D FindSpawner(Node2D sceneWithDoor, string destDoorTag) {
 		//Goes through the nodes in the spawn points group and picks the correct spawn point for the current scene
 		var spawns = GetTree().GetNodesInGroup("Spawn Points");
 		for (int i = 0; i < spawns.Count; i++) {
-			GD.Print("current spawn: " +  spawns[i].Name);
-			GD.Print("Node type: " + spawns[i].GetType());
-			GD.Print(spawns[i].GetParent());
+			//GD.Print("current spawn: " +  spawns[i].Name);
+			//GD.Print("Node type: " + spawns[i].GetType());
+			//GD.Print(spawns[i].GetParent());
 			Node2D current = spawns[i] as Node2D;
 			GD.Print(sceneWithDoor.IsAncestorOf(current));
+
 			if (current != null && sceneWithDoor.IsAncestorOf(current)) {
-				Marker2D spawnPoint = spawns[i] as Marker2D;
-				if (spawnPoint != null) {
+				Spawn spawnPoint = spawns[i] as Spawn;
+				if (spawnPoint != null && spawnPoint.GetDoorTag() == destDoorTag) {
 					GD.Print("Non null spawn point is being returned");
 					return spawnPoint;
 				}

@@ -5,8 +5,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyv6f"]
 
-[node name="Door" type="Area2D" unique_id=1938107216]
+[node name="Door" type="Area2D" unique_id=1938107216 node_paths=PackedStringArray("spawn_point")]
 script = ExtResource("1_yfgsh")
+spawn_point = NodePath("Spawn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535746328]
 scale = Vector2(5, 13)

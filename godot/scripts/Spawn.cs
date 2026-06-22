@@ -13,4 +13,9 @@ public partial class Spawn : Marker2D
 	public override void _Process(double delta)
 	{
 	}
+
+	public string GetDoorTag()
+	{
+		return doorTag;
+	}
 }
