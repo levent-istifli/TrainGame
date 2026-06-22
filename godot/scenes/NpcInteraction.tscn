@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bjdg1jgq72uu"]
+
+[ext_resource type="PackedScene" uid="uid://dulkofdokd4o1" path="res://scenes/Background.tscn" id="1_pb5ha"]
+[ext_resource type="PackedScene" uid="uid://beh2de8br4uk7" path="res://scenes/PlayerNew.tscn" id="2_iv5b6"]
+[ext_resource type="PackedScene" uid="uid://c2yva6vtvmdd2" path="res://scenes/NPCPlayer.tscn" id="3_k6iy2"]
+[ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="4_5ucbg"]
+
+[node name="TestScene2" type="Node2D" unique_id=1169692604]
+
+[node name="Background" parent="." unique_id=307874472 instance=ExtResource("1_pb5ha")]
+
+[node name="CharacterBody2D" parent="." unique_id=1629053667 instance=ExtResource("2_iv5b6")]
+position = Vector2(882, 679)
+speed = 400.0
+
+[node name="NPCPlayer" parent="." unique_id=217092309 instance=ExtResource("3_k6iy2")]
+position = Vector2(391, 517)
+
+[node name="Label" type="Label" parent="." unique_id=1888726032]
+offset_top = 23.0
+offset_right = 1917.0
+offset_bottom = 137.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 83
+text = "Cart 2"
+horizontal_alignment = 1
+
+[node name="Doors" type="Node" parent="." unique_id=356075585]
+
+[node name="Door_L" parent="Doors" unique_id=1938107216 instance=ExtResource("4_5ucbg")]
+position = Vector2(127, 770)
+destination_level_tag = "TestScene"
+spawn_direction = "left"
+
+[node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130]
+position = Vector2(118, 0)
+
+[editable path="Doors/Door_L"]

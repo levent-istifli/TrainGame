@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d38hfldou5nio"]
 
 [ext_resource type="PackedScene" uid="uid://dulkofdokd4o1" path="res://scenes/Background.tscn" id="1_lqg2c"]
-[ext_resource type="PackedScene" uid="uid://beh2de8br4uk7" path="res://scenes/PlayerScenes/PlayerNew.tscn" id="2_pibbx"]
+[ext_resource type="PackedScene" uid="uid://beh2de8br4uk7" path="res://scenes/PlayerNew.tscn" id="2_pibbx"]
 [ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="3_pibbx"]
 
 [node name="TestScene2" type="Node2D" unique_id=1169692604]

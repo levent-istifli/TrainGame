@@ -8,15 +8,15 @@ public partial class NavigationManager : Node
 	public static NavigationManager Instance { get; private set; }
 
 	// preload scenes
-	private readonly PackedScene scene_cart1 = GD.Load<PackedScene>("res://scenes/TestScenes/TestScene.tscn");
-	// private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/TestScenes/NpcInteraction.tscn");
+	private readonly PackedScene scene_cart1 = GD.Load<PackedScene>("res://scenes/TestScene.tscn");
+	// private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/NpcInteraction.tscn");
 
-	private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/TestScenes/TestScene2.tscn");
+	private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/TestScene2.tscn");
 	private string spawn_door_tag;
 
 
-	private readonly PackedScene scene_dialogue_collectables = GD.Load<PackedScene>("res://scenes/dialoguetestscene/MCDialogue.tscn");
-	private readonly PackedScene back_button = GD.Load<PackedScene>("res://scenes/dialoguetestscene/MCDialogue.tscn");
+	private readonly PackedScene scene_dialogue_collectables = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
+	private readonly PackedScene back_button = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
 
 
 	public void go_to_level(string level_tag, string destination_tag) {
