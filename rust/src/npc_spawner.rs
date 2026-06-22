@@ -86,14 +86,14 @@ impl NPCSpawner {
         }
         let seat_index = empty_seat_indices[randi_range(0, (empty_seat_indices.len() - 1) as i64) as usize];
         self.seats.at(seat_index).bind_mut().occupied = true;
-        let npc_to_board = npc_to_board.unwrap();
-        npc_to_board.set_position(self.spawn_points.pick_random().unwrap().get_position());
-        npc_to_board.bind_mut().current_state = NPCState::Walking;
-        npc_to_board.bind_mut().target_seat_index = seat_index as i64;
-        npc_to_board.bind_mut().target_seat_position = self.seats.at(seat_index).get_position();
-        npc_to_board.bind_mut().board_train();
-        npc_to_board.set_process_mode(ProcessMode::INHERIT);
-        npc_to_board.set_visible(true);
+        let mut npc_to_board = npc_to_board.unwrap().bind_mut();
+        npc_to_board.base_mut().set_position(self.spawn_points.pick_random().unwrap().get_position());
+        npc_to_board.current_state = NPCState::Walking;
+        npc_to_board.target_seat_index = seat_index as i64;
+        npc_to_board.target_seat_position = self.seats.at(seat_index).get_position();
+        npc_to_board.board_train();
+        npc_to_board.base_mut().set_process_mode(ProcessMode::INHERIT);
+        npc_to_board.base_mut().set_visible(true);
         self.boarding_timer.set_wait_time(randf_range(BOARD_DELAY_MIN, BOARD_DELAY_MAX));
         self.boarding_timer.start();
     }
