@@ -30,7 +30,6 @@ horizontal_alignment = 1
 [node name="Door_L" parent="Doors" unique_id=1938107216 instance=ExtResource("4_5ucbg")]
 position = Vector2(127, 770)
 destination_level_tag = "TestScene"
-spawn_direction = "left"
 
 [node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130]
 position = Vector2(118, 0)

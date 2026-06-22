@@ -18,7 +18,7 @@ public partial class NPCPlayer : Area2D
 		{
 			if (mouseEvent.ButtonIndex == MouseButton.Left)
 			{
-				NavigationManager.Instance.go_to_level("MCDialogue", "");
+				//NavigationManager.Instance.GoToLevel("MCDialogue", "");
 			}
 		}	
 	}
