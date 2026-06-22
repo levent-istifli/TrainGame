@@ -3,7 +3,7 @@ use std::ops::DerefMut;
 use godot::classes::node::ProcessMode;
 use godot::global::{randf_range, randi_range};
 use godot::prelude::*;
-use godot::classes::{Input, Node, Node2D, Timer};
+use godot::classes::{Input, Node2D, Timer};
 use crate::npc::{NPC, NPCState};
 use crate::seat::Seat;
 
@@ -20,9 +20,9 @@ pub enum NPCSpawnerState {
 }
 
 #[derive(GodotClass)]
-#[class(base=Node, init)]
+#[class(base=Node2D, init)]
 pub struct NPCSpawner {
-    base: Base<Node>,
+    base: Base<Node2D>,
     #[export]
     spawn_points: Array<Gd<Node2D>>,
     #[export]
@@ -99,10 +99,10 @@ impl NPCSpawner {
     }
 }
 
-use godot::classes::INode;
+use godot::classes::INode2D;
 
 #[godot_api]
-impl INode for NPCSpawner {
+impl INode2D for NPCSpawner {
     fn ready(&mut self) {
         self.spawned_npcs.reserve(self.num_npcs as usize);
         for _ in 0..self.num_npcs {
