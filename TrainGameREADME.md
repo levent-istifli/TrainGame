@@ -36,7 +36,12 @@ https://github.com/levent-istifli/TrainGame
 
 * Move character with WASD
 * From the starting cart, you can go two directions:
-
   * Going all the way to the left will take you to cart 3. If you wish to leave, go all the way to the right and it will take you to the middle cart (cart 1).
-  * Going all the way to the right will take you to cart 2. If you wish to leave, go all the way to the left and it will take you to the middle cart (cart 1). 
+  * Going all the way to the right will take you to cart 2. If you wish to leave, go all the way to the left and it will take you to the middle cart (cart 1).
+* NPC walk into the carts. To activate them, press T while in a cart.
+  * When activated, NPCs spawn in an move towards a seat.
+ 
+**Bugs:**
+* NPCs get deleted when moving across scenes
+* NPCs will bump into player if in the way/player runs into them
 
