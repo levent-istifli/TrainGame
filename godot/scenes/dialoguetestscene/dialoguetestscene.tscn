@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://cj7bj8kfqtoje"]
+
+[ext_resource type="Texture2D" uid="uid://cyucpvwupsme6" path="res://scenes/dialoguetestscene/traininterior.png" id="1_aawce"]
+[ext_resource type="Script" uid="uid://blxu853na5h8j" path="res://scripts/DialogueBoxUI.cs" id="1_pmob3"]
+[ext_resource type="Texture2D" uid="uid://dlwd6d53xnfh2" path="res://icon.svg" id="3_11ujm"]
+[ext_resource type="Script" uid="uid://dns6dxq6gbpue" path="res://scripts/DialogueTestUser.cs" id="4_ttl7p"]
+
+[node name="DialogueBox" type="Node2D" unique_id=1448317 node_paths=PackedStringArray("textBox", "option1TextBox", "option2TextBox", "option1Indicator", "option2Indicator", "charTimer", "nextIndicator")]
+script = ExtResource("1_pmob3")
+charDuration = 0.04
+textBox = NodePath("DialogueBoxBackdrop/Text")
+option1TextBox = NodePath("DialogueBoxBackdrop/QuestionOption1")
+option2TextBox = NodePath("DialogueBoxBackdrop/QuestionOption2")
+option1Indicator = NodePath("DialogueBoxBackdrop/OptionIndicator1")
+option2Indicator = NodePath("DialogueBoxBackdrop/OptionIndicator2")
+charTimer = NodePath("CharTimer")
+nextIndicator = NodePath("DialogueBoxBackdrop/NextIndicator")
+
+[node name="TrainInterior" type="Sprite2D" parent="." unique_id=1440137525]
+position = Vector2(5, -49.99999)
+scale = Vector2(0.9794598, 0.9794601)
+texture = ExtResource("1_aawce")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1952988782]
+
+[node name="CharTimer" type="Timer" parent="." unique_id=231543630]
+
+[node name="SpeakerNameBackdrop" type="ColorRect" parent="." unique_id=1515334712]
+offset_left = -400.0
+offset_top = 9.0
+offset_right = -200.0
+offset_bottom = 49.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="SpeakerNameBackdrop" unique_id=931490973]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -20.0
+offset_right = 88.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Speaker Name"
+horizontal_alignment = 1
+
+[node name="DialogueBoxBackdrop" type="ColorRect" parent="." unique_id=432719810]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = 65.0
+offset_right = 400.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Text" type="Label" parent="DialogueBoxBackdrop" unique_id=1886710730]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -389.825
+offset_right = 389.825
+offset_bottom = 154.63
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 23
+text = "Sample Text"
+autowrap_mode = 3
+
+[node name="NextIndicator" type="Label" parent="DialogueBoxBackdrop" unique_id=1981404240]
+layout_mode = 0
+offset_left = 731.0
+offset_top = 163.0
+offset_right = 791.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(0.5890956, 0.5890956, 0.5890956, 1)
+theme_override_font_sizes/font_size = 21
+text = "Next.."
+
+[node name="QuestionOption1" type="Label" parent="DialogueBoxBackdrop" unique_id=567131542]
+visible = false
+layout_mode = 0
+offset_left = 50.0
+offset_top = 25.0
+offset_right = 350.0
+offset_bottom = 175.0
+mouse_filter = 0
+theme_override_font_sizes/font_size = 24
+text = "Question Choice 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestionOption2" type="Label" parent="DialogueBoxBackdrop" unique_id=166078006]
+visible = false
+layout_mode = 0
+offset_left = 450.0
+offset_top = 25.0
+offset_right = 750.0
+offset_bottom = 175.0
+mouse_filter = 0
+theme_override_font_sizes/font_size = 24
+text = "Question Choice 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionIndicator1" type="TextureRect" parent="DialogueBoxBackdrop" unique_id=1859502256]
+visible = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 75.0
+offset_right = 138.0
+offset_bottom = 203.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_11ujm")
+
+[node name="OptionIndicator2" type="TextureRect" parent="DialogueBoxBackdrop" unique_id=1067846701]
+visible = false
+layout_mode = 0
+offset_left = 410.0
+offset_top = 75.0
+offset_right = 538.0
+offset_bottom = 203.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_11ujm")
+
+[node name="DialogueTestUser" type="Node" parent="." unique_id=989357661]
+script = ExtResource("4_ttl7p")
+
+[connection signal="timeout" from="CharTimer" to="." method="OnCharTimeout"]
+[connection signal="mouse_entered" from="DialogueBoxBackdrop/QuestionOption1" to="." method="OnOption1MouseEntered"]
+[connection signal="mouse_exited" from="DialogueBoxBackdrop/QuestionOption1" to="." method="OnOption1MouseExited"]
+[connection signal="mouse_entered" from="DialogueBoxBackdrop/QuestionOption2" to="." method="OnOption2MouseEntered"]
+[connection signal="mouse_exited" from="DialogueBoxBackdrop/QuestionOption2" to="." method="OnOption2MouseExited"]
