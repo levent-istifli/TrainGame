@@ -1,11 +1,12 @@
-[gd_scene format=3 uid="uid://cj7bj8kfqtoje"]
+[gd_scene format=3 uid="uid://c7ygs80tn4ttd"]
 
-[ext_resource type="Texture2D" uid="uid://cyucpvwupsme6" path="res://scenes/dialoguetestscene/traininterior.png" id="1_aawce"]
+[ext_resource type="Texture2D" uid="uid://cxbllf1cgb4eo" path="res://scenes/dialoguetestscene/traininterior.png" id="1_aawce"]
 [ext_resource type="Script" uid="uid://blxu853na5h8j" path="res://scripts/DialogueBoxUI.cs" id="1_pmob3"]
 [ext_resource type="Texture2D" uid="uid://dlwd6d53xnfh2" path="res://icon.svg" id="3_11ujm"]
 [ext_resource type="Script" uid="uid://dns6dxq6gbpue" path="res://scripts/DialogueTestUser.cs" id="4_ttl7p"]
 
 [node name="DialogueBox" type="Node2D" unique_id=1448317 node_paths=PackedStringArray("textBox", "option1TextBox", "option2TextBox", "option1Indicator", "option2Indicator", "charTimer", "nextIndicator")]
+position = Vector2(960, 541)
 script = ExtResource("1_pmob3")
 charDuration = 0.04
 textBox = NodePath("DialogueBoxBackdrop/Text")
@@ -17,11 +18,8 @@ charTimer = NodePath("CharTimer")
 nextIndicator = NodePath("DialogueBoxBackdrop/NextIndicator")
 
 [node name="TrainInterior" type="Sprite2D" parent="." unique_id=1440137525]
-position = Vector2(5, -49.99999)
-scale = Vector2(0.9794598, 0.9794601)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_aawce")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1952988782]
 
 [node name="CharTimer" type="Timer" parent="." unique_id=231543630]
 
