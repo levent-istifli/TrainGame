@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://d38hfldou5nio"]
+[gd_scene format=3 uid="uid://5ducmopc668r"]
 
 [ext_resource type="PackedScene" uid="uid://dulkofdokd4o1" path="res://scenes/Background.tscn" id="1_lqg2c"]
+[ext_resource type="PackedScene" uid="uid://bnfnq0jctl51d" path="res://scenes/npc_spawner.tscn" id="3_0q63d"]
 [ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="3_pibbx"]
 
 [node name="TestScene2" type="Node2D" unique_id=1169692604]
@@ -27,6 +28,48 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 83
 text = "Cart 2"
 horizontal_alignment = 1
+
+[node name="NPCSpawner" parent="." unique_id=1586379648 node_paths=PackedStringArray("spawn_points", "seats") instance=ExtResource("3_0q63d")]
+spawn_points = [NodePath("SpawnPoint"), NodePath("SpawnPoint2")]
+seats = [NodePath("Seat"), NodePath("Seat2"), NodePath("Seat3"), NodePath("Seat4"), NodePath("Seat5"), NodePath("Seat6"), NodePath("Seat7"), NodePath("Seat8"), NodePath("Seat9"), NodePath("Seat10")]
+num_npcs = 10
+aisle_y_position = 797.0
+
+[node name="SpawnPoint" type="Node2D" parent="NPCSpawner" unique_id=1591333386]
+position = Vector2(497, 918)
+
+[node name="SpawnPoint2" type="Node2D" parent="NPCSpawner" unique_id=1383752409]
+position = Vector2(1100, 918)
+
+[node name="Seat" type="Seat" parent="NPCSpawner" unique_id=363503144]
+position = Vector2(371, 596)
+
+[node name="Seat2" type="Seat" parent="NPCSpawner" unique_id=1592441194]
+position = Vector2(500, 596)
+
+[node name="Seat3" type="Seat" parent="NPCSpawner" unique_id=1712140609]
+position = Vector2(600, 596)
+
+[node name="Seat4" type="Seat" parent="NPCSpawner" unique_id=783118570]
+position = Vector2(700, 596)
+
+[node name="Seat5" type="Seat" parent="NPCSpawner" unique_id=1480642654]
+position = Vector2(800, 596)
+
+[node name="Seat6" type="Seat" parent="NPCSpawner" unique_id=732789544]
+position = Vector2(900, 596)
+
+[node name="Seat7" type="Seat" parent="NPCSpawner" unique_id=1781061812]
+position = Vector2(1000, 596)
+
+[node name="Seat8" type="Seat" parent="NPCSpawner" unique_id=1045397699]
+position = Vector2(1100, 596)
+
+[node name="Seat9" type="Seat" parent="NPCSpawner" unique_id=2132858341]
+position = Vector2(1200, 596)
+
+[node name="Seat10" type="Seat" parent="NPCSpawner" unique_id=1578998408]
+position = Vector2(1300, 596)
 
 [connection signal="body_entered" from="Doors/Door_L" to="Doors/Door_L" method="OnBodyEntered"]
 
