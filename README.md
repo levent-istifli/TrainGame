@@ -2,35 +2,11 @@
 
 Train Game (stand in title for now) is a game intended to raise suicide awareness. It follows the protagonist: a female office worker that had aspirations to make it big in the world, but threw them away in hopes for stability and following the social norm. Unfortunately, she has undergone detrimental conditions that have caused her to mental stability to completely deteriorate. As she makes her way on her last train ride, she meets a variety of individuals (not all alive...) that have undergone similar experiences and encourage her to reconsider her actions.
 
-
-
-**One-Line Build Command and Installation Package Executable Link:** 
-
-
-
-
-
 **Link to Repository:**
 
 https://github.com/levent-istifli/TrainGame
 
-
-
-**Link to Installation Package Executable:**
-
-
-
-
-
-**Run Executable Command:**
-
-
-
-
-
-
-
-
+To compile Rust code, install Rust and run the command `cargo build` in the `rust` folder. This must be done before loading the game in the editor.
 
 **Project Instructions/Functionality:**
 
