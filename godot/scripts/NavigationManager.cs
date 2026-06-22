@@ -5,13 +5,23 @@ using System.Threading.Tasks;
 
 public partial class NavigationManager : Node
 {
+	// singleton pattern - single instance of class that can be used in each of scenes to prevent restarting of items or counters
 	public static NavigationManager Instance { get; private set; }
+
+	// preload scenes
 	private readonly PackedScene scene_cart1 = GD.Load<PackedScene>("res://scenes/TestScene.tscn");
+	// private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/NpcInteraction.tscn");
+
 	private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/TestScene2.tscn");
 	private readonly PackedScene scene_cart3 = GD.Load<PackedScene>("res://scenes/TestScene3.tscn");
 	public string spawnDoorTag;
 
 	//[Signal] public delegate void TriggerPlayerSpawnEventHandler(Vector2 position, string direction);
+
+
+	private readonly PackedScene scene_dialogue_collectables = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
+	private readonly PackedScene back_button = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
+
 
 	public async Task goToLevel(string levelTag, string doorTag, Node2D currentLevel, CharacterBody2D player) {
 		GD.Print("In gotolevel");
@@ -22,6 +32,7 @@ public partial class NavigationManager : Node
 			"TestScene" => scene_cart1,
 			"TestScene2" => scene_cart2,
 			"TestScene3" => scene_cart3,
+			"MCDialogue" => scene_dialogue_collectables,
 			_ => null
 		};
 
@@ -95,6 +106,7 @@ public partial class NavigationManager : Node
 	}
 	
 	// Called when the node enters the scene tree for the first time.
+	// To check if instance has been intitiated, if so return it
 	public override void _Ready()
 	{
 		Instance = this;
