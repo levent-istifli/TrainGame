@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://7ckj7a3snbyx"]
+[gd_scene format=3 uid="uid://cr5d2dmtghk06"]
 
 [ext_resource type="PackedScene" uid="uid://dulkofdokd4o1" path="res://scenes/Background.tscn" id="1_o0lye"]
 [ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="2_o0lye"]
+[ext_resource type="PackedScene" uid="uid://bnfnq0jctl51d" path="res://scenes/npc_spawner.tscn" id="3_3ay65"]
 
 [node name="TestScene3" type="Node2D" unique_id=1903736709]
 
@@ -28,6 +29,36 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 83
 text = "Cart 3"
 horizontal_alignment = 1
+
+[node name="NPCSpawner" parent="." unique_id=1586379648 node_paths=PackedStringArray("spawn_points", "seats") instance=ExtResource("3_3ay65")]
+spawn_points = [NodePath("SpawnPoint"), NodePath("SpawnPoint2")]
+seats = [NodePath("Seat"), NodePath("Seat2"), NodePath("Seat3"), NodePath("Seat4"), NodePath("Seat5"), NodePath("Seat6")]
+num_npcs = 6
+aisle_y_position = 797.0
+
+[node name="SpawnPoint" type="Node2D" parent="NPCSpawner" unique_id=1628503198]
+position = Vector2(497, 918)
+
+[node name="SpawnPoint2" type="Node2D" parent="NPCSpawner" unique_id=1613604936]
+position = Vector2(1100, 918)
+
+[node name="Seat" type="Seat" parent="NPCSpawner" unique_id=876256018]
+position = Vector2(371, 596)
+
+[node name="Seat2" type="Seat" parent="NPCSpawner" unique_id=1174736938]
+position = Vector2(500, 596)
+
+[node name="Seat3" type="Seat" parent="NPCSpawner" unique_id=489457553]
+position = Vector2(600, 596)
+
+[node name="Seat4" type="Seat" parent="NPCSpawner" unique_id=728975225]
+position = Vector2(900, 596)
+
+[node name="Seat5" type="Seat" parent="NPCSpawner" unique_id=202232354]
+position = Vector2(1000, 596)
+
+[node name="Seat6" type="Seat" parent="NPCSpawner" unique_id=582417702]
+position = Vector2(1200, 596)
 
 [connection signal="body_entered" from="Doors/Door_R" to="Doors/Door_R" method="OnBodyEntered"]
 

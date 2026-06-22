@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2yva6vtvmdd2"]
 
 [ext_resource type="Script" uid="uid://cooet5fc653kj" path="res://scripts/NPCPlayer.cs" id="1_c6v3n"]
-[ext_resource type="Texture2D" uid="uid://dlwd6d53xnfh2" path="res://icon.svg" id="1_diru7"]
+[ext_resource type="Texture2D" uid="uid://bfxg1cimhlvls" path="res://Art/INPC.png" id="2_c6v3n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6v3n"]
 size = Vector2(79, 165)
@@ -16,8 +16,7 @@ sceneTag = "MCDialogue"
 destination_door_tag = "left"
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1297988730]
-scale = Vector2(0.62499994, 1.2773439)
-texture = ExtResource("1_diru7")
+texture = ExtResource("2_c6v3n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1822229553]
 shape = SubResource("RectangleShape2D_c6v3n")

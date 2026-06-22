@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://q1sbhxwip8m7" path="res://scripts/Photos.cs" id="3_jcxb1"]
 [ext_resource type="Script" uid="uid://d3rxfio2n6d7g" path="res://scripts/Envelope.cs" id="4_i74oc"]
 [ext_resource type="PackedScene" uid="uid://c4du67nol4rq3" path="res://scenes/BackButton.tscn" id="5_i74oc"]
+[ext_resource type="PackedScene" uid="uid://c7ygs80tn4ttd" path="res://scenes/dialoguetestscene/dialoguetestscene.tscn" id="6_hr11b"]
 
 [node name="MCDialogue" type="Node2D" unique_id=1000165773]
 
@@ -86,3 +87,6 @@ horizontal_alignment = 1
 
 [node name="BackButton" parent="." unique_id=1576397939 instance=ExtResource("5_i74oc")]
 position = Vector2(12, 1008)
+
+[node name="DialogueBox" parent="." unique_id=1448317 instance=ExtResource("6_hr11b")]
+position = Vector2(960, 801)

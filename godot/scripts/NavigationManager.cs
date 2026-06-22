@@ -25,10 +25,17 @@ public partial class NavigationManager : Node
 	public void removeDialogueScene()
 	{
 		// remove current scene (aka dialogue - character interaction scene)
+		var nodesToPause = GetTree().GetNodesInGroup("Pause");
+		for (int i = 0; i < nodesToPause.Count; i++)
+		{
+			nodesToPause[i].ProcessMode = ProcessModeEnum.Inherit;
+			nodesToPause[i].Set("visible", true);
+		}
 		Window root = GetTree().Root;
 		Node currentScene = GetTree().CurrentScene;
 		root.RemoveChild(currentScene); 
 		currentScene.QueueFree();
+		
 	}
 
 	public void loadDialogueScene(string sceneTag, string doorTag)
@@ -56,6 +63,12 @@ public partial class NavigationManager : Node
 			// add new scene (aka. dialogue/character interaction scene)
 			root.AddChild(newScene);
 			GetTree().CurrentScene = newScene;
+			var nodesToPause = GetTree().GetNodesInGroup("Pause");
+			for (int i = 0; i < nodesToPause.Count; i++)
+			{
+				nodesToPause[i].ProcessMode = ProcessModeEnum.Disabled;
+				nodesToPause[i].Set("visible", false);
+			}
 		}
 
 	}
