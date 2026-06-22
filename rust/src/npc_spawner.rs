@@ -1,7 +1,7 @@
 use std::ops::DerefMut;
 
 use godot::classes::node::ProcessMode;
-use godot::global::{randf_range, randi_range};
+use godot::global::{randf, randf_range, randi_range};
 use godot::prelude::*;
 use godot::classes::{Input, Node2D, Timer};
 use crate::npc::{NPC, NPCState};
@@ -9,6 +9,10 @@ use crate::seat::Seat;
 
 const BOARD_DELAY_MIN: f64 = 0.2;
 const BOARD_DELAY_MAX: f64 = 2.0;
+const EXIT_DELAY_MIN: f64 = 0.2;
+const EXIT_DELAY_MAX: f64 = 5.0;
+const EXIT_CHANCE: f64 = 0.3;
+const BOARDING_STOP_CHANCE: f64 = 0.1;
 
 #[derive(GodotConvert, Var, Export, Default, Clone)]
 #[godot(via = i64)]
@@ -94,8 +98,39 @@ impl NPCSpawner {
         npc_to_board.board_train(self.aisle_y_position);
         npc_to_board.base_mut().set_process_mode(ProcessMode::INHERIT);
         npc_to_board.base_mut().set_visible(true);
-        self.boarding_timer.set_wait_time(randf_range(BOARD_DELAY_MIN, BOARD_DELAY_MAX));
-        self.boarding_timer.start();
+        if randf() > BOARDING_STOP_CHANCE {
+            self.boarding_timer.set_wait_time(randf_range(BOARD_DELAY_MIN, BOARD_DELAY_MAX));
+            self.boarding_timer.start();
+        }
+    }
+    #[func]
+    fn start_exiting(&mut self) {
+        for i in 0..self.spawned_npcs.len() {
+            if self.spawned_npcs[i].bind().current_state != NPCState::Sitting {
+                continue
+            }
+            if randf() > EXIT_CHANCE {
+                continue
+            }
+            let timer = self.base_mut().get_tree().create_timer_ex(randf_range(EXIT_DELAY_MIN, EXIT_DELAY_MAX)).process_in_physics(true).done();
+            timer
+                .signals()
+                .timeout()
+                .connect_other(&self.spawned_npcs[i], NPC::exit_train);
+        }
+    }
+    #[func]
+    fn exit_npc(&mut self, mut signaller: Gd<NPC>) {
+        let mut signaller = signaller.bind_mut();
+        signaller.current_state = NPCState::Exiting;
+        self.seats.at(signaller.target_seat_index as usize).bind_mut().occupied = false;
+        let target_exit = &self.spawn_points.at(randi_range(0, self.spawn_points.len() as i64 - 1) as usize);
+        signaller.movement_targets.push(target_exit.get_position());
+        let position = signaller.base().get_position();
+        signaller.movement_targets.push(Vector2 { x: target_exit.get_position().x, y: self.aisle_y_position });
+        let first_target = Vector2 { x: position.x, y: self.aisle_y_position };
+        signaller.movement_targets.push(first_target);
+        signaller.face_towards(first_target);
     }
 }
 
@@ -111,6 +146,10 @@ impl INode2D for NPCSpawner {
                 .signals()
                 .went_inactive()
                 .connect_other(&self.to_gd(), Self::on_npc_inactive);
+            new_npc
+                .signals()
+                .exiting_train()
+                .connect_other(&self.to_gd(), Self::exit_npc);
             new_npc.set_z_index(1);
             self.base_mut().add_child(&new_npc);
             self.spawned_npcs.push(new_npc);
@@ -121,6 +160,9 @@ impl INode2D for NPCSpawner {
         let input = Input::singleton();
         if input.is_action_just_pressed("board") {
             self.start_boarding();
+        }
+        if input.is_action_just_pressed("exit") {
+            self.start_exiting();
         }
     }
 }
