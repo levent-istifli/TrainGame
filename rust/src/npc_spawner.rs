@@ -32,7 +32,7 @@ pub struct NPCSpawner {
     num_npcs: i64,
     #[export]
     #[init(val = 540.0)]
-    aisle_y_position: f64,
+    aisle_y_position: f32,
     #[export]
     npc_scene: OnEditor<Gd<PackedScene>>,
     #[export]
@@ -91,7 +91,7 @@ impl NPCSpawner {
         npc_to_board.current_state = NPCState::Walking;
         npc_to_board.target_seat_index = seat_index as i64;
         npc_to_board.target_seat_position = self.seats.at(seat_index).get_position();
-        npc_to_board.board_train();
+        npc_to_board.board_train(self.aisle_y_position);
         npc_to_board.base_mut().set_process_mode(ProcessMode::INHERIT);
         npc_to_board.base_mut().set_visible(true);
         self.boarding_timer.set_wait_time(randf_range(BOARD_DELAY_MIN, BOARD_DELAY_MAX));
