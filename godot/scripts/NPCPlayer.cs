@@ -6,8 +6,9 @@ public partial class NPCPlayer : Area2D
 	[Export] public Area2D area;
 	[Export] public Sprite2D NpcSprite;
 
-	[Export] string destination_level_tag;
+	[Export] string sceneTag;
 	[Export] string destination_door_tag;
+	[Export] string currentSceneTag;
 	[Export] string spawn_direction = "right";
 
 	public Marker2D spawn_point;
@@ -18,7 +19,7 @@ public partial class NPCPlayer : Area2D
 		{
 			if (mouseEvent.ButtonIndex == MouseButton.Left)
 			{
-				//NavigationManager.Instance.GoToLevel("MCDialogue", "");
+				NavigationManager.Instance.loadDialogueScene(sceneTag, "");
 			}
 		}	
 	}
@@ -36,7 +37,7 @@ public partial class NPCPlayer : Area2D
 		MouseEntered += HighlightSprite;
 		MouseExited += RevertHighlightedSprite;
 
-		spawn_point = GetNode<Marker2D>("Spawn");
+		// spawn_point = GetNode<Marker2D>("Spawn");
 	}
 
 	public void HighlightSprite()

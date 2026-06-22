@@ -12,7 +12,8 @@ size = Vector2(79, 165)
 scale = Vector2(1, 0.99999994)
 script = ExtResource("1_c6v3n")
 NpcSprite = NodePath("Sprite2D")
-destination_level_tag = "MCDialogue"
+sceneTag = "MCDialogue"
+destination_door_tag = "left"
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1297988730]
 scale = Vector2(0.62499994, 1.2773439)

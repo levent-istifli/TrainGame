@@ -22,6 +22,43 @@ public partial class NavigationManager : Node
 	private readonly PackedScene scene_dialogue_collectables = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
 	private readonly PackedScene back_button = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
 
+	public void removeDialogueScene()
+	{
+		// remove current scene (aka dialogue - character interaction scene)
+		Window root = GetTree().Root;
+		Node currentScene = GetTree().CurrentScene;
+		root.RemoveChild(currentScene); 
+		currentScene.QueueFree();
+	}
+
+	public void loadDialogueScene(string sceneTag, string doorTag)
+	{
+		Window root = GetTree().Root;
+		// Node currentScene = GetTree().CurrentScene;
+
+
+		PackedScene sceneToLoad;
+		sceneToLoad = sceneTag switch {
+			"TestScene" => scene_cart1,
+			"TestScene2" => scene_cart2,
+			"TestScene3" => scene_cart3,
+			"MCDialogue" => scene_dialogue_collectables,
+			_ => null
+		};
+
+		if (sceneToLoad != null) {
+			spawnDoorTag = sceneTag;
+			Node newScene = sceneToLoad.Instantiate();
+			
+			// root.RemoveChild(currentScene);
+			// currentScene.QueueFree();
+
+			// add new scene (aka. dialogue/character interaction scene)
+			root.AddChild(newScene);
+			GetTree().CurrentScene = newScene;
+		}
+
+	}
 
 	public async Task goToLevel(string levelTag, string doorTag, Node2D currentLevel, CharacterBody2D player) {
 		GD.Print("In gotolevel");
@@ -32,7 +69,6 @@ public partial class NavigationManager : Node
 			"TestScene" => scene_cart1,
 			"TestScene2" => scene_cart2,
 			"TestScene3" => scene_cart3,
-			"MCDialogue" => scene_dialogue_collectables,
 			_ => null
 		};
 
@@ -83,6 +119,8 @@ public partial class NavigationManager : Node
 			}
 		}
 	}
+
+
 
 	public Marker2D FindSpawner(Node2D sceneWithDoor, string destDoorTag) {
 		//Goes through the nodes in the spawn points group and picks the correct spawn point for the current scene

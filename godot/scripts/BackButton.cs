@@ -4,20 +4,25 @@ using System;
 public partial class BackButton : Button
 {
 
-	[Export] string destination_level_tag;
-	[Export] string destination_door_tag;
+	[Export] string doorTag;
+	[Export] string sceneTag;
 	[Export] string spawn_direction = "right";
+	[Export] string prevSceneTag;
 	public Marker2D spawn_point;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		this.Pressed += OnButtonPressed;
+		Pressed += OnButtonPressed;
+		
 	}
 
 	private void OnButtonPressed()
 	{
-		//NavigationManager.Instance.go_to_level(destination_level_tag, destination_door_tag);
+		
+		// NavigationManager.Instance.goToDialogueScene(sceneTag, doorTag);
+		NavigationManager.Instance.removeDialogueScene();
+		// GD.Print("Show load prev scene when pressed");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
