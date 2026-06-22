@@ -9,4 +9,4 @@ offset_right = 143.0
 offset_bottom = 58.0
 text = "Go Back"
 script = ExtResource("1_ajove")
-destination_level_tag = "TestScene2"
+sceneTag = "TestScene2"
