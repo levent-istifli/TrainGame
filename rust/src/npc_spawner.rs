@@ -106,11 +106,12 @@ impl INode for NPCSpawner {
     fn ready(&mut self) {
         self.spawned_npcs.reserve(self.num_npcs as usize);
         for _ in 0..self.num_npcs {
-            let new_npc = self.npc_scene.instantiate_as::<NPC>();
+            let mut new_npc = self.npc_scene.instantiate_as::<NPC>();
             new_npc
                 .signals()
                 .went_inactive()
                 .connect_other(&self.to_gd(), Self::on_npc_inactive);
+            new_npc.set_z_index(1);
             self.base_mut().add_child(&new_npc);
             self.spawned_npcs.push(new_npc);
         }
@@ -118,7 +119,7 @@ impl INode for NPCSpawner {
 
     fn physics_process(&mut self, _delta: f64) {
         let input = Input::singleton();
-        if input.is_action_just_pressed("ui_up") {
+        if input.is_action_just_pressed("start") {
             self.start_boarding();
         }
     }
