@@ -18,6 +18,7 @@ charTimer = NodePath("CharTimer")
 nextIndicator = NodePath("DialogueBoxBackdrop/NextIndicator")
 
 [node name="TrainInterior" type="Sprite2D" parent="." unique_id=1440137525]
+visible = false
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_aawce")
 

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dulkofdokd4o1" path="res://scenes/Background.tscn" id="2_n77mx"]
 [ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="2_nb1wl"]
 [ext_resource type="PackedScene" uid="uid://bnfnq0jctl51d" path="res://scenes/npc_spawner.tscn" id="3_n77mx"]
+[ext_resource type="PackedScene" uid="uid://c2yva6vtvmdd2" path="res://scenes/NPCPlayer.tscn" id="4_nb1wl"]
 
 [node name="TestScene" type="Node2D" unique_id=1808858924]
 
@@ -70,6 +71,10 @@ position = Vector2(1000, 596)
 
 [node name="Seat6" type="Seat" parent="NPCSpawner" unique_id=321598540]
 position = Vector2(1288, 596)
+
+[node name="NPCPlayer" parent="." unique_id=217092309 instance=ExtResource("4_nb1wl")]
+position = Vector2(569, 517)
+metadata/_edit_group_ = true
 
 [connection signal="body_entered" from="Doors/Door_R" to="Doors/Door_R" method="OnBodyEntered"]
 [connection signal="body_entered" from="Doors/Door_L" to="Doors/Door_L" method="OnBodyEntered"]
