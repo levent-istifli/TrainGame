@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://beh2de8br4uk7"]
 
 [ext_resource type="Script" uid="uid://c1nue1b8nio8p" path="res://scripts/PlayerNew.cs" id="1_agiem"]
-[ext_resource type="Texture2D" uid="uid://bwvh2xpox812l" path="res://Art/ProtagonistWalk.png" id="2_agiem"]
+[ext_resource type="Texture2D" uid="uid://clnt7otqew0yn" path="res://Art/ProtagonistWalk.png" id="2_agiem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krj2m"]
 size = Vector2(107, 48)
@@ -12,6 +12,7 @@ speed = 300.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=461469366]
+z_index = 2
 texture = ExtResource("2_agiem")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=845235865]
