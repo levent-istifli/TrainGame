@@ -11,12 +11,10 @@ public partial class MainTestScene : Node
 		PackedScene startingScene = GD.Load<PackedScene>(scenePathToLoad);
 		Node startingSceneNode = startingScene.Instantiate();
 		AddChild(startingSceneNode);
-		//this.MoveChild(player, 1);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		//this.MoveChild(player, 1);
 	}
 }
