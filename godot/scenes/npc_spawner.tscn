@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bnfnq0jctl51d"]
+
+[ext_resource type="PackedScene" uid="uid://dabobsl1gguc8" path="res://scenes/npc.tscn" id="1_nd2k7"]
+
+[node name="NPCSpawner" type="NPCSpawner" unique_id=1586379648 node_paths=PackedStringArray("boarding_timer")]
+npc_scene = ExtResource("1_nd2k7")
+boarding_timer = NodePath("BoardingTimer")
+
+[node name="BoardingTimer" type="Timer" parent="." unique_id=2071240508]
+process_callback = 0
+one_shot = true
+
+[connection signal="timeout" from="BoardingTimer" to="." method="board_npc"]
