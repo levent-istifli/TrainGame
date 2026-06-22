@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dulkofdokd4o1"]
+
+[ext_resource type="Texture2D" uid="uid://den7ufppxa8qb" path="res://Art/SubwayStartRD.png" id="1_274mx"]
+
+[node name="Background" type="Node2D" unique_id=307874472]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1310419625]
+position = Vector2(960, 537)
+texture = ExtResource("1_274mx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=968824576]
+position = Vector2(960, 537)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=973653566]
+polygon = PackedVector2Array(-898, 81, -742, 84, -675, 148, -581, 168, -279, 188, 229, 182, 371, 169, 439, 96, 901, 101, 888, 385, -896, 381, -894, 96, -932, 157, -935, 416, -395, 439, 481, 464, 904, 439, 934, 253, 926, -51, 934, -308, 896, -450, -277, -424, -897, -439, -966, -97)

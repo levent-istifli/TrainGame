@@ -2,6 +2,7 @@
 .godot/
 .idea
 .vscode
+.vs
 target
 Cargo.lock
 **/.godot/**

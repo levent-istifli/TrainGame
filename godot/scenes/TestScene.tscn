@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://n0t3dca75wli"]
+
+[ext_resource type="PackedScene" uid="uid://dulkofdokd4o1" path="res://scenes/Background.tscn" id="2_n77mx"]
+[ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="2_nb1wl"]
+
+[node name="TestScene" type="Node2D" unique_id=1808858924]
+
+[node name="Background2" parent="." unique_id=307874472 instance=ExtResource("2_n77mx")]
+
+[node name="Doors" type="Node2D" parent="." unique_id=1961635004]
+
+[node name="Door_R" parent="Doors" unique_id=1938107216 node_paths=PackedStringArray("currentLevel") instance=ExtResource("2_nb1wl")]
+position = Vector2(1801, 776)
+destination_level_tag = "TestScene2"
+destination_door_tag = "L"
+currentLevel = NodePath("../..")
+
+[node name="Spawn" parent="Doors/Door_R" index="1" unique_id=21988130 groups=["Spawn Points"]]
+position = Vector2(-161, 0)
+doorTag = "R"
+metadata/_edit_group_ = true
+
+[node name="Door_L" parent="Doors" unique_id=293795578 node_paths=PackedStringArray("currentLevel") instance=ExtResource("2_nb1wl")]
+position = Vector2(117, 776)
+destination_level_tag = "TestScene3"
+destination_door_tag = "R"
+currentLevel = NodePath("../..")
+
+[node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130 groups=["Spawn Points"]]
+position = Vector2(148, 0)
+doorTag = "L"
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="." unique_id=2136907171]
+offset_top = 23.0
+offset_right = 1917.0
+offset_bottom = 137.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 83
+text = "Cart 1"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Doors/Door_R" to="Doors/Door_R" method="OnBodyEntered"]
+[connection signal="body_entered" from="Doors/Door_L" to="Doors/Door_L" method="OnBodyEntered"]
+
+[editable path="Doors/Door_R"]
+[editable path="Doors/Door_L"]
