@@ -2,13 +2,14 @@ using Godot;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using GodotStringIntercept;
 
 public partial class DialogueBoxUI : Node
 {
 
 	public static DialogueBoxUI Instance { get; private set; }
 
-	[Export] public float charDuration = 0.1f;
+	[Export] public float charDuration = 0.2f;
 	[Export] public Label textBox;
 	[Export] public Label option1TextBox;
 	[Export] public Label option2TextBox;
@@ -177,10 +178,10 @@ public partial class DialogueBoxUI : Node
 	}
 
 	bool skipped = false;
-    public override void _Input(InputEvent @event)
-    {
+	public override void _Input(InputEvent @event)
+	{
 
-        if (@event.IsActionPressed("dialogueNext"))
+		if (@event.IsActionPressed("dialogueNext".AsStringName()))
 		{
 
 			if (isChoosing)
@@ -204,5 +205,5 @@ public partial class DialogueBoxUI : Node
 				waitNextLine?.TrySetResult(true);
 			}
 		}
-    }
+	}
 }

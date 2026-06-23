@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c7ygs80tn4ttd"]
 
-[ext_resource type="Texture2D" uid="uid://cxbllf1cgb4eo" path="res://scenes/dialoguetestscene/traininterior.png" id="1_aawce"]
+[ext_resource type="Texture2D" uid="uid://cyucpvwupsme6" path="res://scenes/dialoguetestscene/traininterior.png" id="1_aawce"]
 [ext_resource type="Script" uid="uid://blxu853na5h8j" path="res://scripts/DialogueBoxUI.cs" id="1_pmob3"]
 [ext_resource type="Texture2D" uid="uid://dlwd6d53xnfh2" path="res://icon.svg" id="3_11ujm"]
 [ext_resource type="Script" uid="uid://dns6dxq6gbpue" path="res://scripts/DialogueTestUser.cs" id="4_ttl7p"]

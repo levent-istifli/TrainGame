@@ -4,11 +4,7 @@ using System;
 
 public partial class PlayerNew : CharacterBody2D
 {
-	Sprite2D sprite;
-	public override void _Ready()
-	{
-		sprite = GetNode<Sprite2D>("Sprite2D");
-	}
+	[Export] Sprite2D sprite;
 
 	[Export]
 	public float speed = 50;

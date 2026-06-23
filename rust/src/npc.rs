@@ -38,9 +38,6 @@ impl NPC {
 
     #[func]
     pub fn board_train(&mut self, aisle_y_position: f32) {
-        // self.base_mut().set_velocity(Vector2 { x: 0.0, y: -300.0 })
-        // let new_pos = self.target_seat_position;
-        // self.base_mut().set_position(new_pos);
         self.movement_targets.push(self.target_seat_position);
         self.movement_targets.push(Vector2 { x: self.target_seat_position.x, y: aisle_y_position });
         self.movement_targets.push(Vector2 { x: self.base().get_position().x, y: aisle_y_position });

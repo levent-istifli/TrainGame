@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using GodotStringIntercept;
 
 public partial class Camera2d : Camera2D
 {
@@ -20,7 +21,7 @@ public partial class Camera2d : Camera2D
 	public Tween MoveCamera(float finalX) { 
 		//Make a tween in the current tree, tween the camera, then return the tween to use the signal later
 		Tween tween = GetTree().CreateTween();
-		tween.TweenProperty(this, "position:x", finalX, 1.5);
+		tween.TweenProperty(this, "position:x".AsNodePath(), finalX, 1.5);
 		return tween;
 	}
 }

@@ -112,7 +112,10 @@ impl NPCSpawner {
             if randf() > EXIT_CHANCE {
                 continue
             }
-            let timer = self.base_mut().get_tree().create_timer_ex(randf_range(EXIT_DELAY_MIN, EXIT_DELAY_MAX)).process_in_physics(true).done();
+            let timer = self.base_mut().get_tree()
+                .create_timer_ex(randf_range(EXIT_DELAY_MIN, EXIT_DELAY_MAX))
+                .process_in_physics(true)
+                .done();
             timer
                 .signals()
                 .timeout()

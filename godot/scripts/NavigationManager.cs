@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Net.Security;
 using System.Threading.Tasks;
+using GodotStringIntercept;
 
 public partial class NavigationManager : Node
 {
@@ -25,11 +26,11 @@ public partial class NavigationManager : Node
 	public void removeDialogueScene()
 	{
 		// remove current scene (aka dialogue - character interaction scene)
-		var nodesToPause = GetTree().GetNodesInGroup("Pause");
+		var nodesToPause = GetTree().GetNodesInGroup("Pause".AsStringName());
 		for (int i = 0; i < nodesToPause.Count; i++)
 		{
 			nodesToPause[i].ProcessMode = ProcessModeEnum.Inherit;
-			nodesToPause[i].Set("visible", true);
+			nodesToPause[i].Set("visible".AsStringName(), true);
 		}
 		Window root = GetTree().Root;
 		Node currentScene = GetTree().CurrentScene;
@@ -63,11 +64,11 @@ public partial class NavigationManager : Node
 			// add new scene (aka. dialogue/character interaction scene)
 			root.AddChild(newScene);
 			GetTree().CurrentScene = newScene;
-			var nodesToPause = GetTree().GetNodesInGroup("Pause");
+			var nodesToPause = GetTree().GetNodesInGroup("Pause".AsStringName());
 			for (int i = 0; i < nodesToPause.Count; i++)
 			{
 				nodesToPause[i].ProcessMode = ProcessModeEnum.Disabled;
-				nodesToPause[i].Set("visible", false);
+				nodesToPause[i].Set("visible".AsStringName(), false);
 			}
 		}
 
@@ -110,14 +111,13 @@ public partial class NavigationManager : Node
 				}
 
 				//Add new scene, hide player, tween camera, move player in new position next to door and unhide
-				Callable.From(() => GetTree().Root.GetNode("MainScene").AddChild(newScene2D)).CallDeferred();
-				await ToSignal(GetTree(), "process_frame");
+				Callable.From(() => GetTree().Root.GetNode("MainScene".AsNodePath()).AddChild(newScene2D)).CallDeferred();
+				await ToSignal(GetTree(), "process_frame".AsStringName());
 				player.Hide();
 				Tween tween = Camera2d.Instance.MoveCamera(finalCamPos);
 				await ToSignal(tween, Tween.SignalName.Finished);
-				//Callable.From(() => GetTree().Root.GetNode("MainTestScene").RemoveChild(currentLevel)).CallDeferred();
 				Callable.From(() => currentLevel.QueueFree()).CallDeferred();  //compleltley deletes from memory, so you lose saved state
-				GD.Print("Group size: ", GetTree().GetNodesInGroup("Spawn Points").Count);
+				GD.Print("Group size: ", GetTree().GetNodesInGroup("Spawn Points".AsStringName()).Count);
 				Marker2D newSpawn = FindSpawner(newScene2D, doorTag);
 				if (newSpawn != null) {
 					//GD.Print("New spawn isn't null");
@@ -137,7 +137,7 @@ public partial class NavigationManager : Node
 
 	public Marker2D FindSpawner(Node2D sceneWithDoor, string destDoorTag) {
 		//Goes through the nodes in the spawn points group and picks the correct spawn point for the current scene
-		var spawns = GetTree().GetNodesInGroup("Spawn Points");
+		var spawns = GetTree().GetNodesInGroup("Spawn Points".AsStringName());
 		for (int i = 0; i < spawns.Count; i++) {
 			//GD.Print("current spawn: " +  spawns[i].Name);
 			//GD.Print("Node type: " + spawns[i].GetType());

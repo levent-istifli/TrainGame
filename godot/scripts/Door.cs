@@ -13,11 +13,6 @@ public partial class Door : Node2D
 	[Export] public Node2D currentLevel;
 	[Export] public Marker2D spawn_point;
 
-	public override void _Ready()
-	{
-		// spawn_point = GetNode<Marker2D>("Spawn");
-	}
-
 	private void OnBodyEntered(Node2D body)
 	{
 		GD.Print("Door entered");

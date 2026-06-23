@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://b8u6f3ehn1y80"]
 
 [ext_resource type="Script" uid="uid://crnubnbq4hggb" path="res://scripts/MainTestScene.cs" id="1_7ykc4"]
+[ext_resource type="PackedScene" uid="uid://n0t3dca75wli" path="res://scenes/TestScene.tscn" id="2_7ykc4"]
 [ext_resource type="PackedScene" uid="uid://beh2de8br4uk7" path="res://scenes/PlayerNew.tscn" id="3_pu3yx"]
 
 [node name="MainScene" type="Node" unique_id=1297421532 node_paths=PackedStringArray("player")]
 script = ExtResource("1_7ykc4")
+startingScene = ExtResource("2_7ykc4")
 player = NodePath("Player")
 
 [node name="Player" parent="." unique_id=1629053667 instance=ExtResource("3_pu3yx")]

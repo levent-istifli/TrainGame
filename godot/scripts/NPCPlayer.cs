@@ -36,8 +36,6 @@ public partial class NPCPlayer : Area2D
 
 		MouseEntered += HighlightSprite;
 		MouseExited += RevertHighlightedSprite;
-
-		// spawn_point = GetNode<Marker2D>("Spawn");
 	}
 
 	public void HighlightSprite()
