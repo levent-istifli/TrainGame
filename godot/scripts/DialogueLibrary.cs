@@ -8,21 +8,38 @@ public class DialogueLibrary
 
 	public DialogueLibrary()
 	{
+
+		DialogueBoxUI ui = DialogueBoxUI.Instance;
+
 		dialogueEvents["testDialogue"] = new DialogueEvent(async () =>
 		{
-			DialogueBoxUI ui = DialogueBoxUI.Instance;
-			await ui.DisplayText("Hello.");
 
-			ui.ChangeTextSpeed(30);
+			ui.PhraseBegin();
+			await ui.DisplayLine("first");
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("second");
+			await ui.DisplayLine("third");
+			ui.ChangeTextSpeed(40);
+			await ui.DisplayLine("fourth");
+			await ui.PhraseEnd();
 
-			await ui.DisplayText("Here is a test question.");
+			ui.PhraseBegin();
+			await ui.DisplayLine("lorem ");
+			await ui.DisplayLine("ipsum ");
+			await ui.DisplayLine("dolor ");
+			await ui.DisplayLine("sit");
+			await ui.PhraseEnd();
 
+
+			ui.PhraseBegin();
 			int choice = await ui.DisplayChoice("Yes", "No");
 
 			if (choice == 0)
-				await ui.DisplayText("You picked yes.");
+				await ui.DisplayLine("You picked yes.");
 			else
-				await ui.DisplayText("You picked no.");
+				await ui.DisplayLine("You picked no.");
+
+			await ui.PhraseEnd();
 		});
 	}
 

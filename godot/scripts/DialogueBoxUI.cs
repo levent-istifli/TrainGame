@@ -18,9 +18,13 @@ public partial class DialogueBoxUI : Node
 	[Export] public Timer charTimer;
 	[Export] public Control nextIndicator;
 
+	public string currLine;
 	public string currString;
 	public string nextString;
+	bool skipped = false;
+	bool phraseFinished = false;
 
+	private TaskCompletionSource<bool> waitPhraseEnd;
 	private TaskCompletionSource<bool> waitNextLine;
 	private TaskCompletionSource<int> waitQuestion;
 	bool isChoosing = false;
@@ -52,6 +56,7 @@ public partial class DialogueBoxUI : Node
 	int dialogueLine = 0;
 	bool isTyping = false;
 
+	//Don't use this for now
 	public async Task DisplayText(string text)
 	{
 		ClearBox();
@@ -69,23 +74,73 @@ public partial class DialogueBoxUI : Node
 		await waitNextLine.Task;
 	}
 
+	public async Task DisplayLine(string text)
+	{
+		currLine = text;
+		currString += text;
+		
+		if (skipped) return;
+
+		textIterator = 0;
+		isTyping = true;
+		nextIndicator.Visible = false;
+
+		waitNextLine = new TaskCompletionSource<bool>();
+
+		charTimer.Stop();
+		charTimer.Start();
+
+		await waitNextLine.Task;
+	}
+
+
+	public void PhraseBegin()
+	{
+		charTimer.Stop();
+		currLine = "";
+		currString = "";
+		textIterator = 0;
+
+		isTyping = false;
+		skipped = false;
+
+		nextIndicator.Visible = false;
+		ClearBox();
+	}
+
+	public async Task PhraseEnd()
+	{
+		skipped = false;
+		isTyping = false;
+		charTimer.Stop();
+		
+		nextIndicator.Visible = true;
+		textBox.Text = currString;
+
+		phraseFinished = true;
+		waitPhraseEnd = new TaskCompletionSource<bool>();
+
+		await waitPhraseEnd.Task;
+	}
+
 	int textIterator = 0;
 	private void OnCharTimeout()
 	{
-		if (textIterator < currString.Length)
+		if (!isTyping || skipped) return;
+
+		if (textIterator < currLine.Length)
 		{
-			textBox.Text += currString[textIterator];
+			textBox.Text += currLine[textIterator];
 			textIterator++;
 			charTimer.Start();
 		}
 		else
 		{
 			isTyping = false;
-			nextIndicator.Visible = true;
 			charTimer.Stop();
+			waitNextLine?.TrySetResult(true);
 		}
 	}
-
 
 	public async Task<int> DisplayChoice(string option1, string option2)
 	{
@@ -146,7 +201,6 @@ public partial class DialogueBoxUI : Node
 
 	private void OnOption1MouseEntered()
 	{
-		GD.Print("aifhwafa");
 		SelectOption(0);
 	}
 
@@ -177,7 +231,6 @@ public partial class DialogueBoxUI : Node
 		ClearBox();
 	}
 
-	bool skipped = false;
 	public override void _Input(InputEvent @event)
 	{
 
@@ -194,15 +247,19 @@ public partial class DialogueBoxUI : Node
 			}
 
 			if (isTyping)
-			{
-				charTimer.Stop();
-				textBox.Text = currString;
+			{	
+				skipped = true;
 				isTyping = false;
-				nextIndicator.Visible = true;
-			}
-			else
-			{
+				charTimer.Stop();
 				waitNextLine?.TrySetResult(true);
+			} else
+			{
+				if (phraseFinished)
+				{
+					phraseFinished = false;
+					nextIndicator.Visible = false;
+					waitPhraseEnd?.TrySetResult(true);
+				}
 			}
 		}
 	}
