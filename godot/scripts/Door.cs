@@ -20,9 +20,9 @@ public partial class Door : Node2D
 
 		if (body is PlayerNew player)
 		{
-            #pragma warning disable CS4014
+			#pragma warning disable CS4014
 			NavigationManager.Instance.goToLevel(destination_level_tag, destination_door_tag, currentLevel, player);
-            #pragma warning restore CS4014
-        }
+			#pragma warning restore CS4014
+		}
 	}
 }
