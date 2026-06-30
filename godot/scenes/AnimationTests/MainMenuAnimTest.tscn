@@ -1,3 +1,19 @@
 [gd_scene format=3 uid="uid://dlmyryj3e0w3g"]
 
+[ext_resource type="Texture2D" uid="uid://g401bhkn6uqt" path="res://Art/MMRD2.png" id="1_l81sn"]
+[ext_resource type="Texture2D" uid="uid://ktmm0lcd7ha7" path="res://Art/MMRD_L.png" id="2_8opa4"]
+[ext_resource type="Texture2D" uid="uid://cxxgw24tslsli" path="res://Art/MMRD_R.png" id="3_r4vgf"]
+
 [node name="MainMenuAnimTest" type="Node2D" unique_id=1525075800]
+
+[node name="Train" type="Sprite2D" parent="." unique_id=1553291544]
+position = Vector2(960, 537)
+texture = ExtResource("1_l81sn")
+
+[node name="LeftDoor" type="Sprite2D" parent="." unique_id=1019665832]
+position = Vector2(960, 537)
+texture = ExtResource("2_8opa4")
+
+[node name="RightDoor" type="Sprite2D" parent="." unique_id=1622307358]
+position = Vector2(960, 537)
+texture = ExtResource("3_r4vgf")
