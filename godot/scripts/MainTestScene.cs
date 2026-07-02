@@ -26,7 +26,7 @@ public partial class MainTestScene : Node
 
 		if (rightSceneNode2D != null) {
 			Vector2 positionChange = new Vector2(-1920, 0);
-			rightSceneNode2D.Position -= positionChange;
+			rightSceneNode2D.Position += positionChange;
 		}
 
 		AddChild(leftSceneNode);

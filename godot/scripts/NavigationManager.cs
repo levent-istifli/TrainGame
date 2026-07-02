@@ -74,7 +74,7 @@ public partial class NavigationManager : Node
 
 	}
 
-	public async Task goToLevel(string levelTag, string doorTag, Node2D currentLevel, CharacterBody2D player) {
+	public async Task goToLevel(string levelTag, string doorTag, Node2D nextLevel, CharacterBody2D player) {
 		GD.Print("In gotolevel");
 		//PackedScene sceneToLoad;
 
@@ -105,14 +105,21 @@ public partial class NavigationManager : Node
 		player.Hide();
 		Tween tween = Camera2d.Instance.MoveCamera(finalCamPos);
 		await ToSignal(tween, Tween.SignalName.Finished);
-  //      Marker2D newSpawn = FindSpawner(newScene2D, doorTag);
-		//if (newSpawn != null)
-		//{
-		//	player.GlobalPosition = newSpawn.GlobalPosition;
-		//	player.Show();
-		//}
 
-  //          if (sceneToLoad != null) {
+		Node2D nextLevel2D = nextLevel as Node2D;
+
+		Marker2D newSpawn = FindSpawner(nextLevel, doorTag);
+		if (newSpawn != null)
+		{
+			GD.Print("New spawn isn't null");
+			GD.Print("New Spawn position: " + newSpawn.GlobalPosition);
+			GD.Print("Current Player position" + player.GlobalPosition);
+			player.GlobalPosition = newSpawn.GlobalPosition;
+
+			player.Show();
+		}
+
+		//          if (sceneToLoad != null) {
 		//	//GD.Print("Scene to load isn't null");
 		//	//Keep current scene as is and instantiate the new scene
 		//	spawnDoorTag = doorTag;
@@ -150,10 +157,10 @@ public partial class NavigationManager : Node
 		//			//GD.Print("New Spawn position: " + newSpawn.GlobalPosition);
 		//			//GD.Print("Current Player position" + player.GlobalPosition);
 		//			player.GlobalPosition = newSpawn.GlobalPosition;
-				
+
 		//			player.Show();
 		//		}
-				
+
 		//		//GD.Print("Final Cam Pos: ", finalCamPos);
 		//	}
 		//}
@@ -169,7 +176,7 @@ public partial class NavigationManager : Node
 			//GD.Print("Node type: " + spawns[i].GetType());
 			//GD.Print(spawns[i].GetParent());
 			Node2D current = spawns[i] as Node2D;
-			GD.Print(sceneWithDoor.IsAncestorOf(current));
+			//GD.Print(sceneWithDoor.IsAncestorOf(current));
 
 			if (current != null && sceneWithDoor.IsAncestorOf(current)) {
 				Spawn spawnPoint = spawns[i] as Spawn;
