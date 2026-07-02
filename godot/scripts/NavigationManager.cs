@@ -17,8 +17,6 @@ public partial class NavigationManager : Node
 	private readonly PackedScene scene_cart3 = GD.Load<PackedScene>("res://scenes/TestScene3.tscn");
 	public string spawnDoorTag;
 
-	//[Signal] public delegate void TriggerPlayerSpawnEventHandler(Vector2 position, string direction);
-
 
 	private readonly PackedScene scene_dialogue_collectables = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
 	private readonly PackedScene back_button = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
@@ -75,30 +73,17 @@ public partial class NavigationManager : Node
 	}
 
 	public async Task goToLevel(string levelTag, string doorTag, Node2D nextLevel, CharacterBody2D player) {
-		GD.Print("In gotolevel");
-		//PackedScene sceneToLoad;
-
-		//Match the level tag/name with the corresponding scenes, save it in sceneToLoad
-		//sceneToLoad = levelTag switch {
-		//	"TestScene" => scene_cart1,
-		//	"TestScene2" => scene_cart2,
-		//	"TestScene3" => scene_cart3,
-		//	_ => null
-		//};
-		
 		spawnDoorTag = doorTag;
 		float finalCamPos = 0;
 
 		if (doorTag == "L")
 		{
 			Vector2 positionChange = new Vector2(1920, 0);
-			//newScene2D.Position = currentLevel.Position + positionChange;
 			finalCamPos = (Camera2d.Instance.Position + positionChange).X;
 		}
 		else if (doorTag == "R")
 		{
 			Vector2 positionChange = new Vector2(-1920, 0);
-			//newScene2D.Position = currentLevel.Position + positionChange;
 			finalCamPos = (Camera2d.Instance.Position + positionChange).X;
 		}
 
@@ -111,9 +96,6 @@ public partial class NavigationManager : Node
 		Marker2D newSpawn = FindSpawner(nextLevel, doorTag);
 		if (newSpawn != null)
 		{
-			GD.Print("New spawn isn't null");
-			GD.Print("New Spawn position: " + newSpawn.GlobalPosition);
-			GD.Print("Current Player position" + player.GlobalPosition);
 			player.GlobalPosition = newSpawn.GlobalPosition;
 
 			player.Show();
@@ -172,16 +154,11 @@ public partial class NavigationManager : Node
 		//Goes through the nodes in the spawn points group and picks the correct spawn point for the current scene
 		var spawns = GetTree().GetNodesInGroup("Spawn Points".AsStringName());
 		for (int i = 0; i < spawns.Count; i++) {
-			//GD.Print("current spawn: " +  spawns[i].Name);
-			//GD.Print("Node type: " + spawns[i].GetType());
-			//GD.Print(spawns[i].GetParent());
 			Node2D current = spawns[i] as Node2D;
-			//GD.Print(sceneWithDoor.IsAncestorOf(current));
 
 			if (current != null && sceneWithDoor.IsAncestorOf(current)) {
 				Spawn spawnPoint = spawns[i] as Spawn;
 				if (spawnPoint != null && spawnPoint.GetDoorTag() == destDoorTag) {
-					GD.Print("Non null spawn point is being returned");
 					return spawnPoint;
 				}
 			}

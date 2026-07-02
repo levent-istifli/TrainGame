@@ -10,7 +10,6 @@ public partial class MainTestScene : Node
 	[Export] CharacterBody2D player;
 	public override void _Ready()
 	{
-		GD.Print(startingScene);
 		Node startingSceneNode = startingScene.Instantiate();
 		AddChild(startingSceneNode);
 

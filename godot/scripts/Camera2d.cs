@@ -9,7 +9,6 @@ public partial class Camera2d : Camera2D
 	public override void _Ready()
 	{
 		Instance = this;
-		GD.Print("Camera Pos: ", Position);
 		Position = new Vector2(960, 540);
 	}
 
