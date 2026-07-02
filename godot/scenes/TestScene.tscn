@@ -11,22 +11,20 @@
 
 [node name="Doors" type="Node2D" parent="." unique_id=1961635004]
 
-[node name="Door_R" parent="Doors" unique_id=1938107216 node_paths=PackedStringArray("currentLevel") instance=ExtResource("2_nb1wl")]
+[node name="Door_R" parent="Doors" unique_id=1938107216 instance=ExtResource("2_nb1wl")]
 position = Vector2(1801, 776)
 destination_level_tag = "TestScene2"
 destination_door_tag = "L"
-currentLevel = NodePath("../..")
 
 [node name="Spawn" parent="Doors/Door_R" index="1" unique_id=21988130 groups=["Spawn Points"]]
 position = Vector2(-161, 0)
 doorTag = "R"
 metadata/_edit_group_ = true
 
-[node name="Door_L" parent="Doors" unique_id=293795578 node_paths=PackedStringArray("currentLevel") instance=ExtResource("2_nb1wl")]
+[node name="Door_L" parent="Doors" unique_id=293795578 instance=ExtResource("2_nb1wl")]
 position = Vector2(117, 776)
 destination_level_tag = "TestScene3"
 destination_door_tag = "R"
-currentLevel = NodePath("../..")
 
 [node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130 groups=["Spawn Points"]]
 position = Vector2(148, 0)
