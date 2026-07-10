@@ -30,6 +30,27 @@ public partial class PlayerInventory : Node
     public override void _Ready()
     {
         inventoryItems = new();
+    }
 
+    public void AddItem()
+    {
+        
+    }
+
+    public void RemoveItem()
+    {
+        
+    }
+    
+    public bool HasItem(string id)
+    {
+        bool found = false;
+
+        foreach (InventoryItem item in inventoryItems)
+        {
+            if (item.itemID == id) found = true;   
+        }
+
+        return found;
     }
 }
