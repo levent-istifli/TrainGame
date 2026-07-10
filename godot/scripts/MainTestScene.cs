@@ -8,6 +8,8 @@ public partial class MainTestScene : Node
 	[Export] PackedScene leftScene;
 	[Export] PackedScene rightScene;
 	[Export] CharacterBody2D player;
+	[Export] PackedScene inventoryScene;
+
 	public override void _Ready()
 	{
 		Node startingSceneNode = startingScene.Instantiate();
@@ -15,6 +17,7 @@ public partial class MainTestScene : Node
 
 		Node leftSceneNode = leftScene.Instantiate();
 		Node rightSceneNode = rightScene.Instantiate();
+		Node inventoryNode = inventoryScene.Instantiate();
 		Node2D leftSceneNode2D = leftSceneNode as Node2D;
 		Node2D rightSceneNode2D = rightSceneNode as Node2D;
 
