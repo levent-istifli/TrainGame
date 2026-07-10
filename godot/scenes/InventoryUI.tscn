@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://c42mgvtrilwxf"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_12sur"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
 [node name="InventoryUI" type="Control" unique_id=1258985105]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +10,55 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="." unique_id=1825732318]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(9.132505, 1.7260903)
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=381261389]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1524281013]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_12sur")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer" unique_id=1543789592]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_12sur")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer" unique_id=1932401193]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_12sur")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer" unique_id=1410120814]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_12sur")
+expand_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="HBoxContainer" unique_id=782670401]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_12sur")
+expand_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="HBoxContainer" unique_id=592842920]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_12sur")
+expand_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="HBoxContainer" unique_id=708235741]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_12sur")
+expand_mode = 2
+
+[node name="TextureRect8" type="TextureRect" parent="HBoxContainer" unique_id=908938950]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_12sur")
+expand_mode = 2
