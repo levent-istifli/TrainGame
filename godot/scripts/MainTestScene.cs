@@ -33,6 +33,7 @@ public partial class MainTestScene : Node
 
 		AddChild(leftSceneNode);
 		AddChild(rightSceneNode);
+		AddChild(inventoryNode);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://c42mgvtrilwxf"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_12sur"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+[ext_resource type="PackedScene" uid="uid://dprmhuiq2vn26" path="res://scenes/PlayerInventory.tscn" id="1_wqexf"]
+[ext_resource type="Resource" uid="uid://c6h3pmbn4kh44" path="res://scripts/Items/TestItem.tres" id="2_ju2k0"]
 
 [node name="InventoryUI" type="Control" unique_id=1258985105]
+z_index = 20
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,42 +24,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1524281013]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_12sur")
-expand_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer" unique_id=1543789592]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_12sur")
-expand_mode = 2
-
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer" unique_id=1932401193]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_12sur")
-expand_mode = 2
-
-[node name="TextureRect4" type="TextureRect" parent="HBoxContainer" unique_id=1410120814]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_12sur")
-expand_mode = 2
-
-[node name="TextureRect5" type="TextureRect" parent="HBoxContainer" unique_id=782670401]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_12sur")
-expand_mode = 2
-
-[node name="TextureRect6" type="TextureRect" parent="HBoxContainer" unique_id=592842920]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_12sur")
-expand_mode = 2
-
-[node name="TextureRect7" type="TextureRect" parent="HBoxContainer" unique_id=708235741]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_12sur")
-expand_mode = 2
-
-[node name="TextureRect8" type="TextureRect" parent="HBoxContainer" unique_id=908938950]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_12sur")
-expand_mode = 2
+[node name="PlayerInventory" parent="." unique_id=1148912289 node_paths=PackedStringArray("itemUIGrid") instance=ExtResource("1_wqexf")]
+itemPool = Array[Object]([ExtResource("2_ju2k0")])
+itemUIGrid = NodePath("../HBoxContainer")

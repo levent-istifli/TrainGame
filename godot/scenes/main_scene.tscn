@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://5ducmopc668r" path="res://scenes/TestScene2.tscn" id="3_gubc5"]
 [ext_resource type="PackedScene" uid="uid://beh2de8br4uk7" path="res://scenes/PlayerNew.tscn" id="3_pu3yx"]
 [ext_resource type="PackedScene" uid="uid://cr5d2dmtghk06" path="res://scenes/TestScene3.tscn" id="4_rt2n2"]
-[ext_resource type="PackedScene" uid="uid://dprmhuiq2vn26" path="res://scenes/PlayerInventory.tscn" id="5_rt2n2"]
+[ext_resource type="PackedScene" uid="uid://c42mgvtrilwxf" path="res://scenes/InventoryUI.tscn" id="7_c16ls"]
 
 [node name="MainScene" type="Node" unique_id=1297421532 node_paths=PackedStringArray("player")]
 script = ExtResource("1_7ykc4")
@@ -13,7 +13,7 @@ startingScene = ExtResource("2_7ykc4")
 leftScene = ExtResource("3_gubc5")
 rightScene = ExtResource("4_rt2n2")
 player = NodePath("Player")
-inventoryScene = ExtResource("5_rt2n2")
+inventoryScene = ExtResource("7_c16ls")
 
 [node name="Player" parent="." unique_id=1629053667 instance=ExtResource("3_pu3yx")]
 position = Vector2(923, 841)

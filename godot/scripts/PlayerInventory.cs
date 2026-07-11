@@ -5,7 +5,9 @@ using System.Collections.Generic;
 public partial class PlayerInventory : Node
 {
 
-
+    [Export] InventoryItem[] itemPool;
+    [Export] public HBoxContainer itemUIGrid;
+    [Export] public PackedScene testIcon;
     public static PlayerInventory Instance { get; private set; }
     public List<InventoryItem> inventoryItems;
 
@@ -30,11 +32,26 @@ public partial class PlayerInventory : Node
     public override void _Ready()
     {
         inventoryItems = new();
+        AddItem("test");
     }
 
-    public void AddItem()
+    public void AddItem(string id)
     {
-        
+        InventoryItem item = Array.Find(
+            itemPool,
+            poolItem => poolItem != null && poolItem.itemID == id
+        );
+
+        TextureRect iconObj = testIcon.Instantiate<TextureRect>();
+
+        if (item == null)
+        {
+            GD.PushWarning($"Inventory item with ID '{id}' was not found.");
+            return;
+        }
+
+        iconObj.Texture = item.sprite;
+        itemUIGrid.AddChild(iconObj);
     }
 
     public void RemoveItem()
