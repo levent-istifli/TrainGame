@@ -32,7 +32,6 @@ public partial class PlayerInventory : Node
     public override void _Ready()
     {
         inventoryItems = new();
-        AddItem("test");
     }
 
     public void AddItem(string id)
@@ -51,6 +50,7 @@ public partial class PlayerInventory : Node
         }
 
         iconObj.Texture = item.sprite;
+        inventoryItems.Add(item);
         itemUIGrid.AddChild(iconObj);
     }
 

@@ -10,6 +10,7 @@ public class DialogueLibrary
 	{
 
 		DialogueBoxUI ui = DialogueBoxUI.Instance;
+		PlayerInventory inventory = PlayerInventory.Instance;
 
 		dialogueEvents["testDialogue"] = new DialogueEvent(async () =>
 		{
@@ -23,6 +24,7 @@ public class DialogueLibrary
 			await ui.DisplayLine("fourth");
 			await ui.PhraseEnd();
 
+			
 			ui.PhraseBegin();
 			await ui.DisplayLine("lorem ");
 			await ui.DisplayLine("ipsum ");
@@ -31,6 +33,24 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 
+			//Test Inventory Functionality
+			inventory.AddItem("test");
+			bool hasTestItem = inventory.HasItem("test");
+			
+			ui.PhraseBegin();
+
+			if (hasTestItem)
+			{
+				await ui.DisplayLine("You got the item.");
+			}
+			else
+			{
+				await ui.DisplayLine("You didn't get the item.");
+			}
+			await ui.PhraseEnd();
+
+
+			//Test Choices Functionality
 			ui.PhraseBegin();
 			int choice = await ui.DisplayChoice("Yes", "No");
 

@@ -31,6 +31,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="TrainGame"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/eliin/OneDrive/Desktop/TrainGameRecordings/test.avi"
+
 [global_group]
 
 "Spawn Points"="All spawn points from doors"
