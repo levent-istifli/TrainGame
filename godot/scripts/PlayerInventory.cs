@@ -54,10 +54,27 @@ public partial class PlayerInventory : Node
         itemUIGrid.AddChild(iconObj);
     }
 
-    public void RemoveItem()
+    public void RemoveItem(string id)
+{
+    int itemIndex = inventoryItems.FindIndex(
+        item => item != null && item.itemID == id
+    );
+
+    if (itemIndex == -1)
     {
-        
+        GD.PushWarning($"Inventory item with ID '{id}' was not found.");
+        return;
     }
+
+    inventoryItems.RemoveAt(itemIndex);
+
+    if (itemIndex < itemUIGrid.GetChildCount())
+    {
+        Node icon = itemUIGrid.GetChild(itemIndex);
+        itemUIGrid.RemoveChild(icon);
+        icon.QueueFree();
+    }
+}
     
     public bool HasItem(string id)
     {
