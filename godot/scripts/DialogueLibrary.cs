@@ -133,6 +133,7 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			await ui.DisplayLine("Asahibashi. We have arrived at Asahibashi, station number 2.");
 			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.DisplayLine("The next stop is Mizunami. Station number 3.");
 			await ui.PhraseEnd();
 			
 			//Mother
@@ -231,7 +232,7 @@ public class DialogueLibrary
 			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Oh, I forgot! She has dark, black hair and usually has a flower pin just like me!");
 			await ui.DisplayLine("She’ll be getting on at the next station. Her name is Hana.");
-			await ui.DisplayLine("She’ll be on for a bit, probably until Station 7. Look for her throughout the carts. Thank you so much for your help, miss!");
+			await ui.DisplayLine("She’ll be on for a bit, probably until station 7. Look for her throughout the carts. Thank you so much for your help, miss!");
 			await ui.PhraseEnd();
 			
 			//MC
@@ -251,8 +252,9 @@ public class DialogueLibrary
 			//Train Intercom
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
-			await ui.DisplayLine("Asahibashi. We have arrived at Asahibashi, station number 2.");
+			await ui.DisplayLine("Mizunami. We have arrived at Mizunami, station number 3.");
 			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.DisplayLine("The next stop is Kasumigaura. Station number 4.");
 			await ui.PhraseEnd();
 			
 			//MC
