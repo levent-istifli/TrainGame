@@ -34,6 +34,58 @@ public class DialogueLibrary
 
 			//Train intercom
 			ui.PhraseBegin();
+			await ui.DisplayLine("This subway will now be transitioning to the Onizuka Train Line.");
+			await ui.DisplayLine("This train is local and will be stopping at all 12 stations, including Yami, Mei, and Yū.");
+			await ui.DisplayLine("We will shortly be arriving at Midorigaoka. Station number 1.");
+			await ui.PhraseEnd();
+			
+			//Back to MC
+			ui.PhraseBegin();
+			await ui.DisplayLine("Is this it?");
+			await ui.DisplayLine("Is this all that is left for me?");
+			await ui.DisplayLine("Am I sure that I can go through with this?");
+			await ui.DisplayLine("Will I be happy with this outcome?");
+			await ui.DisplayLine("Will I feel free?");
+			await ui.DisplayLine(". . .");
+			await ui.PhraseEnd();
+			
+			//Train intercom
+			ui.PhraseBegin();
+			await ui.DisplayLine("Midorigaoka. We have arrived at Midorigaoka, station number 1.");
+			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.PhraseEnd();
+			
+			//MC
+			ui.PhraseBegin();
+			await ui.DisplayLine("11 more stops left.");
+			await ui.DisplayLine("22 more minutes left.");
+			await ui.DisplayLine("I don’t have any memories that I’ve cherished. No nostalgic memories of happiness.");
+			await ui.DisplayLine("I miss the childhood days of being free and doing what I love.");
+			await ui.DisplayLine("I had meaning and purpose in life, something I wish I still had.");
+			await ui.DisplayLine("Maybe someday I can still find that.");
+			await ui.DisplayLine("Maybe today I’ll find that answer.");
+			await ui.PhraseEnd();
+			
+			//Train intercom
+			ui.PhraseBegin();
+			await ui.DisplayLine("The next stop is Asahibashi. Station number 2.");
+			await ui.PhraseEnd();
+		});
+		
+		dialogueEvents["FirstMotherDialogue"] = new DialogueEvent(async () =>
+		{
+
+			ui.PhraseBegin();
+			await ui.DisplayLine("Another day...");
+			//ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("second");
+			await ui.DisplayLine("third");
+			//ui.ChangeTextSpeed(40);
+			await ui.DisplayLine("fourth");
+			await ui.PhraseEnd();
+
+			
+			ui.PhraseBegin();
 			await ui.DisplayLine("lorem ");
 			await ui.DisplayLine("ipsum ");
 			await ui.DisplayLine("dolor ");
