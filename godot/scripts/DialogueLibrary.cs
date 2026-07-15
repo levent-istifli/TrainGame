@@ -266,11 +266,208 @@ public class DialogueLibrary
 		
 		dialogueEvents["KohanaRepeat"] = new DialogueEvent(async () =>
 		{
-
 			//Kohana
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("In case you forgot, Hana has dark hair and a similar flower pin. Thank you miss!");
+			await ui.PhraseEnd();
+		});
+		
+		dialogueEvents["HanaDialogue"] = new DialogueEvent(async () =>
+		{
+			//MC
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("Um, excuse me. . ?");
+			await ui.PhraseEnd();
+			
+			//Hana
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("Hm?");
+			await ui.PhraseEnd();
+			
+			//MC
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(8);
+			await ui.DisplayLine("Uh . . .");
+			ui.DisplayLine("[shoot, what do I say?]");
+			int choice = await ui.DisplayChoice("Your sister told me to give you this.", "Uh, I found this near a beach shore, and strangely enough you look like one of the girls in the picture.");
+			if (choice == 0)
+				await ui.PhraseEnd();
+				
+				//Hana
+				ui.PhraseBegin();
+				ui.ChangeTextSpeed(7);
+				await ui.DisplayLine(". . .");
+				await ui.DisplayLine("What?");
+				await ui.PhraseEnd();
+				
+				//MC
+				ui.PhraseBegin();
+				ui.ChangeTextSpeed(12);
+				await ui.DisplayLine("Oh, uh, sorry. . . that was probably insensitive, wasn’t it?");
+				await ui.PhraseEnd();
+				
+				//Hana
+				ui.PhraseBegin();
+				ui.ChangeTextSpeed(7);
+				await ui.DisplayLine(". . .");
+				ui.ChangeTextSpeed(9);
+				await ui.DisplayLine("How did you know I had a sister?");
+				await ui.PhraseEnd();
+				
+				ui.PhraseBegin();
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine("I. . .");
+				ui.ChangeTextSpeed(10);
+				await ui.DisplayLine("This is going to sound crazy, but I think her spirit wanted me to give this to you before resting. She said it would bring you peace.");
+				await ui.PhraseEnd();
+				
+				//Hana
+				ui.PhraseBegin();
+				ui.ChangeTextSpeed(9);
+				await ui.DisplayLine(". . .");
+				ui.ChangeTextSpeed(10);
+				await ui.DisplayLine("Huh, interesting. Yeah, this is an amulet I had a few years ago of my sister and I.");
+				await ui.DisplayLine("We were inseparable. Tied at the hip. But one day. . .");
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine("One day she fell terminally ill.");
+				ui.ChangeTextSpeed(9);
+				await ui.DisplayLine("I was the only one there to take care of her. I gave up everything I had for her. And yet . . .");
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine(". . .");
+				ui.ChangeTextSpeed(9);
+				await ui.DisplayLine("Well, I’m sure you know what happened.");
+				ui.ChangeTextSpeed(10);
+				await ui.DisplayLine("On any regular occasion, I would call you insane. Lunatic. But this is no coincidence.");
+				await ui.DisplayLine("If I had known she was by my side this whole time. . .");
+				await ui.PhraseEnd();
+				
+				//MC
+				ui.PhraseBegin();
+				ui.ChangeTextSpeed(10);
+				await ui.DisplayLine(". . .");
+				await ui.DisplayLine("If you don’t mind me asking, how did you get through that? I wouldn’t be able to.");
+				await ui.PhraseEnd();
+				
+				//Hana
+				ui.PhraseBegin();
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine(". . .it was hard.");
+				ui.ChangeTextSpeed(10);
+				await ui.DisplayLine("Each day felt like a day closer to joining her.");
+				await ui.DisplayLine("I didn’t want to stay in this cruel, harsh world anymore. My sweet flower was taken away, for doing absolutely nothing wrong. She wasn’t even 10 years old, for crying out loud. Not even a teenager.");
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine(". . .");
+				ui.ChangeTextSpeed(10);
+				await ui.DisplayLine("We both had dreams, goals, wishes. . .");
+				await ui.DisplayLine("I wanted to explore the world, and she wanted to hear all about it.");
+				await ui.DisplayLine("Actually, I had even thought about applying to this international program. It would be fully paid for if I got accepted, and I would be going to various different countries and exploring their different worlds.");
+				await ui.DisplayLine("I . . . gave up on that dream, for some time. I thought it meant nothing if Kohana was not by my side. ");
+				await ui.DisplayLine("But, right before her passing, she asked me why I hadn’t gone. She blamed herself for it.");
+				await ui.DisplayLine("Of course, I would never blame her. And was distraught that she thought that way. She made me promise her I would send the application, even if it was late.");
+				await ui.DisplayLine("Man. . . I don’t know how I managed to go through with it. Luckily, I had most of it done. So a few more tweaks to an essay on moments where I needed distraction and eventually I hit the send button.");
+				await ui.DisplayLine("But I never thought twice about it. As a matter of fact, I did it for her, to keep the promise. But I had no desire to go any longer.");
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine(". . .");
+				await ui.DisplayLine("I had no desire to do anything any longer.");
+				await ui.DisplayLine(". . .");
+				ui.ChangeTextSpeed(9);
+				await ui.DisplayLine("On a really bad day, I went out to a cliffside near our home. I had been thinking about it for weeks, months. I was ready. ");
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine("I threw this. . .amulet, into the ocean. I was ready to go next.");
+				ui.ChangeTextSpeed(9);
+				await ui.DisplayLine("But, just as I was about to do it, my phone buzzed. It was the application, I had been accepted.");
+				ui.ChangeTextSpeed(10);
+				await ui.DisplayLine("I fully broke down at that moment. It was like Kohana was reaching out, begging me to rethink my choices. I felt so much at that moment. Sadness, frustration, confusion. . . but also, hope.");
+				await ui.DisplayLine("After being in this endless, dark void for so long, I finally began to feel hope. And I latched on to it with all my might.");
+				await ui.DisplayLine("That day, I decided this world was too big to stay stuck in such a dark, desolate place. Kohana wanted me to continue living, to continue seeing the world. Leave our small hometown. See what else the world has to offer.");
+				await ui.DisplayLine("Of course, it was hard. And now, a few years later, I still have relapses. The world is a rough place, but you have to find those small glimmers of hope and never let go. Only then will you make it through the voids.");
+				await ui.PhraseEnd();
+			
+			else
+				await ui.PhraseEnd();
+				
+				//Hana
+				ui.PhraseBegin();
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine(". . .");
+				ui.ChangeTextSpeed(9);
+				await ui.DisplayLine("Huh, interesting. Yeah, this is an amulet I had a few years ago of my sister and I.");
+				await ui.DisplayLine("We were inseparable. Tied at the hip. But one day. . .");
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine("One day she fell terminally ill.");
+				ui.ChangeTextSpeed(9);
+				await ui.DisplayLine("I was the only one there to take care of her. I gave up everything I had for her. And yet . . .");
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine(". . .");
+				ui.ChangeTextSpeed(9);
+				await ui.DisplayLine("Let’s just say she’s not with us anymore.");
+				await ui.PhraseEnd();
+				
+				//MC
+				ui.PhraseBegin();
+				ui.ChangeTextSpeed(10);
+				await ui.DisplayLine(". . .");
+				await ui.DisplayLine("If you don’t mind me asking, how did you get through that? I wouldn’t be able to.");
+				await ui.PhraseEnd();
+				
+				//Hana
+				ui.PhraseBegin();
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine(". . .it was hard.");
+				ui.ChangeTextSpeed(10);
+				await ui.DisplayLine("Each day felt like a day closer to joining her.");
+				await ui.DisplayLine("I didn’t want to stay in this cruel, harsh world anymore. My sweet flower was taken away, for doing absolutely nothing wrong. She wasn’t even 10 years old, for crying out loud. Not even a teenager.");
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine(". . .");
+				ui.ChangeTextSpeed(10);
+				await ui.DisplayLine("We both had dreams, goals, wishes. . .");
+				await ui.DisplayLine("I wanted to explore the world, and she wanted to hear all about it.");
+				await ui.DisplayLine("Actually, I had even thought about applying to this international program. It would be fully paid for if I got accepted, and I would be going to various different countries and exploring their different worlds.");
+				await ui.DisplayLine("I . . . gave up on that dream, for some time. I thought it meant nothing if Kohana was not by my side. ");
+				await ui.DisplayLine("But, right before her passing, she asked me why I hadn’t gone. She blamed herself for it.");
+				await ui.DisplayLine("Of course, I would never blame her. And was distraught that she thought that way. She made me promise her I would send the application, even if it was late.");
+				await ui.DisplayLine("Man. . . I don’t know how I managed to go through with it. Luckily, I had most of it done. So a few more tweaks to an essay on moments where I needed distraction and eventually I hit the send button.");
+				await ui.DisplayLine("But I never thought twice about it. As a matter of fact, I did it for her, to keep the promise. But I had no desire to go any longer.");
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine(". . .");
+				await ui.DisplayLine("I had no desire to do anything any longer.");
+				await ui.DisplayLine(". . .");
+				ui.ChangeTextSpeed(9);
+				await ui.DisplayLine("On a really bad day, I went out to a cliffside near our home. I had been thinking about it for weeks, months. I was ready. ");
+				ui.ChangeTextSpeed(8);
+				await ui.DisplayLine("I threw this. . .amulet, into the ocean. I was ready to go next.");
+				ui.ChangeTextSpeed(9);
+				await ui.DisplayLine("But, just as I was about to do it, my phone buzzed. It was the application, I had been accepted.");
+				ui.ChangeTextSpeed(10);
+				await ui.DisplayLine("I fully broke down at that moment. It was like Kohana was reaching out, begging me to rethink my choices. I felt so much at that moment. Sadness, frustration, confusion. . . but also, hope.");
+				await ui.DisplayLine("After being in this endless, dark void for so long, I finally began to feel hope. And I latched on to it with all my might.");
+				await ui.DisplayLine("That day, I decided this world was too big to stay stuck in such a dark, desolate place. Kohana wanted me to continue living, to continue seeing the world. Leave our small hometown. See what else the world has to offer.");
+				await ui.DisplayLine("Of course, it was hard. And now, a few years later, I still have relapses. The world is a rough place, but you have to find those small glimmers of hope and never let go. Only then will you make it through the voids.");
+				await ui.PhraseEnd();
+			
+			//MC
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("Wow, that’s very. . . touching. Thank you for sharing.");
+			await ui.PhraseEnd();
+			
+			//Hana
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("At the end of the day, we’re all trying to figure out how to get through this world together. As long as I can give others solace or inspiration through my experiences, I will continue sharing them.");
+			await ui.PhraseEnd();
+			
+			//MC, Hana sprite fades away
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(8);
+			await ui.DisplayLine(". . .");
+			await ui.DisplayLine("How bittersweet. . .");
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("I can’t seem to find Kohana anywhere. Maybe I’m not so crazy after all.");
+			await ui.DisplayLine("Let me tell my mom this. I’m sure it’ll make her happy.");
 			await ui.PhraseEnd();
 		});
 		
