@@ -4,6 +4,6 @@ using System;
 [GlobalClass]
 public partial class InventoryItem : Resource
 {
-    [Export] public Texture2D sprite;
-    [Export] public string itemID;
+	[Export] public Texture2D sprite;
+	[Export] public string itemID;
 }
