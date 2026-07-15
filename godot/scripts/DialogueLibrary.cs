@@ -75,50 +75,80 @@ public class DialogueLibrary
 		dialogueEvents["FirstMotherDialogue"] = new DialogueEvent(async () =>
 		{
 
+			//MC
 			ui.PhraseBegin();
-			await ui.DisplayLine("Another day...");
-			//ui.ChangeTextSpeed(10);
-			await ui.DisplayLine("second");
-			await ui.DisplayLine("third");
-			//ui.ChangeTextSpeed(40);
-			await ui.DisplayLine("fourth");
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("Oh, sorry. Let me move to make more space for you —");
+			ui.ChangeTextSpeed(7);
+			await ui.DisplayLine("M-Mom?!");
+			await ui.DisplayLine("How? How are you here?");
+			ui.ChangeTextSpeed(12);
+			await ui.DisplayLine("You’ve been dead for the past 12 years of my life.");
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("What are you doing here?");
 			await ui.PhraseEnd();
 
+			//Mother
+			ui.PhraseBegin();
+			await ui.DisplayLine("Oh dear...");
+			await ui.DisplayLine("I know I have a lot to explain, but not much time.");
+			await ui.DisplayLine("But I have only one chance of meeting you again in my afterlife, and I wanted to correct some things before you repeat the same mistakes and regrets in life that I had.");
+			await ui.PhraseEnd();
 			
+			//MC
 			ui.PhraseBegin();
-			await ui.DisplayLine("lorem ");
-			await ui.DisplayLine("ipsum ");
-			await ui.DisplayLine("dolor ");
-			await ui.DisplayLine("sit");
+			await ui.DisplayLine("What??");
+			await ui.DisplayLine("I still don’t get it.");
+			await ui.DisplayLine("What do you want me to even do?");
+			await ui.DisplayLine("I-");
+			await ui.DisplayLine("(sigh*)I don’t think I’m capable of doing that right now.");
 			await ui.PhraseEnd();
-
-
-			//Test Inventory Functionality
-			inventory.AddItem("test");
-			bool hasTestItem = inventory.HasItem("test");
 			
+			//Mother
 			ui.PhraseBegin();
-
-			if (hasTestItem)
-			{
-				await ui.DisplayLine("You got the item.");
-			}
-			else
-			{
-				await ui.DisplayLine("You didn't get the item.");
-			}
+			await ui.DisplayLine("I know what you’re going through right now.");
+			await ui.DisplayLine("This is my only chance to help you avoid making the same decisions I made in the past.");
+			await ui.DisplayLine("I’m here to guide you one last time.");
+			await ui.DisplayLine("I don’t have much time to explain more, but you have to listen to me.");
+			await ui.DisplayLine("I know what you are planning at the end of this stop.");
+			await ui.DisplayLine("I’m not here to shame or criticize you.");
+			await ui.DisplayLine("This train will soon make a stop at station 2, and there is a certain someone you need to speak to.");
 			await ui.PhraseEnd();
-
-
-			//Test Choices Functionality
+			
+			//MC
 			ui.PhraseBegin();
-			int choice = await ui.DisplayChoice("Yes", "No");
+			await ui.DisplayLine("What?");
+			await ui.DisplayLine("Why do I need to talk to someone?");
+			await ui.PhraseEnd();
+			
+			//Mother
+			ui.PhraseBegin();
+			await ui.DisplayLine("I can only say this much.");
+			await ui.DisplayLine("You need to interact with the few spirits who will be aboard this train.");
+			await ui.DisplayLine("These are lingering spirits from the afterlife.");
+			await ui.DisplayLine("They need your help communicating with past relatives to fix unresolved feelings from the past.");
+			await ui.PhraseEnd();
+			
+			//Train intercom
+			ui.PhraseBegin();
+			await ui.DisplayLine("Asahibashi. We have arrived at Asahibashi, station number 2.");
+			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.PhraseEnd();
+			
+			//Mother
+			ui.PhraseBegin();
+			await ui.DisplayLine("It has begun.");
+			await ui.DisplayLine("To help you start, you need to look for the guided spirit named Kohana. She has a small flower in her hair.");
+			await ui.DisplayLine("She needs your help relaying information, so please talk to her.");
+			await ui.PhraseEnd();
+		});
+		
+		dialogueEvents["MotherKohanaRepeat"] = new DialogueEvent(async () =>
+		{
 
-			if (choice == 0)
-				await ui.DisplayLine("You picked yes.");
-			else
-				await ui.DisplayLine("You picked no.");
-
+			//Mother
+			ui.PhraseBegin();
+			await ui.DisplayLine("Kohana needs your help relaying information, so please talk to her.");
 			await ui.PhraseEnd();
 		});
 		
