@@ -193,14 +193,14 @@ public class DialogueLibrary
 			//Kohana
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(12);
-			await ui.DisplayLine("My sister… Hana… she means a lot to me.");
-			await ui.DisplayLine("She was my role model… who I wanted to be when I grew up…");
-			await ui.DisplayLine("But, I got really really sick. I would hear the doctor whisper to her that what I had was… I think he said faytal?");
+			await ui.DisplayLine("My sister. . .Hana. . .she means a lot to me.");
+			await ui.DisplayLine("She was my role model. . .who I wanted to be when I grew up. . .");
+			await ui.DisplayLine("But, I got really really sick. I would hear the doctor whisper to her that what I had was. . .I think he said faytal?");
 			await ui.DisplayLine("I don’t know, they use too many big fancy words. But, what I knew was that it wasn’t good. My body didn’t feel good.");
 			await ui.DisplayLine("Hana had so many big dreams she wanted to do, like going to study outside of Japan. How crazy is that?!");
-			await ui.DisplayLine("I wish I had the chance to do it…");
-			await ui.DisplayLine("Hana didn’t send her… what was it? Apuhlekchon? The thing she needed to send to go study far far away. She wasn’t able to send it in time cause she was looking after me.");
-			await ui.DisplayLine("That made me feel really, really sad.");
+			await ui.DisplayLine("I wish I had the chance to do it with her. . .");
+			await ui.DisplayLine("Hana didn’t send her… what was it? Aplihkaechion? The thing she needed to send to go study far far away. She wasn’t able to send it in time cause she was looking after me.");
+			await ui.DisplayLine("That made me feel really really sad.");
 			await ui.DisplayLine("She couldn’t do her biggest wish, all because I needed someone taking care of me.");
 			await ui.DisplayLine("Eventually, my body couldn’t take it anymore. One day I woke up and could see my body in front of me, like if I had left it there.");
 			await ui.DisplayLine(". . .");
@@ -209,9 +209,10 @@ public class DialogueLibrary
 			await ui.DisplayLine("I couldn’t understand the thoughts she was having. I always thought mind reading powers would be so cool, but they’re hard to understand. She had lots of thoughts every second of the day, and some were really really sad ones.");
 			await ui.DisplayLine("One day, she became so sad that she threw this necklace with a picture of us into the sea. I don’t know why she did it. She just sounded very angry and sad.");
 			await ui.DisplayLine("She was like this for a bit. And there was nothing I could do.");
-			await ui.DisplayLine("A few months later, I noticed she seemed a little happier. Little by little.");
+			await ui.DisplayLine("Well, maybe there was something I was able to do. . .because after it, I finally saw my sister coming back.");
 			await ui.DisplayLine("She also got to leave our home and explore the world! It looked like so so much fun. I wish she would have seen me there with her.");
-			await ui.DisplayLine("I’m happy she’s doing better. Very very happy. But, I still notice she touches her neck now and then. I think she misses this.");
+			await ui.DisplayLine("I’m so so happy she’s doing better. Very very happy. She's been able to reach even more than she's dreamed of, and that's so so amazing!");
+			await ui.DisplayLine("But, I still notice she touches her neck now and then. I think she misses this.");
 			inventory.AddItem("Amulet");
 			bool hasTestItem = inventory.HasItem("Amulet");
 			if (hasTestItem)
@@ -293,7 +294,9 @@ public class DialogueLibrary
 			await ui.DisplayLine("Uh . . .");
 			ui.DisplayLine("[shoot, what do I say?]");
 			int choice = await ui.DisplayChoice("Your sister told me to give you this.", "Uh, I found this near a beach shore, and strangely enough you look like one of the girls in the picture.");
-			if (choice == 0)
+			inventory.RemoveItem("Amulet");
+			if (choice == 0) 
+			{
 				await ui.PhraseEnd();
 				
 				//Hana
@@ -385,8 +388,9 @@ public class DialogueLibrary
 				await ui.DisplayLine("That day, I decided this world was too big to stay stuck in such a dark, desolate place. Kohana wanted me to continue living, to continue seeing the world. Leave our small hometown. See what else the world has to offer.");
 				await ui.DisplayLine("Of course, it was hard. And now, a few years later, I still have relapses. The world is a rough place, but you have to find those small glimmers of hope and never let go. Only then will you make it through the voids.");
 				await ui.PhraseEnd();
-			
-			else
+			}
+			else 
+			{
 				await ui.PhraseEnd();
 				
 				//Hana
@@ -447,6 +451,7 @@ public class DialogueLibrary
 				await ui.DisplayLine("That day, I decided this world was too big to stay stuck in such a dark, desolate place. Kohana wanted me to continue living, to continue seeing the world. Leave our small hometown. See what else the world has to offer.");
 				await ui.DisplayLine("Of course, it was hard. And now, a few years later, I still have relapses. The world is a rough place, but you have to find those small glimmers of hope and never let go. Only then will you make it through the voids.");
 				await ui.PhraseEnd();
+			}
 			
 			//MC
 			ui.PhraseBegin();
