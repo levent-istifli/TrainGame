@@ -12,6 +12,9 @@ public class DialogueLibrary
 		DialogueBoxUI ui = DialogueBoxUI.Instance;
 		PlayerInventory inventory = PlayerInventory.Instance;
 
+
+
+
 		dialogueEvents["OpeningDialogue"] = new DialogueEvent(async () =>
 		{
 
@@ -475,6 +478,91 @@ public class DialogueLibrary
 			await ui.DisplayLine("Let me tell my mom this. I’m sure it’ll make her happy.");
 			await ui.PhraseEnd();
 		});
+		
+			
+		dialogueEvents["MotherDialogueAfterHana"] = new DialogueEvent(async () =>
+		{
+			// MC Talking
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("Mom, I can’t believe it!");
+			ui.ChangeTextSpeed(7);
+			await ui.DisplayLine("That story was so. . . so touching. . . so bittersweet.");
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("Kohana is so proud of what Hana has accomplished. She wanted her sister to do what she’s always dreamed of.");
+			ui.ChangeTextSpeed(7);
+			await ui.DisplayLine("But. . . but. . . Hana was really close to. . .a dark place.");
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("I can’t imagine what she went through when she lost Kohana. To lose the most important person to you. The same person that you once shared all your memories with. To be left all alone.");
+			await ui.DisplayLine("But Hana’s brave.");
+			await ui.DisplayLine("She knew Kohana wanted the best for her, but didn’t realize that Kohana didn’t want to be a burden.");
+			await ui.DisplayLine("Hana never saw her as that. She always enjoyed every moment spent with her. Not a single second they spent together was she thinking of her as a burden.");
+			await ui.DisplayLine("Now Hana lives and works all over the world. They may not be together, but Kohana always watches over Hana. They're not together physically, but spiritually, Kohana was always watching over her.");
+			await ui.DisplayLine("I was able to help Kohana speak to her sister for the last time.");
+			await ui.PhraseEnd();
+
+
+			// Mother Talking
+			ui.PhraseBegin();
+			await ui.DisplayLine("That's right. You were able to help her soul rest.");
+			await ui.PhraseEnd();
+
+			// MC Talking
+			ui.PhraseBegin();
+			await ui.DisplayLine("Does that mean...");
+			await ui.PhraseEnd();
+
+			// Mother Talking
+			ui.PhraseBegin();
+			await ui.DisplayLine("Her soul can rest peacefully now. She does not have to worry about looking after Hana.");
+			await ui.DisplayLine("You allowed Kohana to speak to her sister. A spirit's last wish before they go to the spiritual afterworld. Kohana will no longer be able to watch over Hana, but you allowed her last wish to be granted. To give her sister the lost amulet. She can now rest without worrying about her sister.");
+			await ui.DisplayLine("It's bittersweet, but you allowed the two to say their final goodbyes and move on in life.");
+			await ui.DisplayLine("Kohana can rest peacefully knowing that she was never a burden and that her sister is happily living her dreams. Hana can now live life without feeling remorse about their argument before her sister’s passing and losing the amulet.");
+			await ui.DisplayLine("Two sisters were destined differently, but that didn’t stop them from doing what they loved. In the flower of youth, flowers bloom without any control of how they will look or their lifespan. Some may be destined to sustain life within a vase where life will be cut shorter than that of those within the ground.");
+			await ui.DisplayLine("Vase flowers don’t have the same support as grounded ones. Vase flowers can’t support themselves without someone tending to them, but that someone enjoys every second caring for them at the end of their life cycle.");
+			await ui.DisplayLine("No matter how short life is, you must find a way to continue to bloom. Kohana may have been the vase flower, and Hana, the ground, but their bond and love for each other was strong, even until their separate ways.");
+			await ui.DisplayLine("What I’m saying is that you’re the grounded flower that blooms longer, so you have options.");
+			await ui.PhraseEnd();
+
+			// MC Talking
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(7);
+			await ui.DisplayLine(". . .could there really be something further for me. . .?");
+			await ui.PhraseEnd();
+
+			// Mother Talking
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("You’ll know your answer by the end of this.");
+			await ui.DisplayLine("I don’t have much time before we arrive at the next station, but you’ll be meeting someone else before they can rest peacefully.");
+			await ui.PhraseEnd();
+
+			// MC Talking
+			ui.PhraseBegin();
+			await ui.DisplayLine("I understand.");
+			await ui.PhraseEnd();
+
+			// Train Intercom
+			ui.PhraseBegin();
+			await ui.DisplayLine("Kasumigaura. We have arrived at Kasumigaura station number 4.");
+			await ui.DisplayLine("Please exit the train from the left.");
+			await ui.PhraseEnd();
+			
+			// Mother Talking
+			ui.PhraseBegin();
+			await ui.DisplayLine("Look for a man in a bright orange uniform. He wants to give someone one last message before he goes.");
+			await ui.PhraseEnd();
+
+			// MC Talking
+			ui.PhraseBegin();
+			await ui.DisplayLine("Thanks, mother.");
+			await ui.PhraseEnd();
+		});	
+
+		// Repeat Dialogue for mother
+
+		// new dialogue for Yoru and Hotaru
+		
 		
 		dialogueEvents["OpeningDialogue"] = new DialogueEvent(async () =>
 		{
