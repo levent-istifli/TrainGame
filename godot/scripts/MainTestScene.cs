@@ -9,6 +9,7 @@ public partial class MainTestScene : Node
 	[Export] PackedScene rightScene;
 	[Export] CharacterBody2D player;
 	[Export] PackedScene inventoryScene;
+	[Export] PackedScene dialogueBoxScene;
 
 	public override void _Ready()
 	{
@@ -34,6 +35,26 @@ public partial class MainTestScene : Node
 		AddChild(leftSceneNode);
 		AddChild(rightSceneNode);
 		AddChild(inventoryNode);
+		SpawnDialogueBox();
+	}
+
+	private void SpawnDialogueBox()
+	{
+		if (DialogueBoxUI.Instance != null)
+		{
+			DialogueBoxUI.Instance.HideBox();
+			return;
+		}
+
+		if (dialogueBoxScene == null)
+		{
+			GD.PushError("MainScene is missing its dialogueBoxScene export.");
+			return;
+		}
+
+		DialogueBoxUI dialogueBox = dialogueBoxScene.Instantiate<DialogueBoxUI>();
+		AddChild(dialogueBox);
+		dialogueBox.HideBox();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

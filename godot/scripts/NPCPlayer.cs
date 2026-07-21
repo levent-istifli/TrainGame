@@ -7,6 +7,7 @@ public partial class NPCPlayer : Area2D
 	[Export] public Sprite2D NpcSprite;
 
 	[Export] string sceneTag;
+	[Export] public string dialogueEventId = "OpeningDialogue";
 	[Export] string destination_door_tag;
 	[Export] string currentSceneTag;
 	[Export] string spawn_direction = "right";
@@ -15,11 +16,13 @@ public partial class NPCPlayer : Area2D
 
 	public override void _InputEvent(Viewport viewport, InputEvent @event, int shapeIdx)
 	{
+		if (NavigationManager.Instance.IsDialogueSceneOpen()) return;
+
 		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
 		{
 			if (mouseEvent.ButtonIndex == MouseButton.Left)
 			{
-				NavigationManager.Instance.loadDialogueScene(sceneTag, "");
+				NavigationManager.Instance.loadDialogueScene(sceneTag, "", dialogueEventId);
 			}
 		}	
 	}

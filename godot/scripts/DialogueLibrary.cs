@@ -17,7 +17,7 @@ public class DialogueLibrary
 
 			//MC Talking
 			ui.PhraseBegin();
-			ui.ChangeTextSpeed(10);
+			ui.ChangeTextSpeed(20);
 			await ui.DisplayLine("Another day...");
 			await ui.DisplayLine("I wonder why I even bothered with this for so long. ");
 			await ui.DisplayLine("Nothing has changed, and I’m still in the same place I once was 12 years ago.");
@@ -292,7 +292,7 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("Uh . . .");
-			ui.DisplayLine("[shoot, what do I say?]");
+			await ui.DisplayLine("[shoot, what do I say?]");
 			int choice = await ui.DisplayChoice("Your sister told me to give you this.", "Uh, I found this near a beach shore, and strangely enough you look like one of the girls in the picture.");
 			inventory.RemoveItem("Amulet");
 			if (choice == 0) 
@@ -476,11 +476,11 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 		});
 		
-		dialogueEvents["OpeningDialogue"] = new DialogueEvent(async () =>
+		dialogueEvents["TestDialogue"] = new DialogueEvent(async () =>
 		{
 
 			ui.PhraseBegin();
-			await ui.DisplayLine("Another day...");
+			await ui.DisplayLine("First");
 			//ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("second");
 			await ui.DisplayLine("third");

@@ -20,6 +20,12 @@ public partial class NavigationManager : Node
 
 	private readonly PackedScene scene_dialogue_collectables = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
 	private readonly PackedScene back_button = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
+	private Node currentDialogueScene;
+
+	public bool IsDialogueSceneOpen()
+	{
+		return currentDialogueScene != null && GodotObject.IsInstanceValid(currentDialogueScene);
+	}
 
 	public void removeDialogueScene()
 	{
@@ -31,14 +37,26 @@ public partial class NavigationManager : Node
 			nodesToPause[i].Set("visible".AsStringName(), true);
 		}
 		Window root = GetTree().Root;
-		Node currentScene = GetTree().CurrentScene;
+		Node currentScene = IsDialogueSceneOpen() ? currentDialogueScene : null;
+
+		if (currentScene == null)
+		{
+			currentDialogueScene = null;
+			return;
+		}
+
 		root.RemoveChild(currentScene); 
 		currentScene.QueueFree();
-		
+		currentDialogueScene = null;
 	}
 
-	public void loadDialogueScene(string sceneTag, string doorTag)
+	public void loadDialogueScene(string sceneTag, string doorTag, string dialogueEventId = "")
 	{
+		if (sceneTag == "MCDialogue" && IsDialogueSceneOpen())
+		{
+			return;
+		}
+
 		Window root = GetTree().Root;
 		// Node currentScene = GetTree().CurrentScene;
 
@@ -55,13 +73,24 @@ public partial class NavigationManager : Node
 		if (sceneToLoad != null) {
 			spawnDoorTag = sceneTag;
 			Node newScene = sceneToLoad.Instantiate();
+
+			if (!string.IsNullOrEmpty(dialogueEventId) && newScene is DialogueTestUser dialogueScene)
+			{
+				dialogueScene.dialogueEventId = dialogueEventId;
+			}
 			
 			// root.RemoveChild(currentScene);
 			// currentScene.QueueFree();
 
 			// add new scene (aka. dialogue/character interaction scene)
+			if (sceneTag == "MCDialogue")
+			{
+				currentDialogueScene = newScene;
+			}
+
 			root.AddChild(newScene);
 			GetTree().CurrentScene = newScene;
+
 			var nodesToPause = GetTree().GetNodesInGroup("Pause".AsStringName());
 			for (int i = 0; i < nodesToPause.Count; i++)
 			{

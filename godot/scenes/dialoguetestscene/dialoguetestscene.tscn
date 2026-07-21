@@ -3,10 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://cxbllf1cgb4eo" path="res://scenes/dialoguetestscene/traininterior.png" id="1_aawce"]
 [ext_resource type="Script" uid="uid://blxu853na5h8j" path="res://scripts/DialogueBoxUI.cs" id="1_pmob3"]
 [ext_resource type="Texture2D" uid="uid://dlwd6d53xnfh2" path="res://icon.svg" id="3_11ujm"]
-[ext_resource type="Script" uid="uid://dns6dxq6gbpue" path="res://scripts/DialogueTestUser.cs" id="4_ttl7p"]
 
 [node name="DialogueBox" type="Node2D" unique_id=1448317 node_paths=PackedStringArray("textBox", "option1TextBox", "option2TextBox", "option1Indicator", "option2Indicator", "charTimer", "nextIndicator")]
-position = Vector2(960, 541)
+visible = false
+z_index = 100
+position = Vector2(960, 801)
 script = ExtResource("1_pmob3")
 charDuration = 0.04
 textBox = NodePath("DialogueBoxBackdrop/Text")
@@ -130,9 +131,6 @@ offset_right = 538.0
 offset_bottom = 203.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_11ujm")
-
-[node name="DialogueTestUser" type="Node" parent="." unique_id=989357661]
-script = ExtResource("4_ttl7p")
 
 [connection signal="timeout" from="CharTimer" to="." method="OnCharTimeout"]
 [connection signal="mouse_entered" from="DialogueBoxBackdrop/QuestionOption1" to="." method="OnOption1MouseEntered"]

@@ -40,11 +40,7 @@ theme_override_font_sizes/font_size = 83
 text = "Cart 1"
 horizontal_alignment = 1
 
-[node name="NPCSpawner" parent="." unique_id=1586379648 node_paths=PackedStringArray("spawn_points", "seats") groups=["Pause"] instance=ExtResource("3_n77mx")]
-spawn_points = [NodePath("SpawnPoint"), NodePath("SpawnPoint2")]
-seats = [NodePath("Seat"), NodePath("Seat2"), NodePath("Seat3"), NodePath("Seat4"), NodePath("Seat5"), NodePath("Seat6")]
-num_npcs = 6
-aisle_y_position = 797.0
+[node name="NPCSpawner" parent="." unique_id=1586379648 groups=["Pause"] instance=ExtResource("3_n77mx")]
 
 [node name="SpawnPoint" type="Node2D" parent="NPCSpawner" unique_id=366518765]
 position = Vector2(497, 918)
@@ -74,8 +70,17 @@ position = Vector2(1288, 596)
 position = Vector2(569, 517)
 metadata/_edit_group_ = true
 
+[node name="NPCPlayer2" parent="." unique_id=865906712 instance=ExtResource("4_nb1wl")]
+position = Vector2(813, 515)
+metadata/_edit_group_ = true
+
+[node name="Area2D" parent="NPCPlayer2" index="0" unique_id=1629417335]
+dialogueEventId = "FirstMotherDialogue"
+
 [connection signal="body_entered" from="Doors/Door_R" to="Doors/Door_R" method="OnBodyEntered"]
 [connection signal="body_entered" from="Doors/Door_L" to="Doors/Door_L" method="OnBodyEntered"]
 
 [editable path="Doors/Door_R"]
 [editable path="Doors/Door_L"]
+[editable path="NPCPlayer"]
+[editable path="NPCPlayer2"]

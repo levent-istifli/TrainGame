@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using GodotStringIntercept;
 
-public partial class DialogueBoxUI : Node
+public partial class DialogueBoxUI : Node2D
 {
 
 	public static DialogueBoxUI Instance { get; private set; }
@@ -27,6 +27,7 @@ public partial class DialogueBoxUI : Node
 	private TaskCompletionSource<bool> waitPhraseEnd;
 	private TaskCompletionSource<bool> waitNextLine;
 	private TaskCompletionSource<int> waitQuestion;
+	private ulong inputEnabledAtTicks = 0;
 	bool isChoosing = false;
 	int selectedOption = 0;
 	
@@ -51,6 +52,53 @@ public partial class DialogueBoxUI : Node
 	public void ClearBox()
 	{
 		textBox.Text = "";
+	}
+
+	public void ShowBox()
+	{
+		ResetDialogueState(false);
+		Visible = true;
+		ProcessMode = ProcessModeEnum.Inherit;
+		inputEnabledAtTicks = Time.GetTicksMsec() + 150;
+	}
+
+	public void HideBox()
+	{
+		ResetDialogueState(true);
+		Visible = false;
+		ProcessMode = ProcessModeEnum.Disabled;
+		inputEnabledAtTicks = 0;
+	}
+
+	private void ResetDialogueState(bool cancelWaits)
+	{
+		charTimer?.Stop();
+
+		currLine = "";
+		currString = "";
+		nextString = "";
+		textIterator = 0;
+		skipped = false;
+		phraseFinished = false;
+		isTyping = false;
+		isChoosing = false;
+		selectedOption = -1;
+
+		if (nextIndicator != null) nextIndicator.Visible = false;
+		if (option1TextBox != null) option1TextBox.Visible = false;
+		if (option2TextBox != null) option2TextBox.Visible = false;
+		if (option1Indicator != null) option1Indicator.Visible = false;
+		if (option2Indicator != null) option2Indicator.Visible = false;
+		if (textBox != null) textBox.Text = "";
+
+		if (!cancelWaits) return;
+
+		waitPhraseEnd?.TrySetCanceled();
+		waitNextLine?.TrySetCanceled();
+		waitQuestion?.TrySetCanceled();
+		waitPhraseEnd = null;
+		waitNextLine = null;
+		waitQuestion = null;
 	}
 
 	int dialogueLine = 0;
@@ -225,7 +273,7 @@ public partial class DialogueBoxUI : Node
 		waitQuestion?.TrySetResult(option);
 	}
 
-	public override async void _Ready()
+	public override void _Ready()
 	{
 		charTimer.WaitTime = charDuration;
 		ClearBox();
@@ -233,6 +281,8 @@ public partial class DialogueBoxUI : Node
 
 	public override void _Input(InputEvent @event)
 	{
+		if (!Visible) return;
+		if (Time.GetTicksMsec() < inputEnabledAtTicks) return;
 
 		if (@event.IsActionPressed("dialogueNext".AsStringName()))
 		{
