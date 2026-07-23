@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="2_o0lye"]
 [ext_resource type="PackedScene" uid="uid://bnfnq0jctl51d" path="res://scenes/npc_spawner.tscn" id="3_3ay65"]
 [ext_resource type="PackedScene" uid="uid://c2yva6vtvmdd2" path="res://scenes/NPCPlayer.tscn" id="4_ofb8k"]
+[ext_resource type="Texture2D" uid="uid://b47rlp2efyf7v" path="res://Art/Kohana.png" id="5_qhesa"]
 
 [node name="TestScene3" type="Node2D" unique_id=1903736709]
 
@@ -61,12 +62,15 @@ position = Vector2(1000, 596)
 position = Vector2(1200, 596)
 
 [node name="NPCPlayer3" parent="." unique_id=217092309 instance=ExtResource("4_ofb8k")]
-position = Vector2(653, 517)
+position = Vector2(586, 513)
 metadata/_edit_group_ = true
 
 [node name="Area2D" parent="NPCPlayer3" index="0" unique_id=1629417335]
 firstDialogueEventId = "KohanaDialogue"
 repeatDialogueEventId = "KohanaRepeat"
+
+[node name="Sprite2D" parent="NPCPlayer3/Area2D" index="0" unique_id=1297988730]
+texture = ExtResource("5_qhesa")
 
 [connection signal="body_entered" from="Doors/Door_R" to="Doors/Door_R" method="OnBodyEntered"]
 
