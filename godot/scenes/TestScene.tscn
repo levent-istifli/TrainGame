@@ -37,7 +37,8 @@ offset_right = 1917.0
 offset_bottom = 137.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 83
-text = "Cart 1"
+text = "Cart 2
+"
 horizontal_alignment = 1
 
 [node name="NPCSpawner" parent="." unique_id=1586379648 groups=["Pause"] instance=ExtResource("3_n77mx")]
@@ -70,12 +71,9 @@ position = Vector2(1288, 596)
 position = Vector2(569, 517)
 metadata/_edit_group_ = true
 
-[node name="NPCPlayer2" parent="." unique_id=865906712 instance=ExtResource("4_nb1wl")]
-position = Vector2(813, 515)
-metadata/_edit_group_ = true
-
-[node name="Area2D" parent="NPCPlayer2" index="0" unique_id=1629417335]
-dialogueEventId = "FirstMotherDialogue"
+[node name="Area2D" parent="NPCPlayer" index="0" unique_id=1629417335]
+firstDialogueEventId = "FirstMotherDialogue"
+repeatDialogueEventId = "MotherKohanaRepeat"
 
 [connection signal="body_entered" from="Doors/Door_R" to="Doors/Door_R" method="OnBodyEntered"]
 [connection signal="body_entered" from="Doors/Door_L" to="Doors/Door_L" method="OnBodyEntered"]
@@ -83,4 +81,3 @@ dialogueEventId = "FirstMotherDialogue"
 [editable path="Doors/Door_R"]
 [editable path="Doors/Door_L"]
 [editable path="NPCPlayer"]
-[editable path="NPCPlayer2"]

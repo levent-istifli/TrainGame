@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c4du67nol4rq3" path="res://scenes/BackButton.tscn" id="5_i74oc"]
 [ext_resource type="Script" uid="uid://dns6dxq6gbpue" path="res://scripts/DialogueTestUser.cs" id="6_hr11b"]
 
-[node name="MCDialogue" type="Node2D" unique_id=1000165773]
+[node name="MCDialogue" type="CanvasLayer" unique_id=1000165773]
+layer = 5
 script = ExtResource("6_hr11b")
 dialogueEventId = "OpeningDialogue"
 

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c42mgvtrilwxf" path="res://scenes/InventoryUI.tscn" id="7_c16ls"]
 [ext_resource type="PackedScene" uid="uid://c7ygs80tn4ttd" path="res://scenes/dialoguetestscene/dialoguetestscene.tscn" id="8_7ykc4"]
 
-[node name="MainScene" type="Node" unique_id=1297421532 node_paths=PackedStringArray("player")]
+[node name="MainScene" type="Node" unique_id=1297421532 node_paths=PackedStringArray("player", "uiLayer")]
 script = ExtResource("1_7ykc4")
 startingScene = ExtResource("2_7ykc4")
 leftScene = ExtResource("3_gubc5")
@@ -16,6 +16,10 @@ rightScene = ExtResource("4_rt2n2")
 player = NodePath("Player")
 inventoryScene = ExtResource("7_c16ls")
 dialogueBoxScene = ExtResource("8_7ykc4")
+uiLayer = NodePath("UILayer")
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1370616367]
+layer = 10
 
 [node name="Player" parent="." unique_id=1629053667 instance=ExtResource("3_pu3yx")]
 position = Vector2(923, 841)

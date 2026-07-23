@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dulkofdokd4o1" path="res://scenes/Background.tscn" id="1_o0lye"]
 [ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="2_o0lye"]
 [ext_resource type="PackedScene" uid="uid://bnfnq0jctl51d" path="res://scenes/npc_spawner.tscn" id="3_3ay65"]
+[ext_resource type="PackedScene" uid="uid://c2yva6vtvmdd2" path="res://scenes/NPCPlayer.tscn" id="4_ofb8k"]
 
 [node name="TestScene3" type="Node2D" unique_id=1903736709]
 
@@ -10,11 +11,10 @@
 
 [node name="Doors" type="Node2D" parent="." unique_id=461621078]
 
-[node name="Door_R" parent="Doors" unique_id=1938107216 node_paths=PackedStringArray("currentLevel") instance=ExtResource("2_o0lye")]
+[node name="Door_R" parent="Doors" unique_id=913070860 instance=ExtResource("2_o0lye")]
 position = Vector2(1801, 776)
 destination_level_tag = "TestScene"
 destination_door_tag = "L"
-currentLevel = NodePath("../..")
 
 [node name="Spawn" parent="Doors/Door_R" index="1" unique_id=21988130 groups=["Spawn Points"]]
 position = Vector2(-161, 0)
@@ -27,7 +27,7 @@ offset_right = 1917.0
 offset_bottom = 137.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 83
-text = "Cart 3"
+text = "Cart 1"
 horizontal_alignment = 1
 
 [node name="NPCSpawner" parent="." unique_id=1586379648 node_paths=PackedStringArray("spawn_points", "seats") instance=ExtResource("3_3ay65")]
@@ -60,6 +60,15 @@ position = Vector2(1000, 596)
 [node name="Seat6" type="Seat" parent="NPCSpawner" unique_id=582417702]
 position = Vector2(1200, 596)
 
+[node name="NPCPlayer3" parent="." unique_id=217092309 instance=ExtResource("4_ofb8k")]
+position = Vector2(653, 517)
+metadata/_edit_group_ = true
+
+[node name="Area2D" parent="NPCPlayer3" index="0" unique_id=1629417335]
+firstDialogueEventId = "KohanaDialogue"
+repeatDialogueEventId = "KohanaRepeat"
+
 [connection signal="body_entered" from="Doors/Door_R" to="Doors/Door_R" method="OnBodyEntered"]
 
 [editable path="Doors/Door_R"]
+[editable path="NPCPlayer3"]

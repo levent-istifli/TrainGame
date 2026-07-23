@@ -10,6 +10,7 @@ public partial class MainTestScene : Node
 	[Export] CharacterBody2D player;
 	[Export] PackedScene inventoryScene;
 	[Export] PackedScene dialogueBoxScene;
+	[Export] CanvasLayer uiLayer;
 
 	public override void _Ready()
 	{
@@ -34,8 +35,15 @@ public partial class MainTestScene : Node
 
 		AddChild(leftSceneNode);
 		AddChild(rightSceneNode);
-		AddChild(inventoryNode);
+		GetUiParent().AddChild(inventoryNode);
 		SpawnDialogueBox();
+		Callable.From(StartOpeningDialogue).CallDeferred();
+
+	}
+
+	private void StartOpeningDialogue()
+	{
+		NavigationManager.Instance.loadDialogueScene("MCDialogue", "", "OpeningDialogue");
 	}
 
 	private void SpawnDialogueBox()
@@ -53,8 +61,19 @@ public partial class MainTestScene : Node
 		}
 
 		DialogueBoxUI dialogueBox = dialogueBoxScene.Instantiate<DialogueBoxUI>();
-		AddChild(dialogueBox);
+		GetUiParent().AddChild(dialogueBox);
 		dialogueBox.HideBox();
+	}
+
+	private Node GetUiParent()
+	{
+		if (uiLayer == null)
+		{
+			GD.PushWarning("MainScene is missing its uiLayer export. UI will follow the world camera.");
+			return this;
+		}
+
+		return uiLayer;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

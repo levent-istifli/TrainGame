@@ -24,6 +24,7 @@ public partial class DialogueTestUser : Node
 		{
 			DialogueLibrary lib = new();
 			await lib.GetEvent(dialogueEventId).RunDialogue();
+			Callable.From(() => NavigationManager.Instance.removeDialogueScene()).CallDeferred();
 		}
 		catch (KeyNotFoundException)
 		{

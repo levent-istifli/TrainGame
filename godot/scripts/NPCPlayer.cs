@@ -3,11 +3,12 @@ using System;
 
 public partial class NPCPlayer : Area2D
 {
+	[Export] public string firstDialogueEventId;
+	[Export] public string repeatDialogueEventId;
+	private bool hasInteracted = false;
 	[Export] public Area2D area;
 	[Export] public Sprite2D NpcSprite;
-
 	[Export] string sceneTag;
-	[Export] public string dialogueEventId = "OpeningDialogue";
 	[Export] string destination_door_tag;
 	[Export] string currentSceneTag;
 	[Export] string spawn_direction = "right";
@@ -22,7 +23,12 @@ public partial class NPCPlayer : Area2D
 		{
 			if (mouseEvent.ButtonIndex == MouseButton.Left)
 			{
-				NavigationManager.Instance.loadDialogueScene(sceneTag, "", dialogueEventId);
+				string eventToPlay = hasInteracted
+                ? repeatDialogueEventId
+                : firstDialogueEventId;
+
+            	hasInteracted = true;
+				NavigationManager.Instance.loadDialogueScene(sceneTag, "", eventToPlay);
 			}
 		}	
 	}
