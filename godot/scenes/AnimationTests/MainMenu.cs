@@ -84,11 +84,16 @@ public partial class MainMenu : Node2D
 			leadingSprite = trainOne;
 			trailingSprite = trainTwo;
 		}
+
+		float target = stopX;
+		if (target <= leadingSprite.Position.X) {
+			target += trainWidth;
+		}
 		
 		Tween tween = CreateTween();
 		tween.SetParallel(true);
-		tween.TweenProperty(leadingSprite, "position:x", leadingSprite.Position.X + (stopX - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-		tween.TweenProperty(trailingSprite, "position:x", trailingSprite.Position.X + (stopX - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		tween.TweenProperty(leadingSprite, "position:x", leadingSprite.Position.X + (target - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		tween.TweenProperty(trailingSprite, "position:x", trailingSprite.Position.X + (target - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
 		tween.Chain().TweenCallback(Callable.From(OnTrainStopped));
 	}
 
