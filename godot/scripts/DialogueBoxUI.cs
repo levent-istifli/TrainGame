@@ -142,7 +142,7 @@ public partial class DialogueBoxUI : Node
 		}
 	}
 
-	public async Task<int> DisplayChoice(string option1, string option2)
+	public async Task<int> DisplayChoice(string option1, string option2, string option3 = "", string option4 = "")
 	{
 		ClearBox();
 
