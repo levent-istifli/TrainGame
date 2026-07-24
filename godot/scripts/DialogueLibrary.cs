@@ -504,23 +504,30 @@ public class DialogueLibrary
 
 			// Mother Talking
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("That's right. You were able to help her soul rest.");
 			await ui.PhraseEnd();
 
 			// MC Talking
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("Does that mean...");
 			await ui.PhraseEnd();
 
 			// Mother Talking
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Her soul can rest peacefully now. She does not have to worry about looking after Hana.");
+			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("You allowed Kohana to speak to her sister. A spirit's last wish before they go to the spiritual afterworld. Kohana will no longer be able to watch over Hana, but you allowed her last wish to be granted. To give her sister the lost amulet. She can now rest without worrying about her sister.");
+			ui.ChangeTextSpeed(11);
 			await ui.DisplayLine("It's bittersweet, but you allowed the two to say their final goodbyes and move on in life.");
+			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Kohana can rest peacefully knowing that she was never a burden and that her sister is happily living her dreams. Hana can now live life without feeling remorse about their argument before her sister’s passing and losing the amulet.");
 			await ui.DisplayLine("Two sisters were destined differently, but that didn’t stop them from doing what they loved. In the flower of youth, flowers bloom without any control of how they will look or their lifespan. Some may be destined to sustain life within a vase where life will be cut shorter than that of those within the ground.");
 			await ui.DisplayLine("Vase flowers don’t have the same support as grounded ones. Vase flowers can’t support themselves without someone tending to them, but that someone enjoys every second caring for them at the end of their life cycle.");
 			await ui.DisplayLine("No matter how short life is, you must find a way to continue to bloom. Kohana may have been the vase flower, and Hana, the ground, but their bond and love for each other was strong, even until their separate ways.");
+			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("What I’m saying is that you’re the grounded flower that blooms longer, so you have options.");
 			await ui.PhraseEnd();
 
@@ -539,22 +546,26 @@ public class DialogueLibrary
 
 			// MC Talking
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("I understand.");
 			await ui.PhraseEnd();
 
 			// Train Intercom
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Kasumigaura. We have arrived at Kasumigaura station number 4.");
 			await ui.DisplayLine("Please exit the train from the left.");
 			await ui.PhraseEnd();
 			
 			// Mother Talking
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Look for a man in a bright orange uniform. He wants to give someone one last message before he goes.");
 			await ui.PhraseEnd();
 
 			// MC Talking
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("Thanks, mother.");
 			await ui.PhraseEnd();
 		});	
@@ -564,6 +575,7 @@ public class DialogueLibrary
 		{
 			// Mother
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Yoru needs your help relaying information, so please talk to him");
 			await ui.PhraseEnd();
 		});
@@ -573,6 +585,7 @@ public class DialogueLibrary
 		{
 			// MC
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(9);
 			await ui.DisplayLine("Hi sir. . .um. . .I’m here because I want to help you grant your final wishes to someone special to you.");
 			await ui.PhraseEnd();
 
@@ -593,45 +606,60 @@ public class DialogueLibrary
 				await ui.PhraseEnd();
 				
 				ui.PhraseBegin();
+				ui.ChangeTextSpeed(12);
 				await ui.DisplayLine("It was only us from the beginning. Her mother, my wife, had complications during birth and passed away. So I took the responsibility of raising our little girl on my own.");
 				await ui.DisplayLine("I made stupid mistakes as a father. I knew nothing about raising a little girl on my own. I was terrified of how she would end up.");
 				await ui.DisplayLine("I never knew how to comfort her when others looked down on her, but she’s a strong-willed girl. Just like her mother was.");
 				await ui.DisplayLine("While her mother was pregnant with her, her mother suffered from serious complications. We-we...we made an action plan of what to do if she...if one day she was gone.");
 				await ui.DisplayLine("I didn’t take it seriously. I didn’t believe that I would lose my wife. My pride and joy. My partner who I was supposed to raise our beautiful daughter with.");
+				ui.ChangeTextSpeed(8);
 				await ui.DisplayLine("I wasn’t ready for it.");
+				ui.ChangeTextSpeed(12);
 				await ui.DisplayLine("But that didn’t matter, because our daughter, Hotaru, didn't care that I wasn’t ready. She would cry, scream, throw hissy fits, but most of all she was patient.");
+				ui.ChangeTextSpeed(8);
 				await ui.DisplayLine("She was patient with me.");
+				ui.ChangeTextSpeed(9);
 				await ui.DisplayLine("I made silly mistakes, but I learned.");
+				ui.ChangeTextSpeed(11);
 				await ui.DisplayLine("As she grew older, I couldn’t leave her at home, so I took her to work with me. She loved every second of it. She loved construction and building.");
 				await ui.PhraseEnd();
 			} else if (choice == 1)
 			{
 				ui.PhraseBegin();
+				ui.ChangeTextSpeed(12);
 				await ui.DisplayLine("She’s the same now as she ever was when she was younger. She never took no for an answer. She didn’t care what others had in mind about her.");
+				ui.ChangeTextSpeed(10);
 				await ui.DisplayLine("She just did what she wanted to do and that was work on construction.");
+				ui.ChangeTextSpeed(11);
 				await ui.DisplayLine("She was always upset when people would talk about how I was not parenting her well enough, that she’s a girl and doesn’t need to be at a construction site with her father. That a girl like her will have no future in front of her. That it's a man’s job, a woman shouldn’t be working an outside job.");
+				ui.ChangeTextSpeed(9);
 				await ui.DisplayLine("I always felt like I walked her down the wrong path.");
 				await ui.DisplayLine("That I should have just left her at a daycare.");
+				ui.ChangeTextSpeed(10);
 				await ui.DisplayLine("Maybe she wouldn’t have to face the ridicule from others as a younger girl. She was hurt by those comments, but would always tell them off.");
+				ui.ChangeTextSpeed(11);
 				await ui.DisplayLine("She was really proud of me, her father. She was just like her mother. . .her mother had always believed that I could do it.");
-				await ui.DisplayLine("");
-				await ui.DisplayLine("");
-				await ui.DisplayLine("");
 				await ui.PhraseEnd();
 			} else if (choice == 3)
 			{
 				ui.PhraseBegin();
+				ui.ChangeTextSpeed(10);
 				await ui.DisplayLine("She’s about to graduate from college. She’s graduating with her degree in Civil Engineering.");
 				await ui.DisplayLine("Before I could have celebrated alongside her, I ended up passing away right before her high school graduation.");
+				ui.ChangeTextSpeed(12);
 				await ui.DisplayLine("One of the moments in life that she cherished was going to school. She loved middle school and high school years. She was so sad when I wasn’t able to accompany her at her graduation.");				
 				await ui.DisplayLine("I wasn’t able to be there for her through all the pain she must have suffered going through everything alone when transitioning from high school to college. While I was watching over her, she would...she would sometimes cry all alone. But she was a tough cookie.");
 				await ui.PhraseEnd();
 			} else
 			{
 				ui.PhraseBegin();
+				ui.ChangeTextSpeed(12);
 				await ui.DisplayLine("From a construction machinery operation incident. It was a lot that day.");
+				ui.ChangeTextSpeed(10);
 				await ui.DisplayLine("Once it had already happened, I could see my soul floating away from my body. I didn’t know what to do since it all happened so fast.");
+				ui.ChangeTextSpeed(12);
 				await ui.DisplayLine("I immediately thought of Hotaru. I was no longer going to be there for her.");
+				ui.ChangeTextSpeed(10);
 				await ui.DisplayLine("Who would be by her side when she wanted someone to talk to, laugh with, or even cry to? That one person she heavily depended on was gone.");
 				await ui.DisplayLine("It still haunts me to this day. I’ve only been able to watch over her. But today is my chance to change that.");
 				await ui.PhraseEnd();
@@ -640,33 +668,48 @@ public class DialogueLibrary
 
 			// MC Talking
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(9);
 			await ui.DisplayLine("What’s your final wish you’d like to grant to your daughter?");
 			await ui.PhraseEnd();
 
 			// Yoru Talking (giving item)
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("I want to give her this letter. Recently, she’s been sad again. No one is there to be with her during her graduation.");
 			inventory.AddItem("Letter");
 			bool hasTestItem = inventory.HasItem("Letter");
+			await ui.PhraseEnd();
 			
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Also, I have this little firefly pin. She’s my little firefly.");
 			inventory.AddItem("FireflyPin");
-			hasTestItem = inventory.HasItem("FireflyPin");			
+			hasTestItem = inventory.HasItem("FireflyPin");	
+			await ui.PhraseEnd();		
 			
 			// Yoru Talking
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Life may be dark around her, but she still illuminates the night sky. It has our names on it.");
-			
+			await ui.PhraseEnd();
+
 			// MC Talking
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("That was. . .so beautiful. I also lost my mother at a young age, so I understand what she must have been feeling. She’s very brave.");
+			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("I also like construction, but.. .but.. .I’ve just been working an office job since that's what was always recommended to me by others, rather than manual labor.");
+			ui.ChangeTextSpeed(9);
 			await ui.DisplayLine("Thank you for sharing your story with me. I will let her know.");
 			await ui.PhraseEnd();
 
 			// Yoru Talking
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Thank you so much. I’ll be able to rest peacefully then. I’ll also finally be able to reunite with my wife.");
+			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Oh, and just so you know, she has short, brown-ish hair. She’ll be wearing clothes similar to mine.");
+			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("Thanks again.");
 			await ui.PhraseEnd();
 
