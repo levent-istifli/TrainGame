@@ -8,12 +8,26 @@
 [ext_resource type="FontFile" uid="uid://cnxksnbr0eosr" path="res://Fonts/ButtonFonts/SadyanPersonalUse-Regular.otf" id="4_3vsb4"]
 [ext_resource type="FontFile" uid="uid://6fwnkho10n5i" path="res://Fonts/MainMenuFont/Sadents.ttf" id="6_5y475"]
 
-[node name="MainMenu" type="Node2D" unique_id=1525075800 node_paths=PackedStringArray("currentScene")]
+[node name="MainMenu" type="Node2D" unique_id=1525075800 node_paths=PackedStringArray("currentScene", "leftDoor", "rightDoor", "stoppedTrainScene", "darkness", "buttons")]
 script = ExtResource("1_8opa4")
 startScene = ExtResource("2_r4vgf")
 currentScene = NodePath(".")
 trainBackground = ExtResource("3_5y475")
 bckgdSpeed = 900.0
+leftDoor = NodePath("FinalBckg/LeftDoor")
+rightDoor = NodePath("FinalBckg/RightDoor")
+stoppedTrainScene = NodePath("FinalBckg")
+doorSlidingDistance = 55.0
+stopDuration = 1.0
+stopX = 0.0
+darkness = NodePath("ColorRect")
+buttons = NodePath("ButtonManager")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1209431427]
+z_index = 2
+offset_right = 1951.0
+offset_bottom = 1139.0
+color = Color(0, 0, 0, 1)
 
 [node name="ButtonManager" type="Control" parent="." unique_id=1214951449]
 layout_mode = 3
@@ -54,14 +68,6 @@ theme_override_fonts/font = ExtResource("4_3vsb4")
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 
-[node name="LeftDoor" type="Sprite2D" parent="." unique_id=1019665832]
-position = Vector2(960, 537)
-texture = ExtResource("2_8opa4")
-
-[node name="RightDoor" type="Sprite2D" parent="." unique_id=1622307358]
-position = Vector2(960, 537)
-texture = ExtResource("3_r4vgf")
-
 [node name="Label" type="Label" parent="." unique_id=1066689478]
 z_index = 1
 offset_left = 400.0
@@ -73,6 +79,23 @@ theme_override_fonts/font = ExtResource("6_5y475")
 theme_override_font_sizes/font_size = 90
 text = "Main Menu Title Here"
 horizontal_alignment = 1
+
+[node name="FinalBckg" type="Node2D" parent="." unique_id=1120950596]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="FinalBckg" unique_id=684248686]
+texture = ExtResource("3_5y475")
+offset = Vector2(960, 540)
+
+[node name="LeftDoor" type="Sprite2D" parent="FinalBckg" unique_id=1019665832]
+z_index = 1
+position = Vector2(960, 537)
+texture = ExtResource("2_8opa4")
+
+[node name="RightDoor" type="Sprite2D" parent="FinalBckg" unique_id=1622307358]
+z_index = 1
+position = Vector2(960, 537)
+texture = ExtResource("3_r4vgf")
 
 [connection signal="pressed" from="ButtonManager/Start" to="." method="OnStartPressed"]
 [connection signal="pressed" from="ButtonManager/Credits" to="." method="OnCreditsPressed"]
