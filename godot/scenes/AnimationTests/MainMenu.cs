@@ -44,6 +44,9 @@ public partial class MainMenu : Node2D
 			Position = new Vector2(trainWidth, 0)
 		};
 
+		trainOne.ZIndex = 1;
+		trainTwo.ZIndex = 1;
+
 		AddChild(trainOne);
 		AddChild(trainTwo);
 		MoveChild(trainOne, 0);
