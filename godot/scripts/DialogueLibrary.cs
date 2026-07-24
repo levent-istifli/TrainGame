@@ -677,21 +677,19 @@ public class DialogueLibrary
 		{
 			// MC
 			ui.PhraseBegin();
-			await ui.DisplayLine("");
-			await ui.DisplayLine("");
-			await ui.DisplayLine("");
-			await ui.DisplayLine("");
-			await ui.DisplayLine("");
-			await ui.DisplayLine("");
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("Excuse me. . .umm, this might sound strange, but you’re Hotaru, aren't you? I-I actually have something to give you.");
 			await ui.PhraseEnd();
 
 			// Hotaru
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Uhh. . . yes, but, maybe you have the wrong person? I don’t recall us meeting each other before.");
 			await ui.PhraseEnd();
 
 			// MC Talking
 			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("You’re right, we’ve never met each other before, and this may sound crazy or insensitive but please just listen to me. I was just able to speak with your father.");
 			await ui.PhraseEnd();
 
@@ -936,22 +934,32 @@ public class DialogueLibrary
 
 		dialogueEvents["MCDialogue"] = new DialogueEvent(async () =>
 		{
+			// MC Talking
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Am I sure about this?");
+			ui.ChangeTextSpeed(9);
 			await ui.DisplayLine("Everyone was so resilient.");
+			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("I was able to help two sisters, Hana and Kohana, and a daughter-father duo, Yoru and Hotaru.");
+			ui.ChangeTextSpeed(9);
 			await ui.DisplayLine("Is there more to life...");
 			await ui.DisplayLine("What would I even do?");
 			await ui.DisplayLine("Would I travel the world?");
+			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("Study abroad?");
+			ui.ChangeTextSpeed(9);
 			await ui.DisplayLine("Do something I love?");
 			await ui.DisplayLine("Or...what others want me to do...");
+			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("But...but I want to do something I love. Why should I continue the life that I’m living when I can find hope?");
 			await ui.DisplayLine("There is hope out there, somewhere, I just need to find it.");
+			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("I...I...I have to get off.");
+			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("There’s more out there. I want to do what I love to do in life, not what others say I should be doing!");
 			await ui.DisplayLine("Yes, I’ll get off at this stop. It won’t be easy to go forward, but the hope in the eyes of even the dead. . . I have to chase it.");
+			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("I have to find it.");
 			await ui.PhraseEnd();
 		});
