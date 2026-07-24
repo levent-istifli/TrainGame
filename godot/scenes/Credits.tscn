@@ -25,7 +25,7 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 bbcode_enabled = true
-text = "GAME TITLE
+text = "[b]GAME TITLE[/b]
 The End
 
 
@@ -70,6 +70,6 @@ Community Supporters
 
 Powered by Game Engine Name
 
-=================================
-      THANK YOU FOR PLAYING!
-================================="
+[b]THANK YOU FOR PLAYING![/b]"
+scroll_active = false
+horizontal_alignment = 1
