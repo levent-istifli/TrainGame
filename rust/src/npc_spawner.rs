@@ -3,7 +3,7 @@ use std::ops::DerefMut;
 use godot::classes::node::ProcessMode;
 use godot::global::{randf, randf_range, randi_range};
 use godot::prelude::*;
-use godot::classes::{Input, Node2D, Timer};
+use godot::classes::{Node2D, Timer};
 use crate::npc::{NPC, NPCState};
 use crate::seat::Seat;
 
@@ -157,16 +157,6 @@ impl INode2D for NPCSpawner {
             new_npc.set_z_index(1);
             self.base_mut().add_child(&new_npc);
             self.spawned_npcs.push(new_npc);
-        }
-    }
-
-    fn physics_process(&mut self, _delta: f64) {
-        let input = Input::singleton();
-        if input.is_action_just_pressed("board") {
-            self.start_boarding();
-        }
-        if input.is_action_just_pressed("exit") {
-            self.start_exiting();
         }
     }
 }
