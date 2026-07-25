@@ -19,7 +19,7 @@ pub enum NPCState {
 pub struct NPC {
     base: Base<CharacterBody2D>,
     #[export]
-    sprite: OnEditor<Gd<Sprite2D>>,
+    pub sprite: OnEditor<Gd<Sprite2D>>,
     #[export]
     collision: OnEditor<Gd<CollisionShape2D>>,
     #[export]
@@ -76,11 +76,16 @@ impl NPC {
         let new_player_detector_position = collision_position + self.base().get_velocity() / 30.0;
         self.player_detector.set_global_position(new_player_detector_position);
         self.player_detector.force_shapecast_update();
-        if self.player_detector.is_colliding() {
-            return false;
-        }
         let old_position = self.base().get_position();
-        self.base_mut().move_and_slide();
+        if self.player_detector.is_colliding() {
+            let velocity = self.base().get_velocity();
+            self.base_mut().set_velocity(velocity / 2.0);
+            self.base_mut().move_and_slide();
+            self.base_mut().set_velocity(velocity);
+        }
+        else {
+            self.base_mut().move_and_slide();
+        }
         let new_position = self.base().get_position();
         let target;
         let pre;
@@ -117,6 +122,8 @@ impl ICharacterBody2D for NPC {
     fn ready(&mut self) {
         let as_gd = self.to_gd();
         self.signals().went_inactive().emit(&(as_gd));
+        self.collision.set_disabled(true);
+        self.sprite.set_visible(false);
     }
 
     fn physics_process(&mut self, _delta: f64) {

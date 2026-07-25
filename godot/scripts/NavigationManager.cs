@@ -22,6 +22,7 @@ public partial class NavigationManager : Node
 	private Node currentDialogueScene;
 
 	public int currentStation = 0;
+	public static readonly string[] stationNames = {"Ichi", "Ni", "San", "Shi", "Go", "Roku", "Shichi", "Hachi", "Kyuu", "Juu", "Juuichi", "Juuni"};
 	public enum TrainState {
 		STOPPED,
 		RUNNING,
@@ -29,8 +30,6 @@ public partial class NavigationManager : Node
 	}
 
 	public TrainState currentTrainState = TrainState.SLOWING;
-
-	public Timer trainTimer;
 
 	public Godot.Collections.Array<Node> NPCSpawners;
 
@@ -157,50 +156,54 @@ public partial class NavigationManager : Node
 		return null;
 	}
 
-	public void onTrainTimerTimeout()
-	{
-		switch(currentTrainState) 
-		{
-			case TrainState.STOPPED:
-				currentTrainState = TrainState.RUNNING;
-				foreach(Node spawner in NPCSpawners)
-				{
-					spawner.Call("stop_boarding".AsStringName());
-				}
-				{
-				Tween cameraShakeTween = CreateTween();
-				cameraShakeTween.SetProcessMode(Tween.TweenProcessMode.Physics);
-				cameraShakeTween.TweenProperty(Camera2d.Instance, "shakeIntensity".AsNodePath(), 2.0, 2.0);
-				}
-				trainTimer.WaitTime = 10.0;
-				trainTimer.Start();
-				break;
-			case TrainState.RUNNING:
-				currentTrainState = TrainState.SLOWING;
-				{
-				Tween cameraShakeTween = CreateTween();
-				cameraShakeTween.SetProcessMode(Tween.TweenProcessMode.Physics);
-				cameraShakeTween.TweenProperty(Camera2d.Instance, "shakeIntensity".AsNodePath(), 0.0, 2.0);
-				cameraShakeTween.TweenCallback(Callable.From(onTrainTimerTimeout));
-				}
-				break;
-			case TrainState.SLOWING:
-				currentTrainState = TrainState.STOPPED;
-				foreach(Node spawner in NPCSpawners)
-				{
-					spawner.Call("start_boarding".AsStringName());
-					spawner.Call("start_exiting".AsStringName());
-				}
-				trainTimer.WaitTime = 10.0;
-				trainTimer.Start();
-				break;
-		}
-	}
+    public void startTrain()
+    {
+        currentTrainState = TrainState.RUNNING;
+        StationsHud.Instance.label.Text = "Heading to " + stationNames[currentStation + 1] + " Station";
+        {
+        var tween = CreateTween();
+        tween.SetProcessMode(Tween.TweenProcessMode.Physics);
+        tween.TweenProperty(StationsHud.Instance.currentPositionMarker, "position:x".AsNodePath(), (currentStation + 0.5) * StationsHud.circleSpacing , 3.0);
+        }
+        foreach(Node spawner in NPCSpawners)
+        {
+            spawner.Call("stop_boarding".AsStringName());
+        }
+        {
+        Tween cameraShakeTween = CreateTween();
+        cameraShakeTween.SetProcessMode(Tween.TweenProcessMode.Physics);
+        cameraShakeTween.TweenProperty(Camera2d.Instance, "shakeIntensity".AsNodePath(), 2.0, 2.0);
+        }
+    }
+
+    public void stopTrain()
+    {
+        currentTrainState = TrainState.SLOWING;
+        StationsHud.Instance.label.Text = "Arriving at " + stationNames[currentStation + 1] + " Station";
+        var tween = CreateTween();
+        tween.SetProcessMode(Tween.TweenProcessMode.Physics);
+        tween.TweenProperty(StationsHud.Instance.currentPositionMarker, "position:x".AsNodePath(), (currentStation + 1) * StationsHud.circleSpacing, 3.0);
+        Tween cameraShakeTween = CreateTween();
+        cameraShakeTween.SetProcessMode(Tween.TweenProcessMode.Physics);
+        cameraShakeTween.TweenProperty(Camera2d.Instance, "shakeIntensity".AsNodePath(), 0.0, 3.0);
+        cameraShakeTween.TweenCallback(Callable.From(finishStopTrain));
+    }
+
+    public void finishStopTrain()
+    {
+        currentTrainState = TrainState.STOPPED;
+        foreach(Node spawner in NPCSpawners)
+        {
+            spawner.Call("start_boarding".AsStringName());
+            spawner.Call("start_exiting".AsStringName());
+        }
+        currentStation += 1;
+        StationsHud.Instance.label.Text = "Arrived at " + stationNames[currentStation] + " Station";
+    }
 
 	private void getNPCSpawners()
 	{
 		NPCSpawners = GetTree().GetNodesInGroup("NPC Spawner".AsStringName());
-		onTrainTimerTimeout();
 	}
 	
 	// Called when the node enters the scene tree for the first time.
@@ -209,13 +212,6 @@ public partial class NavigationManager : Node
 	{
 		AddToGroup("Pause".AsStringName());
 		Instance = this;
-		trainTimer = new Timer
-		{
-			ProcessCallback = Timer.TimerProcessCallback.Physics,
-			OneShot = true
-		};
-		trainTimer.Timeout += onTrainTimerTimeout;
-		AddChild(trainTimer);
 		Callable.From(getNPCSpawners).CallDeferred();
 	}
 

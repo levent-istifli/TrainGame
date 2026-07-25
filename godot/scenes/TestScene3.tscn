@@ -33,7 +33,7 @@ horizontal_alignment = 1
 
 [node name="NPCSpawner" parent="." unique_id=1586379648 node_paths=PackedStringArray("spawn_points", "seats") instance=ExtResource("3_3ay65")]
 spawn_points = [NodePath("SpawnPoint"), NodePath("SpawnPoint2")]
-seats = [NodePath("Seat"), NodePath("Seat2"), NodePath("Seat3"), NodePath("Seat4"), NodePath("Seat5"), NodePath("Seat6")]
+seats = [NodePath("Seat"), NodePath("Seat2"), NodePath("Seat4"), NodePath("Seat5"), NodePath("Seat6")]
 num_npcs = 6
 aisle_y_position = 797.0
 
@@ -48,9 +48,6 @@ position = Vector2(1350, 596)
 
 [node name="Seat2" type="Seat" parent="NPCSpawner" unique_id=1174736938]
 position = Vector2(500, 596)
-
-[node name="Seat3" type="Seat" parent="NPCSpawner" unique_id=489457553]
-position = Vector2(600, 596)
 
 [node name="Seat4" type="Seat" parent="NPCSpawner" unique_id=728975225]
 position = Vector2(900, 596)

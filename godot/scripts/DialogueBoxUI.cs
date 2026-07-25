@@ -11,6 +11,7 @@ public partial class DialogueBoxUI : Node2D
 
 	[Export] public float charDuration = 0.2f;
 	[Export] public Label textBox;
+    [Export] public Label speakerName;
 	[Export] public Label option1TextBox;
 	[Export] public Label option2TextBox;
 	[Export] public Control option1Indicator;
@@ -23,6 +24,8 @@ public partial class DialogueBoxUI : Node2D
 	public string nextString;
 	bool skipped = false;
 	bool phraseFinished = false;
+    bool willStartTrain = false;
+    bool willStopTrain = false;
 
 	private TaskCompletionSource<bool> waitPhraseEnd;
 	private TaskCompletionSource<bool> waitNextLine;
@@ -65,6 +68,16 @@ public partial class DialogueBoxUI : Node2D
 	public void HideBox()
 	{
 		ResetDialogueState(true);
+        if(willStartTrain)
+        {
+            NavigationManager.Instance.startTrain();
+            willStartTrain = false;
+        }
+        if(willStopTrain)
+        {
+            NavigationManager.Instance.stopTrain();
+            willStopTrain = false;
+        }
 		Visible = false;
 		ProcessMode = ProcessModeEnum.Disabled;
 		inputEnabledAtTicks = 0;
@@ -246,6 +259,21 @@ public partial class DialogueBoxUI : Node2D
 		if (option == 0) option1Indicator.Visible = false;
 		else if (option == 1) option2Indicator.Visible = false;
 	}
+
+    public void SetSpeaker(string speaker)
+    {
+        speakerName.Text = speaker;
+    }
+
+    public void StartTrain()
+    {
+        willStartTrain = true;
+    }
+
+    public void StopTrain()
+    {
+        willStopTrain = true;
+    }
 
 	private void OnOption1MouseEntered()
 	{

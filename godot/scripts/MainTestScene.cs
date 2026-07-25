@@ -9,6 +9,7 @@ public partial class MainTestScene : Node
 	[Export] PackedScene rightScene;
 	[Export] CharacterBody2D player;
 	[Export] PackedScene inventoryScene;
+	[Export] PackedScene stationHUDScene;
 	[Export] PackedScene dialogueBoxScene;
 	[Export] CanvasLayer uiLayer;
 
@@ -20,6 +21,7 @@ public partial class MainTestScene : Node
 		Node leftSceneNode = leftScene.Instantiate();
 		Node rightSceneNode = rightScene.Instantiate();
 		Node inventoryNode = inventoryScene.Instantiate();
+		Control stationsNode = (Control)stationHUDScene.Instantiate();
 		Node2D leftSceneNode2D = leftSceneNode as Node2D;
 		Node2D rightSceneNode2D = rightSceneNode as Node2D;
 
@@ -36,6 +38,8 @@ public partial class MainTestScene : Node
 		AddChild(leftSceneNode);
 		AddChild(rightSceneNode);
 		GetUiParent().AddChild(inventoryNode);
+		stationsNode.Position = new Vector2(400, 0);
+		GetUiParent().AddChild(stationsNode);
 		SpawnDialogueBox();
 		Callable.From(StartOpeningDialogue).CallDeferred();
 

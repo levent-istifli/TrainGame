@@ -51,9 +51,10 @@ impl NPCSpawner {
     #[func]
     fn on_npc_inactive(&mut self, mut signaller: Gd<NPC>) {
         signaller.bind_mut().current_state = NPCState::Inactive;
+        signaller.bind_mut().sprite.set_visible(false);
         let signaller = signaller.deref_mut();
         signaller.set_process_mode(ProcessMode::DISABLED);
-        signaller.set_visible(false);
+        
     }
     #[func]
     fn start_boarding(&mut self) {
@@ -98,7 +99,7 @@ impl NPCSpawner {
         npc_to_board.target_seat_position = self.seats.at(seat_index).get_position();
         npc_to_board.board_train(self.aisle_y_position);
         npc_to_board.base_mut().set_process_mode(ProcessMode::INHERIT);
-        npc_to_board.base_mut().set_visible(true);
+        npc_to_board.sprite.set_visible(true);
         if randf() > BOARDING_STOP_CHANCE {
             self.boarding_timer.set_wait_time(randf_range(BOARD_DELAY_MIN, BOARD_DELAY_MAX));
             self.boarding_timer.start();
