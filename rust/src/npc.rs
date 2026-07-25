@@ -1,6 +1,6 @@
 use godot::global::signf;
 use godot::prelude::*;
-use godot::classes::{CollisionShape2D, Sprite2D, CharacterBody2D};
+use godot::classes::{CollisionShape2D, Sprite2D, CharacterBody2D, ShapeCast2D};
 
 const WALK_SPEED: f32 = 300.0;
 
@@ -22,6 +22,8 @@ pub struct NPC {
     sprite: OnEditor<Gd<Sprite2D>>,
     #[export]
     collision: OnEditor<Gd<CollisionShape2D>>,
+    #[export]
+    player_detector: OnEditor<Gd<ShapeCast2D>>,
     pub movement_targets: Vec<Vector2>,
     pub current_state: NPCState,
     pub target_seat_position: Vector2,
@@ -70,6 +72,13 @@ impl NPC {
     }
 
     fn move_to_target(&mut self) -> bool {
+        let collision_position = self.collision.get_global_position();
+        let new_player_detector_position = collision_position + self.base().get_velocity() / 30.0;
+        self.player_detector.set_global_position(new_player_detector_position);
+        self.player_detector.force_shapecast_update();
+        if self.player_detector.is_colliding() {
+            return false;
+        }
         let old_position = self.base().get_position();
         self.base_mut().move_and_slide();
         let new_position = self.base().get_position();

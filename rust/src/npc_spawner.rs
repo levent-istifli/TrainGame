@@ -47,6 +47,7 @@ pub struct NPCSpawner {
 
 #[godot_api]
 impl NPCSpawner {
+
     #[func]
     fn on_npc_inactive(&mut self, mut signaller: Gd<NPC>) {
         signaller.bind_mut().current_state = NPCState::Inactive;

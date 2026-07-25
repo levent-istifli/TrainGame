@@ -11,7 +11,6 @@ public partial class NavigationManager : Node
 
 	// preload scenes
 	private readonly PackedScene scene_cart1 = GD.Load<PackedScene>("res://scenes/TestScene.tscn");
-	// private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/NpcInteraction.tscn");
 
 	private readonly PackedScene scene_cart2 = GD.Load<PackedScene>("res://scenes/TestScene2.tscn");
 	private readonly PackedScene scene_cart3 = GD.Load<PackedScene>("res://scenes/TestScene3.tscn");
@@ -21,6 +20,19 @@ public partial class NavigationManager : Node
 	private readonly PackedScene scene_dialogue_collectables = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
 	private readonly PackedScene back_button = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
 	private Node currentDialogueScene;
+
+	public int currentStation = 0;
+	public enum TrainState {
+		STOPPED,
+		RUNNING,
+		SLOWING
+	}
+
+	public TrainState currentTrainState = TrainState.SLOWING;
+
+	public Timer trainTimer;
+
+	public Godot.Collections.Array<Node> NPCSpawners;
 
 	public bool IsDialogueSceneOpen()
 	{
@@ -58,7 +70,6 @@ public partial class NavigationManager : Node
 		}
 
 		Window root = GetTree().Root;
-		// Node currentScene = GetTree().CurrentScene;
 
 
 		PackedScene sceneToLoad;
@@ -78,9 +89,6 @@ public partial class NavigationManager : Node
 			{
 				dialogueScene.dialogueEventId = dialogueEventId;
 			}
-			
-			// root.RemoveChild(currentScene);
-			// currentScene.QueueFree();
 
 			// add new scene (aka. dialogue/character interaction scene)
 			if (sceneTag == "MCDialogue")
@@ -129,52 +137,6 @@ public partial class NavigationManager : Node
 
 			player.Show();
 		}
-
-		//          if (sceneToLoad != null) {
-		//	//GD.Print("Scene to load isn't null");
-		//	//Keep current scene as is and instantiate the new scene
-		//	spawnDoorTag = doorTag;
-		//	//Node newScene = sceneToLoad.Instantiate();
-		//	//Cast to Node2D to get properties to move the scene
-		//	//Node2D newScene2D = newScene as Node2D;
-		//	//If done properly, move the scene 1920 to the right/left (depends on doorTag) + add to scene
-		//	float finalCamPos = 0;
-		//	//GD.Print("Camera Pos Before Move: ", Camera2d.Instance.Position);
-		//	if (newScene2D != null) {
-		//		//GD.Print("Inside newScene2D check");
-
-		//		//Check if left or right door to spawn room in correct position + adjust camera correctly
-		//		if (doorTag == "L") {
-		//			Vector2 positionChange = new Vector2(1920, 0);
-		//			//newScene2D.Position = currentLevel.Position + positionChange;
-		//			finalCamPos = (Camera2d.Instance.Position + positionChange).X;
-		//		} else if (doorTag == "R"){
-		//			Vector2 positionChange = new Vector2(-1920, 0);
-		//			newScene2D.Position = currentLevel.Position + positionChange;
-		//			finalCamPos = (Camera2d.Instance.Position + positionChange).X;
-		//		}
-
-		//		//Add new scene, hide player, tween camera, move player in new position next to door and unhide
-		//		//Callable.From(() => GetTree().Root.GetNode("MainScene".AsNodePath()).AddChild(newScene2D)).CallDeferred();
-		//		//await ToSignal(GetTree(), "process_frame".AsStringName());
-		//		player.Hide();
-		//		Tween tween = Camera2d.Instance.MoveCamera(finalCamPos);
-		//		await ToSignal(tween, Tween.SignalName.Finished);
-		//		//Callable.From(() => currentLevel.QueueFree()).CallDeferred();  //compleltley deletes from memory, so you lose saved state
-		//		//GD.Print("Group size: ", GetTree().GetNodesInGroup("Spawn Points".AsStringName()).Count);
-		//		Marker2D newSpawn = FindSpawner(newScene2D, doorTag);
-		//		if (newSpawn != null) {
-		//			//GD.Print("New spawn isn't null");
-		//			//GD.Print("New Spawn position: " + newSpawn.GlobalPosition);
-		//			//GD.Print("Current Player position" + player.GlobalPosition);
-		//			player.GlobalPosition = newSpawn.GlobalPosition;
-
-		//			player.Show();
-		//		}
-
-		//		//GD.Print("Final Cam Pos: ", finalCamPos);
-		//	}
-		//}
 	}
 
 
@@ -194,12 +156,67 @@ public partial class NavigationManager : Node
 		}
 		return null;
 	}
+
+	public void onTrainTimerTimeout()
+	{
+		switch(currentTrainState) 
+		{
+			case TrainState.STOPPED:
+				currentTrainState = TrainState.RUNNING;
+				foreach(Node spawner in NPCSpawners)
+				{
+					spawner.Call("stop_boarding".AsStringName());
+				}
+				{
+				Tween cameraShakeTween = CreateTween();
+				cameraShakeTween.SetProcessMode(Tween.TweenProcessMode.Physics);
+				cameraShakeTween.TweenProperty(Camera2d.Instance, "shakeIntensity".AsNodePath(), 2.0, 2.0);
+				}
+				trainTimer.WaitTime = 10.0;
+				trainTimer.Start();
+				break;
+			case TrainState.RUNNING:
+				currentTrainState = TrainState.SLOWING;
+				{
+				Tween cameraShakeTween = CreateTween();
+				cameraShakeTween.SetProcessMode(Tween.TweenProcessMode.Physics);
+				cameraShakeTween.TweenProperty(Camera2d.Instance, "shakeIntensity".AsNodePath(), 0.0, 2.0);
+				cameraShakeTween.TweenCallback(Callable.From(onTrainTimerTimeout));
+				}
+				break;
+			case TrainState.SLOWING:
+				currentTrainState = TrainState.STOPPED;
+				foreach(Node spawner in NPCSpawners)
+				{
+					spawner.Call("start_boarding".AsStringName());
+					spawner.Call("start_exiting".AsStringName());
+				}
+				trainTimer.WaitTime = 10.0;
+				trainTimer.Start();
+				break;
+		}
+	}
+
+	private void getNPCSpawners()
+	{
+		NPCSpawners = GetTree().GetNodesInGroup("NPC Spawner".AsStringName());
+		onTrainTimerTimeout();
+	}
 	
 	// Called when the node enters the scene tree for the first time.
 	// To check if instance has been intitiated, if so return it
 	public override void _Ready()
 	{
+		AddToGroup("Pause".AsStringName());
 		Instance = this;
+		trainTimer = new Timer
+		{
+			ProcessCallback = Timer.TimerProcessCallback.Physics,
+			OneShot = true
+		};
+		trainTimer.Timeout += onTrainTimerTimeout;
+		AddChild(trainTimer);
+		Callable.From(getNPCSpawners).CallDeferred();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

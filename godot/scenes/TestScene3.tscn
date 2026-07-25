@@ -44,7 +44,7 @@ position = Vector2(497, 918)
 position = Vector2(1100, 918)
 
 [node name="Seat" type="Seat" parent="NPCSpawner" unique_id=876256018]
-position = Vector2(371, 596)
+position = Vector2(1350, 596)
 
 [node name="Seat2" type="Seat" parent="NPCSpawner" unique_id=1174736938]
 position = Vector2(500, 596)

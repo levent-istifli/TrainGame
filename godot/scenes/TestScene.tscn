@@ -42,7 +42,10 @@ text = "Cart 2
 "
 horizontal_alignment = 1
 
-[node name="NPCSpawner" parent="." unique_id=1586379648 groups=["Pause"] instance=ExtResource("3_n77mx")]
+[node name="NPCSpawner" parent="." unique_id=1586379648 node_paths=PackedStringArray("spawn_points", "seats") instance=ExtResource("3_n77mx")]
+spawn_points = [NodePath("SpawnPoint"), NodePath("SpawnPoint2")]
+seats = [NodePath("Seat"), NodePath("Seat2"), NodePath("Seat3"), NodePath("Seat4"), NodePath("Seat5"), NodePath("Seat6")]
+aisle_y_position = 797.0
 
 [node name="SpawnPoint" type="Node2D" parent="NPCSpawner" unique_id=366518765]
 position = Vector2(497, 918)
@@ -51,7 +54,7 @@ position = Vector2(497, 918)
 position = Vector2(1100, 918)
 
 [node name="Seat" type="Seat" parent="NPCSpawner" unique_id=1109310591]
-position = Vector2(299, 596)
+position = Vector2(1150, 596)
 
 [node name="Seat2" type="Seat" parent="NPCSpawner" unique_id=1122856225]
 position = Vector2(450, 596)
