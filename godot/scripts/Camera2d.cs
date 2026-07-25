@@ -5,6 +5,7 @@ using GodotStringIntercept;
 public partial class Camera2d : Camera2D
 {
 	public static Camera2d Instance { get; private set; }
+	public double shakeIntensity = 2.0;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -15,6 +16,14 @@ public partial class Camera2d : Camera2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+	
+	public override void _PhysicsProcess(double delta)
+	{
+		Vector2 newOffset;
+		newOffset.X = (float)GD.RandRange(0, shakeIntensity);
+		newOffset.Y = (float)GD.RandRange(0, shakeIntensity);
+		this.Offset = newOffset;
 	}
 
 	public Tween MoveCamera(float finalX) { 

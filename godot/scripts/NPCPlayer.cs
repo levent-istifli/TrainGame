@@ -24,10 +24,10 @@ public partial class NPCPlayer : Area2D
 			if (mouseEvent.ButtonIndex == MouseButton.Left)
 			{
 				string eventToPlay = hasInteracted
-                ? repeatDialogueEventId
-                : firstDialogueEventId;
+				? repeatDialogueEventId
+				: firstDialogueEventId;
 
-            	hasInteracted = true;
+				hasInteracted = true;
 				NavigationManager.Instance.loadDialogueScene(sceneTag, "", eventToPlay);
 			}
 		}	
