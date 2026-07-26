@@ -24,6 +24,26 @@
 [ext_resource type="AudioStream" uid="uid://bqgex35klq4vg" path="res://Audio/MainMenuTicketMachine.wav" id="22_lhccx"]
 [ext_resource type="AudioStream" uid="uid://dqquundmeoldg" path="res://Audio/MainMenuDoors.wav" id="23_hphkb"]
 
+[sub_resource type="Environment" id="Environment_hphkb"]
+background_mode = 3
+ambient_light_source = 1
+ambient_light_color = Color(0.85333085, 0.9033032, 0.9999986, 1)
+ambient_light_energy = 6.85
+glow_enabled = true
+glow_intensity = 0.92
+glow_strength = 1.55
+glow_bloom = 0.03
+fog_light_color = Color(0.37430587, 0.4176868, 0.80704314, 1)
+
+[sub_resource type="Gradient" id="Gradient_hphkb"]
+offsets = PackedFloat32Array(0, 0.64529055)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e2a6r"]
+gradient = SubResource("Gradient_hphkb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="MainMenu" type="Node2D" unique_id=1525075800 node_paths=PackedStringArray("button", "doors", "currentScene", "leftDoor", "rightDoor", "stoppedTrainScene", "darkness", "buttons")]
 script = ExtResource("1_8opa4")
 button = NodePath("sfxButton")
@@ -155,6 +175,24 @@ volume_db = -5.993
 stream = ExtResource("23_hphkb")
 volume_db = -16.922
 pitch_scale = 0.72
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1992939295]
+environment = SubResource("Environment_hphkb")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=570939620]
+color = Color(0.7372549, 0.78431374, 1, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1764207357]
+z_index = 4
+position = Vector2(161, 8.000004)
+scale = Vector2(6.1562495, 6.820313)
+energy = 2.57
+texture = SubResource("GradientTexture2D_e2a6r")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=174308779]
+visible = false
+position = Vector2(1222, -132)
+range_z_min = 1024
 
 [connection signal="pressed" from="ButtonManager/Start" to="." method="OnStartPressed"]
 [connection signal="pressed" from="ButtonManager/Credits" to="." method="OnCreditsPressed"]
