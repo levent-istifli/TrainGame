@@ -3,6 +3,9 @@ using System;
 
 public partial class MainMenu : Node2D
 {
+	[Export] public AudioStreamPlayer button;
+	[Export] public AudioStreamPlayer doors;
+
 	[Export] public PackedScene startScene;
 	[Export] public PackedScene creditScene;
 	[Export] public Node currentScene;
@@ -71,6 +74,9 @@ public partial class MainMenu : Node2D
 	}
 	
 	void OnStartPressed(){
+		button.Play();
+		doors.Play();
+
 		if (state != MenuState.Moving) { return; }
 		state = MenuState.Stopping;
 
@@ -105,6 +111,7 @@ public partial class MainMenu : Node2D
 	}
 	
 	void OnCreditsPressed(){
+		button.Play();
 		Window root = GetTree().Root;
 		Node newScene = creditScene.Instantiate();
 
@@ -114,6 +121,7 @@ public partial class MainMenu : Node2D
 	}
 	
 	void OnQuitPressed(){
+		button.Play();
 		GetTree().Quit();
 	}
 

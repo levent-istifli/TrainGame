@@ -18,9 +18,16 @@
 [ext_resource type="Texture2D" uid="uid://o4nyv6lmp1xk" path="res://Art/FrontMM.png" id="10_c4uvp"]
 [ext_resource type="Texture2D" uid="uid://d1r0nrcswdlaq" path="res://Art/EndPressed.png" id="11_d5dm7"]
 [ext_resource type="Texture2D" uid="uid://dvfsqsry0ornx" path="res://Art/EndHover.png" id="12_rjj8o"]
+[ext_resource type="AudioStream" uid="uid://d1cii1eel3gcl" path="res://Audio/MainMenuPiano.wav" id="19_mku1p"]
+[ext_resource type="AudioStream" uid="uid://cr0c0ph3wfcqx" path="res://Audio/MainMenuTrain.mp3" id="20_d5dm7"]
+[ext_resource type="AudioStream" uid="uid://djs8qe3tsker3" path="res://Audio/MainMenuForest.wav" id="20_rjj8o"]
+[ext_resource type="AudioStream" uid="uid://bqgex35klq4vg" path="res://Audio/MainMenuTicketMachine.wav" id="22_lhccx"]
+[ext_resource type="AudioStream" uid="uid://dqquundmeoldg" path="res://Audio/MainMenuDoors.wav" id="23_hphkb"]
 
-[node name="MainMenu" type="Node2D" unique_id=1525075800 node_paths=PackedStringArray("currentScene", "leftDoor", "rightDoor", "stoppedTrainScene", "darkness", "buttons")]
+[node name="MainMenu" type="Node2D" unique_id=1525075800 node_paths=PackedStringArray("button", "doors", "currentScene", "leftDoor", "rightDoor", "stoppedTrainScene", "darkness", "buttons")]
 script = ExtResource("1_8opa4")
+button = NodePath("sfxButton")
+doors = NodePath("sfxDoorsOpening")
 startScene = ExtResource("2_r4vgf")
 currentScene = NodePath(".")
 trainBackground = ExtResource("3_63hqf")
@@ -52,9 +59,9 @@ offset_bottom = 40.0
 z_index = 1
 layout_mode = 0
 offset_left = 178.0
-offset_top = 268.0
+offset_top = 231.0
 offset_right = 536.0
-offset_bottom = 506.0
+offset_bottom = 469.0
 texture_normal = ExtResource("4_e42ux")
 texture_pressed = ExtResource("5_13hbo")
 texture_hover = ExtResource("6_c4uvp")
@@ -65,9 +72,9 @@ stretch_mode = 5
 z_index = 1
 layout_mode = 0
 offset_left = 178.0
-offset_top = 525.0
+offset_top = 488.0
 offset_right = 537.0
-offset_bottom = 761.0
+offset_bottom = 724.0
 texture_normal = ExtResource("5_bwh0g")
 texture_pressed = ExtResource("8_vs7ht")
 texture_hover = ExtResource("9_mku1p")
@@ -78,9 +85,9 @@ stretch_mode = 5
 z_index = 1
 layout_mode = 0
 offset_left = 165.0
-offset_top = 784.0
+offset_top = 747.0
 offset_right = 552.0
-offset_bottom = 1021.68506
+offset_bottom = 984.68506
 texture_normal = ExtResource("6_13hbo")
 texture_pressed = ExtResource("11_d5dm7")
 texture_hover = ExtResource("12_rjj8o")
@@ -124,6 +131,30 @@ texture = ExtResource("9_13hbo")
 z_index = 2
 position = Vector2(960, 540)
 texture = ExtResource("10_c4uvp")
+
+[node name="PianoAmbient" type="AudioStreamPlayer" parent="." unique_id=1623617518]
+stream = ExtResource("19_mku1p")
+autoplay = true
+
+[node name="ForestAmbient" type="AudioStreamPlayer" parent="." unique_id=193892951]
+stream = ExtResource("20_rjj8o")
+volume_db = -19.995
+autoplay = true
+
+[node name="TrainAmbient" type="AudioStreamPlayer" parent="." unique_id=1700779940]
+stream = ExtResource("20_d5dm7")
+volume_db = -34.624
+pitch_scale = 0.81
+autoplay = true
+
+[node name="sfxButton" type="AudioStreamPlayer" parent="." unique_id=148518371]
+stream = ExtResource("22_lhccx")
+volume_db = -5.993
+
+[node name="sfxDoorsOpening" type="AudioStreamPlayer" parent="." unique_id=794071212]
+stream = ExtResource("23_hphkb")
+volume_db = -16.922
+pitch_scale = 0.72
 
 [connection signal="pressed" from="ButtonManager/Start" to="." method="OnStartPressed"]
 [connection signal="pressed" from="ButtonManager/Credits" to="." method="OnCreditsPressed"]
