@@ -156,50 +156,50 @@ public partial class NavigationManager : Node
 		return null;
 	}
 
-    public void startTrain()
-    {
-        currentTrainState = TrainState.RUNNING;
-        StationsHud.Instance.label.Text = "Heading to " + stationNames[currentStation + 1] + " Station";
-        {
-        var tween = CreateTween();
-        tween.SetProcessMode(Tween.TweenProcessMode.Physics);
-        tween.TweenProperty(StationsHud.Instance.currentPositionMarker, "position:x".AsNodePath(), (currentStation + 0.5) * StationsHud.circleSpacing , 3.0);
-        }
-        foreach(Node spawner in NPCSpawners)
-        {
-            spawner.Call("stop_boarding".AsStringName());
-        }
-        {
-        Tween cameraShakeTween = CreateTween();
-        cameraShakeTween.SetProcessMode(Tween.TweenProcessMode.Physics);
-        cameraShakeTween.TweenProperty(Camera2d.Instance, "shakeIntensity".AsNodePath(), 2.0, 2.0);
-        }
-    }
+	public void startTrain()
+	{
+		currentTrainState = TrainState.RUNNING;
+		StationsHud.Instance.label.Text = "Heading to " + stationNames[currentStation + 1] + " Station";
+		{
+		var tween = CreateTween();
+		tween.SetProcessMode(Tween.TweenProcessMode.Physics);
+		tween.TweenProperty(StationsHud.Instance.currentPositionMarker, "position:x".AsNodePath(), (currentStation + 0.5) * StationsHud.circleSpacing , 3.0);
+		}
+		foreach(Node spawner in NPCSpawners)
+		{
+			spawner.Call("stop_boarding".AsStringName());
+		}
+		{
+		Tween cameraShakeTween = CreateTween();
+		cameraShakeTween.SetProcessMode(Tween.TweenProcessMode.Physics);
+		cameraShakeTween.TweenProperty(Camera2d.Instance, "shakeIntensity".AsNodePath(), 2.0, 2.0);
+		}
+	}
 
-    public void stopTrain()
-    {
-        currentTrainState = TrainState.SLOWING;
-        StationsHud.Instance.label.Text = "Arriving at " + stationNames[currentStation + 1] + " Station";
-        var tween = CreateTween();
-        tween.SetProcessMode(Tween.TweenProcessMode.Physics);
-        tween.TweenProperty(StationsHud.Instance.currentPositionMarker, "position:x".AsNodePath(), (currentStation + 1) * StationsHud.circleSpacing, 3.0);
-        Tween cameraShakeTween = CreateTween();
-        cameraShakeTween.SetProcessMode(Tween.TweenProcessMode.Physics);
-        cameraShakeTween.TweenProperty(Camera2d.Instance, "shakeIntensity".AsNodePath(), 0.0, 3.0);
-        cameraShakeTween.TweenCallback(Callable.From(finishStopTrain));
-    }
+	public void stopTrain()
+	{
+		currentTrainState = TrainState.SLOWING;
+		StationsHud.Instance.label.Text = "Arriving at " + stationNames[currentStation + 1] + " Station";
+		var tween = CreateTween();
+		tween.SetProcessMode(Tween.TweenProcessMode.Physics);
+		tween.TweenProperty(StationsHud.Instance.currentPositionMarker, "position:x".AsNodePath(), (currentStation + 1) * StationsHud.circleSpacing, 3.0);
+		Tween cameraShakeTween = CreateTween();
+		cameraShakeTween.SetProcessMode(Tween.TweenProcessMode.Physics);
+		cameraShakeTween.TweenProperty(Camera2d.Instance, "shakeIntensity".AsNodePath(), 0.0, 3.0);
+		cameraShakeTween.TweenCallback(Callable.From(finishStopTrain));
+	}
 
-    public void finishStopTrain()
-    {
-        currentTrainState = TrainState.STOPPED;
-        foreach(Node spawner in NPCSpawners)
-        {
-            spawner.Call("start_boarding".AsStringName());
-            spawner.Call("start_exiting".AsStringName());
-        }
-        currentStation += 1;
-        StationsHud.Instance.label.Text = "Arrived at " + stationNames[currentStation] + " Station";
-    }
+	public void finishStopTrain()
+	{
+		currentTrainState = TrainState.STOPPED;
+		foreach(Node spawner in NPCSpawners)
+		{
+			spawner.Call("start_boarding".AsStringName());
+			spawner.Call("start_exiting".AsStringName());
+		}
+		currentStation += 1;
+		StationsHud.Instance.label.Text = "Arrived at " + stationNames[currentStation] + " Station";
+	}
 
 	private void getNPCSpawners()
 	{

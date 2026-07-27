@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://beh2de8br4uk7"]
 
 [ext_resource type="Script" uid="uid://c1nue1b8nio8p" path="res://scripts/PlayerNew.cs" id="1_agiem"]
-[ext_resource type="Texture2D" uid="uid://bwvh2xpox812l" path="res://Art/ProtagonistWalk.png" id="2_agiem"]
+[ext_resource type="Texture2D" uid="uid://bidmjnt58ah5t" path="res://Art/Nozomi.png" id="2_agiem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krj2m"]
 size = Vector2(107, 48)
