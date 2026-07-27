@@ -23,31 +23,34 @@
 [ext_resource type="AudioStream" uid="uid://djs8qe3tsker3" path="res://Audio/MainMenuForest.wav" id="20_rjj8o"]
 [ext_resource type="AudioStream" uid="uid://bqgex35klq4vg" path="res://Audio/MainMenuTicketMachine.wav" id="22_lhccx"]
 [ext_resource type="AudioStream" uid="uid://dqquundmeoldg" path="res://Audio/MainMenuDoors.wav" id="23_hphkb"]
+[ext_resource type="Shader" uid="uid://dvw1grmywhixp" path="res://scenes/AnimationTests/vignette.gdshader" id="24_e2a6r"]
 
 [sub_resource type="Environment" id="Environment_hphkb"]
 background_mode = 3
-ambient_light_source = 1
 ambient_light_color = Color(0.85333085, 0.9033032, 0.9999986, 1)
-ambient_light_energy = 6.85
+ambient_light_energy = 9.6
 glow_enabled = true
-glow_intensity = 0.92
-glow_strength = 1.55
-glow_bloom = 0.03
+glow_intensity = 0.15
+glow_strength = 1.59
+glow_bloom = 0.69
+glow_blend_mode = 2
 fog_light_color = Color(0.37430587, 0.4176868, 0.80704314, 1)
+adjustment_enabled = true
+adjustment_brightness = 0.94
+adjustment_saturation = 0.86
 
-[sub_resource type="Gradient" id="Gradient_hphkb"]
-offsets = PackedFloat32Array(0, 0.64529055)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_e2a6r"]
-gradient = SubResource("Gradient_hphkb")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lq03r"]
+shader = ExtResource("24_e2a6r")
+shader_parameter/radius = 0.1950000092625
+shader_parameter/softness = 0.3950000187625
+shader_parameter/intensity = 0.6000000285
+shader_parameter/contrast = 1.7070000573325
+shader_parameter/vignette_color = Color(0.03529412, 0, 0.07450981, 1)
 
 [node name="MainMenu" type="Node2D" unique_id=1525075800 node_paths=PackedStringArray("button", "doors", "currentScene", "leftDoor", "rightDoor", "stoppedTrainScene", "darkness", "buttons")]
 script = ExtResource("1_8opa4")
-button = NodePath("sfxButton")
-doors = NodePath("sfxDoorsOpening")
+button = NodePath("Audio/sfxButton")
+doors = NodePath("Audio/sfxDoorsOpening")
 startScene = ExtResource("2_r4vgf")
 currentScene = NodePath(".")
 trainBackground = ExtResource("3_63hqf")
@@ -58,15 +61,18 @@ stoppedTrainScene = NodePath("FinalBckg")
 doorSlidingDistance = 65.0
 stopDuration = 3.0
 stopX = 0.0
-darkness = NodePath("ColorRect")
+darkness = NodePath("FadeToBlack")
 buttons = NodePath("ButtonManager")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1209431427]
+[node name="FadeToBlack" type="ColorRect" parent="." unique_id=1209431427]
 visible = false
 z_index = 4
 offset_right = 1951.0
 offset_bottom = 1139.0
 color = Color(0, 0, 0, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=570939620]
+color = Color(0.7372549, 0.78431374, 1, 1)
 
 [node name="ButtonManager" type="Control" parent="." unique_id=1214951449]
 z_index = 2
@@ -114,18 +120,6 @@ texture_hover = ExtResource("12_rjj8o")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="." unique_id=1066689478]
-z_index = 3
-offset_left = 248.0
-offset_top = 88.0
-offset_right = 1779.0
-offset_bottom = 179.0
-theme_override_colors/font_color = Color(0.80599517, 0.8564404, 1.0890509, 0.545)
-theme_override_fonts/font = ExtResource("6_5y475")
-theme_override_font_sizes/font_size = 90
-text = "Twelve Stops Until Your Destination"
-horizontal_alignment = 1
-
 [node name="FinalBckg" type="Node2D" parent="." unique_id=1120950596]
 
 [node name="Sprite2D" type="Sprite2D" parent="FinalBckg" unique_id=684248686]
@@ -152,26 +146,48 @@ z_index = 2
 position = Vector2(960, 540)
 texture = ExtResource("10_c4uvp")
 
-[node name="PianoAmbient" type="AudioStreamPlayer" parent="." unique_id=1623617518]
+[node name="GameTitle" type="Label" parent="." unique_id=1066689478]
+z_index = 4
+offset_left = 248.0
+offset_top = 88.0
+offset_right = 1779.0
+offset_bottom = 179.0
+theme_override_colors/font_color = Color(0.99136573, 0.99432856, 1, 1)
+theme_override_fonts/font = ExtResource("6_5y475")
+theme_override_font_sizes/font_size = 90
+text = "Twelve Stops Until Your Destination"
+horizontal_alignment = 1
+
+[node name="GameTitleBack" type="ColorRect" parent="." unique_id=1021572661]
+z_index = 3
+offset_left = 236.0
+offset_top = 76.0
+offset_right = 1788.0
+offset_bottom = 181.0
+color = Color(0.80784315, 0.8862745, 0.91764706, 0.38039216)
+
+[node name="Audio" type="Node" parent="." unique_id=1834776717]
+
+[node name="PianoAmbient" type="AudioStreamPlayer" parent="Audio" unique_id=1623617518]
 stream = ExtResource("19_mku1p")
 autoplay = true
 
-[node name="ForestAmbient" type="AudioStreamPlayer" parent="." unique_id=193892951]
+[node name="ForestAmbient" type="AudioStreamPlayer" parent="Audio" unique_id=193892951]
 stream = ExtResource("20_rjj8o")
 volume_db = -19.995
 autoplay = true
 
-[node name="TrainAmbient" type="AudioStreamPlayer" parent="." unique_id=1700779940]
+[node name="TrainAmbient" type="AudioStreamPlayer" parent="Audio" unique_id=1700779940]
 stream = ExtResource("20_d5dm7")
 volume_db = -34.624
 pitch_scale = 0.81
 autoplay = true
 
-[node name="sfxButton" type="AudioStreamPlayer" parent="." unique_id=148518371]
+[node name="sfxButton" type="AudioStreamPlayer" parent="Audio" unique_id=148518371]
 stream = ExtResource("22_lhccx")
 volume_db = -5.993
 
-[node name="sfxDoorsOpening" type="AudioStreamPlayer" parent="." unique_id=794071212]
+[node name="sfxDoorsOpening" type="AudioStreamPlayer" parent="Audio" unique_id=794071212]
 stream = ExtResource("23_hphkb")
 volume_db = -16.922
 pitch_scale = 0.72
@@ -179,20 +195,19 @@ pitch_scale = 0.72
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1992939295]
 environment = SubResource("Environment_hphkb")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=570939620]
-color = Color(0.7372549, 0.78431374, 1, 1)
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1764207357]
-z_index = 4
-position = Vector2(161, 8.000004)
-scale = Vector2(6.1562495, 6.820313)
-energy = 2.57
-texture = SubResource("GradientTexture2D_e2a6r")
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=174308779]
-visible = false
-position = Vector2(1222, -132)
-range_z_min = 1024
+[node name="Vignette" type="ColorRect" parent="." unique_id=903294620]
+z_index = 1
+material = SubResource("ShaderMaterial_lq03r")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 6.0
+offset_bottom = 1.2285916
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(319.2009, 889.63654)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="ButtonManager/Start" to="." method="OnStartPressed"]
 [connection signal="pressed" from="ButtonManager/Credits" to="." method="OnCreditsPressed"]
