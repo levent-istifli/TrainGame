@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c1vx5f40jfo2n"]
+
+[ext_resource type="Script" uid="uid://clivn068naisr" path="res://scripts/StationsHud.cs" id="1_mbdt7"]
+[ext_resource type="Texture2D" uid="uid://b8bmxodf4wj4i" path="res://Art/white_circle_texture.tres" id="2_tf230"]
+
+[sub_resource type="Gradient" id="Gradient_yqjtq"]
+offsets = PackedFloat32Array(0.39488637, 0.4)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mbdt7"]
+gradient = SubResource("Gradient_yqjtq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="StationsHUD" type="Control" unique_id=2050712048 node_paths=PackedStringArray("currentPositionMarker", "line", "label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_mbdt7")
+whiteSquareTexture = ExtResource("2_tf230")
+currentPositionMarker = NodePath("CurrentPositionMarker")
+line = NodePath("Line2D")
+label = NodePath("Label")
+
+[node name="CurrentPositionMarker" type="TextureRect" parent="." unique_id=1676499239]
+z_index = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture2D_mbdt7")
+
+[node name="Label" type="Label" parent="." unique_id=1954502069]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 400.0
+offset_bottom = 122.0
+theme_override_font_sizes/font_size = 64
+text = "Departing from Ichi Station"
+
+[node name="Line2D" type="Line2D" parent="." unique_id=748135813]
+points = PackedVector2Array(32, 32)

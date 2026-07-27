@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dprmhuiq2vn26"]
+
+[ext_resource type="Script" uid="uid://e5ghda1bgx8e" path="res://scripts/PlayerInventory.cs" id="1_yuakg"]
+[ext_resource type="PackedScene" uid="uid://i7g10nv2tik4" path="res://scenes/ItemImage.tscn" id="2_d3tcw"]
+
+[node name="PlayerInventory" type="Node" unique_id=1148912289 node_paths=PackedStringArray("itemUIGrid")]
+script = ExtResource("1_yuakg")
+itemUIGrid = NodePath("")
+testIcon = ExtResource("2_d3tcw")

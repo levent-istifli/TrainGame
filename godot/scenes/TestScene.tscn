@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="2_nb1wl"]
 [ext_resource type="PackedScene" uid="uid://bnfnq0jctl51d" path="res://scenes/npc_spawner.tscn" id="3_n77mx"]
 [ext_resource type="PackedScene" uid="uid://c2yva6vtvmdd2" path="res://scenes/NPCPlayer.tscn" id="4_nb1wl"]
+[ext_resource type="Texture2D" uid="uid://ta8mu3qbh21l" path="res://Art/Mother.png" id="5_m5dm6"]
 
 [node name="TestScene" type="Node2D" unique_id=1808858924]
 
@@ -37,13 +38,13 @@ offset_right = 1917.0
 offset_bottom = 137.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 83
-text = "Cart 1"
+text = "Cart 2
+"
 horizontal_alignment = 1
 
-[node name="NPCSpawner" parent="." unique_id=1586379648 node_paths=PackedStringArray("spawn_points", "seats") groups=["Pause"] instance=ExtResource("3_n77mx")]
+[node name="NPCSpawner" parent="." unique_id=1586379648 node_paths=PackedStringArray("spawn_points", "seats") instance=ExtResource("3_n77mx")]
 spawn_points = [NodePath("SpawnPoint"), NodePath("SpawnPoint2")]
 seats = [NodePath("Seat"), NodePath("Seat2"), NodePath("Seat3"), NodePath("Seat4"), NodePath("Seat5"), NodePath("Seat6")]
-num_npcs = 6
 aisle_y_position = 797.0
 
 [node name="SpawnPoint" type="Node2D" parent="NPCSpawner" unique_id=366518765]
@@ -53,7 +54,7 @@ position = Vector2(497, 918)
 position = Vector2(1100, 918)
 
 [node name="Seat" type="Seat" parent="NPCSpawner" unique_id=1109310591]
-position = Vector2(299, 596)
+position = Vector2(1150, 596)
 
 [node name="Seat2" type="Seat" parent="NPCSpawner" unique_id=1122856225]
 position = Vector2(450, 596)
@@ -74,8 +75,16 @@ position = Vector2(1288, 596)
 position = Vector2(569, 517)
 metadata/_edit_group_ = true
 
+[node name="Area2D" parent="NPCPlayer" index="0" unique_id=1629417335]
+firstDialogueEventId = "FirstMotherDialogue"
+repeatDialogueEventId = "MotherKohanaRepeat"
+
+[node name="Sprite2D" parent="NPCPlayer/Area2D" index="0" unique_id=1297988730]
+texture = ExtResource("5_m5dm6")
+
 [connection signal="body_entered" from="Doors/Door_R" to="Doors/Door_R" method="OnBodyEntered"]
 [connection signal="body_entered" from="Doors/Door_L" to="Doors/Door_L" method="OnBodyEntered"]
 
 [editable path="Doors/Door_R"]
 [editable path="Doors/Door_L"]
+[editable path="NPCPlayer"]
