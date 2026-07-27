@@ -147,21 +147,21 @@ texture = ExtResource("10_c4uvp")
 
 [node name="GameTitle" type="Label" parent="." unique_id=1066689478]
 z_index = 4
-offset_left = 248.0
+offset_left = 632.0
 offset_top = 88.0
-offset_right = 1779.0
+offset_right = 1357.0
 offset_bottom = 179.0
 theme_override_colors/font_color = Color(0.99136573, 0.99432856, 1, 1)
 theme_override_fonts/font = ExtResource("6_5y475")
 theme_override_font_sizes/font_size = 90
-text = "Twelve Stops Until Your Destination"
+text = "The Twelfth Stop"
 horizontal_alignment = 1
 
 [node name="GameTitleBack" type="ColorRect" parent="." unique_id=1021572661]
 z_index = 3
-offset_left = 236.0
+offset_left = 610.0
 offset_top = 76.0
-offset_right = 1788.0
+offset_right = 1386.0
 offset_bottom = 181.0
 color = Color(0.80784315, 0.8862745, 0.91764706, 0.38039216)
 
