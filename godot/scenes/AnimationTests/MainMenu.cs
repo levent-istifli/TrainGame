@@ -53,7 +53,7 @@ public partial class MainMenu : Node2D
 		AddChild(trainOne);
 		AddChild(trainTwo);
 		MoveChild(trainOne, 0);
-		MoveChild(trainTwo, 1);
+		//MoveChild(trainTwo, 1);
 	}
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -94,15 +94,15 @@ public partial class MainMenu : Node2D
 			trailingSprite = trainTwo;
 		}
 
-		float target = stopX;
-		if (target <= leadingSprite.Position.X) {
-			target += trainWidth;
+		float targetPos = stopX;
+		if (targetPos <= leadingSprite.Position.X) {
+			targetPos += trainWidth;
 		}
 		
 		Tween tween = CreateTween();
 		tween.SetParallel(true);
-		tween.TweenProperty(leadingSprite, "position:x", leadingSprite.Position.X + (target - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-		tween.TweenProperty(trailingSprite, "position:x", trailingSprite.Position.X + (target - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		tween.TweenProperty(leadingSprite, "position:x", leadingSprite.Position.X + (targetPos - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		tween.TweenProperty(trailingSprite, "position:x", trailingSprite.Position.X + (targetPos - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
 		tween.Chain().TweenCallback(Callable.From(OnTrainStopped));
 	}
 

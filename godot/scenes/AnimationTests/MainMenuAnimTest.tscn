@@ -65,8 +65,7 @@ darkness = NodePath("FadeToBlack")
 buttons = NodePath("ButtonManager")
 
 [node name="FadeToBlack" type="ColorRect" parent="." unique_id=1209431427]
-visible = false
-z_index = 4
+z_index = 5
 offset_right = 1951.0
 offset_bottom = 1139.0
 color = Color(0, 0, 0, 1)
