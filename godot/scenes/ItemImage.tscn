@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://i7g10nv2tik4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_12sur"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[node name="ItemImage" type="TextureRect" unique_id=1627507504]
+mouse_filter = 2
+texture = SubResource("CompressedTexture2D_12sur")
+expand_mode = 2

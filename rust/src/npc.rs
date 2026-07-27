@@ -1,6 +1,6 @@
 use godot::global::signf;
 use godot::prelude::*;
-use godot::classes::{CollisionShape2D, Sprite2D, CharacterBody2D};
+use godot::classes::{CollisionShape2D, Sprite2D, CharacterBody2D, ShapeCast2D};
 
 const WALK_SPEED: f32 = 300.0;
 
@@ -19,9 +19,11 @@ pub enum NPCState {
 pub struct NPC {
     base: Base<CharacterBody2D>,
     #[export]
-    sprite: OnEditor<Gd<Sprite2D>>,
+    pub sprite: OnEditor<Gd<Sprite2D>>,
     #[export]
     collision: OnEditor<Gd<CollisionShape2D>>,
+    #[export]
+    player_detector: OnEditor<Gd<ShapeCast2D>>,
     pub movement_targets: Vec<Vector2>,
     pub current_state: NPCState,
     pub target_seat_position: Vector2,
@@ -38,9 +40,6 @@ impl NPC {
 
     #[func]
     pub fn board_train(&mut self, aisle_y_position: f32) {
-        // self.base_mut().set_velocity(Vector2 { x: 0.0, y: -300.0 })
-        // let new_pos = self.target_seat_position;
-        // self.base_mut().set_position(new_pos);
         self.movement_targets.push(self.target_seat_position);
         self.movement_targets.push(Vector2 { x: self.target_seat_position.x, y: aisle_y_position });
         self.movement_targets.push(Vector2 { x: self.base().get_position().x, y: aisle_y_position });
@@ -73,8 +72,20 @@ impl NPC {
     }
 
     fn move_to_target(&mut self) -> bool {
+        let collision_position = self.collision.get_global_position();
+        let new_player_detector_position = collision_position + self.base().get_velocity() / 30.0;
+        self.player_detector.set_global_position(new_player_detector_position);
+        self.player_detector.force_shapecast_update();
         let old_position = self.base().get_position();
-        self.base_mut().move_and_slide();
+        if self.player_detector.is_colliding() {
+            let velocity = self.base().get_velocity();
+            self.base_mut().set_velocity(velocity / 2.0);
+            self.base_mut().move_and_slide();
+            self.base_mut().set_velocity(velocity);
+        }
+        else {
+            self.base_mut().move_and_slide();
+        }
         let new_position = self.base().get_position();
         let target;
         let pre;
@@ -111,6 +122,8 @@ impl ICharacterBody2D for NPC {
     fn ready(&mut self) {
         let as_gd = self.to_gd();
         self.signals().went_inactive().emit(&(as_gd));
+        self.collision.set_disabled(true);
+        self.sprite.set_visible(false);
     }
 
     fn physics_process(&mut self, _delta: f64) {

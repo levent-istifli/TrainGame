@@ -3,7 +3,7 @@ use std::ops::DerefMut;
 use godot::classes::node::ProcessMode;
 use godot::global::{randf, randf_range, randi_range};
 use godot::prelude::*;
-use godot::classes::{Input, Node2D, Timer};
+use godot::classes::{Node2D, Timer};
 use crate::npc::{NPC, NPCState};
 use crate::seat::Seat;
 
@@ -47,12 +47,14 @@ pub struct NPCSpawner {
 
 #[godot_api]
 impl NPCSpawner {
+
     #[func]
     fn on_npc_inactive(&mut self, mut signaller: Gd<NPC>) {
         signaller.bind_mut().current_state = NPCState::Inactive;
+        signaller.bind_mut().sprite.set_visible(false);
         let signaller = signaller.deref_mut();
         signaller.set_process_mode(ProcessMode::DISABLED);
-        signaller.set_visible(false);
+        
     }
     #[func]
     fn start_boarding(&mut self) {
@@ -97,7 +99,7 @@ impl NPCSpawner {
         npc_to_board.target_seat_position = self.seats.at(seat_index).get_position();
         npc_to_board.board_train(self.aisle_y_position);
         npc_to_board.base_mut().set_process_mode(ProcessMode::INHERIT);
-        npc_to_board.base_mut().set_visible(true);
+        npc_to_board.sprite.set_visible(true);
         if randf() > BOARDING_STOP_CHANCE {
             self.boarding_timer.set_wait_time(randf_range(BOARD_DELAY_MIN, BOARD_DELAY_MAX));
             self.boarding_timer.start();
@@ -112,7 +114,10 @@ impl NPCSpawner {
             if randf() > EXIT_CHANCE {
                 continue
             }
-            let timer = self.base_mut().get_tree().create_timer_ex(randf_range(EXIT_DELAY_MIN, EXIT_DELAY_MAX)).process_in_physics(true).done();
+            let timer = self.base_mut().get_tree()
+                .create_timer_ex(randf_range(EXIT_DELAY_MIN, EXIT_DELAY_MAX))
+                .process_in_physics(true)
+                .done();
             timer
                 .signals()
                 .timeout()
@@ -153,16 +158,6 @@ impl INode2D for NPCSpawner {
             new_npc.set_z_index(1);
             self.base_mut().add_child(&new_npc);
             self.spawned_npcs.push(new_npc);
-        }
-    }
-
-    fn physics_process(&mut self, _delta: f64) {
-        let input = Input::singleton();
-        if input.is_action_just_pressed("board") {
-            self.start_boarding();
-        }
-        if input.is_action_just_pressed("exit") {
-            self.start_exiting();
         }
     }
 }

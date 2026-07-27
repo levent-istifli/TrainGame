@@ -3,9 +3,11 @@ using System;
 
 public partial class NPCPlayer : Area2D
 {
+	[Export] public string firstDialogueEventId;
+	[Export] public string repeatDialogueEventId;
+	private bool hasInteracted = false;
 	[Export] public Area2D area;
 	[Export] public Sprite2D NpcSprite;
-
 	[Export] string sceneTag;
 	[Export] string destination_door_tag;
 	[Export] string currentSceneTag;
@@ -15,11 +17,18 @@ public partial class NPCPlayer : Area2D
 
 	public override void _InputEvent(Viewport viewport, InputEvent @event, int shapeIdx)
 	{
+		if (NavigationManager.Instance.IsDialogueSceneOpen()) return;
+
 		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
 		{
 			if (mouseEvent.ButtonIndex == MouseButton.Left)
 			{
-				NavigationManager.Instance.loadDialogueScene(sceneTag, "");
+				string eventToPlay = hasInteracted
+				? repeatDialogueEventId
+				: firstDialogueEventId;
+
+				hasInteracted = true;
+				NavigationManager.Instance.loadDialogueScene(sceneTag, "", eventToPlay);
 			}
 		}	
 	}
@@ -36,8 +45,6 @@ public partial class NPCPlayer : Area2D
 
 		MouseEntered += HighlightSprite;
 		MouseExited += RevertHighlightedSprite;
-
-		// spawn_point = GetNode<Marker2D>("Spawn");
 	}
 
 	public void HighlightSprite()

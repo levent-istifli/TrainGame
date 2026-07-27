@@ -34,4 +34,5 @@ destination_level_tag = "TestScene"
 [node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130]
 position = Vector2(118, 0)
 
+[editable path="NPCPlayer"]
 [editable path="Doors/Door_L"]

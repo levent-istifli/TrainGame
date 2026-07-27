@@ -2,14 +2,16 @@ using Godot;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using GodotStringIntercept;
 
-public partial class DialogueBoxUI : Node
+public partial class DialogueBoxUI : Node2D
 {
 
 	public static DialogueBoxUI Instance { get; private set; }
 
-	[Export] public float charDuration = 0.1f;
+	[Export] public float charDuration = 0.2f;
 	[Export] public Label textBox;
+    [Export] public Label speakerName;
 	[Export] public Label option1TextBox;
 	[Export] public Label option2TextBox;
 	[Export] public Control option1Indicator;
@@ -17,11 +19,18 @@ public partial class DialogueBoxUI : Node
 	[Export] public Timer charTimer;
 	[Export] public Control nextIndicator;
 
+	public string currLine;
 	public string currString;
 	public string nextString;
+	bool skipped = false;
+	bool phraseFinished = false;
+    bool willStartTrain = false;
+    bool willStopTrain = false;
 
+	private TaskCompletionSource<bool> waitPhraseEnd;
 	private TaskCompletionSource<bool> waitNextLine;
 	private TaskCompletionSource<int> waitQuestion;
+	private ulong inputEnabledAtTicks = 0;
 	bool isChoosing = false;
 	int selectedOption = 0;
 	
@@ -48,9 +57,67 @@ public partial class DialogueBoxUI : Node
 		textBox.Text = "";
 	}
 
+	public void ShowBox()
+	{
+		ResetDialogueState(false);
+		Visible = true;
+		ProcessMode = ProcessModeEnum.Inherit;
+		inputEnabledAtTicks = Time.GetTicksMsec() + 150;
+	}
+
+	public void HideBox()
+	{
+		ResetDialogueState(true);
+        if(willStartTrain)
+        {
+            NavigationManager.Instance.startTrain();
+            willStartTrain = false;
+        }
+        if(willStopTrain)
+        {
+            NavigationManager.Instance.stopTrain();
+            willStopTrain = false;
+        }
+		Visible = false;
+		ProcessMode = ProcessModeEnum.Disabled;
+		inputEnabledAtTicks = 0;
+	}
+
+	private void ResetDialogueState(bool cancelWaits)
+	{
+		charTimer?.Stop();
+
+		currLine = "";
+		currString = "";
+		nextString = "";
+		textIterator = 0;
+		skipped = false;
+		phraseFinished = false;
+		isTyping = false;
+		isChoosing = false;
+		selectedOption = -1;
+
+		if (nextIndicator != null) nextIndicator.Visible = false;
+		if (option1TextBox != null) option1TextBox.Visible = false;
+		if (option2TextBox != null) option2TextBox.Visible = false;
+		if (option1Indicator != null) option1Indicator.Visible = false;
+		if (option2Indicator != null) option2Indicator.Visible = false;
+		if (textBox != null) textBox.Text = "";
+
+		if (!cancelWaits) return;
+
+		waitPhraseEnd?.TrySetCanceled();
+		waitNextLine?.TrySetCanceled();
+		waitQuestion?.TrySetCanceled();
+		waitPhraseEnd = null;
+		waitNextLine = null;
+		waitQuestion = null;
+	}
+
 	int dialogueLine = 0;
 	bool isTyping = false;
 
+	//Don't use this for now
 	public async Task DisplayText(string text)
 	{
 		ClearBox();
@@ -68,23 +135,73 @@ public partial class DialogueBoxUI : Node
 		await waitNextLine.Task;
 	}
 
+	public async Task DisplayLine(string text)
+	{
+		currLine = text;
+		currString += text;
+		
+		if (skipped) return;
+
+		textIterator = 0;
+		isTyping = true;
+		nextIndicator.Visible = false;
+
+		waitNextLine = new TaskCompletionSource<bool>();
+
+		charTimer.Stop();
+		charTimer.Start();
+
+		await waitNextLine.Task;
+	}
+
+
+	public void PhraseBegin()
+	{
+		charTimer.Stop();
+		currLine = "";
+		currString = "";
+		textIterator = 0;
+
+		isTyping = false;
+		skipped = false;
+
+		nextIndicator.Visible = false;
+		ClearBox();
+	}
+
+	public async Task PhraseEnd()
+	{
+		skipped = false;
+		isTyping = false;
+		charTimer.Stop();
+		
+		nextIndicator.Visible = true;
+		textBox.Text = currString;
+
+		phraseFinished = true;
+		waitPhraseEnd = new TaskCompletionSource<bool>();
+
+		await waitPhraseEnd.Task;
+	}
+
 	int textIterator = 0;
 	private void OnCharTimeout()
 	{
-		if (textIterator < currString.Length)
+		if (!isTyping || skipped) return;
+
+		if (textIterator < currLine.Length)
 		{
-			textBox.Text += currString[textIterator];
+			textBox.Text += currLine[textIterator];
 			textIterator++;
 			charTimer.Start();
 		}
 		else
 		{
 			isTyping = false;
-			nextIndicator.Visible = true;
 			charTimer.Stop();
+			waitNextLine?.TrySetResult(true);
 		}
 	}
-
 
 	public async Task<int> DisplayChoice(string option1, string option2)
 	{
@@ -143,9 +260,23 @@ public partial class DialogueBoxUI : Node
 		else if (option == 1) option2Indicator.Visible = false;
 	}
 
+    public void SetSpeaker(string speaker)
+    {
+        speakerName.Text = speaker;
+    }
+
+    public void StartTrain()
+    {
+        willStartTrain = true;
+    }
+
+    public void StopTrain()
+    {
+        willStopTrain = true;
+    }
+
 	private void OnOption1MouseEntered()
 	{
-		GD.Print("aifhwafa");
 		SelectOption(0);
 	}
 
@@ -170,17 +301,18 @@ public partial class DialogueBoxUI : Node
 		waitQuestion?.TrySetResult(option);
 	}
 
-	public override async void _Ready()
+	public override void _Ready()
 	{
 		charTimer.WaitTime = charDuration;
 		ClearBox();
 	}
 
-	bool skipped = false;
-    public override void _Input(InputEvent @event)
-    {
+	public override void _Input(InputEvent @event)
+	{
+		if (!Visible) return;
+		if (Time.GetTicksMsec() < inputEnabledAtTicks) return;
 
-        if (@event.IsActionPressed("dialogueNext"))
+		if (@event.IsActionPressed("dialogueNext".AsStringName()))
 		{
 
 			if (isChoosing)
@@ -193,16 +325,20 @@ public partial class DialogueBoxUI : Node
 			}
 
 			if (isTyping)
-			{
-				charTimer.Stop();
-				textBox.Text = currString;
+			{	
+				skipped = true;
 				isTyping = false;
-				nextIndicator.Visible = true;
-			}
-			else
-			{
+				charTimer.Stop();
 				waitNextLine?.TrySetResult(true);
+			} else
+			{
+				if (phraseFinished)
+				{
+					phraseFinished = false;
+					nextIndicator.Visible = false;
+					waitPhraseEnd?.TrySetResult(true);
+				}
 			}
 		}
-    }
+	}
 }

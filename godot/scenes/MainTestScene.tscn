@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://crnubnbq4hggb" path="res://scripts/MainTestScene.cs" id="1_5itpt"]
 [ext_resource type="PackedScene" uid="uid://beh2de8br4uk7" path="res://scenes/PlayerNew.tscn" id="2_3sbmb"]
+[ext_resource type="PackedScene" uid="uid://n0t3dca75wli" path="res://scenes/TestScene.tscn" id="2_5itpt"]
 
 [node name="MainTestScene" type="Node2D" unique_id=217909107]
 script = ExtResource("1_5itpt")
+startingScene = ExtResource("2_5itpt")
 
 [node name="Player" parent="." unique_id=1629053667 instance=ExtResource("2_3sbmb")]
 position = Vector2(990, 766)

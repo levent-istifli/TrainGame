@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dulkofdokd4o1"]
 
-[ext_resource type="Texture2D" uid="uid://den7ufppxa8qb" path="res://Art/SubwayStartRD.png" id="1_274mx"]
+[ext_resource type="Texture2D" uid="uid://bx65ipyamfn5o" path="res://Art/34Persp.png" id="1_274mx"]
 
 [node name="Background" type="Node2D" unique_id=307874472]
 

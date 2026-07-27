@@ -1,4 +1,5 @@
 using Godot;
+using GodotStringIntercept;
 using System;
 
 public partial class MainMenu : Node2D
@@ -53,7 +54,7 @@ public partial class MainMenu : Node2D
 		AddChild(trainOne);
 		AddChild(trainTwo);
 		MoveChild(trainOne, 0);
-		//MoveChild(trainTwo, 1);
+		MoveChild(trainTwo, 1);
 	}
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -140,9 +141,10 @@ public partial class MainMenu : Node2D
 		Vector2 rightStartingPos = rightDoor.Position;
 
 		Tween tween = CreateTween();
+		tween.SetProcessMode(Tween.TweenProcessMode.Physics);
 		tween.SetParallel(true);
-		tween.TweenProperty(leftDoor, "position", leftStartingPos + new Vector2(-doorSlidingDistance, 0), 0.6f).SetEase(Tween.EaseType.Out);
-		tween.TweenProperty(rightDoor, "position", rightStartingPos + new Vector2(doorSlidingDistance, 0), 0.6f).SetEase(Tween.EaseType.Out);
+		tween.TweenProperty(leftDoor, "position".AsNodePath(), leftStartingPos + new Vector2(-doorSlidingDistance, 0), 0.6f).SetEase(Tween.EaseType.Out);
+		tween.TweenProperty(rightDoor, "position".AsNodePath(), rightStartingPos + new Vector2(doorSlidingDistance, 0), 0.6f).SetEase(Tween.EaseType.Out);
 		tween.Chain().TweenCallback(Callable.From(OnDoorsOpenedFinished));
 	}
 
@@ -150,7 +152,8 @@ public partial class MainMenu : Node2D
 		state = MenuState.FadingOut;
 
 		Tween fade = CreateTween();
-		fade.TweenProperty(darkness, "modulate:a", 1.0f, 0.8f);
+		fade.SetProcessMode(Tween.TweenProcessMode.Physics);
+		fade.TweenProperty(darkness, "modulate:a".AsNodePath(), 1.0f, 0.8f);
 		fade.TweenCallback(Callable.From(GoToStartScreen));
 	}
 
