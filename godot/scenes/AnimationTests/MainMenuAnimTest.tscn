@@ -3,16 +3,54 @@
 [ext_resource type="Script" uid="uid://c48c6gp5o4ky1" path="res://scenes/AnimationTests/MainMenu.cs" id="1_8opa4"]
 [ext_resource type="PackedScene" uid="uid://b8u6f3ehn1y80" path="res://scenes/main_scene.tscn" id="2_r4vgf"]
 [ext_resource type="Texture2D" uid="uid://taeewseiuvyv" path="res://Art/MovingMM.png" id="3_63hqf"]
-[ext_resource type="FontFile" uid="uid://cnxksnbr0eosr" path="res://Fonts/ButtonFonts/SadyanPersonalUse-Regular.otf" id="4_3vsb4"]
+[ext_resource type="Texture2D" uid="uid://de6bubpwyngch" path="res://Art/MMStartCropped.png" id="4_e42ux"]
+[ext_resource type="Texture2D" uid="uid://dw2siuqbjrjw6" path="res://Art/StartPressed.png" id="5_13hbo"]
+[ext_resource type="Texture2D" uid="uid://cqkhqyq735eu3" path="res://Art/MMCreditsCropped.png" id="5_bwh0g"]
 [ext_resource type="Texture2D" uid="uid://ppobvilf3wwl" path="res://Art/NotMovingMM.png" id="6_0hyrs"]
 [ext_resource type="FontFile" uid="uid://6fwnkho10n5i" path="res://Fonts/MainMenuFont/Sadents.ttf" id="6_5y475"]
+[ext_resource type="Texture2D" uid="uid://dmhaf37805xms" path="res://Art/MMEndCropped.png" id="6_13hbo"]
+[ext_resource type="Texture2D" uid="uid://sqfrmtvl6wb3" path="res://Art/StartHover.png" id="6_c4uvp"]
 [ext_resource type="Texture2D" uid="uid://bmjos2h3l270l" path="res://Art/DoorLMM.png" id="7_e42ux"]
 [ext_resource type="Texture2D" uid="uid://qyj6cgfusvii" path="res://Art/DoorRMM.png" id="8_bwh0g"]
+[ext_resource type="Texture2D" uid="uid://cjfw0cvef5crp" path="res://Art/CreditsPressed.png" id="8_vs7ht"]
 [ext_resource type="Texture2D" uid="uid://bnbu2r2do3w0m" path="res://Art/BackMM.png" id="9_13hbo"]
+[ext_resource type="Texture2D" uid="uid://bq41yfgju13pj" path="res://Art/CreditsHover.png" id="9_mku1p"]
 [ext_resource type="Texture2D" uid="uid://o4nyv6lmp1xk" path="res://Art/FrontMM.png" id="10_c4uvp"]
+[ext_resource type="Texture2D" uid="uid://d1r0nrcswdlaq" path="res://Art/EndPressed.png" id="11_d5dm7"]
+[ext_resource type="Texture2D" uid="uid://dvfsqsry0ornx" path="res://Art/EndHover.png" id="12_rjj8o"]
+[ext_resource type="AudioStream" uid="uid://d1cii1eel3gcl" path="res://Audio/MainMenuPiano.wav" id="19_mku1p"]
+[ext_resource type="AudioStream" uid="uid://cr0c0ph3wfcqx" path="res://Audio/MainMenuTrain.mp3" id="20_d5dm7"]
+[ext_resource type="AudioStream" uid="uid://djs8qe3tsker3" path="res://Audio/MainMenuForest.wav" id="20_rjj8o"]
+[ext_resource type="AudioStream" uid="uid://bqgex35klq4vg" path="res://Audio/MainMenuTicketMachine.wav" id="22_lhccx"]
+[ext_resource type="AudioStream" uid="uid://dqquundmeoldg" path="res://Audio/MainMenuDoors.wav" id="23_hphkb"]
+[ext_resource type="Shader" uid="uid://dvw1grmywhixp" path="res://scenes/AnimationTests/vignette.gdshader" id="24_e2a6r"]
 
-[node name="MainMenu" type="Node2D" unique_id=1525075800 node_paths=PackedStringArray("currentScene", "leftDoor", "rightDoor", "stoppedTrainScene", "darkness", "buttons")]
+[sub_resource type="Environment" id="Environment_hphkb"]
+background_mode = 3
+ambient_light_color = Color(0.85333085, 0.9033032, 0.9999986, 1)
+ambient_light_energy = 9.6
+glow_enabled = true
+glow_intensity = 0.15
+glow_strength = 1.59
+glow_bloom = 0.69
+glow_blend_mode = 2
+fog_light_color = Color(0.37430587, 0.4176868, 0.80704314, 1)
+adjustment_enabled = true
+adjustment_brightness = 0.94
+adjustment_saturation = 0.86
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lq03r"]
+shader = ExtResource("24_e2a6r")
+shader_parameter/radius = 0.1950000092625
+shader_parameter/softness = 0.3950000187625
+shader_parameter/intensity = 0.6000000285
+shader_parameter/contrast = 1.7070000573325
+shader_parameter/vignette_color = Color(0.03529412, 0, 0.07450981, 1)
+
+[node name="MainMenu" type="Node2D" unique_id=1525075800 node_paths=PackedStringArray("button", "doors", "currentScene", "leftDoor", "rightDoor", "stoppedTrainScene", "darkness", "buttons")]
 script = ExtResource("1_8opa4")
+button = NodePath("Audio/sfxButton")
+doors = NodePath("Audio/sfxDoorsOpening")
 startScene = ExtResource("2_r4vgf")
 currentScene = NodePath(".")
 trainBackground = ExtResource("3_63hqf")
@@ -23,15 +61,17 @@ stoppedTrainScene = NodePath("FinalBckg")
 doorSlidingDistance = 65.0
 stopDuration = 3.0
 stopX = 0.0
-darkness = NodePath("ColorRect")
+darkness = NodePath("FadeToBlack")
 buttons = NodePath("ButtonManager")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1209431427]
-visible = false
-z_index = 2
+[node name="FadeToBlack" type="ColorRect" parent="." unique_id=1209431427]
+z_index = 5
 offset_right = 1951.0
 offset_bottom = 1139.0
 color = Color(0, 0, 0, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=570939620]
+color = Color(0.7372549, 0.78431374, 1, 1)
 
 [node name="ButtonManager" type="Control" parent="." unique_id=1214951449]
 z_index = 2
@@ -40,53 +80,46 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Start" type="Button" parent="ButtonManager" unique_id=903766914]
+[node name="Start" type="TextureButton" parent="ButtonManager" unique_id=667566176]
 z_index = 1
 layout_mode = 0
-offset_left = 134.0
-offset_top = 438.0
-offset_right = 582.0
-offset_bottom = 591.0
-theme_override_fonts/font = ExtResource("4_3vsb4")
-theme_override_font_sizes/font_size = 40
-text = "Start Game"
+offset_left = 178.0
+offset_top = 231.0
+offset_right = 536.0
+offset_bottom = 469.0
+texture_normal = ExtResource("4_e42ux")
+texture_pressed = ExtResource("5_13hbo")
+texture_hover = ExtResource("6_c4uvp")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Credits" type="Button" parent="ButtonManager" unique_id=1925470551]
+[node name="Credits" type="TextureButton" parent="ButtonManager" unique_id=794976726]
 z_index = 1
 layout_mode = 0
-offset_left = 134.0
-offset_top = 623.0
-offset_right = 583.0
-offset_bottom = 776.0
-theme_override_fonts/font = ExtResource("4_3vsb4")
-theme_override_font_sizes/font_size = 40
-text = "Credits"
+offset_left = 178.0
+offset_top = 488.0
+offset_right = 537.0
+offset_bottom = 724.0
+texture_normal = ExtResource("5_bwh0g")
+texture_pressed = ExtResource("8_vs7ht")
+texture_hover = ExtResource("9_mku1p")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Quit" type="Button" parent="ButtonManager" unique_id=1539806850]
+[node name="Quit" type="TextureButton" parent="ButtonManager" unique_id=722468338]
 z_index = 1
 layout_mode = 0
-offset_left = 134.0
-offset_top = 812.0
-offset_right = 583.0
-offset_bottom = 964.0
-theme_override_fonts/font = ExtResource("4_3vsb4")
-theme_override_font_sizes/font_size = 40
-text = "Quit"
-
-[node name="Label" type="Label" parent="." unique_id=1066689478]
-z_index = 3
-offset_left = 400.0
-offset_top = 158.0
-offset_right = 1640.28
-offset_bottom = 272.0
-theme_override_colors/font_color = Color(0.7201313, 0.8865451, 1.2193724, 0.54509807)
-theme_override_fonts/font = ExtResource("6_5y475")
-theme_override_font_sizes/font_size = 90
-text = "Main Menu Title Here"
-horizontal_alignment = 1
+offset_left = 165.0
+offset_top = 747.0
+offset_right = 552.0
+offset_bottom = 984.68506
+texture_normal = ExtResource("6_13hbo")
+texture_pressed = ExtResource("11_d5dm7")
+texture_hover = ExtResource("12_rjj8o")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="FinalBckg" type="Node2D" parent="." unique_id=1120950596]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="FinalBckg" unique_id=684248686]
 z_index = 1
@@ -111,6 +144,69 @@ texture = ExtResource("9_13hbo")
 z_index = 2
 position = Vector2(960, 540)
 texture = ExtResource("10_c4uvp")
+
+[node name="GameTitle" type="Label" parent="." unique_id=1066689478]
+z_index = 4
+offset_left = 632.0
+offset_top = 88.0
+offset_right = 1357.0
+offset_bottom = 179.0
+theme_override_colors/font_color = Color(0.99136573, 0.99432856, 1, 1)
+theme_override_fonts/font = ExtResource("6_5y475")
+theme_override_font_sizes/font_size = 90
+text = "The Twelfth Stop"
+horizontal_alignment = 1
+
+[node name="GameTitleBack" type="ColorRect" parent="." unique_id=1021572661]
+z_index = 3
+offset_left = 610.0
+offset_top = 76.0
+offset_right = 1386.0
+offset_bottom = 181.0
+color = Color(0.80784315, 0.8862745, 0.91764706, 0.38039216)
+
+[node name="Audio" type="Node" parent="." unique_id=1834776717]
+
+[node name="PianoAmbient" type="AudioStreamPlayer" parent="Audio" unique_id=1623617518]
+stream = ExtResource("19_mku1p")
+autoplay = true
+
+[node name="ForestAmbient" type="AudioStreamPlayer" parent="Audio" unique_id=193892951]
+stream = ExtResource("20_rjj8o")
+volume_db = -19.995
+autoplay = true
+
+[node name="TrainAmbient" type="AudioStreamPlayer" parent="Audio" unique_id=1700779940]
+stream = ExtResource("20_d5dm7")
+volume_db = -34.624
+pitch_scale = 0.81
+autoplay = true
+
+[node name="sfxButton" type="AudioStreamPlayer" parent="Audio" unique_id=148518371]
+stream = ExtResource("22_lhccx")
+volume_db = -5.993
+
+[node name="sfxDoorsOpening" type="AudioStreamPlayer" parent="Audio" unique_id=794071212]
+stream = ExtResource("23_hphkb")
+volume_db = -16.922
+pitch_scale = 0.72
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1992939295]
+environment = SubResource("Environment_hphkb")
+
+[node name="Vignette" type="ColorRect" parent="." unique_id=903294620]
+z_index = 1
+material = SubResource("ShaderMaterial_lq03r")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 6.0
+offset_bottom = 1.2285916
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(319.2009, 889.63654)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="ButtonManager/Start" to="." method="OnStartPressed"]
 [connection signal="pressed" from="ButtonManager/Credits" to="." method="OnCreditsPressed"]

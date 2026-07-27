@@ -4,6 +4,9 @@ using System;
 
 public partial class MainMenu : Node2D
 {
+	[Export] public AudioStreamPlayer button;
+	[Export] public AudioStreamPlayer doors;
+
 	[Export] public PackedScene startScene;
 	[Export] public PackedScene creditScene;
 	[Export] public Node currentScene;
@@ -72,6 +75,9 @@ public partial class MainMenu : Node2D
 	}
 	
 	void OnStartPressed(){
+		button.Play();
+		doors.Play();
+
 		if (state != MenuState.Moving) { return; }
 		state = MenuState.Stopping;
 
@@ -89,16 +95,15 @@ public partial class MainMenu : Node2D
 			trailingSprite = trainTwo;
 		}
 
-		float target = stopX;
-		if (target <= leadingSprite.Position.X) {
-			target += trainWidth;
+		float targetPos = stopX;
+		if (targetPos <= leadingSprite.Position.X) {
+			targetPos += trainWidth;
 		}
 		
 		Tween tween = CreateTween();
-		tween.SetProcessMode(Tween.TweenProcessMode.Physics);
 		tween.SetParallel(true);
-		tween.TweenProperty(leadingSprite, "position:x".AsNodePath(), leadingSprite.Position.X + (target - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-		tween.TweenProperty(trailingSprite, "position:x".AsNodePath(), trailingSprite.Position.X + (target - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		tween.TweenProperty(leadingSprite, "position:x", leadingSprite.Position.X + (targetPos - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		tween.TweenProperty(trailingSprite, "position:x", trailingSprite.Position.X + (targetPos - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
 		tween.Chain().TweenCallback(Callable.From(OnTrainStopped));
 	}
 
@@ -107,6 +112,7 @@ public partial class MainMenu : Node2D
 	}
 	
 	void OnCreditsPressed(){
+		button.Play();
 		Window root = GetTree().Root;
 		Node newScene = creditScene.Instantiate();
 
@@ -116,6 +122,7 @@ public partial class MainMenu : Node2D
 	}
 	
 	void OnQuitPressed(){
+		button.Play();
 		GetTree().Quit();
 	}
 

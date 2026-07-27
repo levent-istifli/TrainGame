@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bua5wrnnd4ws1"]
+
+[ext_resource type="AudioStream" uid="uid://d1cii1eel3gcl" path="res://Audio/MainMenuPiano.wav" id="1_q2t4e"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=1822371285]
+stream = ExtResource("1_q2t4e")
+autoplay = true
