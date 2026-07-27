@@ -32,6 +32,7 @@ public partial class MainMenu : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		NavigationManager.Instance.ProcessMode = ProcessModeEnum.Disabled;
 		darkness.Modulate = new Color(0, 0, 0, 0);
 		stoppedTrainScene.Visible = false;
 
@@ -102,8 +103,8 @@ public partial class MainMenu : Node2D
 		
 		Tween tween = CreateTween();
 		tween.SetParallel(true);
-		tween.TweenProperty(leadingSprite, "position:x", leadingSprite.Position.X + (targetPos - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-		tween.TweenProperty(trailingSprite, "position:x", trailingSprite.Position.X + (targetPos - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		tween.TweenProperty(leadingSprite, "position:x".AsNodePath(), leadingSprite.Position.X + (targetPos - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		tween.TweenProperty(trailingSprite, "position:x".AsNodePath(), trailingSprite.Position.X + (targetPos - leadingSprite.Position.X), stopDuration).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
 		tween.Chain().TweenCallback(Callable.From(OnTrainStopped));
 	}
 
@@ -164,6 +165,7 @@ public partial class MainMenu : Node2D
 		Node newScene = startScene.Instantiate();
 
 		root.AddChild(newScene);
+		NavigationManager.Instance.ProcessMode = ProcessModeEnum.Inherit;
 		root.RemoveChild(currentScene);
 		currentScene.QueueFree();
 	}
