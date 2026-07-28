@@ -19,6 +19,10 @@ public class DialogueLibrary
             ui.StartTrain();
             ui.StopTrain();
             ui.BoardNPC("Mother");
+            ui.BoardNPC("Yoru");
+            ui.BoardNPC("Hana");
+            ui.BoardNPC("Kohana");
+            ui.BoardNPC("Hotaru");
 
 			ui.StartTrain();
 
