@@ -222,7 +222,7 @@ public partial class NavigationManager : Node
         StationsHud.Instance.label.Text = "Arrived at " + stationNames[currentStation] + " Station";
     }
 
-	private void getNPCSpawners()
+	public void getNPCSpawners()
 	{
 		NPCSpawners = GetTree().GetNodesInGroup("NPC Spawner".AsStringName());
 	}
@@ -233,7 +233,6 @@ public partial class NavigationManager : Node
 	{
 		AddToGroup("Pause".AsStringName());
 		Instance = this;
-		Callable.From(getNPCSpawners).CallDeferred();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -128,7 +128,7 @@ public class DialogueLibrary
 		
 		dialogueEvents["FirstMotherDialogue"] = new DialogueEvent(async () =>
 		{
-
+            ui.StartTrain();
 			//MC
             ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
@@ -256,7 +256,7 @@ public class DialogueLibrary
 		
 		dialogueEvents["MotherKohanaRepeat"] = new DialogueEvent(async () =>
 		{
-
+            ui.StopTrain();
 			//Mother
 			ui.PhraseBegin();
 			await ui.DisplayLine("Kohana needs your help relaying information, so please talk to her.");

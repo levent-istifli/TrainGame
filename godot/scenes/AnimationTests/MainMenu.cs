@@ -166,6 +166,7 @@ public partial class MainMenu : Node2D
 
 		root.AddChild(newScene);
 		NavigationManager.Instance.ProcessMode = ProcessModeEnum.Inherit;
+        NavigationManager.Instance.getNPCSpawners();
 		root.RemoveChild(currentScene);
 		currentScene.QueueFree();
 	}
