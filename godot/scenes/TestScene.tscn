@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="2_nb1wl"]
 [ext_resource type="PackedScene" uid="uid://bnfnq0jctl51d" path="res://scenes/npc_spawner.tscn" id="3_n77mx"]
 [ext_resource type="PackedScene" uid="uid://c2yva6vtvmdd2" path="res://scenes/NPCPlayer.tscn" id="4_nb1wl"]
-[ext_resource type="Texture2D" uid="uid://ta8mu3qbh21l" path="res://Art/Mother.png" id="5_m5dm6"]
+[ext_resource type="Texture2D" uid="uid://blv0la2l62gu3" path="res://Art/Mother.png" id="5_m5dm6"]
 
 [node name="TestScene" type="Node2D" unique_id=1808858924]
 
@@ -14,6 +14,8 @@
 
 [node name="Door_R" parent="Doors" unique_id=1938107216 instance=ExtResource("2_nb1wl")]
 position = Vector2(1801, 776)
+destination_level_tag = "TestScene2"
+destination_door_tag = "L"
 
 [node name="Spawn" parent="Doors/Door_R" index="1" unique_id=21988130 groups=["Spawn Points"]]
 position = Vector2(-161, 0)
@@ -22,6 +24,8 @@ metadata/_edit_group_ = true
 
 [node name="Door_L" parent="Doors" unique_id=293795578 instance=ExtResource("2_nb1wl")]
 position = Vector2(117, 776)
+destination_level_tag = "TestScene3"
+destination_door_tag = "R"
 
 [node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130 groups=["Spawn Points"]]
 position = Vector2(148, 0)
@@ -67,9 +71,8 @@ position = Vector2(1000, 596)
 [node name="Seat6" type="Seat" parent="NPCSpawner" unique_id=321598540]
 position = Vector2(1288, 596)
 
-[node name="NPCPlayer" parent="." unique_id=217092309 node_paths=PackedStringArray("interactor", "targetSeat") groups=["Mother"] instance=ExtResource("4_nb1wl")]
+[node name="NPCPlayer" parent="." unique_id=217092309 node_paths=PackedStringArray("targetSeat") groups=["Mother"] instance=ExtResource("4_nb1wl")]
 position = Vector2(486, 1203)
-interactor = NodePath("Area2D")
 targetSeat = NodePath("../Seat7")
 aisleYPosition = 797.0
 metadata/_edit_group_ = true

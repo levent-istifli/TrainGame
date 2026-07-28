@@ -6,8 +6,8 @@ using System.Reflection.Metadata.Ecma335;
 [GlobalClass]
 public partial class Door : Node2D
 {
-	[Export] public NodePath destination_level_tag;
-	[Export] public StringName destination_door_tag;
+	[Export] public string destination_level_tag;
+	[Export] public string destination_door_tag;
 	[Export] public PackedScene nextLevel;
 	[Export] public Marker2D spawn_point;
 

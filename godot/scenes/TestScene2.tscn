@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bnfnq0jctl51d" path="res://scenes/npc_spawner.tscn" id="3_0q63d"]
 [ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="3_pibbx"]
 [ext_resource type="PackedScene" uid="uid://c2yva6vtvmdd2" path="res://scenes/NPCPlayer.tscn" id="4_0q63d"]
-[ext_resource type="Texture2D" uid="uid://blgn8krt4341o" path="res://Art/Hana.png" id="5_2scg0"]
-[ext_resource type="Texture2D" uid="uid://c1qatox2hcu1m" path="res://Art/Hotaruk.png" id="6_fu3cl"]
+[ext_resource type="Texture2D" uid="uid://cwdsbul3fxqsm" path="res://Art/Hana.png" id="5_2scg0"]
+[ext_resource type="Texture2D" uid="uid://cnky6cmqwmpdh" path="res://Art/Hotaruk.png" id="6_fu3cl"]
 
 [node name="TestScene2" type="Node2D" unique_id=1169692604]
 

@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dg15sbhnidsi0" path="res://scenes/Door.tscn" id="2_o0lye"]
 [ext_resource type="PackedScene" uid="uid://bnfnq0jctl51d" path="res://scenes/npc_spawner.tscn" id="3_3ay65"]
 [ext_resource type="PackedScene" uid="uid://c2yva6vtvmdd2" path="res://scenes/NPCPlayer.tscn" id="4_ofb8k"]
-[ext_resource type="Texture2D" uid="uid://b47rlp2efyf7v" path="res://Art/Kohana.png" id="5_qhesa"]
-[ext_resource type="Texture2D" uid="uid://4qxqshfrw53" path="res://Art/Yoru.png" id="6_v3o08"]
+[ext_resource type="Texture2D" uid="uid://dvhgxx0padvm" path="res://Art/Kohana.png" id="5_qhesa"]
+[ext_resource type="Texture2D" uid="uid://b2i8vh8q8ltny" path="res://Art/Yoru.png" id="6_v3o08"]
 
 [node name="TestScene3" type="Node2D" unique_id=1903736709]
 
