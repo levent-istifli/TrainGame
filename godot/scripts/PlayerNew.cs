@@ -11,6 +11,7 @@ public partial class PlayerNew : CharacterBody2D
 	Vector2 direction = Vector2.Zero;
 
 	[Export] AudioStreamPlayer footsteps;
+    [Export] public Area2D interactionDetector;
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -22,6 +23,17 @@ public partial class PlayerNew : CharacterBody2D
 			sprite.FlipH = false;
 		}
 			MoveAndSlide();
+        if(Input.IsActionJustPressed("ui_accept".AsStringName()))
+        {
+            if(interactionDetector.HasOverlappingAreas())
+            {
+                var interact = (NPCPlayer)interactionDetector.GetOverlappingAreas()[0];
+                if(interact.ProcessMode != ProcessModeEnum.Disabled)
+                {
+                    interact.doEvent();
+                }
+            }
+        }
 		playerMovement();
 	}
 
