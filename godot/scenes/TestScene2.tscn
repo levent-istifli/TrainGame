@@ -33,7 +33,7 @@ horizontal_alignment = 1
 
 [node name="NPCSpawner" parent="." unique_id=1586379648 node_paths=PackedStringArray("spawn_points", "seats") instance=ExtResource("3_0q63d")]
 spawn_points = [NodePath("SpawnPoint"), NodePath("SpawnPoint2")]
-seats = [NodePath("Seat2"), NodePath("Seat3"), NodePath("Seat4"), NodePath("Seat5"), NodePath("Seat6"), NodePath("Seat7"), NodePath("Seat10"), NodePath("Seat11")]
+seats = [NodePath("Seat2"), NodePath("Seat4"), NodePath("Seat5"), NodePath("Seat6"), NodePath("Seat7"), NodePath("Seat10"), NodePath("Seat11")]
 num_npcs = 10
 aisle_y_position = 797.0
 
@@ -45,9 +45,6 @@ position = Vector2(1100, 918)
 
 [node name="Seat2" type="Seat" parent="NPCSpawner" unique_id=1592441194]
 position = Vector2(500, 596)
-
-[node name="Seat3" type="Seat" parent="NPCSpawner" unique_id=1712140609]
-position = Vector2(600, 596)
 
 [node name="Seat4" type="Seat" parent="NPCSpawner" unique_id=783118570]
 position = Vector2(700, 596)
@@ -67,27 +64,39 @@ position = Vector2(1300, 596)
 [node name="Seat11" type="Seat" parent="NPCSpawner" unique_id=513514553]
 position = Vector2(1400, 596)
 
-[node name="NPCPlayer2" parent="." unique_id=217092309 instance=ExtResource("4_0q63d")]
-position = Vector2(1136, 511)
+[node name="NPCPlayer2" parent="." unique_id=217092309 node_paths=PackedStringArray("targetSeat") groups=["Hana"] instance=ExtResource("4_0q63d")]
+position = Vector2(1107, 1218)
+targetSeat = NodePath("../Seat8")
+aisleYPosition = 797.0
 metadata/_edit_group_ = true
 
 [node name="Area2D" parent="NPCPlayer2" index="0" unique_id=1629417335]
 firstDialogueEventId = "HanaDialogue"
 repeatDialogueEventId = "dotdotdot"
+name = "Hana"
 
 [node name="Sprite2D" parent="NPCPlayer2/Area2D" index="0" unique_id=1297988730]
 texture = ExtResource("5_2scg0")
 
-[node name="NPCPlayer3" parent="." unique_id=257340643 instance=ExtResource("4_0q63d")]
-position = Vector2(578, 530)
+[node name="NPCPlayer3" parent="." unique_id=257340643 node_paths=PackedStringArray("targetSeat") groups=["Hotaru"] instance=ExtResource("4_0q63d")]
+position = Vector2(486, 1232)
+targetSeat = NodePath("../Seat3")
+aisleYPosition = 797.0
 metadata/_edit_group_ = true
 
 [node name="Area2D" parent="NPCPlayer3" index="0" unique_id=1629417335]
 firstDialogueEventId = "HotaruDialogue"
 repeatDialogueEventId = "dotdotdot"
+name = "Hotaru"
 
 [node name="Sprite2D" parent="NPCPlayer3/Area2D" index="0" unique_id=1297988730]
 texture = ExtResource("6_fu3cl")
+
+[node name="Seat8" type="Seat" parent="." unique_id=1531263062]
+position = Vector2(1133, 596)
+
+[node name="Seat3" type="Seat" parent="." unique_id=1712140609]
+position = Vector2(600, 596)
 
 [connection signal="body_entered" from="Doors/Door_L" to="Doors/Door_L" method="OnBodyEntered"]
 

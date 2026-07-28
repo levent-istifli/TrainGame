@@ -16,6 +16,10 @@ public class DialogueLibrary
 		{
 
 			//MC Talking
+            ui.StartTrain();
+            ui.StopTrain();
+            ui.BoardNPC("Mother");
+            ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(20);
 			await ui.DisplayLine("Another day...");
@@ -126,6 +130,7 @@ public class DialogueLibrary
 		{
 
 			//MC
+            ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Oh, sorry. Let me move to make more space for you —");
@@ -147,6 +152,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Mother
+            ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			await ui.DisplayLine("Oh dear...");
 			await ui.PhraseEnd();
@@ -158,6 +164,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//MC
+            ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			await ui.DisplayLine("What??");
 			await ui.PhraseEnd();
@@ -175,6 +182,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Mother
+            ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			await ui.DisplayLine("I know what you’re going through right now.");
 			await ui.PhraseEnd();
@@ -198,6 +206,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//MC
+            ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			await ui.DisplayLine("What?");
 			await ui.PhraseEnd();
@@ -206,6 +215,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Mother
+            ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			await ui.DisplayLine("I can only say this much.");
 			await ui.PhraseEnd();
@@ -220,6 +230,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Train intercom
+            ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			await ui.DisplayLine("Asahibashi. We have arrived at Asahibashi, station number 2.");
 			await ui.PhraseEnd();
@@ -231,6 +242,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Mother
+            ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			await ui.DisplayLine("It has begun.");
 			await ui.PhraseEnd();

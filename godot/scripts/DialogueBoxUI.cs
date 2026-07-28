@@ -18,6 +18,7 @@ public partial class DialogueBoxUI : Node2D
 	[Export] public Control option2Indicator;
 	[Export] public Timer charTimer;
 	[Export] public Control nextIndicator;
+    [Export] public AnimatedSprite2D background;
 
 	public string currLine;
 	public string currString;
@@ -33,6 +34,8 @@ public partial class DialogueBoxUI : Node2D
 	private ulong inputEnabledAtTicks = 0;
 	bool isChoosing = false;
 	int selectedOption = 0;
+
+    public string animationBaseName;
 	
 	public override void _EnterTree()
 	{
@@ -81,6 +84,7 @@ public partial class DialogueBoxUI : Node2D
 		Visible = false;
 		ProcessMode = ProcessModeEnum.Disabled;
 		inputEnabledAtTicks = 0;
+        animationBaseName = "";
 	}
 
 	private void ResetDialogueState(bool cancelWaits)
@@ -145,6 +149,14 @@ public partial class DialogueBoxUI : Node2D
 		textIterator = 0;
 		isTyping = true;
 		nextIndicator.Visible = false;
+        if(speakerName.Text == "Nozomi")
+        {
+            background.Play(new StringName(animationBaseName + "MCTalking"));
+        }
+        else if(speakerName.Text == "Mother" || speakerName.Text == "Kohana" || speakerName.Text == "Hana" || speakerName.Text == "Hotaru" || speakerName.Text == "Yoru")
+        {
+            background.Play(new StringName(animationBaseName + "Talking"));
+        }
 
 		waitNextLine = new TaskCompletionSource<bool>();
 
@@ -177,6 +189,8 @@ public partial class DialogueBoxUI : Node2D
 		
 		nextIndicator.Visible = true;
 		textBox.Text = currString;
+
+        background.Play(new StringName(animationBaseName + "Idle"));
 
 		phraseFinished = true;
 		waitPhraseEnd = new TaskCompletionSource<bool>();
@@ -240,7 +254,7 @@ public partial class DialogueBoxUI : Node2D
 
 	public void ChangeTextSpeed(float charsPerSecond)
 	{
-		charTimer.WaitTime = 1/charsPerSecond;
+		charTimer.WaitTime = 1/(charsPerSecond * 6);
 	}
 
 	//Helpers for question mouse input

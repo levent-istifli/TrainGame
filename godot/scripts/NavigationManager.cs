@@ -212,7 +212,7 @@ public partial class NavigationManager : Node
             var npc = (NpcPlayerMover)GetTree().GetNodesInGroup(new StringName(name))[0];
             npc.BoardTrain();
         }
-        foreach(string name in boardQueue)
+        foreach(string name in exitQueue)
         {
             var npc = (NpcPlayerMover)GetTree().GetNodesInGroup(new StringName(name))[0];
             npc.ExitTrain();

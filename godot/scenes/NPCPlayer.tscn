@@ -7,8 +7,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6v3n"]
 size = Vector2(79, 165)
 
-[node name="NPCPlayer" type="CharacterBody2D" unique_id=2031802663 groups=["Pause"]]
+[node name="NPCPlayer" type="CharacterBody2D" unique_id=2031802663 node_paths=PackedStringArray("interactor") groups=["Pause"]]
 script = ExtResource("1_meg00")
+interactor = NodePath("Area2D")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1629417335 node_paths=PackedStringArray("NpcSprite")]
 scale = Vector2(1, 0.99999994)

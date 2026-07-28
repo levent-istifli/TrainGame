@@ -11,10 +11,12 @@ layer = 5
 script = ExtResource("6_hr11b")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2051797487]
+visible = false
 position = Vector2(960, 540)
 texture = ExtResource("1_m23k8")
 
 [node name="Earrings" type="Area2D" parent="Sprite2D" unique_id=2008250127 node_paths=PackedStringArray("EarringPoly1", "EarringPoly2", "EarringLabel")]
+visible = false
 script = ExtResource("2_gf7ld")
 EarringPoly1 = NodePath("Polygon2D")
 EarringPoly2 = NodePath("Polygon2D2")
@@ -41,6 +43,7 @@ text = "Earrings"
 horizontal_alignment = 1
 
 [node name="Photos" type="Area2D" parent="Sprite2D" unique_id=1928121712 node_paths=PackedStringArray("Photo", "PhotoLabel")]
+visible = false
 position = Vector2(-960, -540)
 script = ExtResource("3_jcxb1")
 Photo = NodePath("Polygon2D")
@@ -63,6 +66,7 @@ text = "Photos"
 horizontal_alignment = 1
 
 [node name="Envelope" type="Area2D" parent="Sprite2D" unique_id=546881911 node_paths=PackedStringArray("Letter", "LetterLabel")]
+visible = false
 position = Vector2(-960, -540)
 script = ExtResource("4_i74oc")
 Letter = NodePath("Polygon2D")
