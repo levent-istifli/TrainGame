@@ -71,6 +71,11 @@ public partial class NavigationManager : Node
 		currentDialogueScene = null;
 	}
 
+	public void loadCredits()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/Credits.tscn");
+	}
+
 	public void loadDialogueScene(string sceneTag, string doorTag, string dialogueEventId = "")
 	{
 		if (sceneTag == "MCDialogue" && IsDialogueSceneOpen())
@@ -117,6 +122,10 @@ public partial class NavigationManager : Node
 		}
 
 	}
+
+
+
+
 
 	public async Task goToLevel(string levelTag, string doorTag, Node2D nextLevel, CharacterBody2D player) {
 		spawnDoorTag = doorTag;

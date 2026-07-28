@@ -1752,7 +1752,7 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			await ui.DisplayLine("I have to find it.");
 			await ui.PhraseEnd();
-
+			NavigationManager.Instance.loadCredits();
 			//Switch from dialogue to the ending scene and credits.
 		});
 		dialogueEvents["TestDialogue"] = new DialogueEvent(async () =>
