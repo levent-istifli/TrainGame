@@ -265,6 +265,7 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			await ui.DisplayLine("She needs your help relaying information, so please talk to her.");
 			await ui.PhraseEnd();
+			ui.BoardNPC("Kohana");
 		});
 		
 		dialogueEvents["MotherKohanaRepeat"] = new DialogueEvent(async () =>
@@ -279,7 +280,6 @@ public class DialogueLibrary
 		
 		dialogueEvents["KohanaDialogue"] = new DialogueEvent(async () =>
 		{
-			ui.BoardNPC("Kohana");
 
 			//MC
 			ui.SetSpeaker("Nozomi");
@@ -467,6 +467,7 @@ public class DialogueLibrary
 			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("Well, let’s get this done.");
 			await ui.PhraseEnd();
+			ui.BoardNPC("Hana");
 		});
 		
 		dialogueEvents["KohanaRepeat"] = new DialogueEvent(async () =>
@@ -481,7 +482,6 @@ public class DialogueLibrary
 		
 		dialogueEvents["HanaDialogue"] = new DialogueEvent(async () =>
 		{
-			ui.BoardNPC("Hana");
 
 			//MC
 			ui.SetSpeaker("Nozomi");
@@ -1002,6 +1002,7 @@ public class DialogueLibrary
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Thanks, mother.");
 			await ui.PhraseEnd();
+			ui.BoardNPC("Yoru");
 
 			NavigationManager.Instance.SetStoryFlag("MotherAfterHanaDone");
 		});
@@ -1230,6 +1231,7 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			await ui.DisplayLine("Thanks again.");
 			await ui.PhraseEnd();
+			ui.BoardNPC("Hotaru");
 		});
 
 		dialogueEvents["YoruRepeat"] = new DialogueEvent(async () =>
