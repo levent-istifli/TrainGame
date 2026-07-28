@@ -459,7 +459,7 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("Uh . . .");
-			ui.DisplayLine("[shoot, what do I say?]");
+			await ui.DisplayLine("[shoot, what do I say?]");
 			int choice = await ui.DisplayChoice("Your sister told me to give you this.", "Uh, I found this near a beach shore, and strangely enough you look like one of the girls in the picture.");
 			inventory.RemoveItem("Amulet");
 			if (choice == 0) 
