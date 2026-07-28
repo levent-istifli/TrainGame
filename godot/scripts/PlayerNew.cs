@@ -10,6 +10,8 @@ public partial class PlayerNew : CharacterBody2D
 	public float speed = 50;
 	Vector2 direction = Vector2.Zero;
 
+    [Export] public Area2D interactionDetector;
+
 	public override void _PhysicsProcess(double delta)
 	{
 		if (direction.X > 0)
@@ -20,6 +22,17 @@ public partial class PlayerNew : CharacterBody2D
 			sprite.FlipH = false;
 		}
 			MoveAndSlide();
+        if(Input.IsActionJustPressed("ui_accept".AsStringName()))
+        {
+            if(interactionDetector.HasOverlappingAreas())
+            {
+                var interact = (NPCPlayer)interactionDetector.GetOverlappingAreas()[0];
+                if(interact.ProcessMode != ProcessModeEnum.Disabled)
+                {
+                    interact.doEvent();
+                }
+            }
+        }
 		playerMovement();
 	}
 

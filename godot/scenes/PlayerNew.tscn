@@ -1,19 +1,20 @@
 [gd_scene format=3 uid="uid://beh2de8br4uk7"]
 
 [ext_resource type="Script" uid="uid://c1nue1b8nio8p" path="res://scripts/PlayerNew.cs" id="1_agiem"]
-[ext_resource type="Texture2D" uid="uid://bidmjnt58ah5t" path="res://Art/Nozomi.png" id="2_agiem"]
+[ext_resource type="Texture2D" uid="uid://bwk06nfjtljw0" path="res://Art/Nozomi.png" id="2_agiem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krj2m"]
 size = Vector2(107, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_agiem"]
-size = Vector2(40, 40)
+size = Vector2(80, 80)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1629053667 node_paths=PackedStringArray("sprite") groups=["Pause"]]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1629053667 node_paths=PackedStringArray("sprite", "interactionDetector") groups=["Pause"]]
 collision_layer = 129
 script = ExtResource("1_agiem")
 sprite = NodePath("Sprite2D")
 speed = 300.0
+interactionDetector = NodePath("InteractionChecker")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=461469366]
@@ -25,6 +26,9 @@ position = Vector2(-0.5, 96)
 shape = SubResource("RectangleShape2D_krj2m")
 
 [node name="InteractionChecker" type="Area2D" parent="." unique_id=1788602002]
+position = Vector2(0, -105)
+collision_layer = 0
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionChecker" unique_id=1792813354]
 shape = SubResource("RectangleShape2D_agiem")

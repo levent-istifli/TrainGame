@@ -67,10 +67,8 @@ position = Vector2(1000, 596)
 [node name="Seat6" type="Seat" parent="NPCSpawner" unique_id=321598540]
 position = Vector2(1288, 596)
 
-[node name="NPCPlayer" parent="." unique_id=217092309 node_paths=PackedStringArray("interactor", "targetSeat") groups=["Mother"] instance=ExtResource("4_nb1wl")]
-position = Vector2(498, 1212)
-interactor = NodePath("Area2D")
-targetSeat = NodePath("../Seat7")
+[node name="NPCPlayer" parent="." unique_id=217092309 groups=["Mother"] instance=ExtResource("4_nb1wl")]
+position = Vector2(615, 648)
 aisleYPosition = 797.0
 metadata/_edit_group_ = true
 
