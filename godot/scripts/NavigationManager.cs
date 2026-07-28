@@ -3,6 +3,7 @@ using System;
 using System.Net.Security;
 using System.Threading.Tasks;
 using GodotStringIntercept;
+using System.Collections.Generic;
 
 public partial class NavigationManager : Node
 {
@@ -22,6 +23,12 @@ public partial class NavigationManager : Node
 	private readonly PackedScene back_button = GD.Load<PackedScene>("res://scenes/MCDialogue.tscn");
 	private Node currentDialogueScene;
 
+
+	private readonly HashSet<string> storyFlags = new();
+	public void SetStoryFlag(string flag) => storyFlags.Add(flag);
+	public bool HasStoryFlag(string flag) => storyFlags.Contains(flag);
+
+	
 	public bool IsDialogueSceneOpen()
 	{
 		return currentDialogueScene != null && GodotObject.IsInstanceValid(currentDialogueScene);
