@@ -1,3 +1,5 @@
+# The Twelfth Stop
+
 **Description:**
 
 Train Game (stand in title for now) is a game intended to raise suicide awareness. It follows the protagonist: a female office worker that had aspirations to make it big in the world, but threw them away in hopes for stability and following the social norm. Unfortunately, she has undergone detrimental conditions that have caused her to mental stability to completely deteriorate. As she makes her way on her last train ride, she meets a variety of individuals (not all alive...) that have undergone similar experiences and encourage her to reconsider her actions.
