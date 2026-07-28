@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://x7t8o12hrxdf" path="res://scripts/Items/Letter.tres" id="5_141ln"]
 [ext_resource type="Resource" uid="uid://decwekiyxnja3" path="res://scripts/Items/Photos.tres" id="6_tbtli"]
 [ext_resource type="Resource" uid="uid://clkd3qkd73x3f" path="res://scripts/Items/FireflyPin.tres" id="7_nvcdf"]
+[ext_resource type="Resource" uid="uid://t0n6w1mspiij" path="res://scripts/Items/YoruLetter.tres" id="8_141ln"]
 
 [node name="InventoryUI" type="Control" unique_id=1258985105]
 z_index = 20
@@ -21,7 +22,7 @@ mouse_filter = 2
 [node name="BG" type="ColorRect" parent="." unique_id=1825732318]
 layout_mode = 0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 50.0
 scale = Vector2(9.132505, 1.7260903)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
@@ -33,5 +34,5 @@ offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="PlayerInventory" parent="." unique_id=1148912289 node_paths=PackedStringArray("itemUIGrid") instance=ExtResource("1_wqexf")]
-itemPool = Array[Object]([ExtResource("2_ju2k0"), ExtResource("3_rhf62"), ExtResource("4_nvcdf"), ExtResource("5_141ln"), ExtResource("6_tbtli"), ExtResource("7_nvcdf")])
+itemPool = Array[Object]([ExtResource("2_ju2k0"), ExtResource("3_rhf62"), ExtResource("4_nvcdf"), ExtResource("5_141ln"), ExtResource("6_tbtli"), ExtResource("7_nvcdf"), ExtResource("8_141ln")])
 itemUIGrid = NodePath("../HBoxContainer")

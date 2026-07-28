@@ -4,6 +4,9 @@
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [node name="ItemImage" type="TextureRect" unique_id=1627507504]
+custom_minimum_size = Vector2(75, 75)
+offset_right = 100.0
+offset_bottom = 100.0
 mouse_filter = 2
 texture = SubResource("CompressedTexture2D_12sur")
 expand_mode = 2

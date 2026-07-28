@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://t0n6w1mspiij"]
+
+[ext_resource type="Script" uid="uid://dir7m23ol2gwl" path="res://scripts/InventoryItem.cs" id="1_s8cew"]
+[ext_resource type="Texture2D" uid="uid://0x8f4qagn67x" path="res://Art/FinalDialogueAssets/envelopefixed.png" id="2_7pb4v"]
+
+[resource]
+script = ExtResource("1_s8cew")
+sprite = ExtResource("2_7pb4v")
+itemID = "YoruLetter"
+metadata/_custom_type_script = "uid://dir7m23ol2gwl"
