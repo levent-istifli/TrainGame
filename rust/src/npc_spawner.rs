@@ -58,7 +58,6 @@ impl NPCSpawner {
     }
     #[func]
     fn start_boarding(&mut self) {
-        godot_print!("Here");
         self.current_state = NPCSpawnerState::Boarding;
         self.boarding_timer.set_wait_time(randf_range(BOARD_DELAY_MIN, BOARD_DELAY_MAX));
         self.boarding_timer.start();
