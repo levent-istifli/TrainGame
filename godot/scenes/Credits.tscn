@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dyhktig5bdt24"]
+
+[ext_resource type="Script" uid="uid://dt3uwk3wjujcu" path="res://scripts/Credits.cs" id="1_hi4w3"]
+
+[node name="Credits" type="Node2D" unique_id=1812716063]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1614599420]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="." unique_id=507344173]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hi4w3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control" unique_id=115626748]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+bbcode_enabled = true
+text = "[b]GAME TITLE[/b]
+The End
+
+
+DIRECTOR
+Jane Doe
+
+LEAD PROGRAMMER
+John Smith
+
+GAME DESIGN
+Jane Doe
+Alex Johnson
+
+LEVEL DESIGN
+Sam Wilson
+
+***ART AND ANIMATION***
+
+LEAD ARTIST
+Emily Davis
+
+CHARACTER MODELS
+Michael Brown
+
+ENVIRONMENT ART
+Emily Davis
+Chris Taylor
+
+***AUDIO AND MUSIC***
+
+COMPOSER
+Soundtrack Artist Name
+
+SOUND EFFECTS
+Audio Designer Name
+
+***SPECIAL THANKS***
+
+Playtesters
+Family and Friends
+Community Supporters
+
+Powered by Game Engine Name
+
+[b]THANK YOU FOR PLAYING![/b]"
+scroll_active = false
+horizontal_alignment = 1
