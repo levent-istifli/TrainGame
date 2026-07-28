@@ -16,13 +16,20 @@ public class DialogueLibrary
 		{
 
 			//MC Talking
-            ui.StartTrain();
-            ui.StopTrain();
-            ui.BoardNPC("Mother");
+			ui.GoToStation(0);
+			ui.StopTrain();
+			ui.BoardNPC("Mother");
 
-			ui.StartTrain();
+			ui.GoToStation(1);
+			ui.StopTrain();
 
-            ui.SetSpeaker("Nozomi");
+			ui.SetSpeaker("Narrator");
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(20);
+			await ui.DisplayLine("To interact with players, move up close to them and press 'z' on keyboard");
+			await ui.PhraseEnd();
+
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(20);
 			await ui.DisplayLine("Another day...");
@@ -95,7 +102,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Train intercom
-			ui.StopTrain();
+			
 			ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			await ui.DisplayLine("Midorigaoka. We have arrived at Midorigaoka, station number 1.");
@@ -103,7 +110,7 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			await ui.DisplayLine("Please exit the train from the right.");
 			await ui.PhraseEnd();
-			ui.StartTrain();
+			// ui.StopTrain();
 			
 			//MC
 			ui.SetSpeaker("Nozomi");
@@ -130,6 +137,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Train intercom
+			// ui.GoToStation(2);
 			ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Asahibashi. Station number 2.");
@@ -138,10 +146,19 @@ public class DialogueLibrary
 		
 		dialogueEvents["FirstMotherDialogue"] = new DialogueEvent(async () =>
 		{
-            ui.StartTrain();
-			//MC
-			ui.StartTrain();
-            ui.SetSpeaker("Nozomi");
+			// ui.StopTrain();
+			ui.SetSpeaker("Conductor");
+			ui.PhraseBegin();
+			await ui.DisplayLine("Asahibashi. We have arrived at Asahibashi, station number 2.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.PhraseEnd();
+
+			ui.GoToStation(2);
+			ui.StopTrain();
+
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Oh, sorry. Let me move to make more space for you —");
@@ -163,7 +180,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Mother
-            ui.SetSpeaker("Mother");
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			await ui.DisplayLine("Oh dear...");
 			await ui.PhraseEnd();
@@ -175,7 +192,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//MC
-            ui.SetSpeaker("Nozomi");
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			await ui.DisplayLine("What??");
 			await ui.PhraseEnd();
@@ -193,7 +210,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Mother
-            ui.SetSpeaker("Mother");
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			await ui.DisplayLine("I know what you’re going through right now.");
 			await ui.PhraseEnd();
@@ -217,7 +234,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//MC
-            ui.SetSpeaker("Nozomi");
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			await ui.DisplayLine("What?");
 			await ui.PhraseEnd();
@@ -226,7 +243,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Mother
-            ui.SetSpeaker("Mother");
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			await ui.DisplayLine("I can only say this much.");
 			await ui.PhraseEnd();
@@ -241,21 +258,22 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Train intercom
-			ui.StopTrain();
-            ui.SetSpeaker("Conductor");
-			ui.PhraseBegin();
-			await ui.DisplayLine("Asahibashi. We have arrived at Asahibashi, station number 2.");
-			await ui.PhraseEnd();
-			ui.PhraseBegin();
-			await ui.DisplayLine("Please exit the train from the right.");
-			await ui.PhraseEnd();
+			// ui.StopTrain();
+			// ui.SetSpeaker("Conductor");
+			// ui.PhraseBegin();
+			// await ui.DisplayLine("Asahibashi. We have arrived at Asahibashi, station number 2.");
+			// await ui.PhraseEnd();
+			// ui.PhraseBegin();
+			// await ui.DisplayLine("Please exit the train from the right.");
+			// await ui.PhraseEnd();
 			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Mizunami. Station number 3.");
 			await ui.PhraseEnd();
-			ui.StartTrain();
+			// ui.StartTrain();
+			// ui.GoToStation(3);
 			
 			//Mother
-            ui.SetSpeaker("Mother");
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			await ui.DisplayLine("It has begun.");
 			await ui.PhraseEnd();
@@ -270,7 +288,7 @@ public class DialogueLibrary
 		
 		dialogueEvents["MotherKohanaRepeat"] = new DialogueEvent(async () =>
 		{
-            ui.StopTrain();
+			// ui.StopTrain();
 			//Mother
 			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
@@ -280,7 +298,16 @@ public class DialogueLibrary
 		
 		dialogueEvents["KohanaDialogue"] = new DialogueEvent(async () =>
 		{
-			ui.BoardNPC("Kohana");
+			// ui.StopTrain();
+			ui.SetSpeaker("Conductor");
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("Mizunami. We have arrived at Mizunami, station number 3.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.PhraseEnd();
+			// ui.BoardNPC("Kohana");
 
 			//MC
 			ui.SetSpeaker("Nozomi");
@@ -305,7 +332,7 @@ public class DialogueLibrary
 			ui.SetSpeaker("Kohana");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(12);
-			await ui.DisplayLine("Hey! Are you [MC_NAME]?");
+			await ui.DisplayLine("Hey! Are you Nozomi?");
 			await ui.PhraseEnd();
 			
 			//MC
@@ -448,19 +475,20 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Train Intercom
-			ui.StopTrain();
 			ui.SetSpeaker("Conductor");
-			ui.PhraseBegin();
-			ui.ChangeTextSpeed(10);
-			await ui.DisplayLine("Mizunami. We have arrived at Mizunami, station number 3.");
-			await ui.PhraseEnd();
-			ui.PhraseBegin();
-			await ui.DisplayLine("Please exit the train from the right.");
-			await ui.PhraseEnd();
+			// ui.PhraseBegin();
+			// ui.ChangeTextSpeed(10);
+			// await ui.DisplayLine("Mizunami. We have arrived at Mizunami, station number 3.");
+			// await ui.PhraseEnd();
+			// ui.PhraseBegin();
+			// await ui.DisplayLine("Please exit the train from the right.");
+			// await ui.PhraseEnd();
 			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Kasumigaura. Station number 4.");
 			await ui.PhraseEnd();
-			ui.StartTrain();
+			ui.GoToStation(3);
+			ui.StopTrain();
+			// ui.StartTrain();
 			
 			//MC
 			ui.SetSpeaker("Nozomi");
@@ -483,7 +511,7 @@ public class DialogueLibrary
 		
 		dialogueEvents["HanaDialogue"] = new DialogueEvent(async () =>
 		{
-			ui.BoardNPC("Hana");
+			ui.ExitNPC("Kohana");
 
 			//MC
 			ui.SetSpeaker("Nozomi");
@@ -499,6 +527,9 @@ public class DialogueLibrary
 			await ui.DisplayLine("Hm?");
 			await ui.PhraseEnd();
 			
+			ui.GoToStation(6);
+			ui.StopTrain();
+
 			//MC
 			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
@@ -589,7 +620,7 @@ public class DialogueLibrary
 				await ui.PhraseEnd();
 
 				//Train intercom
-				ui.StopTrain();
+				// ui.StopTrain();
 				ui.SetSpeaker("Conductor");
 				ui.PhraseBegin();
 				await ui.DisplayLine("Kasumigaura. We have arrived at Kasumigaura, station number 4.");
@@ -600,7 +631,8 @@ public class DialogueLibrary
 				ui.PhraseBegin();
 				await ui.DisplayLine("The next stop is Kageyama. Station number 5.");
 				await ui.PhraseEnd();
-				ui.StartTrain();
+
+				
 				
 				//MC
 				ui.SetSpeaker("Nozomi");
@@ -814,8 +846,8 @@ public class DialogueLibrary
 			}
 
 			//Train intercom
-			ui.StopTrain();
-            ui.SetSpeaker("Conductor");
+			// ui.StopTrain();
+			ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			await ui.DisplayLine("Kageyama. We have arrived at Kageyama, station number 5.");
 			await ui.PhraseEnd();
@@ -825,7 +857,7 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Shiranui. Station number 6.");
 			await ui.PhraseEnd();
-			ui.StartTrain();
+			// ui.GoToStation(6);
 			
 			//MC
 			ui.SetSpeaker("Nozomi");
@@ -842,8 +874,8 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Train intercom
-			ui.StopTrain();
-            ui.SetSpeaker("Conductor");
+			// ui.StopTrain();
+			ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			await ui.DisplayLine("Shiranui. We have arrived at Shiranui, station number 6.");
 			await ui.PhraseEnd();
@@ -853,7 +885,7 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Yorugaoka. Station number 7.");
 			await ui.PhraseEnd();
-			ui.StartTrain();
+			// ui.GoToStation(7);
 			
 			//MC, Hana sprite fades away
 			ui.SetSpeaker("Nozomi");
@@ -871,11 +903,27 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			await ui.DisplayLine("Let me tell my mom this. I’m sure it’ll make her happy.");
 			await ui.PhraseEnd();
+
 		});
 		
 		dialogueEvents["MotherAfterHanaDialogue"] = new DialogueEvent(async () =>
 		{
-			
+			ui.ExitNPC("Hana");
+
+			ui.GoToStation(7);
+			ui.StopTrain();
+
+			//Train Intercom
+			// ui.StopTrain();
+			ui.SetSpeaker("Conductor");
+			ui.PhraseBegin();
+			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("Yorugaoka. We have arrived at Yorugaoka, station number 7.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("Please exit the train from the left.");
+			await ui.PhraseEnd();
+
 			//MC
 			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
@@ -976,20 +1024,20 @@ public class DialogueLibrary
 			await ui.DisplayLine("I understand.");
 			await ui.PhraseEnd();
 
-			//Train Intercom
-			ui.StopTrain();
-			ui.SetSpeaker("Conductor");
-			ui.PhraseBegin();
-			ui.ChangeTextSpeed(10);
-			await ui.DisplayLine("Yorugaoka. We have arrived at Yorugaoka, station number 7.");
-			await ui.PhraseEnd();
-			ui.PhraseBegin();
-			await ui.DisplayLine("Please exit the train from the left.");
-			await ui.PhraseEnd();
+			// //Train Intercom
+			// ui.StopTrain();
+			// ui.SetSpeaker("Conductor");
+			// ui.PhraseBegin();
+			// ui.ChangeTextSpeed(10);
+			// await ui.DisplayLine("Yorugaoka. We have arrived at Yorugaoka, station number 7.");
+			// await ui.PhraseEnd();
+			// ui.PhraseBegin();
+			// await ui.DisplayLine("Please exit the train from the left.");
+			// await ui.PhraseEnd();
 			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Naraku. Station number 8.");
 			await ui.PhraseEnd();
-			ui.StartTrain();
+			// ui.GoToStation(8);
 
 			//Mother
 			ui.SetSpeaker("Mother");
@@ -1022,6 +1070,16 @@ public class DialogueLibrary
 
 		dialogueEvents["YoruDialogue"] = new DialogueEvent(async () =>
 		{
+			ui.SetSpeaker("Conductor");
+			ui.PhraseBegin();
+			await ui.DisplayLine("Naraku. We have arrived at Naraku, station number 8.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.PhraseEnd();
+
+			ui.GoToStation(8);
+			ui.StopTrain();
 
 			//MC
 			ui.SetSpeaker("Mother");
@@ -1167,18 +1225,18 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Train intercom
-			ui.StopTrain();
-            ui.SetSpeaker("Conductor");
-			ui.PhraseBegin();
-			await ui.DisplayLine("Naraku. We have arrived at Naraku, station number 8.");
-			await ui.PhraseEnd();
-			ui.PhraseBegin();
-			await ui.DisplayLine("Please exit the train from the right.");
-			await ui.PhraseEnd();
+			// ui.StopTrain();
+			ui.SetSpeaker("Conductor");
+			// ui.PhraseBegin();
+			// await ui.DisplayLine("Naraku. We have arrived at Naraku, station number 8.");
+			// await ui.PhraseEnd();
+			// ui.PhraseBegin();
+			// await ui.DisplayLine("Please exit the train from the right.");
+			// await ui.PhraseEnd();
 			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Bokyo. Station number 9.");
 			await ui.PhraseEnd();
-			ui.StartTrain();
+			// ui.GoToStation(9);
 
 			//MC
 			ui.SetSpeaker("Nozomi");
@@ -1259,6 +1317,18 @@ public class DialogueLibrary
 		
 		dialogueEvents["HotaruDialogue"] = new DialogueEvent(async () =>
 		{
+			ui.SetSpeaker("Conductor");
+			ui.PhraseBegin();
+			await ui.DisplayLine("Bokyo. We have arrived at Bokyo, station number 9.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.PhraseEnd();
+
+			ui.ExitNPC("Yoru");
+
+			ui.GoToStation(9);
+			ui.StopTrain();
 
 			//MC
 			ui.SetSpeaker("Nozomi");
@@ -1453,18 +1523,18 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Train intercom
-			ui.StopTrain();
-            ui.SetSpeaker("Conductor");
-			ui.PhraseBegin();
-			await ui.DisplayLine("Bokyo. We have arrived at Bokyo, station number 9.");
-			await ui.PhraseEnd();
-			ui.PhraseBegin();
-			await ui.DisplayLine("Please exit the train from the right.");
-			await ui.PhraseEnd();
+			// ui.StopTrain();
+			ui.SetSpeaker("Conductor");
+			// ui.PhraseBegin();
+			// await ui.DisplayLine("Bokyo. We have arrived at Bokyo, station number 9.");
+			// await ui.PhraseEnd();
+			// ui.PhraseBegin();
+			// await ui.DisplayLine("Please exit the train from the right.");
+			// await ui.PhraseEnd();
 			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Kagamiutsu. Station number 10.");
 			await ui.PhraseEnd();
-			ui.StartTrain();
+			// ui.GoToStation(10);
 
 			//MC
 			ui.SetSpeaker("Nozomi");
@@ -1502,6 +1572,10 @@ public class DialogueLibrary
 
 		dialogueEvents["FinalMotherDialogue"] = new DialogueEvent(async () =>
 		{
+			ui.ExitNPC("Hotaru");
+
+			ui.GoToStation(10);
+			ui.StopTrain();
 
 			//MC
 			ui.SetSpeaker("Nozomi");
@@ -1517,8 +1591,8 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Train intercom
-			ui.StopTrain();
-            ui.SetSpeaker("Conductor");
+			// ui.StopTrain();
+			ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			await ui.DisplayLine("Kagamiutsu. We have arrived at Asahibashi, station number 10.");
 			await ui.PhraseEnd();
@@ -1528,7 +1602,7 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Magen. Station number 11.");
 			await ui.PhraseEnd();
-			ui.StartTrain();
+			// ui.GoToStation(11);
 
 
 			//Mother
@@ -1669,6 +1743,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Train Intercom
+			// ui.StopTrain();
 			ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);

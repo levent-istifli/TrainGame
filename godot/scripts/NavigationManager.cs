@@ -32,7 +32,7 @@ public partial class NavigationManager : Node
 	public List<string> exitQueue = new List<string>();
 
 	public int currentStation = 0;
-	public static readonly string[] stationNames = {"Midorigaoka", "Asahibashi", "Mizunami", "Kasumigaura", "Kageyama", "Shiranui", "Yorugaoka", "Naraku", "Bokyo", "Kagamiutsu", "Magen", "Yomiji"};
+	public static readonly string[] stationNames = {"Onizuka", "Midorigaoka", "Asahibashi", "Mizunami", "Kasumigaura", "Kageyama", "Shiranui", "Yorugaoka", "Naraku", "Bokyo", "Kagamiutsu", "Magen", "Yomiji"};
 	public enum TrainState {
 		STOPPED,
 		RUNNING,
@@ -74,11 +74,11 @@ public partial class NavigationManager : Node
 	public void loadCredits()
 	{
 		foreach(Node child in GetTree().Root.GetChildren())
-        {
-            child.QueueFree();
-        }
-        var creditsNode = ((PackedScene)GD.Load("res://scenes/Credits.tscn")).Instantiate();
-        GetTree().Root.AddChild(creditsNode);
+		{
+			child.QueueFree();
+		}
+		var creditsNode = ((PackedScene)GD.Load("res://scenes/Credits.tscn")).Instantiate();
+		GetTree().Root.AddChild(creditsNode);
 	}
 
 	public void loadDialogueScene(string sceneTag, string doorTag, string dialogueEventId = "")
