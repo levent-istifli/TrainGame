@@ -1,4 +1,5 @@
 using Godot;
+using GodotStringIntercept;
 using System;
 
 public partial class Credits : Control
@@ -16,5 +17,13 @@ public partial class Credits : Control
 	{
 		// decrease Y position each frame to get scrolling effect
 		Position = new Vector2(Position.X, Position.Y - (SCROLL_SPEED * (float)delta));
+        if(Input.IsActionPressed("dialogueNext".AsStringName()))
+        {
+            Position = new Vector2(Position.X, Position.Y - (SCROLL_SPEED * (float)delta));
+        } 
+        if(Position.Y < -1000)
+        {
+            GetTree().Quit();
+        }
 	}
 }

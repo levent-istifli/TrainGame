@@ -25,50 +25,34 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 bbcode_enabled = true
-text = "[b]GAME TITLE[/b]
+text = "[b]Twelfth Stop[/b]
 The End
 
 
-DIRECTOR
-Jane Doe
+WRITING
+Camila Menendez
+Jasleen Agenor
 
-LEAD PROGRAMMER
-John Smith
+ART
+Camila Menendez
+Jasleen Agenor
 
-GAME DESIGN
-Jane Doe
-Alex Johnson
+PROGRAMMING
+Levent Istifli
+Ivan Infantado-Reekie
+Camila Menendez
+Jasleen Agenor
 
-LEVEL DESIGN
-Sam Wilson
+SOUNDS AND MUSIC
+freesounds.org
 
-***ART AND ANIMATION***
+Special Thanks
+Junichi Kato
+Jeremiah Blanchard
+Robert Conde
+Jake Malegni
 
-LEAD ARTIST
-Emily Davis
-
-CHARACTER MODELS
-Michael Brown
-
-ENVIRONMENT ART
-Emily Davis
-Chris Taylor
-
-***AUDIO AND MUSIC***
-
-COMPOSER
-Soundtrack Artist Name
-
-SOUND EFFECTS
-Audio Designer Name
-
-***SPECIAL THANKS***
-
-Playtesters
-Family and Friends
-Community Supporters
-
-Powered by Game Engine Name
+Powered by Godot
 
 [b]THANK YOU FOR PLAYING![/b]"
 scroll_active = false

@@ -73,7 +73,12 @@ public partial class NavigationManager : Node
 
 	public void loadCredits()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/Credits.tscn");
+		foreach(Node child in GetTree().Root.GetChildren())
+        {
+            child.QueueFree();
+        }
+        var creditsNode = ((PackedScene)GD.Load("res://scenes/Credits.tscn")).Instantiate();
+        GetTree().Root.AddChild(creditsNode);
 	}
 
 	public void loadDialogueScene(string sceneTag, string doorTag, string dialogueEventId = "")

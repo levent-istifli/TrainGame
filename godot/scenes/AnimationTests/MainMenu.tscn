@@ -2,27 +2,28 @@
 
 [ext_resource type="Script" uid="uid://c48c6gp5o4ky1" path="res://scenes/AnimationTests/MainMenu.cs" id="1_dfqks"]
 [ext_resource type="PackedScene" uid="uid://b8u6f3ehn1y80" path="res://scenes/main_scene.tscn" id="2_4pmo2"]
-[ext_resource type="Texture2D" uid="uid://taeewseiuvyv" path="res://Art/MovingMM.png" id="3_6cuyr"]
-[ext_resource type="Texture2D" uid="uid://de6bubpwyngch" path="res://Art/MMStartCropped.png" id="4_qrv18"]
-[ext_resource type="Texture2D" uid="uid://dw2siuqbjrjw6" path="res://Art/StartPressed.png" id="5_44s7e"]
-[ext_resource type="Texture2D" uid="uid://sqfrmtvl6wb3" path="res://Art/StartHover.png" id="6_2l2m1"]
-[ext_resource type="Texture2D" uid="uid://cqkhqyq735eu3" path="res://Art/MMCreditsCropped.png" id="7_o5iil"]
-[ext_resource type="Texture2D" uid="uid://cjfw0cvef5crp" path="res://Art/CreditsPressed.png" id="8_dlylv"]
-[ext_resource type="Texture2D" uid="uid://bq41yfgju13pj" path="res://Art/CreditsHover.png" id="9_nxgvb"]
-[ext_resource type="Texture2D" uid="uid://dmhaf37805xms" path="res://Art/MMEndCropped.png" id="10_4bwo8"]
-[ext_resource type="Texture2D" uid="uid://d1r0nrcswdlaq" path="res://Art/EndPressed.png" id="11_p356o"]
-[ext_resource type="Texture2D" uid="uid://dvfsqsry0ornx" path="res://Art/EndHover.png" id="12_3i4ua"]
-[ext_resource type="Texture2D" uid="uid://ppobvilf3wwl" path="res://Art/NotMovingMM.png" id="13_bdyxj"]
-[ext_resource type="Texture2D" uid="uid://bmjos2h3l270l" path="res://Art/DoorLMM.png" id="14_04cqq"]
-[ext_resource type="Texture2D" uid="uid://qyj6cgfusvii" path="res://Art/DoorRMM.png" id="15_enpbh"]
-[ext_resource type="Texture2D" uid="uid://bnbu2r2do3w0m" path="res://Art/BackMM.png" id="16_j8ake"]
-[ext_resource type="Texture2D" uid="uid://o4nyv6lmp1xk" path="res://Art/FrontMM.png" id="17_htks4"]
-[ext_resource type="FontFile" uid="uid://6fwnkho10n5i" path="res://Fonts/MainMenuFont/Sadents.ttf" id="18_r5b14"]
-[ext_resource type="AudioStream" uid="uid://biv5ig3yu4rqi" path="res://Audio/MainMenuPiano.wav" id="19_8o6gx"]
-[ext_resource type="AudioStream" uid="uid://bhcpmw3my6tvr" path="res://Audio/MainMenuForest.wav" id="20_ju4pw"]
-[ext_resource type="AudioStream" uid="uid://0jvptxt4xpkt" path="res://Audio/MainMenuTrain.mp3" id="21_x5sfy"]
-[ext_resource type="AudioStream" uid="uid://p3pnj04n1i8u" path="res://Audio/MainMenuTicketMachine.wav" id="22_xkkfm"]
-[ext_resource type="AudioStream" uid="uid://cf8b42u6bfxhx" path="res://Audio/MainMenuDoors.wav" id="23_m6ms7"]
+[ext_resource type="PackedScene" uid="uid://dyhktig5bdt24" path="res://scenes/Credits.tscn" id="3_4pmo2"]
+[ext_resource type="Texture2D" uid="uid://2ae553k4h8ri" path="res://Art/MovingMM.png" id="3_6cuyr"]
+[ext_resource type="Texture2D" uid="uid://cwyy2l7rhkouk" path="res://Art/MMStartCropped.png" id="4_qrv18"]
+[ext_resource type="Texture2D" uid="uid://c4mcabh0wtvce" path="res://Art/StartPressed.png" id="5_44s7e"]
+[ext_resource type="Texture2D" uid="uid://c17yppnosjco7" path="res://Art/StartHover.png" id="6_2l2m1"]
+[ext_resource type="Texture2D" uid="uid://d3fb64u8gmlga" path="res://Art/MMCreditsCropped.png" id="7_o5iil"]
+[ext_resource type="Texture2D" uid="uid://cticdmlmw8153" path="res://Art/CreditsPressed.png" id="8_dlylv"]
+[ext_resource type="Texture2D" uid="uid://6pp126b2vli0" path="res://Art/CreditsHover.png" id="9_nxgvb"]
+[ext_resource type="Texture2D" uid="uid://7j5u4nscf1s4" path="res://Art/MMEndCropped.png" id="10_4bwo8"]
+[ext_resource type="Texture2D" uid="uid://cwb8acwkmf4n1" path="res://Art/EndPressed.png" id="11_p356o"]
+[ext_resource type="Texture2D" uid="uid://dkjq0sfeeyvld" path="res://Art/EndHover.png" id="12_3i4ua"]
+[ext_resource type="Texture2D" uid="uid://bbs7vs0ad8s1v" path="res://Art/NotMovingMM.png" id="13_bdyxj"]
+[ext_resource type="Texture2D" uid="uid://b4jfesf08petf" path="res://Art/DoorLMM.png" id="14_04cqq"]
+[ext_resource type="Texture2D" uid="uid://cv4opbql5dav6" path="res://Art/DoorRMM.png" id="15_enpbh"]
+[ext_resource type="Texture2D" uid="uid://b4q62itt5vf3" path="res://Art/BackMM.png" id="16_j8ake"]
+[ext_resource type="Texture2D" uid="uid://cdaicq6hr3lon" path="res://Art/FrontMM.png" id="17_htks4"]
+[ext_resource type="FontFile" uid="uid://clwx0addijgds" path="res://Fonts/MainMenuFont/Sadents.ttf" id="18_r5b14"]
+[ext_resource type="AudioStream" uid="uid://xqhuvmhnba5x" path="res://Audio/MainMenuPiano.wav" id="19_8o6gx"]
+[ext_resource type="AudioStream" uid="uid://dgf682k6xl8n4" path="res://Audio/MainMenuForest.wav" id="20_ju4pw"]
+[ext_resource type="AudioStream" uid="uid://derdciyly0eu4" path="res://Audio/MainMenuTrain.mp3" id="21_x5sfy"]
+[ext_resource type="AudioStream" uid="uid://dnecde7dwnsqx" path="res://Audio/MainMenuTicketMachine.wav" id="22_xkkfm"]
+[ext_resource type="AudioStream" uid="uid://biw1ygi4b7b25" path="res://Audio/MainMenuDoors.wav" id="23_m6ms7"]
 [ext_resource type="Shader" uid="uid://dvw1grmywhixp" path="res://scenes/AnimationTests/vignette.gdshader" id="24_8tc8u"]
 
 [sub_resource type="Environment" id="Environment_hphkb"]
@@ -52,6 +53,7 @@ script = ExtResource("1_dfqks")
 button = NodePath("Audio/sfxButton")
 doors = NodePath("Audio/sfxDoorsOpening")
 startScene = ExtResource("2_4pmo2")
+creditScene = ExtResource("3_4pmo2")
 currentScene = NodePath(".")
 trainBackground = ExtResource("3_6cuyr")
 bckgdSpeed = 900.0
