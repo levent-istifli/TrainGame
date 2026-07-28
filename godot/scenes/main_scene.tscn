@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c1vx5f40jfo2n" path="res://scenes/stations_hud.tscn" id="6_18nlu"]
 [ext_resource type="PackedScene" uid="uid://c42mgvtrilwxf" path="res://scenes/InventoryUI.tscn" id="7_c16ls"]
 [ext_resource type="PackedScene" uid="uid://c7ygs80tn4ttd" path="res://scenes/dialoguetestscene/dialoguetestscene.tscn" id="8_7ykc4"]
+[ext_resource type="AudioStream" uid="uid://chqwcevsgwrmv" path="res://Audio/TrainAmbient.wav" id="9_c1pb6"]
 
 [node name="MainScene" type="Node" unique_id=1297421532 node_paths=PackedStringArray("player", "uiLayer")]
 script = ExtResource("1_7ykc4")
@@ -25,3 +26,9 @@ layer = 10
 
 [node name="Player" parent="." unique_id=1629053667 instance=ExtResource("3_pu3yx")]
 position = Vector2(923, 841)
+
+[node name="Audio" type="Node" parent="." unique_id=1891796614]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=557342653]
+stream = ExtResource("9_c1pb6")
+autoplay = true

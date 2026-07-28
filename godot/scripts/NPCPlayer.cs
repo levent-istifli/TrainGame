@@ -44,7 +44,7 @@ public partial class NPCPlayer : Area2D
 					}
 				}
 
-            	hasInteracted = true;
+				hasInteracted = true;
 				NavigationManager.Instance.loadDialogueScene(sceneTag, "", eventToPlay);
 			}
 		}	
