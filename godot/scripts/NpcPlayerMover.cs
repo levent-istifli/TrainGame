@@ -7,7 +7,6 @@ public partial class NpcPlayerMover : CharacterBody2D
     [Export] public Area2D interactor;
     [Export] public Node2D targetSeat;
     [Export] public double aisleYPosition;
-    [Export] public string name;
 
     const float WALK_SPEED = 300.0f;
 
@@ -36,6 +35,7 @@ public partial class NpcPlayerMover : CharacterBody2D
             {
                 if(isExiting)
                 {
+                    GD.Print("AA");
                     QueueFree();
                 }
                 else

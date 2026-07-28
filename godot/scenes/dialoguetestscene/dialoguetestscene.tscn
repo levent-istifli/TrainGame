@@ -1,11 +1,193 @@
 [gd_scene format=3 uid="uid://c7ygs80tn4ttd"]
 
-[ext_resource type="Texture2D" uid="uid://cyucpvwupsme6" path="res://scenes/dialoguetestscene/traininterior.png" id="1_aawce"]
 [ext_resource type="Script" uid="uid://blxu853na5h8j" path="res://scripts/DialogueBoxUI.cs" id="1_pmob3"]
+[ext_resource type="Texture2D" uid="uid://b6xasl5ornaes" path="res://Art/FinalDialogueAssets/Nozomi_Hana.png" id="2_75wt1"]
+[ext_resource type="Texture2D" uid="uid://hcyvhjmwuscp" path="res://Art/FinalDialogueAssets/Nozomi.png" id="2_r4m4u"]
 [ext_resource type="Texture2D" uid="uid://dlwd6d53xnfh2" path="res://icon.svg" id="3_11ujm"]
+[ext_resource type="Texture2D" uid="uid://daa8qbfdtosds" path="res://Art/FinalDialogueAssets/NozomiTalking.png" id="3_26age"]
+[ext_resource type="Texture2D" uid="uid://devx0ntg6i46i" path="res://Art/FinalDialogueAssets/NozomiTalking_Hana.png" id="3_llgmv"]
+[ext_resource type="Texture2D" uid="uid://dpfiw11xje7e2" path="res://Art/FinalDialogueAssets/Nozomi_Hotaru.png" id="4_n2hyo"]
+[ext_resource type="Texture2D" uid="uid://qwikdsj4wltf" path="res://Art/FinalDialogueAssets/Nozomi_Mother.png" id="4_syq6s"]
+[ext_resource type="Texture2D" uid="uid://cmgpu0ykuluy3" path="res://Art/FinalDialogueAssets/NozomiTalking_Hotaru.png" id="5_e4ems"]
+[ext_resource type="Texture2D" uid="uid://drhhb0xqayihx" path="res://Art/FinalDialogueAssets/NozomiTalking_Mother.png" id="5_p6hot"]
+[ext_resource type="Texture2D" uid="uid://cktfpgdipx7cq" path="res://Art/FinalDialogueAssets/Nozomi_MotherTalking.png" id="6_jmqsv"]
+[ext_resource type="Texture2D" uid="uid://b3a6x7lscwmf1" path="res://Art/FinalDialogueAssets/Nozomi_HotaruTalking.png" id="6_vdcus"]
+[ext_resource type="Texture2D" uid="uid://cdhw34u5qhlh0" path="res://Art/FinalDialogueAssets/Nozomi_Kohana.png" id="8_6vv0t"]
+[ext_resource type="Texture2D" uid="uid://bdo2m0ijbk0sv" path="res://Art/FinalDialogueAssets/Nozomi_KohanaTalking.png" id="9_iskve"]
+[ext_resource type="Texture2D" uid="uid://cewguam8r6ivp" path="res://Art/FinalDialogueAssets/Nozomi_Yoru.png" id="14_lq3ku"]
+[ext_resource type="Texture2D" uid="uid://cej8b3dv7rqlc" path="res://Art/FinalDialogueAssets/NozomiTalking_Yoru.png" id="15_n2hyo"]
+[ext_resource type="Texture2D" uid="uid://be1lqo0roq63g" path="res://Art/FinalDialogueAssets/Nozomi_YoruTalking.png" id="16_e4ems"]
 
-[node name="DialogueBox" type="Node2D" unique_id=1448317 node_paths=PackedStringArray("textBox", "speakerName", "option1TextBox", "option2TextBox", "option1Indicator", "option2Indicator", "charTimer", "nextIndicator")]
-visible = false
+[sub_resource type="SpriteFrames" id="SpriteFrames_3myty"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_75wt1")
+}],
+"loop": true,
+"name": &"HanaIdle",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_75wt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_llgmv")
+}],
+"loop": true,
+"name": &"HanaMCTalking",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_75wt1")
+}],
+"loop": true,
+"name": &"HanaTalking",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_n2hyo")
+}],
+"loop": true,
+"name": &"HotaruIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_n2hyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e4ems")
+}],
+"loop": true,
+"name": &"HotaruMCTalking",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_n2hyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vdcus")
+}],
+"loop": true,
+"name": &"HotaruTalking",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r4m4u")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_6vv0t")
+}],
+"loop": true,
+"name": &"KohanaIdle",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_6vv0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_llgmv")
+}],
+"loop": true,
+"name": &"KohanaMCTalking",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_6vv0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iskve")
+}],
+"loop": true,
+"name": &"KohanaTalking",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r4m4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_26age")
+}],
+"loop": true,
+"name": &"MCTalking",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_syq6s")
+}],
+"loop": true,
+"name": &"MotherIdle",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_syq6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p6hot")
+}],
+"loop": true,
+"name": &"MotherMCTalking",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_syq6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jmqsv")
+}],
+"loop": true,
+"name": &"MotherTalking",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_lq3ku")
+}],
+"loop": true,
+"name": &"YoruIdle",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_lq3ku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_n2hyo")
+}],
+"loop": true,
+"name": &"YoruMCTalking",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_lq3ku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_e4ems")
+}],
+"loop": true,
+"name": &"YoruTalking",
+"speed": 13.0
+}]
+
+[node name="DialogueBox" type="Node2D" unique_id=1448317 node_paths=PackedStringArray("textBox", "speakerName", "option1TextBox", "option2TextBox", "option1Indicator", "option2Indicator", "charTimer", "nextIndicator", "background")]
 z_index = 100
 position = Vector2(960, 801)
 script = ExtResource("1_pmob3")
@@ -18,11 +200,12 @@ option1Indicator = NodePath("DialogueBoxBackdrop/OptionIndicator1")
 option2Indicator = NodePath("DialogueBoxBackdrop/OptionIndicator2")
 charTimer = NodePath("CharTimer")
 nextIndicator = NodePath("DialogueBoxBackdrop/NextIndicator")
+background = NodePath("TrainInterior")
 
-[node name="TrainInterior" type="Sprite2D" parent="." unique_id=1440137525]
-visible = false
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_aawce")
+[node name="TrainInterior" type="AnimatedSprite2D" parent="." unique_id=1425006374]
+position = Vector2(-3.71933e-05, -261)
+sprite_frames = SubResource("SpriteFrames_3myty")
+animation = &"MotherMCTalking"
 
 [node name="CharTimer" type="Timer" parent="." unique_id=231543630]
 

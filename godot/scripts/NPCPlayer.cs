@@ -14,6 +14,7 @@ public partial class NPCPlayer : Area2D
 	[Export] string destination_door_tag;
 	[Export] string currentSceneTag;
 	[Export] string spawn_direction = "right";
+    [Export] public string name;
 
 	public Marker2D spawn_point;
 
@@ -25,27 +26,7 @@ public partial class NPCPlayer : Area2D
 		{
 			if (mouseEvent.ButtonIndex == MouseButton.Left)
 			{
-				string eventToPlay = hasInteracted
-				? repeatDialogueEventId
-				: firstDialogueEventId;
-
-				if (hasInteracted)
-				{
-					int flagCount = Math.Min(flagsToCheck.Length, flagDialogueEventIds.Length);
-					for (int i = flagCount - 1; i >= 0; i--)
-					{
-						if (!string.IsNullOrEmpty(flagsToCheck[i])
-						&& NavigationManager.Instance.HasStoryFlag(flagsToCheck[i])
-						&& !string.IsNullOrEmpty(flagDialogueEventIds[i]))
-						{
-							eventToPlay = flagDialogueEventIds[i];
-							break;
-						}
-					}
-				}
-
-				hasInteracted = true;
-				NavigationManager.Instance.loadDialogueScene(sceneTag, "", eventToPlay);
+				doEvent();
 			}
 		}	
 	}
@@ -72,7 +53,9 @@ public partial class NPCPlayer : Area2D
         }
 
         hasInteracted = true;
+        DialogueBoxUI.Instance.animationBaseName = name;
         NavigationManager.Instance.loadDialogueScene(sceneTag, "", eventToPlay);
+        
     }
 
 	// Called when the node enters the scene tree for the first time.

@@ -21,7 +21,7 @@ public partial class BackButton : Button
 	{
 		
 		// NavigationManager.Instance.goToDialogueScene(sceneTag, doorTag);
-		// NavigationManager.Instance.removeDialogueScene();
+		NavigationManager.Instance.removeDialogueScene();
 		// GD.Print("Show load prev scene when pressed");
 	}
 
