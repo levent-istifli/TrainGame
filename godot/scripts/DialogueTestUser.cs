@@ -24,7 +24,18 @@ public partial class DialogueTestUser : Node
 		{
 			DialogueLibrary lib = new();
 			await lib.GetEvent(dialogueEventId).RunDialogue();
-			Callable.From(() => NavigationManager.Instance.removeDialogueScene()).CallDeferred();
+			if (dialogueEventId == "FinalMotherDialogue")
+			{
+				Callable.From(() =>
+				{
+					NavigationManager.Instance.removeDialogueScene();
+					NavigationManager.Instance.loadDialogueScene("MCDialogue", "", "EndingDialogue");
+				}).CallDeferred();
+			}
+			else
+			{
+				Callable.From(() => NavigationManager.Instance.removeDialogueScene()).CallDeferred();
+			}
 		}
 		catch (KeyNotFoundException)
 		{

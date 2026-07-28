@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bnfnq0jctl51d" path="res://scenes/npc_spawner.tscn" id="3_3ay65"]
 [ext_resource type="PackedScene" uid="uid://c2yva6vtvmdd2" path="res://scenes/NPCPlayer.tscn" id="4_ofb8k"]
 [ext_resource type="Texture2D" uid="uid://b47rlp2efyf7v" path="res://Art/Kohana.png" id="5_qhesa"]
+[ext_resource type="Texture2D" uid="uid://4qxqshfrw53" path="res://Art/Yoru.png" id="6_v3o08"]
 
 [node name="TestScene3" type="Node2D" unique_id=1903736709]
 
@@ -69,7 +70,20 @@ repeatDialogueEventId = "KohanaRepeat"
 [node name="Sprite2D" parent="NPCPlayer3/Area2D" index="0" unique_id=1297988730]
 texture = ExtResource("5_qhesa")
 
+[node name="NPCPlayer4" parent="." unique_id=258153252 instance=ExtResource("4_ofb8k")]
+position = Vector2(1335, 511)
+metadata/_edit_group_ = true
+
+[node name="Area2D" parent="NPCPlayer4" index="0" unique_id=1629417335]
+position = Vector2(7, -1)
+firstDialogueEventId = "YoruDialogue"
+repeatDialogueEventId = "YoruRepeat"
+
+[node name="Sprite2D" parent="NPCPlayer4/Area2D" index="0" unique_id=1297988730]
+texture = ExtResource("6_v3o08")
+
 [connection signal="body_entered" from="Doors/Door_R" to="Doors/Door_R" method="OnBodyEntered"]
 
 [editable path="Doors/Door_R"]
 [editable path="NPCPlayer3"]
+[editable path="NPCPlayer4"]

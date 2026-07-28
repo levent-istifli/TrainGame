@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://clkd3qkd73x3f"]
+
+[ext_resource type="Script" uid="uid://dir7m23ol2gwl" path="res://scripts/InventoryItem.cs" id="1_50rby"]
+[ext_resource type="Texture2D" uid="uid://dlwd6d53xnfh2" path="res://icon.svg" id="2_ib8iy"]
+
+[resource]
+script = ExtResource("1_50rby")
+sprite = ExtResource("2_ib8iy")
+itemID = "FireflyPin"
+metadata/_custom_type_script = "uid://dir7m23ol2gwl"

@@ -5,6 +5,8 @@ public partial class NPCPlayer : Area2D
 {
 	[Export] public string firstDialogueEventId;
 	[Export] public string repeatDialogueEventId;
+	[Export] public string[] flagsToCheck = Array.Empty<string>();
+	[Export] public string[] flagDialogueEventIds = Array.Empty<string>();
 	private bool hasInteracted = false;
 	[Export] public Area2D area;
 	[Export] public Sprite2D NpcSprite;
@@ -27,7 +29,22 @@ public partial class NPCPlayer : Area2D
 				? repeatDialogueEventId
 				: firstDialogueEventId;
 
-				hasInteracted = true;
+				if (hasInteracted)
+				{
+					int flagCount = Math.Min(flagsToCheck.Length, flagDialogueEventIds.Length);
+					for (int i = flagCount - 1; i >= 0; i--)
+					{
+						if (!string.IsNullOrEmpty(flagsToCheck[i])
+						&& NavigationManager.Instance.HasStoryFlag(flagsToCheck[i])
+						&& !string.IsNullOrEmpty(flagDialogueEventIds[i]))
+						{
+							eventToPlay = flagDialogueEventIds[i];
+							break;
+						}
+					}
+				}
+
+            	hasInteracted = true;
 				NavigationManager.Instance.loadDialogueScene(sceneTag, "", eventToPlay);
 			}
 		}	
