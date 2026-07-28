@@ -1043,7 +1043,7 @@ public class DialogueLibrary
 			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
-			await ui.DisplayLine("Look for a man in a bright orange uniform. He wants to give someone one last message before he goes.");
+			await ui.DisplayLine("Look for a man in a dark blue uniform. He wants to give someone one last message before he goes.");
 			await ui.PhraseEnd();
 
 			//MC
