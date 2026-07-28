@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://beh2de8br4uk7"]
 
 [ext_resource type="Script" uid="uid://c1nue1b8nio8p" path="res://scripts/PlayerNew.cs" id="1_agiem"]
-<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://bidmjnt58ah5t" path="res://Art/Nozomi.png" id="2_agiem"]
 [ext_resource type="AudioStream" uid="uid://bcy84ic0g618g" path="res://Audio/TrainFootsteps.wav" id="3_pfswu"]
-=======
-[ext_resource type="Texture2D" uid="uid://bwk06nfjtljw0" path="res://Art/Nozomi.png" id="2_agiem"]
->>>>>>> be6d401c4c02f063bcf76fc07cdb13d407af68cc
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krj2m"]
 size = Vector2(107, 48)
@@ -14,19 +10,12 @@ size = Vector2(107, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_agiem"]
 size = Vector2(80, 80)
 
-<<<<<<< HEAD
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1629053667 node_paths=PackedStringArray("sprite",  "interactionDetector", "footsteps") groups=["Pause"]]
-=======
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1629053667 node_paths=PackedStringArray("sprite", "interactionDetector") groups=["Pause"]]
->>>>>>> be6d401c4c02f063bcf76fc07cdb13d407af68cc
 collision_layer = 129
 script = ExtResource("1_agiem")
 sprite = NodePath("Sprite2D")
 speed = 300.0
-<<<<<<< HEAD
 footsteps = NodePath("Footsteps")
-=======
->>>>>>> be6d401c4c02f063bcf76fc07cdb13d407af68cc
 interactionDetector = NodePath("InteractionChecker")
 metadata/_edit_group_ = true
 

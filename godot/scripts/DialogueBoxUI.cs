@@ -289,6 +289,11 @@ public partial class DialogueBoxUI : Node2D
         willStopTrain = true;
     }
 
+    public void GoToStation(int station)
+    {
+        NavigationManager.Instance.currentStation = station;
+    }
+
     public void BoardNPC(string name)
     {
         NavigationManager.Instance.boardQueue.Add(name);

@@ -25,7 +25,6 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 bbcode_enabled = true
-<<<<<<< HEAD
 text = "[b]Twelfth Stop[/b]
 The End
 
@@ -54,52 +53,6 @@ Robert Conde
 Jake Malegni
 
 Powered by Godot
-=======
-text = "[b]GAME TITLE[/b]
-The End
-
-
-DIRECTOR
-Jane Doe
-
-LEAD PROGRAMMER
-John Smith
-
-GAME DESIGN
-Jane Doe
-Alex Johnson
-
-LEVEL DESIGN
-Sam Wilson
-
-***ART AND ANIMATION***
-
-LEAD ARTIST
-Emily Davis
-
-CHARACTER MODELS
-Michael Brown
-
-ENVIRONMENT ART
-Emily Davis
-Chris Taylor
-
-***AUDIO AND MUSIC***
-
-COMPOSER
-Soundtrack Artist Name
-
-SOUND EFFECTS
-Audio Designer Name
-
-***SPECIAL THANKS***
-
-Playtesters
-Family and Friends
-Community Supporters
-
-Powered by Game Engine Name
->>>>>>> be6d401c4c02f063bcf76fc07cdb13d407af68cc
 
 [b]THANK YOU FOR PLAYING![/b]"
 scroll_active = false
