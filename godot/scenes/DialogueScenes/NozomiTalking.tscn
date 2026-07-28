@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dbu4g23whvbvb"]
+
+[ext_resource type="Texture2D" uid="uid://hcyvhjmwuscp" path="res://Art/FinalDialogueAssets/Nozomi.png" id="1_rqcsc"]
+
+[node name="NozomiTalkingAnimation" type="Node2D" unique_id=2065645028]
+
+[node name="Nozomi" type="Sprite2D" parent="." unique_id=1228718514]
+position = Vector2(960, 540)
+texture = ExtResource("1_rqcsc")

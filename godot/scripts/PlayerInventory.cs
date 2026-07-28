@@ -5,11 +5,11 @@ using System.Collections.Generic;
 public partial class PlayerInventory : Node
 {
 
-    [Export] InventoryItem[] itemPool;
-    [Export] public HBoxContainer itemUIGrid;
-    [Export] public PackedScene testIcon;
-    public static PlayerInventory Instance { get; private set; }
-    public List<InventoryItem> inventoryItems;
+	[Export] InventoryItem[] itemPool;
+	[Export] public HBoxContainer itemUIGrid;
+	[Export] public PackedScene testIcon;
+	public static PlayerInventory Instance { get; private set; }
+	public List<InventoryItem> inventoryItems;
 
 	public override void _EnterTree()
 	{
@@ -29,62 +29,62 @@ public partial class PlayerInventory : Node
 		}
 	}
 
-    public override void _Ready()
-    {
-        inventoryItems = new();
-    }
+	public override void _Ready()
+	{
+		inventoryItems = new();
+	}
 
-    public void AddItem(string id)
-    {
-        InventoryItem item = Array.Find(
-            itemPool,
-            poolItem => poolItem != null && poolItem.itemID == id
-        );
+	public void AddItem(string id)
+	{
+		InventoryItem item = Array.Find(
+			itemPool,
+			poolItem => poolItem != null && poolItem.itemID == id
+		);
 
-        TextureRect iconObj = testIcon.Instantiate<TextureRect>();
+		TextureRect iconObj = testIcon.Instantiate<TextureRect>();
 
-        if (item == null)
-        {
-            GD.PushWarning($"Inventory item with ID '{id}' was not found.");
-            return;
-        }
+		if (item == null)
+		{
+			GD.PushWarning($"Inventory item with ID '{id}' was not found.");
+			return;
+		}
 
-        iconObj.Texture = item.sprite;
-        inventoryItems.Add(item);
-        itemUIGrid.AddChild(iconObj);
-    }
+		iconObj.Texture = item.sprite;
+		inventoryItems.Add(item);
+		itemUIGrid.AddChild(iconObj);
+	}
 
-    public void RemoveItem(string id)
+	public void RemoveItem(string id)
 {
-    int itemIndex = inventoryItems.FindIndex(
-        item => item != null && item.itemID == id
-    );
+	int itemIndex = inventoryItems.FindIndex(
+		item => item != null && item.itemID == id
+	);
 
-    if (itemIndex == -1)
-    {
-        GD.PushWarning($"Inventory item with ID '{id}' was not found.");
-        return;
-    }
+	if (itemIndex == -1)
+	{
+		GD.PushWarning($"Inventory item with ID '{id}' was not found.");
+		return;
+	}
 
-    inventoryItems.RemoveAt(itemIndex);
+	inventoryItems.RemoveAt(itemIndex);
 
-    if (itemIndex < itemUIGrid.GetChildCount())
-    {
-        Node icon = itemUIGrid.GetChild(itemIndex);
-        itemUIGrid.RemoveChild(icon);
-        icon.QueueFree();
-    }
+	if (itemIndex < itemUIGrid.GetChildCount())
+	{
+		Node icon = itemUIGrid.GetChild(itemIndex);
+		itemUIGrid.RemoveChild(icon);
+		icon.QueueFree();
+	}
 }
-    
-    public bool HasItem(string id)
-    {
-        bool found = false;
+	
+	public bool HasItem(string id)
+	{
+		bool found = false;
 
-        foreach (InventoryItem item in inventoryItems)
-        {
-            if (item.itemID == id) found = true;   
-        }
+		foreach (InventoryItem item in inventoryItems)
+		{
+			if (item.itemID == id) found = true;   
+		}
 
-        return found;
-    }
+		return found;
+	}
 }

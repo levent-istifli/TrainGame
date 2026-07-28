@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dhmuaai3co1j0"]
+
+[ext_resource type="Texture2D" uid="uid://qwikdsj4wltf" path="res://Art/FinalDialogueAssets/Nozomi_Mother.png" id="1_j84c8"]
+
+[node name="Nozomi_Mother" type="Node2D" unique_id=980019851]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=814916366]
+position = Vector2(960, 540)
+texture = ExtResource("1_j84c8")
