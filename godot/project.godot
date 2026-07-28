@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="TrainGame"
+config/name="Twelfth Stop"
 run/main_scene="uid://dlmyryj3e0w3g"
 config/features=PackedStringArray("4.6", "C#", "Mobile")
 config/icon="res://icon.svg"
