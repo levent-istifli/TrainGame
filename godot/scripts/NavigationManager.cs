@@ -28,8 +28,8 @@ public partial class NavigationManager : Node
 	public bool HasStoryFlag(string flag) => storyFlags.Contains(flag);
 
 	
-    public List<string> boardQueue = new List<string>();
-    public List<string> exitQueue = new List<string>();
+	public List<string> boardQueue = new List<string>();
+	public List<string> exitQueue = new List<string>();
 
 	public int currentStation = 0;
 	public static readonly string[] stationNames = {"Ichi", "Ni", "San", "Shi", "Go", "Roku", "Shichi", "Hachi", "Kyuu", "Juu", "Juuichi", "Juuni"};
@@ -199,28 +199,28 @@ public partial class NavigationManager : Node
 		cameraShakeTween.TweenCallback(Callable.From(finishStopTrain));
 	}
 
-    public void finishStopTrain()
-    {
-        currentTrainState = TrainState.STOPPED;
-        foreach(Node spawner in NPCSpawners)
-        {
-            spawner.Call("start_boarding".AsStringName());
-            spawner.Call("start_exiting".AsStringName());
-        }
-        foreach(string name in boardQueue)
-        {
-            var npc = (NpcPlayerMover)GetTree().GetNodesInGroup(new StringName(name))[0];
-            npc.BoardTrain();
-        }
-        foreach(string name in exitQueue)
-        {
-            var npc = (NpcPlayerMover)GetTree().GetNodesInGroup(new StringName(name))[0];
-            npc.ExitTrain();
-        }
-        boardQueue.Clear();
-        currentStation += 1;
-        StationsHud.Instance.label.Text = "Arrived at " + stationNames[currentStation] + " Station";
-    }
+	public void finishStopTrain()
+	{
+		currentTrainState = TrainState.STOPPED;
+		foreach(Node spawner in NPCSpawners)
+		{
+			spawner.Call("start_boarding".AsStringName());
+			spawner.Call("start_exiting".AsStringName());
+		}
+		foreach(string name in boardQueue)
+		{
+			var npc = (NpcPlayerMover)GetTree().GetNodesInGroup(new StringName(name))[0];
+			npc.BoardTrain();
+		}
+		foreach(string name in exitQueue)
+		{
+			var npc = (NpcPlayerMover)GetTree().GetNodesInGroup(new StringName(name))[0];
+			npc.ExitTrain();
+		}
+		boardQueue.Clear();
+		currentStation += 1;
+		StationsHud.Instance.label.Text = "Arrived at " + stationNames[currentStation] + " Station";
+	}
 
 	private void getNPCSpawners()
 	{

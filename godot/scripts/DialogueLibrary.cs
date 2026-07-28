@@ -19,6 +19,9 @@ public class DialogueLibrary
             ui.StartTrain();
             ui.StopTrain();
             ui.BoardNPC("Mother");
+
+			ui.StartTrain();
+
             ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(20);
@@ -59,6 +62,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Train intercom
+			ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			await ui.DisplayLine("This subway will now be transitioning to the Onizuka Train Line.");
 			await ui.PhraseEnd();
@@ -70,6 +74,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Back to MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			await ui.DisplayLine("Is this it?");
 			await ui.PhraseEnd();
@@ -90,14 +95,18 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Train intercom
+			ui.StopTrain();
+			ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			await ui.DisplayLine("Midorigaoka. We have arrived at Midorigaoka, station number 1.");
 			await ui.PhraseEnd();
 			ui.PhraseBegin();
 			await ui.DisplayLine("Please exit the train from the right.");
 			await ui.PhraseEnd();
+			ui.StartTrain();
 			
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			await ui.DisplayLine("11 more stops left.");
 			await ui.PhraseEnd();
@@ -121,6 +130,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Train intercom
+			ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Asahibashi. Station number 2.");
 			await ui.PhraseEnd();
@@ -130,6 +140,7 @@ public class DialogueLibrary
 		{
 
 			//MC
+			ui.StartTrain();
             ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
@@ -230,6 +241,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Train intercom
+			ui.StopTrain();
             ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			await ui.DisplayLine("Asahibashi. We have arrived at Asahibashi, station number 2.");
@@ -240,6 +252,7 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Mizunami. Station number 3.");
 			await ui.PhraseEnd();
+			ui.StartTrain();
 			
 			//Mother
             ui.SetSpeaker("Mother");
@@ -258,6 +271,7 @@ public class DialogueLibrary
 		{
 
 			//Mother
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			await ui.DisplayLine("Kohana needs your help relaying information, so please talk to her.");
 			await ui.PhraseEnd();
@@ -265,8 +279,10 @@ public class DialogueLibrary
 		
 		dialogueEvents["KohanaDialogue"] = new DialogueEvent(async () =>
 		{
+			ui.BoardNPC("Kohana");
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			await ui.DisplayLine("Uh- good morning. This might be a little strange, but…");
 			await ui.PhraseEnd();
@@ -285,30 +301,35 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Kohana
+			ui.SetSpeaker("Kohana");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Hey! Are you [MC_NAME]?");
 			await ui.PhraseEnd();
 			
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(7);
 			await ui.DisplayLine("…How did you know that?");
 			await ui.PhraseEnd();
 			
 			//Kohana
+			ui.SetSpeaker("Kohana");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Through your mom, silly. She told me you could help!");
 			await ui.PhraseEnd();
 			
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Help with… what exactly?");
 			await ui.PhraseEnd();
 			
 			//Kohana
+			ui.SetSpeaker("Kohana");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("My sister. . .Hana. . .she means a lot to me.");
@@ -383,12 +404,14 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine(". . . Sure, what does your sister look like?");
 			await ui.PhraseEnd();
 			
 			//Kohana
+			ui.SetSpeaker("Kohana");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Oh, I forgot! She has dark, black hair and usually has a flower pin just like me!");
@@ -401,11 +424,12 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Yeah, sure. . .");
 			await ui.PhraseEnd();
-			ui.PhraseBegin();
+			ui.PhraseBegin();			
 			//Kohana sprite fades away
 			ui.ChangeTextSpeed(12);
 			await ui.DisplayLine("Okay, I’ve totally lost it.");
@@ -423,6 +447,8 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 			
 			//Train Intercom
+			ui.StopTrain();
+			ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Mizunami. We have arrived at Mizunami, station number 3.");
@@ -433,8 +459,10 @@ public class DialogueLibrary
 			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Kasumigaura. Station number 4.");
 			await ui.PhraseEnd();
+			ui.StartTrain();
 			
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("Well, let’s get this done.");
@@ -444,6 +472,7 @@ public class DialogueLibrary
 		dialogueEvents["KohanaRepeat"] = new DialogueEvent(async () =>
 		{
 			//Kohana
+			ui.SetSpeaker("Kohana");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("In case you forgot, Hana has dark hair and a similar flower pin. Thank you miss!");
@@ -452,19 +481,24 @@ public class DialogueLibrary
 		
 		dialogueEvents["HanaDialogue"] = new DialogueEvent(async () =>
 		{
+			ui.BoardNPC("Hana");
+
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Um, excuse me. . ?");
 			await ui.PhraseEnd();
 			
 			//Hana
+			ui.SetSpeaker("Hana");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Hm?");
 			await ui.PhraseEnd();
 			
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("Uh . . .");
@@ -479,6 +513,7 @@ public class DialogueLibrary
 				await ui.PhraseEnd();
 				
 				//Hana
+				ui.SetSpeaker("Hana");
 				ui.PhraseBegin();
 				ui.ChangeTextSpeed(7);
 				await ui.DisplayLine(". . .");
@@ -488,12 +523,14 @@ public class DialogueLibrary
 				await ui.PhraseEnd();
 				
 				//MC
+				ui.SetSpeaker("Nozomi");
 				ui.PhraseBegin();
 				ui.ChangeTextSpeed(12);
 				await ui.DisplayLine("Oh, uh, sorry. . . that was probably insensitive, wasn’t it?");
 				await ui.PhraseEnd();
 				
 				//Hana
+				ui.SetSpeaker("Hana");
 				ui.PhraseBegin();
 				ui.ChangeTextSpeed(7);
 				await ui.DisplayLine(". . .");
@@ -513,6 +550,7 @@ public class DialogueLibrary
 				await ui.PhraseEnd();
 				
 				//Hana
+				ui.SetSpeaker("Hana");
 				ui.PhraseBegin();
 				ui.ChangeTextSpeed(9);
 				await ui.DisplayLine(". . .");
@@ -547,8 +585,23 @@ public class DialogueLibrary
 				ui.PhraseBegin();
 				await ui.DisplayLine("If I had known she was by my side this whole time. . .");
 				await ui.PhraseEnd();
+
+				//Train intercom
+				ui.StopTrain();
+				ui.SetSpeaker("Conductor");
+				ui.PhraseBegin();
+				await ui.DisplayLine("Kasumigaura. We have arrived at Kasumigaura, station number 4.");
+				await ui.PhraseEnd();
+				ui.PhraseBegin();
+				await ui.DisplayLine("Please exit the train from the right.");
+				await ui.PhraseEnd();
+				ui.PhraseBegin();
+				await ui.DisplayLine("The next stop is Kageyama. Station number 5.");
+				await ui.PhraseEnd();
+				ui.StartTrain();
 				
 				//MC
+				ui.SetSpeaker("Nozomi");
 				ui.PhraseBegin();
 				ui.ChangeTextSpeed(10);
 				await ui.DisplayLine(". . .");
@@ -558,6 +611,7 @@ public class DialogueLibrary
 				await ui.PhraseEnd();
 				
 				//Hana
+				ui.SetSpeaker("Hana");
 				ui.PhraseBegin();
 				ui.ChangeTextSpeed(8);
 				await ui.DisplayLine(". . .it was hard.");
@@ -639,6 +693,7 @@ public class DialogueLibrary
 				await ui.PhraseEnd();
 				
 				//Hana
+				ui.SetSpeaker("Hana");
 				ui.PhraseBegin();
 				ui.ChangeTextSpeed(8);
 				await ui.DisplayLine(". . .");
@@ -668,6 +723,7 @@ public class DialogueLibrary
 				await ui.PhraseEnd();
 				
 				//MC
+				ui.SetSpeaker("Nozomi");
 				ui.PhraseBegin();
 				ui.ChangeTextSpeed(10);
 				await ui.DisplayLine(". . .");
@@ -677,6 +733,7 @@ public class DialogueLibrary
 				await ui.PhraseEnd();
 				
 				//Hana
+				ui.SetSpeaker("Hana");
 				ui.PhraseBegin();
 				ui.ChangeTextSpeed(8);
 				await ui.DisplayLine(". . .it was hard.");
@@ -753,20 +810,51 @@ public class DialogueLibrary
 				await ui.DisplayLine("Of course, it was hard. And now, a few years later, I still have relapses. The world is a rough place, but you have to find those small glimmers of hope and never let go. Only then will you make it through the voids.");
 				await ui.PhraseEnd();
 			}
+
+			//Train intercom
+			ui.StopTrain();
+            ui.SetSpeaker("Conductor");
+			ui.PhraseBegin();
+			await ui.DisplayLine("Kageyama. We have arrived at Kageyama, station number 5.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("The next stop is Shiranui. Station number 6.");
+			await ui.PhraseEnd();
+			ui.StartTrain();
 			
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Wow, that’s very. . . touching. Thank you for sharing.");
 			await ui.PhraseEnd();
 			
 			//Hana
+			ui.SetSpeaker("Hana");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("At the end of the day, we’re all trying to figure out how to get through this world together. As long as I can give others solace or inspiration through my experiences, I will continue sharing them.");
 			await ui.PhraseEnd();
+
+			//Train intercom
+			ui.StopTrain();
+            ui.SetSpeaker("Conductor");
+			ui.PhraseBegin();
+			await ui.DisplayLine("Shiranui. We have arrived at Shiranui, station number 6.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("The next stop is Yorugaoka. Station number 7.");
+			await ui.PhraseEnd();
+			ui.StartTrain();
 			
 			//MC, Hana sprite fades away
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine(". . .");
@@ -785,8 +873,9 @@ public class DialogueLibrary
 		
 		dialogueEvents["MotherAfterHanaDialogue"] = new DialogueEvent(async () =>
 		{
-
+			
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Mom, I can’t believe it!");
@@ -820,18 +909,21 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Mother
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("That's right. You were able to help her soul rest.");
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Does that mean...");
 			await ui.PhraseEnd();
 
 			//Mother
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Her soul can rest peacefully now. She does not have to worry about looking after Hana.");
@@ -859,12 +951,14 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine(". . .could there really be something further for me. . .?");
 			await ui.PhraseEnd();
 
 			//Mother
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("You’ll know your answer by the end of this.");
@@ -874,27 +968,36 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("I understand.");
 			await ui.PhraseEnd();
 
 			//Train Intercom
+			ui.StopTrain();
+			ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
-			await ui.DisplayLine("Kasumigaura. We have arrived at Kasumigaura, station number 4.");
+			await ui.DisplayLine("Yorugaoka. We have arrived at Yorugaoka, station number 7.");
 			await ui.PhraseEnd();
 			ui.PhraseBegin();
 			await ui.DisplayLine("Please exit the train from the left.");
 			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("The next stop is Naraku. Station number 8.");
+			await ui.PhraseEnd();
+			ui.StartTrain();
 
 			//Mother
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Look for a man in a bright orange uniform. He wants to give someone one last message before he goes.");
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Thanks, mother.");
@@ -907,6 +1010,7 @@ public class DialogueLibrary
 		{
 
 			//Mother
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Look for a man in a bright orange uniform. He wants to give someone one last message before he goes.");
@@ -917,12 +1021,14 @@ public class DialogueLibrary
 		{
 
 			//MC
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Hi sir. . .um. . .I’m here because I want to help you grant your final wishes to someone special to you.");
 			await ui.PhraseEnd();
 
 			//Yoru
+			ui.SetSpeaker("Yoru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Thank goodness.");
@@ -933,6 +1039,7 @@ public class DialogueLibrary
 
 			//The script requires every question to be answered. They play in sequence because DisplayChoice currently supports two options.
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("May I ask:");
@@ -942,6 +1049,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Yoru
+			ui.SetSpeaker("Yoru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("It was only us from the beginning. Her mother, my wife, had complications during birth and passed away. So I took the responsibility of raising our little girl on my own.");
@@ -975,12 +1083,14 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("What is your daughter like as a person?");
 			await ui.PhraseEnd();
 
 			//Yoru
+			ui.SetSpeaker("Yoru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("She’s the same now as she ever was when she was younger. She never took no for an answer. She didn’t care what others had in mind about her.");
@@ -1005,12 +1115,14 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("What does she do now?");
 			await ui.PhraseEnd();
 
 			//Yoru
+			ui.SetSpeaker("Yoru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("She’s about to graduate from college. She’s graduating with her degree in Civil Engineering.");
@@ -1026,12 +1138,14 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("How did you end up passing away?");
 			await ui.PhraseEnd();
 
 			//Yoru
+			ui.SetSpeaker("Yoru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(9);
 			await ui.DisplayLine("From a construction machinery operation incident. It was a lot that day.");
@@ -1049,13 +1163,29 @@ public class DialogueLibrary
 			await ui.DisplayLine("It still haunts me to this day. I’ve only been able to watch over her. But today is my chance to change that.");
 			await ui.PhraseEnd();
 
+			//Train intercom
+			ui.StopTrain();
+            ui.SetSpeaker("Conductor");
+			ui.PhraseBegin();
+			await ui.DisplayLine("Naraku. We have arrived at Naraku, station number 8.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("The next stop is Bokyo. Station number 9.");
+			await ui.PhraseEnd();
+			ui.StartTrain();
+
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("What’s your final wish you’d like to grant to your daughter?");
 			await ui.PhraseEnd();
 
 			//Yoru
+			ui.SetSpeaker("Yoru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("I want to give her this letter. Recently, she’s been sad again. No one is there to be with her during her graduation.");
@@ -1073,6 +1203,7 @@ public class DialogueLibrary
 			NavigationManager.Instance.SetStoryFlag("YoruItemsReceived");
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("That was. . .so beautiful. I also lost my mother at a young age, so I understand what she must have been feeling.");
@@ -1088,6 +1219,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Yoru
+			ui.SetSpeaker("Yoru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Thank you so much. I’ll be able to rest peacefully then. I’ll also finally be able to reunite with my wife.");
@@ -1102,8 +1234,8 @@ public class DialogueLibrary
 
 		dialogueEvents["YoruRepeat"] = new DialogueEvent(async () =>
 		{
-
 			//Yoru
+			ui.SetSpeaker("Yoru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Hotaru has short, brown-ish hair and will be wearing clothes similar to mine. Thank you again.");
@@ -1114,6 +1246,7 @@ public class DialogueLibrary
 		{
 
 			//Mother
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Hotaru has short, brown-ish hair and will be wearing clothes similar to Yoru's. Please give her the letter and firefly pin.");
@@ -1124,30 +1257,35 @@ public class DialogueLibrary
 		{
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Excuse me. . .umm, this might sound strange, but you’re Hotaru, aren't you? I-I actually have something to give you.");
 			await ui.PhraseEnd();
 
 			//Hotaru
+			ui.SetSpeaker("Hotaru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Uhh. . . yes, but, maybe you have the wrong person? I don’t recall us meeting each other before.");
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("You’re right, we’ve never met each other before, and this may sound crazy or insensitive but please just listen to me. I was just able to speak with your father.");
 			await ui.PhraseEnd();
 
 			//Hotaru
+			ui.SetSpeaker("Hotaru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(7);
 			await ui.DisplayLine("WHAT? What are you-");
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Your father’s name is Yoru, right?");
@@ -1160,6 +1298,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Hotaru
+			ui.SetSpeaker("Hotaru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("How. . .");
@@ -1172,6 +1311,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("It might not make sense now, but I have something to give you. It’s a letter and pin from your father.");
@@ -1183,6 +1323,7 @@ public class DialogueLibrary
 			NavigationManager.Instance.SetStoryFlag("HotaruItemsDelivered");
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Your father has always been watching over you ever since that day.");
@@ -1192,6 +1333,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Hotaru
+			ui.SetSpeaker("Hotaru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(9);
 			await ui.DisplayLine("But...he’s always been the best father to me. He’s always done everything for me.");
@@ -1199,6 +1341,7 @@ public class DialogueLibrary
 
 			//The script requires every question to be answered. They play in sequence because DisplayChoice currently supports two options.
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("If it's okay, may I ask:");
@@ -1208,6 +1351,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Hotaru
+			ui.SetSpeaker("Hotaru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("My father was my superhero! He always cared for me and put me first, no matter how ridiculous I would be.");
@@ -1223,12 +1367,14 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("How were you able to get over others' opinions about you and your father?");
 			await ui.PhraseEnd();
 
 			//Hotaru
+			ui.SetSpeaker("Hotaru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(9);
 			await ui.DisplayLine("I didn’t care about people’s opinions towards me. I didn’t mind what they said because I’m doing what I love. I’m not going to let anyone change that.");
@@ -1250,12 +1396,14 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("How were you able to adapt on your own after your father's passing?");
 			await ui.PhraseEnd();
 
 			//Hotaru
+			ui.SetSpeaker("Hotaru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("I didn’t know how to continue living life after that. I may have looked unfazed, but day by day, I was falling apart.");
@@ -1300,7 +1448,22 @@ public class DialogueLibrary
 			await ui.DisplayLine("Even though my father isn’t here with me to share these new experiences, I believe that he’s proud of how far I’ve come and what I've accomplished.");
 			await ui.PhraseEnd();
 
+			//Train intercom
+			ui.StopTrain();
+            ui.SetSpeaker("Conductor");
+			ui.PhraseBegin();
+			await ui.DisplayLine("Bokyo. We have arrived at Bokyo, station number 9.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("The next stop is Kagamiutsu. Station number 10.");
+			await ui.PhraseEnd();
+			ui.StartTrain();
+
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Hotaru, you’re exactly right.");
@@ -1313,6 +1476,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Hotaru
+			ui.SetSpeaker("Hotaru");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(9);
 			await ui.DisplayLine("Thank you...");
@@ -1325,6 +1489,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("I’m glad I was able to connect you guys for one last time.");
@@ -1335,6 +1500,7 @@ public class DialogueLibrary
 		{
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Mom, I’m so happy that they were able to connect them for the last time.");
@@ -1346,13 +1512,23 @@ public class DialogueLibrary
 			await ui.DisplayLine("I-I. . .felt like her in a way. . .");
 			await ui.PhraseEnd();
 
-			//Train Intercom
+			//Train intercom
+			ui.StopTrain();
+            ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
-			ui.ChangeTextSpeed(10);
+			await ui.DisplayLine("Kagamiutsu. We have arrived at Asahibashi, station number 10.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
+			await ui.DisplayLine("Please exit the train from the right.");
+			await ui.PhraseEnd();
+			ui.PhraseBegin();
 			await ui.DisplayLine("The next stop is Magen. Station number 11.");
 			await ui.PhraseEnd();
+			ui.StartTrain();
+
 
 			//Mother
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("I know dear. I know it's been so hard for you to be all alone.");
@@ -1437,6 +1613,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("Mom. . .");
@@ -1446,6 +1623,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Mother
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Dear...I wish I could go back in time and realize that there was more to life in front of me.");
@@ -1464,12 +1642,14 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("Oh...so I won’t be seeing you ever again, huh?. But, I want to continue talking to you. . .");
 			await ui.PhraseEnd();
 
 			//Mother
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("I’m sorry dear. I’m happy that I was able to meet with you for the last time.");
@@ -1485,6 +1665,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Train Intercom
+			ui.SetSpeaker("Conductor");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Magen. We have arrived at Magen, station number 11.");
@@ -1494,6 +1675,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//Mother
+			ui.SetSpeaker("Mother");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(9);
 			await ui.DisplayLine("Bye dear.");
@@ -1513,6 +1695,7 @@ public class DialogueLibrary
 
 			//Screen fades to black. Final cutscene plays.
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(10);
 			await ui.DisplayLine("Am I sure about this?");
@@ -1543,6 +1726,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(8);
 			await ui.DisplayLine("But...but I want to do something I love. Why should I continue the life that I’m living when I can find hope?");
@@ -1555,6 +1739,7 @@ public class DialogueLibrary
 			await ui.PhraseEnd();
 
 			//MC
+			ui.SetSpeaker("Nozomi");
 			ui.PhraseBegin();
 			ui.ChangeTextSpeed(7);
 			await ui.DisplayLine("There’s more out there. I want to do what I love to do in life, not what others say I should be doing!");
