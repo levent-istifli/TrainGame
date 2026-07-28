@@ -1,6 +1,6 @@
 use godot::global::signf;
 use godot::prelude::*;
-use godot::classes::{CollisionShape2D, Sprite2D, CharacterBody2D, ShapeCast2D};
+use godot::classes::{CollisionShape2D, Sprite2D, CharacterBody2D, ShapeCast2D, CompressedTexture2D};
 
 const WALK_SPEED: f32 = 300.0;
 
@@ -24,6 +24,8 @@ pub struct NPC {
     collision: OnEditor<Gd<CollisionShape2D>>,
     #[export]
     player_detector: OnEditor<Gd<ShapeCast2D>>,
+    #[export]
+    sprites: Array<Gd<CompressedTexture2D>>,
     pub movement_targets: Vec<Vector2>,
     pub current_state: NPCState,
     pub target_seat_position: Vector2,
@@ -40,6 +42,7 @@ impl NPC {
 
     #[func]
     pub fn board_train(&mut self, aisle_y_position: f32) {
+        self.sprite.set_texture(&self.sprites.pick_random().unwrap());
         self.movement_targets.push(self.target_seat_position);
         self.movement_targets.push(Vector2 { x: self.target_seat_position.x, y: aisle_y_position });
         self.movement_targets.push(Vector2 { x: self.base().get_position().x, y: aisle_y_position });

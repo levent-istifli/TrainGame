@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://dabobsl1gguc8"]
 
+[ext_resource type="Texture2D" uid="uid://d0dg0d1tr3aqp" path="res://Art/NPCMan1.png" id="1_hwkja"]
 [ext_resource type="Texture2D" uid="uid://y26p3bu35a4" path="res://Art/NPC.png" id="1_nh2m4"]
+[ext_resource type="Texture2D" uid="uid://bgkebrxaoimq4" path="res://Art/NPCMan2.png" id="2_0tygy"]
+[ext_resource type="Texture2D" uid="uid://c0bt1omw4uv40" path="res://Art/NPCMan3.png" id="3_sptji"]
+[ext_resource type="Texture2D" uid="uid://cfejtnucd1i5s" path="res://Art/NPCMan4.png" id="4_v4e37"]
+[ext_resource type="Texture2D" uid="uid://bi72vsudw7kpq" path="res://Art/NPCWoman1.png" id="5_1h837"]
+[ext_resource type="Texture2D" uid="uid://b3wiryihdmvik" path="res://Art/NPCWoman2.png" id="6_gl1un"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nh2m4"]
 size = Vector2(90, 58)
@@ -12,6 +18,7 @@ size = Vector2(90, 58)
 sprite = NodePath("Sprite2D")
 collision = NodePath("CollisionShape2D")
 player_detector = NodePath("PlayerDetector")
+sprites = Array[CompressedTexture2D]([ExtResource("1_hwkja"), ExtResource("2_0tygy"), ExtResource("3_sptji"), ExtResource("4_v4e37"), ExtResource("5_1h837"), ExtResource("6_gl1un")])
 collision_mask = 0
 motion_mode = 1
 metadata/_edit_group_ = true
