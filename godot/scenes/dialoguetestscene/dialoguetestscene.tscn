@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://blxu853na5h8j" path="res://scripts/DialogueBoxUI.cs" id="1_pmob3"]
 [ext_resource type="Texture2D" uid="uid://b6xasl5ornaes" path="res://Art/FinalDialogueAssets/Nozomi_Hana.png" id="2_75wt1"]
 [ext_resource type="Texture2D" uid="uid://hcyvhjmwuscp" path="res://Art/FinalDialogueAssets/Nozomi.png" id="2_r4m4u"]
-[ext_resource type="Texture2D" uid="uid://dlwd6d53xnfh2" path="res://icon.svg" id="3_11ujm"]
 [ext_resource type="Texture2D" uid="uid://daa8qbfdtosds" path="res://Art/FinalDialogueAssets/NozomiTalking.png" id="3_26age"]
 [ext_resource type="Texture2D" uid="uid://devx0ntg6i46i" path="res://Art/FinalDialogueAssets/NozomiTalking_Hana.png" id="3_llgmv"]
 [ext_resource type="Texture2D" uid="uid://dpfiw11xje7e2" path="res://Art/FinalDialogueAssets/Nozomi_Hotaru.png" id="4_n2hyo"]
@@ -305,7 +304,6 @@ offset_top = 75.0
 offset_right = 138.0
 offset_bottom = 203.0
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_11ujm")
 
 [node name="OptionIndicator2" type="TextureRect" parent="DialogueBoxBackdrop" unique_id=1067846701]
 visible = false
@@ -315,7 +313,6 @@ offset_top = 75.0
 offset_right = 538.0
 offset_bottom = 203.0
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_11ujm")
 
 [connection signal="timeout" from="CharTimer" to="." method="OnCharTimeout"]
 [connection signal="mouse_entered" from="DialogueBoxBackdrop/QuestionOption1" to="." method="OnOption1MouseEntered"]
