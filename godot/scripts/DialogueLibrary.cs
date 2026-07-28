@@ -19,10 +19,6 @@ public class DialogueLibrary
             ui.StartTrain();
             ui.StopTrain();
             ui.BoardNPC("Mother");
-            ui.BoardNPC("Yoru");
-            ui.BoardNPC("Hana");
-            ui.BoardNPC("Kohana");
-            ui.BoardNPC("Hotaru");
 
 			ui.StartTrain();
 
@@ -284,6 +280,7 @@ public class DialogueLibrary
 		
 		dialogueEvents["KohanaDialogue"] = new DialogueEvent(async () =>
 		{
+			ui.BoardNPC("Kohana");
 
 			//MC
 			ui.SetSpeaker("Nozomi");
@@ -486,6 +483,7 @@ public class DialogueLibrary
 		
 		dialogueEvents["HanaDialogue"] = new DialogueEvent(async () =>
 		{
+			ui.BoardNPC("Hana");
 
 			//MC
 			ui.SetSpeaker("Nozomi");

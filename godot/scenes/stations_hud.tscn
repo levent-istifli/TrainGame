@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://c1vx5f40jfo2n"]
+[gd_scene format=3 uid="uid://30kfng711k1r"]
 
-[ext_resource type="Script" uid="uid://clivn068naisr" path="res://scripts/StationsHud.cs" id="1_mbdt7"]
-[ext_resource type="Texture2D" uid="uid://b8bmxodf4wj4i" path="res://Art/white_circle_texture.tres" id="2_tf230"]
+[ext_resource type="Script" path="res://scripts/StationsHud.cs" id="1_mbdt7"]
+[ext_resource type="Texture2D" path="res://Art/white_circle_texture.tres" id="2_tf230"]
 
 [sub_resource type="Gradient" id="Gradient_yqjtq"]
 offsets = PackedFloat32Array(0.39488637, 0.4)

@@ -13,9 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://cktfpgdipx7cq" path="res://Art/FinalDialogueAssets/Nozomi_MotherTalking.png" id="6_jmqsv"]
 [ext_resource type="Texture2D" uid="uid://b3a6x7lscwmf1" path="res://Art/FinalDialogueAssets/Nozomi_HotaruTalking.png" id="6_vdcus"]
 [ext_resource type="Texture2D" uid="uid://cdhw34u5qhlh0" path="res://Art/FinalDialogueAssets/Nozomi_Kohana.png" id="8_6vv0t"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://ttg6tyk27b4n" path="res://Art/FinalDialogueAssets/NozomiTalking_Kohana.png" id="9_e4ems"]
 [ext_resource type="Texture2D" uid="uid://bdo2m0ijbk0sv" path="res://Art/FinalDialogueAssets/Nozomi_KohanaTalking.png" id="9_iskve"]
 [ext_resource type="Texture2D" uid="uid://chr6l6e2jkx31" path="res://Art/FinalDialogueAssets/Nozomi_Yoru.png" id="14_lq3ku"]
+=======
+[ext_resource type="Texture2D" uid="uid://bdo2m0ijbk0sv" path="res://Art/FinalDialogueAssets/Nozomi_KohanaTalking.png" id="9_iskve"]
+[ext_resource type="Texture2D" uid="uid://cewguam8r6ivp" path="res://Art/FinalDialogueAssets/Nozomi_Yoru.png" id="14_lq3ku"]
+>>>>>>> be6d401c4c02f063bcf76fc07cdb13d407af68cc
 [ext_resource type="Texture2D" uid="uid://cej8b3dv7rqlc" path="res://Art/FinalDialogueAssets/NozomiTalking_Yoru.png" id="15_n2hyo"]
 [ext_resource type="Texture2D" uid="uid://be1lqo0roq63g" path="res://Art/FinalDialogueAssets/Nozomi_YoruTalking.png" id="16_e4ems"]
 
@@ -99,7 +104,11 @@ animations = [{
 "texture": ExtResource("8_6vv0t")
 }, {
 "duration": 1.0,
+<<<<<<< HEAD
 "texture": ExtResource("9_e4ems")
+=======
+"texture": ExtResource("3_llgmv")
+>>>>>>> be6d401c4c02f063bcf76fc07cdb13d407af68cc
 }],
 "loop": true,
 "name": &"KohanaMCTalking",
@@ -189,7 +198,11 @@ animations = [{
 }]
 
 [node name="DialogueBox" type="Node2D" unique_id=1448317 node_paths=PackedStringArray("textBox", "speakerName", "option1TextBox", "option2TextBox", "option1Indicator", "option2Indicator", "charTimer", "nextIndicator", "background")]
+<<<<<<< HEAD
 z_index = 10
+=======
+z_index = 100
+>>>>>>> be6d401c4c02f063bcf76fc07cdb13d407af68cc
 position = Vector2(960, 801)
 script = ExtResource("1_pmob3")
 charDuration = 0.04
@@ -206,7 +219,11 @@ background = NodePath("TrainInterior")
 [node name="TrainInterior" type="AnimatedSprite2D" parent="." unique_id=1425006374]
 position = Vector2(-3.71933e-05, -261)
 sprite_frames = SubResource("SpriteFrames_3myty")
+<<<<<<< HEAD
 animation = &"KohanaMCTalking"
+=======
+animation = &"MotherMCTalking"
+>>>>>>> be6d401c4c02f063bcf76fc07cdb13d407af68cc
 
 [node name="CharTimer" type="Timer" parent="." unique_id=231543630]
 

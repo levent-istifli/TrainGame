@@ -32,7 +32,7 @@ public partial class NavigationManager : Node
 	public List<string> exitQueue = new List<string>();
 
 	public int currentStation = 0;
-	public static readonly string[] stationNames = {"Ichi", "Ni", "San", "Shi", "Go", "Roku", "Shichi", "Hachi", "Kyuu", "Juu", "Juuichi", "Juuni"};
+	public static readonly string[] stationNames = {"Midorigaoka", "Asahibashi", "Mizunami", "Kasumigaura", "Kageyama", "Shiranui", "Yorugaoka", "Naraku", "Bokyo", "Kagamiutsu", "Magen", "Yomiji"};
 	public enum TrainState {
 		STOPPED,
 		RUNNING,
