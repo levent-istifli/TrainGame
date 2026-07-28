@@ -275,6 +275,16 @@ public partial class DialogueBoxUI : Node2D
         willStopTrain = true;
     }
 
+    public void BoardNPC(string name)
+    {
+        NavigationManager.Instance.boardQueue.Add(name);
+    }
+
+    public void ExitNPC(string name)
+    {
+        NavigationManager.Instance.exitQueue.Add(name);
+    }
+
 	private void OnOption1MouseEntered()
 	{
 		SelectOption(0);

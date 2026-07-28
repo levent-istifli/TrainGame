@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://c2yva6vtvmdd2"]
 
 [ext_resource type="Script" uid="uid://cooet5fc653kj" path="res://scripts/NPCPlayer.cs" id="1_c6v3n"]
+[ext_resource type="Script" uid="uid://6ugwvx432lj1" path="res://scripts/NpcPlayerMover.cs" id="1_meg00"]
 [ext_resource type="Texture2D" uid="uid://bfxg1cimhlvls" path="res://Art/INPC.png" id="2_c6v3n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6v3n"]
 size = Vector2(79, 165)
 
-[node name="NPCPlayer" type="Node2D" unique_id=217092309]
+[node name="NPCPlayer" type="CharacterBody2D" unique_id=2031802663 groups=["Pause"]]
+script = ExtResource("1_meg00")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1629417335 node_paths=PackedStringArray("NpcSprite")]
 scale = Vector2(1, 0.99999994)

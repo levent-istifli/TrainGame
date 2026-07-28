@@ -14,8 +14,6 @@
 
 [node name="Door_R" parent="Doors" unique_id=1938107216 instance=ExtResource("2_nb1wl")]
 position = Vector2(1801, 776)
-destination_level_tag = "TestScene2"
-destination_door_tag = "L"
 
 [node name="Spawn" parent="Doors/Door_R" index="1" unique_id=21988130 groups=["Spawn Points"]]
 position = Vector2(-161, 0)
@@ -24,8 +22,6 @@ metadata/_edit_group_ = true
 
 [node name="Door_L" parent="Doors" unique_id=293795578 instance=ExtResource("2_nb1wl")]
 position = Vector2(117, 776)
-destination_level_tag = "TestScene3"
-destination_door_tag = "R"
 
 [node name="Spawn" parent="Doors/Door_L" index="1" unique_id=21988130 groups=["Spawn Points"]]
 position = Vector2(148, 0)
@@ -71,11 +67,14 @@ position = Vector2(1000, 596)
 [node name="Seat6" type="Seat" parent="NPCSpawner" unique_id=321598540]
 position = Vector2(1288, 596)
 
-[node name="NPCPlayer" parent="." unique_id=217092309 instance=ExtResource("4_nb1wl")]
-position = Vector2(569, 517)
+[node name="NPCPlayer" parent="." unique_id=217092309 node_paths=PackedStringArray("interactor", "targetSeat") groups=["Mother"] instance=ExtResource("4_nb1wl")]
+position = Vector2(498, 1212)
+interactor = NodePath("Area2D")
+targetSeat = NodePath("../Seat7")
+aisleYPosition = 797.0
 metadata/_edit_group_ = true
 
-[node name="Area2D" parent="NPCPlayer" index="0" unique_id=1629417335]
+[node name="Area2D" parent="NPCPlayer" index="0" unique_id=1629417335 groups=["Mother"]]
 firstDialogueEventId = "FirstMotherDialogue"
 repeatDialogueEventId = "MotherKohanaRepeat"
 flagsToCheck = PackedStringArray("KohanaItemDelivered", "MotherAfterHanaDone", "YoruItemsReceived", "HotaruItemsDelivered")
@@ -83,6 +82,9 @@ flagDialogueEventIds = PackedStringArray("MotherAfterHanaDialogue", "MotherYoruR
 
 [node name="Sprite2D" parent="NPCPlayer/Area2D" index="0" unique_id=1297988730]
 texture = ExtResource("5_m5dm6")
+
+[node name="Seat7" type="Seat" parent="." unique_id=1604111037]
+position = Vector2(579, 596)
 
 [connection signal="body_entered" from="Doors/Door_R" to="Doors/Door_R" method="OnBodyEntered"]
 [connection signal="body_entered" from="Doors/Door_L" to="Doors/Door_L" method="OnBodyEntered"]
