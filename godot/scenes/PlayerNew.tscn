@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c1nue1b8nio8p" path="res://scripts/PlayerNew.cs" id="1_agiem"]
 [ext_resource type="Texture2D" uid="uid://bidmjnt58ah5t" path="res://Art/Nozomi.png" id="2_agiem"]
+[ext_resource type="AudioStream" uid="uid://bcy84ic0g618g" path="res://Audio/TrainFootsteps.wav" id="3_pfswu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krj2m"]
 size = Vector2(107, 48)
@@ -9,11 +10,12 @@ size = Vector2(107, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_agiem"]
 size = Vector2(40, 40)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1629053667 node_paths=PackedStringArray("sprite") groups=["Pause"]]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1629053667 node_paths=PackedStringArray("sprite", "footsteps") groups=["Pause"]]
 collision_layer = 129
 script = ExtResource("1_agiem")
 sprite = NodePath("Sprite2D")
 speed = 300.0
+footsteps = NodePath("Footsteps")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=461469366]
@@ -28,3 +30,6 @@ shape = SubResource("RectangleShape2D_krj2m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionChecker" unique_id=1792813354]
 shape = SubResource("RectangleShape2D_agiem")
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="." unique_id=2028758189]
+stream = ExtResource("3_pfswu")

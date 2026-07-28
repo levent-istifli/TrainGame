@@ -29,6 +29,6 @@ position = Vector2(923, 841)
 
 [node name="Audio" type="Node" parent="." unique_id=1891796614]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=557342653]
+[node name="TrainAmbience" type="AudioStreamPlayer" parent="Audio" unique_id=557342653]
 stream = ExtResource("9_c1pb6")
 autoplay = true
